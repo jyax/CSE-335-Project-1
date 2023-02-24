@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bug-squash level="Level Zero">
+  <program name="Bug Squash" x="625" y="500">
+    <bug type="redundancy" x="100" y="600" speed="120" start="0"/>
+    <feature x="100" y="800" speed="120" start="0"/>
+  </program>
+</bug-squash>
