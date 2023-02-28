@@ -4,6 +4,7 @@
  * Playing area for the game
  */
 #include "pch.h"
+#include <wx/graphics.h>
 #include "PlayingArea.h"
 /**
  * Draws the starting text

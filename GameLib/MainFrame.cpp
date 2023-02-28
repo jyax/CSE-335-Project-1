@@ -72,7 +72,7 @@ void MainFrame::Initialize()
   */
   void MainFrame::OnAbout(wxCommandEvent &event)
  {
-      wxMessageBox(L"Project 1: Bug Squash\n Created by Team Tick\nAlly Bannon, Gaya Kanagaraj,\nNicole Kuang, Jacob Meier,\n Jacob Yax",
+      wxMessageBox(L"Project 1: Bug Squash created by Team Tick\nMembers: Ally Bannon, Gaya Kanagaraj,\nNicole Kuang, Jacob Meier, Jacob Yax",
                    L"About Project 1",
                    wxOK,
                    this);

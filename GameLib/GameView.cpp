@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include <wx/dcbuffer.h>
+#include <wx/graphics.h>
 #include "GameView.h"
 #include "ids.h"
 /**
