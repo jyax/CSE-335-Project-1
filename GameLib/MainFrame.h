@@ -7,6 +7,9 @@
 #ifndef PROJECT1_MAINFRAME_H
 #define PROJECT1_MAINFRAME_H
 
+#include <wx/filehistory.h>
+#include <wx/config.h>
+
 /*
  * class for the main frame of the game
  */
