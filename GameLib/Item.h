@@ -24,11 +24,19 @@ private:
 	/// The bitmap we can display for this item
 	std::unique_ptr<wxBitmap> mItemBitmap;
 
-	/// Item location in the aquarium
+	/// Item location in the game
 	double  mX = 0;     ///< X location for the center of the item
 	double  mY = 0;     ///< Y location for the center of the item
 
 public:
+	/// Default constructor (disabled)
+	Item() = delete;
+
+	/// Copy constructor (disabled)
+	Item(const Item &) = delete;
+
+	/// Assignment operator
+	void operator=(const Item &) = delete;
 
 };
 
