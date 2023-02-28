@@ -10,7 +10,7 @@
 /*
  * class for the main frame of the game
  */
-class MainFrame {
+class MainFrame : public wxFrame{
 
 };
 

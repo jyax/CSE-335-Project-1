@@ -18,7 +18,7 @@ include(${wxWidgets_USE_FILE})
 add_subdirectory(${APPLICATION_LIBRARY})
 include_directories(${APPLICATION_LIBRARY})
 
-set(SOURCE_FILES main.cpp pch.h)
+set(SOURCE_FILES main.cpp pch.h GameApp.cpp GameApp.h)
 
 # Define the build target for the executable
 add_executable(${PROJECT_NAME} WIN32 MACOSX_BUNDLE ${SOURCE_FILES})
