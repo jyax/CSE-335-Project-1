@@ -11,9 +11,15 @@
 #include <wx/config.h>
 
 /*
- * class for the main frame of the game
+ * Class for the main frame of the game
  */
 class MainFrame : public wxFrame{
+private:
+    void OnExit(wxCommandEvent &event);
+    void OnAbout(wxCommandEvent &event);
+
+public:
+    void Initialize();
 
 };
 
