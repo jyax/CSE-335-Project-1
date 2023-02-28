@@ -1,6 +1,7 @@
 /**
  * @file GameApp.cpp
  * @author Jacob
+ * @author Nicole Kuang
  */
 
 #include "pch.h"

@@ -1,8 +1,9 @@
 /**
  * @file GameApp.h
  * @author Jacob
+ * @author Nicole Kuang
  *
- *
+ * Main application class
  */
 
 #ifndef PROJECT1__GAMEAPP_H
