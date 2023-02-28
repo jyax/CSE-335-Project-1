@@ -8,6 +8,7 @@
 #include "MainFrame.h"
 //#include "GameView.h"
 #include "ids.h"
+#include "GameView.h"
 
 /**
  * Initialize the mainframe window
@@ -15,17 +16,17 @@
 void MainFrame::Initialize()
 {
     Create(nullptr, wxID_ANY, L"Project 1: Bug Squash",
-           wxDefaultPosition, wxSize( 1250, 1000 ));
+           wxDefaultPosition, wxSize( 930, 800 ));
 
     // Sizer for child windows
     auto sizer = new wxBoxSizer( wxVERTICAL );
 
-    // Create view class object here
-    // auto gameView = new gameView();
-    // gameView->Initialize(this);
+     //Create view class object here
+     auto gameView = new GameView();
+     gameView->Initialize(this);
 
-    // Add to the sizer
-    //sizer->Add(gameView, 1, wxEXPAND | wxALL );
+     //Add to the sizer
+    sizer->Add(gameView, 1, wxEXPAND | wxALL );
 
     // Set sizer for game
     SetSizer( sizer );

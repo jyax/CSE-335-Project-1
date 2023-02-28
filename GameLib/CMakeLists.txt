@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(GameLib)
 
-set(SOURCE_FILES pch.h MainFrame.cpp MainFrame.h ids.h)
+set(SOURCE_FILES pch.h MainFrame.cpp MainFrame.h ids.h Game.cpp Game.h GameView.cpp GameView.h PlayingArea.cpp PlayingArea.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
