@@ -1,6 +1,6 @@
 /**
  * @file GameApp.cpp
- * @author Jacob
+ * @author Jacob Meier
  * @author Nicole Kuang
  */
 

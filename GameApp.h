@@ -1,6 +1,6 @@
 /**
  * @file GameApp.h
- * @author Jacob
+ * @author Jacob Meier
  * @author Nicole Kuang
  *
  * Main application class
