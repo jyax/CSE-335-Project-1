@@ -31,6 +31,8 @@ public:
 
 	/// Assignment operator (disabled)
 	void operator=(const Level &) = delete;
+
+	void Load();
 };
 
 #endif //PROJECT1_GAMELIB_LEVEL_H
