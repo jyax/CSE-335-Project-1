@@ -8,7 +8,7 @@
 #ifndef PROJECT1_GAME_H
 #define PROJECT1_GAME_H
 
-
+#include <wx/graphics.h>
 #include "PlayingArea.h"
 /**
  * Class draws the game and describes its functionalities.

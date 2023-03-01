@@ -6,6 +6,7 @@
  *  Class that implements a simple Game with items we can manipulate
  */
 #include "pch.h"
+#include <wx/graphics.h>
 #include "Game.h"
 
 
