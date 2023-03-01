@@ -21,10 +21,15 @@ void GameView::Initialize(wxFrame* mainFrame) {
 	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel0, this, IDM_LEVELZERO);
 }
 
+/**
+ * Plays Level 0 of the game
+ * @param event mouse click event
+ */
 void GameView::OnLevel0 (wxCommandEvent &event)
 {
 
 }
+
 /**
  * Paint event, draws the window.
  * @param event Paint event object

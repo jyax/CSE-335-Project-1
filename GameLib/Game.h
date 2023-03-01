@@ -3,7 +3,7 @@
  *
  * @author Gaya Kanagaraj
  *
- *  Class that implements a simple Game with items we can manipulate
+ * Class that implements a simple Game with items we can manipulate
  */
 #ifndef PROJECT1_GAME_H
 #define PROJECT1_GAME_H
@@ -11,6 +11,9 @@
 
 #include "PlayingArea.h"
 
+/**
+ * Class that implements a simple Game
+ */
 class Game {
 private:
     /// PlayingArea object

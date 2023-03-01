@@ -10,6 +10,9 @@
 
 #include "Item.h"
 
+/**
+ * Base class for the bugs in the game
+ */
 class Bug : public Item {
 private:
 	///Speed the bug is traveling

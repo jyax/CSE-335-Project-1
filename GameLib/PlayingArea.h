@@ -1,12 +1,15 @@
 /**
-* @file PlayingArea.h
+ * @file PlayingArea.h
  * @author Gaya Kanagaraj
+ *
  * Playing area for the game
  */
 #ifndef PROJECT1_PLAYINGAREA_H
 #define PROJECT1_PLAYINGAREA_H
 
-
+/**
+ * Playing area for the game
+ */
 class PlayingArea {
 private:
 

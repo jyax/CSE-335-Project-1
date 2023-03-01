@@ -1,14 +1,19 @@
 /**
 * @file PlayingArea.cpp
  * @author Gaya Kanagaraj
+ *
  * Playing area for the game
  */
+
 #include "pch.h"
 #include <wx/graphics.h>
 #include "PlayingArea.h"
+
 /**
  * Draws the starting text
- * @param graphics
+ * @param graphics the graphics context
+ * @param width the width of the screen
+ * @param height the height of the screen
  */
 void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, const int width, const int height)
 {

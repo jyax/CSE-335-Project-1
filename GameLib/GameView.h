@@ -2,7 +2,7 @@
  * @file GameView.h
  * @author Gaya Kanagaraj
  *
- *  Class that implements the child window our program draws in.
+ * Class that implements the child window our program draws in.
  *
  * The window is a child of the main frame, which holds this
  * window, the menu bar, and the status bar.
@@ -13,6 +13,9 @@
 
 #include "Game.h"
 
+/**
+ * Class that implements the child window our program draws in
+ */
 class GameView : public wxWindow{
 private:
     Game mGame; ///<  the Game

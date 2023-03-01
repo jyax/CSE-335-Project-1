@@ -10,6 +10,9 @@
 #define PROJECT1_GAMELIB_GARBAGEBUG_H
 #include "Bug.h"
 
+/**
+ * Class for the GarbageBug
+ */
 class GarbageBug  : public Bug {
 private:
 

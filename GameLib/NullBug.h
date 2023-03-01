@@ -11,6 +11,9 @@
 
 #include "Bug.h"
 
+/**
+ * Class for the NullBug
+ */
 class NullBug : public Bug {
 private:
 

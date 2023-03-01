@@ -10,8 +10,12 @@
 #define PROJECT1_GAMELIB_REDUNDANCYBUG_H
 #include "Bug.h"
 
+/**
+ * Class for the RedundancyBug
+ */
 class RedundancyBug  : public Bug {
 private:
+	/// Has the bug spawned multiples?
 	bool mHasMultiplied;
 
 public:
