@@ -17,6 +17,13 @@ void GameView::Initialize(wxFrame* mainFrame) {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
+
+	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel0, this, IDM_LEVELZERO);
+}
+
+void GameView::OnLevel0 (wxCommandEvent &event)
+{
+
 }
 /**
  * Paint event, draws the window.
