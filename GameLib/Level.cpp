@@ -33,3 +33,10 @@ void Level::Load()
 			break;
 	}
 }
+
+/**
+ * Destructor
+ */
+Level::~Level()
+{
+}

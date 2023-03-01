@@ -38,6 +38,8 @@ public:
 	/// Assignment operator (disabled)
 	void operator=(const Level &) = delete;
 
+	virtual ~Level();
+
 	void Load();
 };
 
