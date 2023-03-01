@@ -21,6 +21,7 @@ public:
     void Initialize(wxFrame *mainFrame);
 
     void OnPaint(wxPaintEvent &event);
+	void OnLevel0(wxCommandEvent &event);
 };
 
 
