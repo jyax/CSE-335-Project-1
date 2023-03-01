@@ -14,6 +14,13 @@
  */
 class Level {
 private:
+	// If LevelThree object inherits these member vars, what to do then?
+
+	/// The normal levels of the game
+	enum class LevelNum {Zero, One, Two};
+
+	/// The game level: Zero, One, Two
+	LevelNum mNum = LevelNum::Zero;
 
 public:
 	/// Default constructor (disabled)
