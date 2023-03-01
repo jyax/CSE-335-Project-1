@@ -10,7 +10,9 @@
 
 
 #include "PlayingArea.h"
-
+/**
+ * Class draws the game and describes its functionalities.
+ */
 class Game {
 private:
     /// PlayingArea object
@@ -22,7 +24,7 @@ private:
     const static int Height = 1000;
 
     /// Shrink true or false
-    bool mShrinked = false;
+    bool mShrinked = true;
 
     /// offset x
     double mXOffset = 0;
