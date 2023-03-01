@@ -7,7 +7,7 @@
  */
 #include "pch.h"
 #include "Game.h"
-#include <wx/graphics.h>
+
 
 
 /// Shrinkable

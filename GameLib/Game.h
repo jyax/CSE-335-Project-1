@@ -3,16 +3,15 @@
  *
  * @author Gaya Kanagaraj
  *
- * Class that implements a simple Game with items we can manipulate
+ *  Class that implements a simple Game with items we can manipulate
  */
 #ifndef PROJECT1_GAME_H
 #define PROJECT1_GAME_H
 
 
 #include "PlayingArea.h"
-
 /**
- * Class that implements a simple Game
+ * Class draws the game and describes its functionalities.
  */
 class Game {
 private:
@@ -25,7 +24,7 @@ private:
     const static int Height = 1000;
 
     /// Shrink true or false
-    bool mShrinked = false;
+    bool mShrinked = true;
 
     /// offset x
     double mXOffset = 0;
