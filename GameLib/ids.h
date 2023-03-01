@@ -1,6 +1,6 @@
 /**
  * @file ids.h
- * @author Nicole Kuang
+ * @author Nicole Kuang, Jacob Yax
  *
  * ID values for the game
  */
