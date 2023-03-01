@@ -11,13 +11,13 @@
 #ifndef PROJECT1_GAMELIB_LEVELTHREE_H
 #define PROJECT1_GAMELIB_LEVELTHREE_H
 
-// inherit from Level
+#include "Level.h"
 //#include "Game.h"
 
 /**
  * Class that describes Level 3 of the Bug Squash Game
  */
-class LevelThree {
+class LevelThree : public Level {
 private:
 
 public:
