@@ -1,6 +1,7 @@
 /**
  * @file Level.cpp
  * @author Jacob Meier
+ * @author Nicole Kuang
  */
 
 #include "pch.h"

@@ -9,12 +9,18 @@
 #ifndef PROJECT1_GAMELIB_LEVEL_H
 #define PROJECT1_GAMELIB_LEVEL_H
 
+#include "Game.h"
+
 /**
  * Main class for level0, level1, and level2
  */
 class Level {
 private:
 	// If LevelThree object inherits these member vars, what to do then?
+
+	// Have a game as a member variable?
+	/// The game this level is part of
+	Game *mGame = nullptr;
 
 	/// The normal levels of the game
 	enum class LevelNum {Zero, One, Two};
