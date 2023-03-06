@@ -1,11 +1,14 @@
-//
-// Created by Terra Byte on 3/6/23.
-//
-
+/**
+ * @file ScoreBoard.h
+ * @author Gaya Kanagaraj
+ * Class defines the score baord
+ */
 #ifndef PROJECT1_SCOREBOARD_H
 #define PROJECT1_SCOREBOARD_H
 
-
+/**
+ * Class for the score boards
+ */
 class ScoreBoard {
 private:
     int mFixed = 0; ///< for fixed score

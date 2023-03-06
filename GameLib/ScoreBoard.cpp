@@ -1,6 +1,8 @@
-//
-// Created by Terra Byte on 3/6/23.
-//
+/**
+ * @file ScoreBoard.cpp
+ * @author Gaya Kanagaraj
+ * Class defines the score baord
+ */
 #include "pch.h"
 #include "ScoreBoard.h"
 
