@@ -1,6 +1,7 @@
 /**
  * @file Item.h
  * @author Jacob Meier
+ * @author Nicole Kuang
  *
  * Base class for any item in our Game.
  */
@@ -58,6 +59,8 @@ public:
 	 * @param y Y location in pixels
 	 */
 	void SetLocation(double x, double y) { mX = x; mY = y; }
+
+	bool HitTest(int x, int y);
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H
