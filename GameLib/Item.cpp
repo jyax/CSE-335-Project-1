@@ -5,3 +5,10 @@
 
 #include "pch.h"
 #include "Item.h"
+
+/**
+ * Destructor
+ */
+Item::~Item()
+{
+}
