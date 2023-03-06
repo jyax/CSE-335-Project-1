@@ -53,6 +53,8 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 
     //draws the playing area
     mPlayingArea.DrawPlayingArea(graphics, Game::Width, Game::Height);
+    // draws the score
+    mPlayingArea.DrawScoreBoard(graphics);
 
     graphics->PopState();
 }

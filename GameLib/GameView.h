@@ -25,6 +25,16 @@ public:
 
     void OnPaint(wxPaintEvent &event);
 	void OnLevel0(wxCommandEvent &event);
+
+    void
+    AddLevelMenuOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
+
+    void AddShrinkOption(wxCommandEvent &event);
+
+    void AddMenus(wxFrame *mainFrame, wxMenuBar *menuBar, wxMenu *fileMenu, wxMenu *viewMenu);
+
+    void
+    OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
 };
 
 

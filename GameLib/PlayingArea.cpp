@@ -28,3 +28,13 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
     graphics->DrawBitmap(bitmap, 0, 0, width, height);
     graphics->PopState();
 }
+/**
+* Draw  scoreboard
+* @param graphics
+*/
+void PlayingArea::DrawScoreBoard(std::shared_ptr<wxGraphicsContext> graphics)
+{
+
+    mScoreBoard.Draw(graphics);
+
+}

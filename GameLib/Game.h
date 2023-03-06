@@ -24,7 +24,7 @@ private:
     const static int Height = 1000;
 
     /// Shrink true or false
-    bool mShrinked = true;
+    bool mShrinked = false;
 
     /// offset x
     double mXOffset = 0;
@@ -40,6 +40,11 @@ public:
 
     /** destructor */
     virtual ~Game() = default;
+
+    /**
+     * set the shrink
+     */
+    void SetShrinked(){ mShrinked = !mShrinked;}
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 

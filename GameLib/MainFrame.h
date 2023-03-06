@@ -11,6 +11,8 @@
 #include <wx/filehistory.h>
 #include <wx/config.h>
 
+class GameView;
+
 /*
  * Class for the main frame of the game
  */
@@ -18,6 +20,8 @@ class MainFrame : public wxFrame{
 private:
     void OnExit(wxCommandEvent &event);
     void OnAbout(wxCommandEvent &event);
+
+    GameView *mGameView; ///< GameView class object
 
 public:
     void Initialize();
