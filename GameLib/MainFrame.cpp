@@ -2,11 +2,11 @@
  * @file MainFrame.cpp
  *
  * @author Jacob Yax
+ * @author Gaya Kanagaraj
  */
 
 #include "pch.h"
 #include "MainFrame.h"
-#include "ids.h"
 #include "GameView.h"
 
 /**
