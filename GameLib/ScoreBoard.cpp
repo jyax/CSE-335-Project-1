@@ -1,9 +1,12 @@
 /**
  * @file ScoreBoard.cpp
  * @author Gaya Kanagaraj
- * Class defines the score baord
+ *
+ * Class defines the score board
  */
+
 #include "pch.h"
+#include <wx/graphics.h>
 #include "ScoreBoard.h"
 
 
