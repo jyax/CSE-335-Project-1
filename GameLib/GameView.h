@@ -1,6 +1,7 @@
 /**
  * @file GameView.h
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  *
  * Class that implements the child window our program draws in.
  *
@@ -20,21 +21,24 @@ class GameView : public wxWindow{
 private:
     Game mGame; ///<  the Game
 
+	void OnLeftDown(wxMouseEvent &event);
+	void OnLeftUp(wxMouseEvent &event);
+	void OnMouseMove(wxMouseEvent &event);
+	void OnLeftDouble(wxMouseEvent &event);
+
 public:
     void Initialize(wxFrame *mainFrame);
 
     void OnPaint(wxPaintEvent &event);
 	void OnLevel0(wxCommandEvent &event);
 
-    void
-    AddLevelMenuOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
+    void AddLevelMenuOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
 
     void AddShrinkOption(wxCommandEvent &event);
 
     void AddMenus(wxFrame *mainFrame, wxMenuBar *menuBar, wxMenu *fileMenu, wxMenu *viewMenu);
 
-    void
-    OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
+    void OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
 };
 
 

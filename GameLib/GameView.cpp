@@ -1,6 +1,7 @@
 /**
  * @file GameView.cpp
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -119,5 +120,41 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
 {
     mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::AddShrinkOption,
                     this, IDM_VIEW_SHRINK);
+
+}
+
+/**
+ * Handle the left mouse button down event
+ * @param event left button down event
+ */
+void GameView::OnLeftDown(wxMouseEvent &event)
+{
+
+}
+
+/**
+* Handle the left mouse button up event
+* @param event left button up event
+*/
+void GameView::OnLeftUp(wxMouseEvent &event)
+{
+
+}
+
+/**
+* Handle the mouse move event
+* @param event mouse move event
+*/
+void GameView::OnMouseMove(wxMouseEvent &event)
+{
+
+}
+
+/**
+ * Handle the double click event
+ * @param event left double click event
+ */
+void GameView::OnLeftDouble(wxMouseEvent &event)
+{
 
 }
