@@ -21,6 +21,11 @@ void GameView::Initialize(wxFrame* mainFrame) {
 
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
 
+	// Bind the mouse events
+	Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
+	Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
+	Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
+	Bind(wxEVT_LEFT_DCLICK, &GameView::OnLeftDouble, this);
 }
 
 /**
