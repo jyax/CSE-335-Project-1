@@ -3,15 +3,16 @@
  * @author Jacob Meier
  * @author Nicole Kuang
  *
- * Base class for any item in our Game.
+ * Abstract base class for any item in our Game.
  */
 
 #ifndef PROJECT1_GAMELIB_ITEM_H
 #define PROJECT1_GAMELIB_ITEM_H
 
 class Game;
+
 /**
- * Base class for any item in our Game.
+ * Abstract base class for any item in our Game.
  */
 class Item
 {
@@ -61,6 +62,9 @@ public:
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
 	bool HitTest(int x, int y);
+
+protected:
+	Item(Game* game); // makes Item abstract
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

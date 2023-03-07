@@ -8,6 +8,15 @@
 #include "Item.h"
 
 /**
+ * Constructor
+ * @param game The game that this item is part of
+ */
+Item::Item(Game *game) : mGame(game)
+{
+
+}
+
+/**
  * Destructor
  */
 Item::~Item()

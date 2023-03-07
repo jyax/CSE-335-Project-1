@@ -9,6 +9,8 @@
 #define PROJECT1_GAME_H
 
 #include "PlayingArea.h"
+#include "Item.h"
+
 /**
  * Class draws the game and describes its functionalities.
  */
@@ -16,6 +18,10 @@ class Game {
 private:
     /// PlayingArea object
     PlayingArea mPlayingArea;
+
+	/// The list of pointers to items in the game (bugs, programs)
+	std::vector<std::shared_ptr<Item>> mItems;
+
     /// Game area in virtual pixels
     const static int Width = 1250;
 
