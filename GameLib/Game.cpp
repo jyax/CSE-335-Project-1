@@ -1,15 +1,12 @@
 /**
  * @file Game.cpp
- *
  * @author Gaya Kanagaraj
- *
- *  Class that implements a simple Game with items we can manipulate
+ * @author Nicole Kuang
  */
+
 #include "pch.h"
 #include <wx/graphics.h>
 #include "Game.h"
-
-
 
 /// Shrinkable
 const double ShrinkScale = 0.75;
@@ -57,4 +54,37 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     mPlayingArea.DrawScoreBoard(graphics);
 
     graphics->PopState();
+}
+
+/**
+ * Test an x,y click location to see if clicked
+ * on some item in the game.
+ * @param x X location in pixels
+ * @param y Y location in pixels
+ * @returns Pointer to item we clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> Game::SingleClick(int x, int y)
+{
+	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+	{
+		if ((*i)->HitTest(x, y))
+		{
+			return *i;
+		}
+	}
+
+	return nullptr;
+}
+
+/**
+ * Test an x,y click location to see if double clicked
+ * on some item in the game.
+ * @param x X location in pixels
+ * @param y Y location in pixels
+ * @returns Pointer to item we double clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> Game::DoubleClick(int x, int y) // NOT DONE!!!
+{
+	// Fill in the rest when double click functions done for item
+	return nullptr;
 }

@@ -1,9 +1,9 @@
 /**
  * @file Game.h
- *
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  *
- *  Class that implements a simple Game with items we can manipulate
+ * Class that implements a simple Game with items we can manipulate
  */
 #ifndef PROJECT1_GAME_H
 #define PROJECT1_GAME_H
@@ -53,6 +53,9 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
+	std::shared_ptr<Item> SingleClick(int x, int y);
+
+	std::shared_ptr<Item> DoubleClick(int x, int y);
 };
 
 
