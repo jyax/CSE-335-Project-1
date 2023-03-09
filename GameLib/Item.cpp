@@ -52,3 +52,14 @@ bool Item::HitTest(int x, int y)
 	// part of the image
 	return !mItemImage->IsTransparent((int)testX, (int)testY);
 }
+
+/**
+ * Test to see if we double-clicked this object with a mouse.
+ * @param x X position to test
+ * @param y Y position to test
+ * @return true if double-clicked
+ */
+bool Item::DoubleClickTest(int x, int y) // Implement only for fat bugs, return false otherwise
+{
+	return false;
+}

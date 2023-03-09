@@ -61,7 +61,9 @@ public:
 	 */
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
-	bool HitTest(int x, int y);
+	virtual bool HitTest(int x, int y);
+
+	virtual bool DoubleClickTest(int x, int y);
 
 protected:
 	Item(Game* game); // makes Item abstract
