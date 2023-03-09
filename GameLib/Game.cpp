@@ -83,9 +83,16 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
  * @param y Y location in pixels
  * @returns Pointer to item we double clicked on or nullptr if none.
 */
-std::shared_ptr<Item> Game::DoubleClick(int x, int y) // NOT DONE!!!
+std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 {
-	// Fill in the rest when double click functions done for item
+	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+	{
+		if ((*i)->DoubleClickTest(x, y))
+		{
+			return *i;
+		}
+	}
+
 	return nullptr;
 }
 
