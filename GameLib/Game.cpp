@@ -88,3 +88,19 @@ std::shared_ptr<Item> Game::DoubleClick(int x, int y) // NOT DONE!!!
 	// Fill in the rest when double click functions done for item
 	return nullptr;
 }
+
+/**
+ * Moves an item in the game to the front of the screen (end of list) when clicked on
+ * @param item pointer to item clicked on
+ */
+void Game::MoveToFront(std::shared_ptr<Item> item)
+{
+	auto loc = find(begin(mItems), end(mItems), item);
+	if (loc != end(mItems))
+	{
+		// Create another of the found item, remove the original, then push the new one back
+		std::shared_ptr<Item> foundItem = *loc;
+		mItems.erase(loc);
+		mItems.push_back(foundItem);
+	}
+}
