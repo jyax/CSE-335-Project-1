@@ -167,7 +167,15 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  * Handle the double click event
  * @param event left double click event
  */
-void GameView::OnLeftDouble(wxMouseEvent &event)
+void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 {
+	auto item = mGame.DoubleClick(event.GetX(), event.GetY());
+	if (item != nullptr)
+	{
+		mGame.MoveToFront(item);
 
+		// Function to open a dialog box with code and destroy the bug (fat bugs only)
+
+		Refresh();
+	}
 }
