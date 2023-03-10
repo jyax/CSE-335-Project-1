@@ -132,9 +132,17 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
  * Handle the left mouse button down event
  * @param event left button down event
  */
-void GameView::OnLeftDown(wxMouseEvent &event)
+void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 {
+	auto item = mGame.SingleClick(event.GetX(), event.GetY());
+	if (item != nullptr)
+	{
+		mGame.MoveToFront(item);
 
+		// Function to destroy the bug (regular bugs only)
+
+		Refresh();
+	}
 }
 
 /**
