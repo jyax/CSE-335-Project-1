@@ -68,3 +68,18 @@ bool Item::DoubleClickTest(int x, int y) // Implement only for fat bugs, return 
 {
 	return false;
 }
+
+/**
+ * Draw this item
+ * @param dc Device context to draw on
+ */
+void Item::Draw(wxDC *dc)
+{
+	double wid = mItemBitmap->GetWidth();
+	double hit = mItemBitmap->GetHeight();
+
+	// Draws from top left corner
+	dc->DrawBitmap(*mItemBitmap,
+				   int(GetX() - wid / 2),
+				   int(GetY() - hit / 2));
+}

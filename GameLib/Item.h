@@ -68,8 +68,7 @@ public:
 
 	virtual bool DoubleClickTest(int x, int y);
 
-protected:
-	Item(Game* game); // makes Item abstract
+	virtual void Draw(wxDC *dc);
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H
