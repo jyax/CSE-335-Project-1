@@ -1,6 +1,7 @@
 /**
  * @file Bug.h
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  *
  * Base class for the bugs in the game inherited from Item
  */
@@ -34,6 +35,7 @@ public:
 	/// Copy constructor (disabled)
 	Bug(const Bug &) = delete;
 
+	void Update(double elapsed) override;
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

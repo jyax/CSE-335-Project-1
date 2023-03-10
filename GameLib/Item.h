@@ -69,6 +69,12 @@ public:
 	virtual bool DoubleClickTest(int x, int y);
 
 	virtual void Draw(wxDC *dc);
+
+	/**
+     * Handle updates for animation
+     * @param elapsed The time since the last update
+     */
+	virtual void Update(double elapsed) {}
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

@@ -58,6 +58,8 @@ public:
 	std::shared_ptr<Item> DoubleClick(int x, int y);
 
 	void MoveToFront(std::shared_ptr<Item> item);
+
+	void Update(double elapsed);
 };
 
 

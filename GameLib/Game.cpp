@@ -111,3 +111,15 @@ void Game::MoveToFront(std::shared_ptr<Item> item)
 		mItems.push_back(foundItem);
 	}
 }
+
+/**
+ * Handle updates for animation
+ * @param elapsed The time since the last update
+ */
+void Game::Update(double elapsed)
+{
+	for (auto item : mItems)
+	{
+		item->Update(elapsed);
+	}
+}
