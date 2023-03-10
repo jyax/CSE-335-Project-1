@@ -20,6 +20,8 @@ public:
 
     /// Copy Constructor (disabled)
     Program(const Program &) = delete;
+
+	Program(Game* game);
 };
 
 

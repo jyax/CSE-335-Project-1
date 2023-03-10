@@ -30,6 +30,9 @@ private:
 	double  mX = 0;     ///< X location for the center of the item
 	double  mY = 0;     ///< Y location for the center of the item
 
+protected:
+	Item(Game* game, const std::wstring &filename);
+
 public:
 	/// Default constructor (disabled)
 	Item() = delete;

@@ -7,14 +7,19 @@
 #include "pch.h"
 #include "Item.h"
 
+using namespace std;
+
 /**
  * Constructor
- * @param game The game that this item is part of
+ * @param game The current Game
+ * @param filename The name of the file to display for this item
  */
-Item::Item(Game *game) : mGame(game)
+Item::Item(Game *game, const std::wstring &filename) : mGame(game)
 {
-
+	mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+	mItemBitmap = make_unique<wxBitmap>(*mItemImage);
 }
+
 
 /**
  * Destructor

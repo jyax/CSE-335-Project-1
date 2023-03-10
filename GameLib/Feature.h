@@ -21,6 +21,8 @@ public:
 
     /// Copy Constructor (disabled)
     Feature(const Feature &) = delete;
+
+	Feature(Game* game);
 };
 
 

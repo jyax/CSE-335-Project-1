@@ -24,6 +24,9 @@ private:
 	///Bool to tell if the bug is a FatBug or not
 	bool mIsFatBug;
 
+protected:
+	Bug(Game *game, const std::wstring &filename);
+
 public:
 	/// Default constructor (disabled)
 	Bug() = delete;

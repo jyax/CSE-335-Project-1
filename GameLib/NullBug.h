@@ -24,6 +24,8 @@ public:
 	/// Copy constructor (disabled)
 	NullBug(const NullBug &) = delete;
 
+	NullBug(Game* game);
+
 };
 
 #endif //PROJECT1_GAMELIB_NULLBUG_H

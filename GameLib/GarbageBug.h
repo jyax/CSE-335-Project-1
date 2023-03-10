@@ -23,6 +23,9 @@ public:
 	/// Copy constructor (disabled)
 	GarbageBug(const GarbageBug &) = delete;
 
+	GarbageBug(Game* game);
+
+
 };
 
 #endif //PROJECT1_GAMELIB_GARBAGEBUG_H
