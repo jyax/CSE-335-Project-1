@@ -77,7 +77,7 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
 
 	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
 	{
-		if ((*i)->HitTest(x, y))
+		if ((*i)->HitTest(mXVirtual, mYVirtual))
 		{
 			return *i;
 		}
@@ -95,9 +95,12 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
 */
 std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 {
+	mXVirtual = (x - mXOffset) / mScale;
+	mYVirtual = (y - mYOffset) / mScale;
+
 	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
 	{
-		if ((*i)->DoubleClickTest(x, y))
+		if ((*i)->DoubleClickTest(mXVirtual, mYVirtual))
 		{
 			return *i;
 		}
