@@ -71,6 +71,10 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 */
 std::shared_ptr<Item> Game::SingleClick(int x, int y)
 {
+	// Calculate virtual coordinates from screen coordinates
+	mXVirtual = (x - mXOffset) / mScale;
+	mYVirtual = (y - mYOffset) / mScale;
+
 	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
 	{
 		if ((*i)->HitTest(x, y))

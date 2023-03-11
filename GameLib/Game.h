@@ -40,6 +40,12 @@ private:
     /// scale x
     double mScale = 0;
 
+	/// x virtual coordinates
+	double mXVirtual = 0;
+
+	/// y virtual coordinates
+	double mYVirtual = 0;
+
 public:
     Game();
 
