@@ -9,6 +9,8 @@
 #ifndef PROJECT1_GAMELIB_ITEM_H
 #define PROJECT1_GAMELIB_ITEM_H
 
+#include <wx/graphics.h>
+
 class Game;
 
 /**
@@ -21,10 +23,10 @@ private:
 	Game *mGame;
 
 	/// The underlying item image
-	std::unique_ptr<wxImage> mItemImage;
+	std::shared_ptr<wxImage> mItemImage;
 
 	/// The bitmap we can display for this item
-	std::unique_ptr<wxBitmap> mItemBitmap;
+	wxGraphicsBitmap mItemBitmap;
 
 	/// Item location in the game
 	double  mX = 0;     ///< X location for the center of the item
@@ -68,7 +70,7 @@ public:
 
 	virtual bool DoubleClickTest(int x, int y);
 
-	virtual void Draw(wxDC *dc);
+	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
 	/**
      * Handle updates for animation

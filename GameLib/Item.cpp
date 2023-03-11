@@ -5,6 +5,7 @@
  */
 
 #include "pch.h"
+#include <wx/graphics.h>
 #include "Item.h"
 
 using namespace std;
@@ -16,8 +17,7 @@ using namespace std;
  */
 Item::Item(Game *game, const std::wstring &filename) : mGame(game)
 {
-	mItemImage = make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
-	mItemBitmap = make_unique<wxBitmap>(*mItemImage);
+	mItemImage = make_shared<wxImage>(filename, wxBITMAP_TYPE_ANY);
 }
 
 
@@ -36,12 +36,12 @@ Item::~Item()
  */
 bool Item::HitTest(int x, int y)
 {
-	double wid = mItemBitmap->GetWidth();
-	double hit = mItemBitmap->GetHeight();
+	double wid = mItemImage->GetWidth();
+	double hit = mItemImage->GetHeight();
 
 	// Make x and y relative to the top-left corner of the bitmap image
 	// Subtracting the center makes x, y relative to the image center
-	// Adding half the size makes x, y relative to theimage top corner
+	// Adding half the size makes x, y relative to the image top corner
 	double testX = x - GetX() + wid / 2;
 	double testY = y - GetY() + hit / 2;
 
@@ -71,15 +71,19 @@ bool Item::DoubleClickTest(int x, int y) // Implement only for fat bugs, return 
 
 /**
  * Draw this item
- * @param dc Device context to draw on
+ * @param graphics graphics context to draw on
  */
-void Item::Draw(wxDC *dc)
+void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-	double wid = mItemBitmap->GetWidth();
-	double hit = mItemBitmap->GetHeight();
+	// only initialize when drawing required
+	if(mItemBitmap.IsNull())
+	{
+		mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
+	}
+
+	double wid = mItemImage->GetWidth();
+	double hit = mItemImage->GetHeight();
 
 	// Draws from top left corner
-	dc->DrawBitmap(*mItemBitmap,
-				   int(GetX() - wid / 2),
-				   int(GetY() - hit / 2));
+	graphics->DrawBitmap(mItemBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
 }
