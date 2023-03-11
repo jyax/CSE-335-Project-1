@@ -10,12 +10,15 @@
 
 using namespace std;
 
+/// Bug filename
+const wstring GarbageBugImage = L"images/blue-maize-bug.png";
+
 /**
  * Class for testing items, since Item is abstract
  */
 class ItemMock : public Item {
 public:
-	ItemMock(Game *game) : Item(game) {}
+	ItemMock(Game *game) : Item(game, GarbageBugImage) {}
 };
 
 TEST(ItemTest, Construct)
