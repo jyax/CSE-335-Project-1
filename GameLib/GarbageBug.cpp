@@ -9,10 +9,10 @@
 #include "Bug.h"
 
 /// The bug sprite image
-const std::wstring GarbageBugSpriteImageName = L"blue-maize-bug.png";
+const std::wstring GarbageBugSpriteImageName = L"images/blue-maize-bug.png";
 
 /// The splat image
-const std::wstring GarbageBugSplatImageName = L"blue-maize-splat.png";
+const std::wstring GarbageBugSplatImageName = L"images/blue-maize-splat.png";
 
 /// Number of sprite images
 const int GarbageBugNumSpriteImages = 5;

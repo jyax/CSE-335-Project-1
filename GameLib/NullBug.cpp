@@ -7,10 +7,10 @@
 #include "NullBug.h"
 
 /// The bug sprite image
-const std::wstring NullBugSpriteImageName = L"scarlet-gray-bug.png";
+const std::wstring NullBugSpriteImageName = L"images/scarlet-gray-bug.png";
 
 /// The splat image
-const std::wstring NullBugSplatImageName = L"scarlet-gray-splat.png";
+const std::wstring NullBugSplatImageName = L"images/scarlet-gray-splat.png";
 
 /// Number of sprite images
 const int NullBugNumSpriteImages = 6;
