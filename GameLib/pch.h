@@ -11,5 +11,5 @@
 #include <wx/wx.h>
 #include <wx/graphics.h>
 #endif
-
+#include <wx/xml/xml.h>
 #endif //PROJECT1_PCH_H
