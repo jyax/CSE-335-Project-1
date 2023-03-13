@@ -7,6 +7,7 @@
 #include "pch.h"
 #include <wx/graphics.h>
 #include "Game.h"
+#include <wx/graphics.h>
 
 /// Shrinkable
 const double ShrinkScale = 0.75;

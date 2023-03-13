@@ -68,5 +68,6 @@ public:
 	void Update(double elapsed);
 };
 
+#include <wx/graphics.h>
 
 #endif //PROJECT1_GAME_H
