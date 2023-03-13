@@ -8,6 +8,7 @@
 #include <wx/dcbuffer.h>
 #include <wx/graphics.h>
 #include "GameView.h"
+#include "Level.h"
 #include "ids.h"
 
 using namespace std;
@@ -26,6 +27,8 @@ void GameView::Initialize(wxFrame* mainFrame) {
 	Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
 	Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
 	Bind(wxEVT_LEFT_DCLICK, &GameView::OnLeftDouble, this);
+
+
 }
 
 /**
@@ -34,7 +37,29 @@ void GameView::Initialize(wxFrame* mainFrame) {
  */
 void GameView::OnLevel0 (wxCommandEvent &event)
 {
+	Level level;
+	level.Load(0);
 
+}
+
+/**
+ * Plays Level 1 of the game
+ * @param event mouse click event
+ */
+void GameView::OnLevel1 (wxCommandEvent &event)
+{
+	Level level;
+	level.Load(1);
+}
+
+/**
+ * Plays Level 2 of the game
+ * @param event mouse click event
+ */
+void GameView::OnLevel2 (wxCommandEvent &event)
+{
+	Level level;
+	level.Load(2);
 }
 
 /**
@@ -100,7 +125,9 @@ void GameView::AddLevelMenuOption(wxFrame *mainFrame, wxMenu *menu, int id,
 {
     menu->Append(id, text, help);
     // all the level binds go here
-    mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel0, this, id);
+    mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel0, this, IDM_LEVELZERO);
+	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel1, this, IDM_LEVELONE);
+	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel2, this, IDM_LEVELTWO);
 }
 /**
 * virtual pixels sets to true
