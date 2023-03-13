@@ -36,7 +36,8 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
         mScale *= ShrinkScale;
     }
     else{
-        mScale = std::max(scaleX, scaleY);
+
+        mScale = std::min(scaleX, scaleY);
     }
 
     mXOffset = (width - Width * mScale) / 2;
