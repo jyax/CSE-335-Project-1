@@ -30,7 +30,7 @@ private:
 
 public:
 	/// Default constructor (disabled)
-	Level() = delete;
+	Level();
 
 	/// Copy constructor (disabled)
 	Level(const Level &) = delete;
@@ -40,7 +40,7 @@ public:
 
 	virtual ~Level();
 
-	void Load();
+	void Load(int mNum);
 };
 
 #endif //PROJECT1_GAMELIB_LEVEL_H
