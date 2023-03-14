@@ -83,9 +83,9 @@ int ScoreBoard::GetMissedScore()
 void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     // Set the font size and color for the scores
     graphics->PushState();
-    wxFont font(wxSize(0,ScoreSize),wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    wxFont font1(wxSize(0,ScoreSize),wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
     // Set the font size and color for the scores
-    graphics->SetFont(font, FontColor);
+    graphics->SetFont(font1, FontColor);
 
     double wid, len;
 
@@ -98,8 +98,8 @@ void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     graphics->GetTextExtent(wxString::Format(wxT("%d"), mOops), &wid, &len);
     graphics->DrawText(wxString::Format(wxT("%d"), mOops), 1200-LeftScoreX-(wid/2), ScoreY);
 
-    wxFont font1(wxSize(0,LabelSize),wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    graphics->SetFont(font1, FontColor);
+    wxFont font2(wxSize(0,LabelSize),wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    graphics->SetFont(font2, FontColor);
 
 
     graphics->GetTextExtent(wxString::Format(L"Fixed"), &wid, &len);
