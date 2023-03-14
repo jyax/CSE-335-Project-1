@@ -214,7 +214,7 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  */
 void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	/*auto item = mGame.DoubleClick(event.GetX(), event.GetY());
+	auto item = mGame.DoubleClick(event.GetX(), event.GetY());
 	if (item != nullptr)
 	{
 		mGame.MoveToFront(item);
@@ -222,5 +222,5 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
 
 		Refresh();
-	}*/
+	}
 }

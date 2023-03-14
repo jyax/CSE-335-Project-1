@@ -93,25 +93,17 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
 /**
  * Test an x,y click location to see if double clicked
  * on some item in the game.
- * @param x X location in pixels
- * @param y Y location in pixels
+ * @param x X location in screen coordinate pixels
+ * @param y Y location in screen coordinate pixels
  * @returns Pointer to item we double clicked on or nullptr if none.
 */
-/*std::shared_ptr<Item> Game::DoubleClick(int x, int y)
+std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 {
 	mXVirtual = (x - mXOffset) / mScale;
 	mYVirtual = (y - mYOffset) / mScale;
 
-	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
-	{
-		if ((*i)->DoubleClickTest(mXVirtual, mYVirtual))
-		{
-			return *i;
-		}
-	}
-
-	return nullptr;
-}*/
+	return mPlayingArea.DoubleClick(mXVirtual, mYVirtual);
+}
 
 /**
  * Moves an item in the game to the front of the screen (end of list) when clicked on

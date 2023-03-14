@@ -61,7 +61,7 @@ public:
 
 	std::shared_ptr<Item> SingleClick(int x, int y);
 
-	//std::shared_ptr<Item> DoubleClick(int x, int y);
+	std::shared_ptr<Item> DoubleClick(int x, int y);
 
 	void MoveToFront(std::shared_ptr<Item> item);
 

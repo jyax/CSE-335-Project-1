@@ -74,6 +74,8 @@ public:
 
 	std::shared_ptr<Item> SingleClick(double virX, double virY);
 
+	std::shared_ptr<Item> DoubleClick(double virX, double virY);
+
 };
 
 
