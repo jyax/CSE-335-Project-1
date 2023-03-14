@@ -27,118 +27,114 @@ const static int LevelNameX = 625;
 /// Level name Y coord
 const static int LevelNameY = 250;
 
-
-Level::Level()
-{
-}
 /**
  * Loads in the xml file based on what level number it is
  */
-void Level::Load(int mNum)
-{
-	switch(mNum)
-	{
-		case 0:
-		{
-			wxXmlDocument xmlDoc;
-			if(!xmlDoc.Load("data/level0.xml"))
-			{
-				wxMessageBox(L"Unable to load Level file");
-				return;
-			}
-
-			// Get the XML document root node
-			auto root = xmlDoc.GetRoot();
-
-			//
-			// Traverse the children of the root
-			// node of the XML document in memory!!!!
-			//
-			auto child = root->GetChildren();
-			for( ; child; child=child->GetChildren())
-			{
-				//Load XML
-				if (auto child2 = child->GetNext())
-				{
-					for( ; child2; child2 = child2->GetNext())
-					{
-						//Load XML
-
-					}
-				}
-			}
-			break;
-		}
-
-		case 1:
-		{
-			wxXmlDocument xmlDoc;
-			if(!xmlDoc.Load("data/level1.xml"))
-			{
-				wxMessageBox(L"Unable to load Level file");
-				return;
-			}
-
-			// Get the XML document root node
-			auto root = xmlDoc.GetRoot();
-
-			//
-			// Traverse the children of the root
-			// node of the XML document in memory!!!!
-			//
-			auto child = root->GetChildren();
-			for( ; child; child=child->GetChildren())
-			{
-				//Load XML
-				if (auto child2 = child->GetNext())
-				{
-					for( ; child2; child2 = child2->GetNext())
-					{
-						//Load XML
-
-					}
-				}
-
-			}
-			break;
-		}
-
-
-		case 2:
-		{
-			wxXmlDocument xmlDoc;
-			if(!xmlDoc.Load("data/level2.xml"))
-			{
-				wxMessageBox(L"Unable to load Level file");
-				return;
-			}
-
-			// Get the XML document root node
-			auto root = xmlDoc.GetRoot();
-
-			//
-			// Traverse the children of the root
-			// node of the XML document in memory!!!!
-			//
-			auto child = root->GetChildren();
-			for( ; child; child=child->GetChildren())
-			{
-				//Load XML
-				if (auto child2 = child->GetNext())
-				{
-					for( ; child2; child2 = child2->GetNext())
-					{
-						//Load XML
-					}
-				}
-
-			}
-			break;
-		}
-	}
-
-    mStopWatch.Start();
-}
+//void Level::Load(int mNum)
+//{
+//	switch(mNum)
+//	{
+//		case 0:
+//		{
+//			wxXmlDocument xmlDoc;
+//			if(!xmlDoc.Load("data/level0.xml"))
+//			{
+//				wxMessageBox(L"Unable to load Level file");
+//				return;
+//			}
+//
+//			// Get the XML document root node
+//			auto root = xmlDoc.GetRoot();
+//
+//			//
+//			// Traverse the children of the root
+//			// node of the XML document in memory!!!!
+//			//
+//			auto child = root->GetChildren();
+//			for( ; child; child=child->GetChildren())
+//			{
+//				//Load XML
+//				if (auto child2 = child->GetNext())
+//				{
+//					for( ; child2; child2 = child2->GetNext())
+//					{
+//						//Load XML
+//
+//					}
+//				}
+//			}
+//			break;
+//		}
+//
+//		case 1:
+//		{
+//			wxXmlDocument xmlDoc;
+//			if(!xmlDoc.Load("data/level1.xml"))
+//			{
+//				wxMessageBox(L"Unable to load Level file");
+//				return;
+//			}
+//
+//			// Get the XML document root node
+//			auto root = xmlDoc.GetRoot();
+//
+//			//
+//			// Traverse the children of the root
+//			// node of the XML document in memory!!!!
+//			//
+//			auto child = root->GetChildren();
+//			for( ; child; child=child->GetChildren())
+//			{
+//				//Load XML
+//				if (auto child2 = child->GetNext())
+//				{
+//					for( ; child2; child2 = child2->GetNext())
+//					{
+//						//Load XML
+//
+//					}
+//				}
+//
+//			}
+//			break;
+//		}
+//
+//
+//		case 2:
+//		{
+//			wxXmlDocument xmlDoc;
+//			if(!xmlDoc.Load("data/level2.xml"))
+//			{
+//				wxMessageBox(L"Unable to load Level file");
+//				return;
+//			}
+//
+//			// Get the XML document root node
+//			auto root = xmlDoc.GetRoot();
+//
+//			//
+//			// Traverse the children of the root
+//			// node of the XML document in memory!!!!
+//			//
+//			auto child = root->GetChildren();
+//			for( ; child; child=child->GetChildren())
+//			{
+//				//Load XML
+//				if (auto child2 = child->GetNext())
+//				{
+//					for( ; child2; child2 = child2->GetNext())
+//					{
+//						//Load XML
+//					}
+//				}
+//
+//			}
+//			break;
+//		}
+//	}
+//
+//    mStopWatch.Start();
+//}
 
 /**
  * Destructor
