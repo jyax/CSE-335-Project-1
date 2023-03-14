@@ -2,6 +2,7 @@
  * @file Program.h
  *
  * @author Jacob Yax
+ * Class defining the Program item
  */
 
 #ifndef PROJECT1_PROGRAM_H
@@ -13,6 +14,7 @@
  */
 class Program : public Item {
 private:
+    std::wstring mProgramName = L"Test";
 
 public:
     /// Default Constructor (disabled)
@@ -22,10 +24,7 @@ public:
     Program(const Program &) = delete;
 
 	Program(Game* game);
-
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-
-    void XmlLoad(wxXmlNode *node);
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 
