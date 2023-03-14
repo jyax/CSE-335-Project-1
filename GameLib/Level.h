@@ -9,18 +9,17 @@
 #ifndef PROJECT1_GAMELIB_LEVEL_H
 #define PROJECT1_GAMELIB_LEVEL_H
 
-#include "Game.h"
-
+#include "Item.h"
+class Game;
 /**
  * Main class for level0, level1, and level2
  */
 class Level {
 private:
-	// If LevelThree object inherits these member vars, what to do then?
 
-	// Have a game as a member variable?
+
 	/// The game this level is part of
-	Game *mGame = nullptr;
+	Game *mGame;
 
 	/// The normal levels of the game
 	enum class LevelNum {Zero, One, Two};
@@ -35,12 +34,31 @@ private:
 
     std::wstring mLevelName = L"Level";
 
-public:
-	/// Default constructor (disabled)
-	Level();
+    int mNumOfProgramme = 0; ///< number of programmes in the level
+    int mNumOfBugs = 0; ///< number of bugs in the level
+    int mNumofFeatures = 0; ///< number of features in the level
 
-	/// Copy constructor (disabled)
-	Level(const Level &) = delete;
+    wxString mType;  ///< for the levelstart text
+
+    ///Items in the playing area
+    std::vector<std::shared_ptr<Item>> mItemList;
+
+public:
+
+    void XmlProgram(wxXmlNode *node);
+    void XmlBug(wxXmlNode *node);
+    void XmlFeature(wxXmlNode *node);
+    void XmlCode(wxXmlNode *node);
+    void XmlBeginText(wxXmlNode *node);
+
+	/// Default constructor
+	Level() = delete;
+
+    ///Constructor for level
+    Level(Game* game);
+
+    /// Copy constructor
+    Level(const Level &);
 
 	/// Assignment operator (disabled)
 	void operator=(const Level &) = delete;
@@ -50,6 +68,26 @@ public:
 	void Load(int mNum);
 
     void DrawLevelName(wxGraphicsContext &graphics);
+
+    void ReadLevel(const std::wstring filename);
+
+    /**
+     * function that returns the item list
+     */
+    std::vector<std::shared_ptr<Item>> GetItemList(){
+        return mItemList;
+    }
+
+
+    /** get levelType for leveltext */
+    wxString GetLevelType(){ return mType;}
+
+    int GetNumOfProgram(){return mNumOfProgramme;}
+    int GetNumOfBug(){return mNumOfBugs;}
+    int GetNumOfFeature(){return mNumofFeatures;}
+    wxString GetMType(){return mType;}
+
+
 };
 
 #endif //PROJECT1_GAMELIB_LEVEL_H

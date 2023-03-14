@@ -37,7 +37,7 @@ TEST_F(LevelTest, XmlBeginTextTest)
     wxXmlNode* node = new wxXmlNode(wxXML_ELEMENT_NODE, "level");
     node->AddAttribute("level", "Level Text");
     mLevel->XmlBeginText(node);
-    EXPECT_EQ(mLevel->GetmType(), "Level Text");
-    EXPECT_NE(mLevel->GetmType(), "Level Text1");
+    EXPECT_EQ(mLevel->GetMType(), "Level Text");
+    EXPECT_NE(mLevel->GetMType(), "Level Text1");
 
 }
