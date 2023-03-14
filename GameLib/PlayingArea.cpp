@@ -54,16 +54,6 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
 }
 
 /**
-* Draw  scoreboard
-* @param graphics
-*/
-void PlayingArea::DrawScoreBoard(std::shared_ptr<wxGraphicsContext> graphics)
-{
-
-    mScoreBoard.Draw(graphics);
-
-}
-/**
 * Set level files  to the playing area
 *
 */

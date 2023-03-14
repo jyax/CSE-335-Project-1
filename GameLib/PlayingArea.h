@@ -9,7 +9,6 @@
 #ifndef PROJECT1_PLAYINGAREA_H
 #define PROJECT1_PLAYINGAREA_H
 
-#include "ScoreBoard.h"
 #include "Level.h"
 
 class Game;
@@ -19,8 +18,6 @@ class Game;
  */
 class PlayingArea {
 private:
-    ScoreBoard mScoreBoard; ///< scorebaord object
-
     Game* mGame;
 
 	/// The list of pointers to items in the game (bugs, programs)
@@ -52,8 +49,6 @@ public:
     PlayingArea(){}
 
     void DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, const int width, const int height);
-
-    void DrawScoreBoard(std::shared_ptr<wxGraphicsContext> graphics);
 
     /**
      * Set level poiner

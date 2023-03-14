@@ -56,11 +56,11 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     graphics->Scale(mScale, mScale);
 
 
-    //draws the playing area, including all the game items
+    // draws the playing area, including all the game items
     mPlayingArea.DrawPlayingArea(graphics, Game::Width, Game::Height);
-
-    // draws the score
-    mPlayingArea.DrawScoreBoard(graphics);
+	
+	// draw the scoreboard
+	mScoreBoard.Draw(graphics);
 
     graphics->PopState();
 }

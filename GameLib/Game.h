@@ -9,6 +9,7 @@
 #define PROJECT1_GAME_H
 
 #include "PlayingArea.h"
+#include "ScoreBoard.h"
 #include "Item.h"
 
 /**
@@ -18,6 +19,8 @@ class Game {
 private:
     /// PlayingArea object
     PlayingArea mPlayingArea;
+
+	ScoreBoard mScoreBoard; ///< scoreboard object
 
     /// Game area in virtual pixels
     const static int Width = 1250;
