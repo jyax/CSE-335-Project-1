@@ -46,6 +46,9 @@ private:
 	/// y virtual coordinates
 	double mYVirtual = 0;
 
+    ///Current level being played
+    bool mLevel = false;
+
 public:
     Game();
 
@@ -66,6 +69,7 @@ public:
 	void MoveToFront(std::shared_ptr<Item> item);
 
 	void Update(double elapsed);
+    void SetLevel(int level);
 };
 
 #include <wx/graphics.h>

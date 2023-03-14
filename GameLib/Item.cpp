@@ -87,3 +87,11 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 	// Draws from top left corner
 	graphics->DrawBitmap(mItemBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
 }
+void Item::XmlLoad(wxXmlNode *node)
+{
+    long x, y;
+    node->GetAttribute(L"x", L"0").ToLong(&x);
+    node->GetAttribute(L"y", L"0").ToLong(&y);
+    mX = (int)x;
+    mY = (int)y;
+}

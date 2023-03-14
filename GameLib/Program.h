@@ -22,6 +22,10 @@ public:
     Program(const Program &) = delete;
 
 	Program(Game* game);
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics);
+
+    void XmlLoad(wxXmlNode *node);
 };
 
 

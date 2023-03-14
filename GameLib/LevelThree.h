@@ -17,7 +17,7 @@
 /**
  * Class that describes Level 3 of the Bug Squash Game
  */
-class LevelThree : public Level {
+class LevelThree  {
 private:
 
 public:

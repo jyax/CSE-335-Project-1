@@ -12,6 +12,9 @@
 #include "ids.h"
 
 using namespace std;
+
+/// Frame duration in seconds
+const double FrameDuration = 30.0;
 /**
  * Constructor
  * @param mainFrame Pointer to wxFrame object, the main frame for the application
@@ -28,7 +31,6 @@ void GameView::Initialize(wxFrame* mainFrame) {
 	Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
 	Bind(wxEVT_LEFT_DCLICK, &GameView::OnLeftDouble, this);
 
-
 }
 
 /**
@@ -37,8 +39,7 @@ void GameView::Initialize(wxFrame* mainFrame) {
  */
 void GameView::OnLevel0 (wxCommandEvent &event)
 {
-	Level level;
-	level.Load(0);
+    mGame.SetLevel(0);
 
 }
 
@@ -48,8 +49,7 @@ void GameView::OnLevel0 (wxCommandEvent &event)
  */
 void GameView::OnLevel1 (wxCommandEvent &event)
 {
-	Level level;
-	level.Load(1);
+    mGame.SetLevel(1);
 }
 
 /**
@@ -58,8 +58,15 @@ void GameView::OnLevel1 (wxCommandEvent &event)
  */
 void GameView::OnLevel2 (wxCommandEvent &event)
 {
-	Level level;
-	level.Load(2);
+    mGame.SetLevel(2);
+}
+/**
+ * Plays Level 3 of the game
+ * @param event mouse click event
+ */
+void GameView::OnLevel3 (wxCommandEvent &event)
+{
+    mGame.SetLevel(3);
 }
 
 /**
@@ -125,9 +132,20 @@ void GameView::AddLevelMenuOption(wxFrame *mainFrame, wxMenu *menu, int id,
 {
     menu->Append(id, text, help);
     // all the level binds go here
-    mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel0, this, IDM_LEVELZERO);
-	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel1, this, IDM_LEVELONE);
-	mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel2, this, IDM_LEVELTWO);
+    switch (id) {
+        case IDM_LEVELZERO:
+            mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel0, this, id);
+            break;
+        case IDM_LEVELONE:
+            mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel1, this, id);
+            break;
+        case IDM_LEVELTWO:
+            mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel2, this, id);
+            break;
+        case IDM_LEVELTHREE:
+            mainFrame->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnLevel3, this, id);
+            break;
+    }
 }
 /**
 * virtual pixels sets to true

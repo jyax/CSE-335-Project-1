@@ -26,6 +26,7 @@ private:
 	void OnMouseMove(wxMouseEvent &event);
 	void OnLeftDouble(wxMouseEvent &event);
 
+
 public:
     void Initialize(wxFrame *mainFrame);
 
@@ -41,6 +42,8 @@ public:
     void AddMenus(wxFrame *mainFrame, wxMenuBar *menuBar, wxMenu *fileMenu, wxMenu *viewMenu);
 
     void OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id, const std::wstring &text, const std::wstring &help);
+
+    void OnLevel3(wxCommandEvent &event);
 
 };
 

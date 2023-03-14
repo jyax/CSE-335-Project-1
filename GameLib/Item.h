@@ -77,6 +77,8 @@ public:
      * @param elapsed The time since the last update
      */
 	virtual void Update(double elapsed) {}
+
+    void XmlLoad(wxXmlNode *node);
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

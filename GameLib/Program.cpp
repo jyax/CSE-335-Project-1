@@ -14,6 +14,7 @@ const std::wstring ProgramImage = L"images/laptop.png";
 const int ProgramNameFontSize = 22;
 
 
+
 /**
  * Constructor
  * @param game The game we are in

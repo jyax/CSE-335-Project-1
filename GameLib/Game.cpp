@@ -9,13 +9,19 @@
 #include "Game.h"
 #include <wx/graphics.h>
 
+using namespace std;
+
 /// Shrinkable
 const double ShrinkScale = 0.75;
 
 /**
  * Constructor
 */
-Game::Game(){}
+Game::Game()
+{
+    mPlayingArea.SetGame(this);
+    mPlayingArea.SetLevelFile();
+}
 
 /**
  * Draw the game area
@@ -55,12 +61,16 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
     // draws the score
     mPlayingArea.DrawScoreBoard(graphics);
 
-	// Draw the game items
-	for (auto item : mItems)
-	{
-		item->Draw(graphics);
-	}
-
+    if (mLevel)
+    {
+        for (auto item : mPlayingArea.GetItemList())
+        {
+            if (item != nullptr)
+            {
+                item->Draw(graphics);
+            }
+        }
+    }
     graphics->PopState();
 }
 
@@ -133,8 +143,17 @@ void Game::MoveToFront(std::shared_ptr<Item> item)
  */
 void Game::Update(double elapsed)
 {
-	for (auto item : mItems)
-	{
-		item->Update(elapsed);
-	}
+
+//    for (auto item : mPlayingArea.GetItemList())
+//    {
+//        item->Update(elapsed);
+//    }
+}
+/**
+ * Sets the level and passes the xmlfile to Level
+ * @param level
+ */
+void Game::SetLevel(int level)
+{
+    mPlayingArea.SetLevel(level);
 }

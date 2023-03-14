@@ -9,6 +9,19 @@
 #include <wx/graphics.h>
 #include "PlayingArea.h"
 
+using namespace std;
+
+/// File name for Level 0
+const std::wstring Level0FileName = L"data/level0.xml";
+
+/// File name for Level 1
+const std::wstring Level1FileName = L"data/level1.xml";
+
+/// File name for Level 2
+const std::wstring Level2FileName = L"data/level2.xml";
+
+/// File name for Level 3
+const std::wstring Level3FileName = L"data/level3.xml";
 /**
  * Draws the starting text
  * @param graphics the graphics context
@@ -28,6 +41,7 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
     graphics->DrawBitmap(bitmap, 0, 0, width, height);
     graphics->PopState();
 }
+
 /**
 * Draw  scoreboard
 * @param graphics
@@ -37,4 +51,44 @@ void PlayingArea::DrawScoreBoard(std::shared_ptr<wxGraphicsContext> graphics)
 
     mScoreBoard.Draw(graphics);
 
+}
+/**
+* Set level files  to the playing area
+*
+*/
+void PlayingArea::SetLevelFile()
+{
+    mLevelZero->ReadLevel(Level0FileName);
+    mLevelOne->ReadLevel(Level1FileName);
+    mLevelTwo->ReadLevel(Level2FileName);
+    mLevelThree->ReadLevel(Level3FileName);
+}
+/**
+ * Sets the level and passes the xmlfile to Level
+ * @param level
+ */
+void PlayingArea::SetLevel(int level)
+{
+    mLevelNum = level;
+
+    if (mLevelNum == 0)
+    {
+        mCurrentLevel = make_shared<Level>(*mLevelZero);
+
+    }
+    else if (mLevelNum == 1)
+    {
+        mCurrentLevel = make_shared<Level>(*mLevelOne);
+
+    }
+    else if (mLevelNum == 2)
+    {
+        mCurrentLevel = make_shared<Level>(*mLevelTwo);
+
+    }
+    else if (mLevelNum == 3)
+    {
+        mCurrentLevel = make_shared<Level>(*mLevelThree);
+
+    }
 }
