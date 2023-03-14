@@ -2,6 +2,7 @@
  * @file Level.h
  * @author Jacob Meier
  * @author Nicole Kuang
+ * @author Gaya Kanagaraj
  *
  * Main class for level0, level1, and level2
  */
