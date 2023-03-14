@@ -52,8 +52,8 @@ Level::Level(const Level &original)
     mNumOfProgramme = original.mNumOfProgramme;
     mNumOfBugs = original.mNumOfBugs;
     mGame = original.mGame;
-    mItemList = original.mItemList;
 }
+
 /**
  * Read the level in the filename and passes the values
  * to the necessary functions

@@ -41,9 +41,6 @@ private:
 
     wxString mType;  ///< for the levelstart text
 
-    ///Items in the playing area
-    std::vector<std::shared_ptr<Item>> mItemList;
-
 public:
 
     void XmlProgram(wxXmlNode *node);
@@ -71,14 +68,6 @@ public:
     void DrawLevelName(wxGraphicsContext &graphics);
 
     void ReadLevel(const std::wstring filename);
-
-    /**
-     * function that returns the item list
-     */
-    std::vector<std::shared_ptr<Item>> GetItemList(){
-        return mItemList;
-    }
-
 
     /** get levelType for leveltext */
     wxString GetLevelType(){ return mType;}

@@ -1,6 +1,7 @@
 /**
 * @file PlayingArea.cpp
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  *
  * Playing area for the game
  */
@@ -22,6 +23,7 @@ const std::wstring Level2FileName = L"data/level2.xml";
 
 /// File name for Level 3
 const std::wstring Level3FileName = L"data/level3.xml";
+
 /**
  * Draws the starting text
  * @param graphics the graphics context
@@ -31,6 +33,7 @@ const std::wstring Level3FileName = L"data/level3.xml";
 void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, const int width, const int height)
 {
     graphics->PushState();
+
     // Create a white background bitmap
     wxBitmap bitmap(width, height);
     wxMemoryDC dc(bitmap);
@@ -39,6 +42,14 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
 
     // Draw the bitmap onto the graphics context
     graphics->DrawBitmap(bitmap, 0, 0, width, height);
+
+	// Draw the game items
+	for (auto item : mItems)
+	{
+		if (item != nullptr)
+			item->Draw(graphics);
+	}
+
     graphics->PopState();
 }
 

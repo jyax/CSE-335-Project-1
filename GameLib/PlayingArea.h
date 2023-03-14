@@ -5,12 +5,15 @@
  *
  * Playing area for the game
  */
+
 #ifndef PROJECT1_PLAYINGAREA_H
 #define PROJECT1_PLAYINGAREA_H
 
 #include "ScoreBoard.h"
 #include "Level.h"
+
 class Game;
+
 /**
  * Playing area for the game
  */
@@ -56,15 +59,6 @@ public:
      * Set level poiner
      */
     void SetGame(Game *game){mGame = game;}
-
-    /**
-     * It gets ItemList from Level and returns
-     * @return ItemList
-     */
-    std::vector<std::shared_ptr<Item>> GetItemList()
-    {
-        return mCurrentLevel->GetItemList();
-    }
 
     void SetLevelFile();
 
