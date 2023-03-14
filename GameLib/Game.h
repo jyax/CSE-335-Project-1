@@ -59,7 +59,7 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
-	//std::shared_ptr<Item> SingleClick(int x, int y);
+	std::shared_ptr<Item> SingleClick(int x, int y);
 
 	//std::shared_ptr<Item> DoubleClick(int x, int y);
 

@@ -77,26 +77,18 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 /**
  * Test an x,y click location to see if clicked
  * on some item in the game.
- * @param x X location in pixels
- * @param y Y location in pixels
+ * @param x X location in screen coordinate pixels
+ * @param y Y location in screen coordinate pixels
  * @returns Pointer to item we clicked on or nullptr if none.
 */
-/*std::shared_ptr<Item> Game::SingleClick(int x, int y)
+std::shared_ptr<Item> Game::SingleClick(int x, int y)
 {
 	// Calculate virtual coordinates from screen coordinates
 	mXVirtual = (x - mXOffset) / mScale;
 	mYVirtual = (y - mYOffset) / mScale;
 
-	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
-	{
-		if ((*i)->HitTest(mXVirtual, mYVirtual))
-		{
-			return *i;
-		}
-	}
-
-	return nullptr;
-}*/
+	return mPlayingArea.SingleClick(mXVirtual, mYVirtual);
+}
 
 /**
  * Test an x,y click location to see if double clicked

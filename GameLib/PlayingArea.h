@@ -72,6 +72,8 @@ public:
 
 	void MoveToFront(std::shared_ptr<Item> item);
 
+	std::shared_ptr<Item> SingleClick(double virX, double virY);
+
 };
 
 
