@@ -67,9 +67,9 @@ public:
 	 */
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(double x, double y);
 
-	virtual bool DoubleClickTest(int x, int y);
+	virtual bool DoubleClickTest(double x, double y);
 
 	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 

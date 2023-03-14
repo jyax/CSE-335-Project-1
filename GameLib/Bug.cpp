@@ -41,7 +41,7 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
  * @param y Y location in pixels
  * @return true if clicked on bug
  */
-bool Bug::HitTest(int x, int y)
+bool Bug::HitTest(double x, double y)
 {
 	double dx = x - GetX();
 	double dy = y - GetY();

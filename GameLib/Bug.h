@@ -35,7 +35,7 @@ public:
 	/// Copy constructor (disabled)
 	Bug(const Bug &) = delete;
 
-	bool HitTest(int x, int y) override;
+	bool HitTest(double x, double y) override;
 
 	void Update(double elapsed) override;
 };

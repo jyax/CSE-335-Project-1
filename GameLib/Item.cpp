@@ -34,7 +34,7 @@ Item::~Item()
  * @param y Y position to test
  * @return true if hit.
  */
-bool Item::HitTest(int x, int y)
+bool Item::HitTest(double x, double y)
 {
 	double wid = mItemImage->GetWidth();
 	double hit = mItemImage->GetHeight();
@@ -64,7 +64,7 @@ bool Item::HitTest(int x, int y)
  * @param y Y position to test
  * @return true if double-clicked
  */
-bool Item::DoubleClickTest(int x, int y) // Implement only for fat bugs, return false otherwise
+bool Item::DoubleClickTest(double x, double y) // Implement only for fat bugs, return false otherwise
 {
 	return false;
 }
