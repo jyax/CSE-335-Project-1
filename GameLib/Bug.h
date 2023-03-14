@@ -26,7 +26,7 @@ private:
 	bool mIsFatBug;
 
 protected:
-	Bug(Game *game, const std::wstring &filename);
+	Bug(PlayingArea *area, const std::wstring &filename);
 
 public:
 	/// Default constructor (disabled)

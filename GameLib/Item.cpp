@@ -12,10 +12,10 @@ using namespace std;
 
 /**
  * Constructor
- * @param game The current Game
+ * @param area The current playing area
  * @param filename The name of the file to display for this item
  */
-Item::Item(Game *game, const std::wstring &filename) : mGame(game)
+Item::Item(PlayingArea *area, const std::wstring &filename) : mArea(area)
 {
 	mItemImage = make_shared<wxImage>(filename, wxBITMAP_TYPE_ANY);
 }

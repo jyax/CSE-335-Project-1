@@ -13,10 +13,10 @@ const int BugSpeed = 40;
 
 /**
  * Constructor
- * @param game The game we are in
+ * @param area The playing area we are in
  * @param filename Filename for the image we use
  */
-Bug::Bug(Game *game, const std::wstring &filename) : Item(game, filename)
+Bug::Bug(PlayingArea *area, const std::wstring &filename) : Item(area, filename)
 {
 	mSpeed = BugSpeed;
 }

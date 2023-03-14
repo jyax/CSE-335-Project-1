@@ -1,7 +1,7 @@
 /**
  * @file Program.cpp
- *
  * @author Jacob Yax
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -23,7 +23,7 @@ const wxColour ProgramFontColor = wxColour(0 ,0, 0);
  * Constructor
  * @param game The game we are in
  */
-Program::Program(Game* game) : Item(game, ProgramImage)
+Program::Program(PlayingArea *area) : Item(area, ProgramImage)
 {
 }
 

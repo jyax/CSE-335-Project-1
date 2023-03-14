@@ -1,6 +1,7 @@
 /**
  * @file NullBug.h
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  *
  * Class for the NullBug inherited from Bug
  *
@@ -24,7 +25,7 @@ public:
 	/// Copy constructor (disabled)
 	NullBug(const NullBug &) = delete;
 
-	NullBug(Game* game);
+	NullBug(PlayingArea *area);
 
 };
 
