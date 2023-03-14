@@ -81,7 +81,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
  * @param y Y location in pixels
  * @returns Pointer to item we clicked on or nullptr if none.
 */
-std::shared_ptr<Item> Game::SingleClick(int x, int y)
+/*std::shared_ptr<Item> Game::SingleClick(int x, int y)
 {
 	// Calculate virtual coordinates from screen coordinates
 	mXVirtual = (x - mXOffset) / mScale;
@@ -96,7 +96,7 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
 	}
 
 	return nullptr;
-}
+}*/
 
 /**
  * Test an x,y click location to see if double clicked
@@ -105,7 +105,7 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
  * @param y Y location in pixels
  * @returns Pointer to item we double clicked on or nullptr if none.
 */
-std::shared_ptr<Item> Game::DoubleClick(int x, int y)
+/*std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 {
 	mXVirtual = (x - mXOffset) / mScale;
 	mYVirtual = (y - mYOffset) / mScale;
@@ -119,7 +119,7 @@ std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 	}
 
 	return nullptr;
-}
+}*/
 
 /**
  * Moves an item in the game to the front of the screen (end of list) when clicked on
@@ -127,14 +127,7 @@ std::shared_ptr<Item> Game::DoubleClick(int x, int y)
  */
 void Game::MoveToFront(std::shared_ptr<Item> item)
 {
-	auto loc = find(begin(mItems), end(mItems), item);
-	if (loc != end(mItems))
-	{
-		// Create another of the found item, remove the original, then push the new one back
-		std::shared_ptr<Item> foundItem = *loc;
-		mItems.erase(loc);
-		mItems.push_back(foundItem);
-	}
+	mPlayingArea.MoveToFront(item);
 }
 
 /**

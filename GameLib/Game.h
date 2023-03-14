@@ -19,9 +19,6 @@ private:
     /// PlayingArea object
     PlayingArea mPlayingArea;
 
-	/// The list of pointers to items in the game (bugs, programs)
-	std::vector<std::shared_ptr<Item>> mItems;
-
     /// Game area in virtual pixels
     const static int Width = 1250;
 
@@ -62,9 +59,9 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
-	std::shared_ptr<Item> SingleClick(int x, int y);
+	//std::shared_ptr<Item> SingleClick(int x, int y);
 
-	std::shared_ptr<Item> DoubleClick(int x, int y);
+	//std::shared_ptr<Item> DoubleClick(int x, int y);
 
 	void MoveToFront(std::shared_ptr<Item> item);
 

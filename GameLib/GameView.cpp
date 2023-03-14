@@ -179,7 +179,7 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
  */
 void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	auto item = mGame.SingleClick(event.GetX(), event.GetY());
+	/*auto item = mGame.SingleClick(event.GetX(), event.GetY());
 	if (item != nullptr)
 	{
 		mGame.MoveToFront(item);
@@ -187,7 +187,7 @@ void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 		// Function to destroy the bug (regular bugs only)
 
 		Refresh();
-	}
+	}*/
 }
 
 /**
@@ -214,7 +214,7 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  */
 void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	auto item = mGame.DoubleClick(event.GetX(), event.GetY());
+	/*auto item = mGame.DoubleClick(event.GetX(), event.GetY());
 	if (item != nullptr)
 	{
 		mGame.MoveToFront(item);
@@ -222,5 +222,5 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
 
 		Refresh();
-	}
+	}*/
 }
