@@ -28,6 +28,13 @@ private:
 	/// The game level: Zero, One, Two
 	LevelNum mNum = LevelNum::Zero;
 
+    /// Measures elapsed time
+    wxStopWatch mStopWatch;
+    /// Logged Stop Watch time
+    long mTime = 0;
+
+    std::wstring mLevelName = L"Level";
+
 public:
 	/// Default constructor (disabled)
 	Level();
@@ -41,6 +48,8 @@ public:
 	virtual ~Level();
 
 	void Load(int mNum);
+
+    void DrawLevelName(wxGraphicsContext &graphics);
 };
 
 #endif //PROJECT1_GAMELIB_LEVEL_H

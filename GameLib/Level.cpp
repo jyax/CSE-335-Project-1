@@ -15,6 +15,19 @@
 //do with that information, or if that's the appropriate place for the function
 //For clarity: added Line 21, and Lines 24-26 to GameView
 
+/// Font size for the level name
+const int LevelNameFontSize = 50;
+
+/// Level name Font Color
+const wxColour LevelNameFontColor = wxColour(0, 200, 200);
+
+/// Level name X coord
+const static int LevelNameX = 625;
+
+/// Level name Y coord
+const static int LevelNameY = 250;
+
+
 Level::Level()
 {
 }
@@ -124,7 +137,7 @@ void Level::Load(int mNum)
 		}
 	}
 
-
+    mStopWatch.Start();
 }
 
 /**
@@ -132,5 +145,20 @@ void Level::Load(int mNum)
  */
 Level::~Level()
 {
+}
+
+void Level::DrawLevelName(wxGraphicsContext &graphics)
+{
+    graphics.SetFont(wxFont(LevelNameFontSize, wxFONTFAMILY_SWISS,
+                             wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), LevelNameFontColor);
+
+    double width, length;
+    graphics.GetTextExtent(mLevelName, &width, &length);
+
+    while(mStopWatch.Time() != 2)
+    {
+        graphics.DrawText(mLevelName, LevelNameX, LevelNameY);
+    }
+    mStopWatch.Pause();
 }
 

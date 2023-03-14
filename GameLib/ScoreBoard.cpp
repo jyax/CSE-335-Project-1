@@ -108,7 +108,7 @@ void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     graphics->DrawText(wxString::Format(L"Missed"), LeftScoreX + 450 - (wid/2), ScoreLabelY);
 
     graphics->GetTextExtent(wxString::Format(L"Oops"), &wid, &len);
-    graphics->DrawText(wxString::Format(L"Oops"), 1200 - LeftScoreX -(wid/2), ScoreLabelY);
+    graphics->DrawText(wxString::Format(L"Oops"), 1200 - LeftScoreX - (wid/2), ScoreLabelY);
 
     graphics->PopState();
 }
