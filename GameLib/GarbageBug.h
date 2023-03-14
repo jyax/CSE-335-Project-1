@@ -1,6 +1,7 @@
 /**
  * @file GarbageBug.h
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  *
  * Class for the GarbageBug inherited from Bug
  *
@@ -23,7 +24,7 @@ public:
 	/// Copy constructor (disabled)
 	GarbageBug(const GarbageBug &) = delete;
 
-	GarbageBug(Game* game);
+	GarbageBug(PlayingArea *area);
 
 
 };

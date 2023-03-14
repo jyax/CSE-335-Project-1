@@ -1,6 +1,7 @@
 /**
  * @file PlayingArea.h
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  *
  * Playing area for the game
  */
@@ -18,6 +19,9 @@ private:
     ScoreBoard mScoreBoard; ///< scorebaord object
 
     Game* mGame;
+
+	/// The list of pointers to items in the game (bugs, programs)
+	std::vector<std::shared_ptr<Item>> mItems;
 
     /// The Level class for level 0
     std::shared_ptr<Level> mLevelZero = std::make_shared<Level>(mGame);
@@ -66,7 +70,11 @@ public:
 
     void SetLevel(int level);
 
+	void MoveToFront(std::shared_ptr<Item> item);
 
+	std::shared_ptr<Item> SingleClick(double virX, double virY);
+
+	std::shared_ptr<Item> DoubleClick(double virX, double virY);
 
 };
 

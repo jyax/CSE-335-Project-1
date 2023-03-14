@@ -92,3 +92,59 @@ void PlayingArea::SetLevel(int level)
 
     }
 }
+
+/**
+ * Test an x,y click location to see if clicked
+ * on some item in the game.
+ * @param virX X location in virtual coordinate pixels
+ * @param virY Y location in virtual coordinate pixels
+ * @returns Pointer to item we clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> PlayingArea::SingleClick(double virX, double virY)
+{
+	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+	{
+		if ((*i)->HitTest(virX, virY))
+		{
+			return *i;
+		}
+	}
+
+	return nullptr;
+}
+
+/**
+ * Test an x,y click location to see if double clicked
+ * on some item in the game.
+ * @param virX X location in virtual coordinate pixels
+ * @param virY Y location in virtual coordinate pixels
+ * @returns Pointer to item we double clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> PlayingArea::DoubleClick(double virX, double virY)
+{
+	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+	{
+		if ((*i)->DoubleClickTest(virX, virY))
+		{
+			return *i;
+		}
+	}
+
+	return nullptr;
+}
+
+/**
+ * Moves an item in the game to the front of the screen (end of list) when clicked on
+ * @param item pointer to item clicked on
+ */
+void PlayingArea::MoveToFront(std::shared_ptr<Item> item)
+{
+	auto loc = find(begin(mItems), end(mItems), item);
+	if (loc != end(mItems))
+	{
+		// Create another of the found item, remove the original, then push the new one back
+		std::shared_ptr<Item> foundItem = *loc;
+		mItems.erase(loc);
+		mItems.push_back(foundItem);
+	}
+}

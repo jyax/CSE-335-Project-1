@@ -1,6 +1,7 @@
 /**
  * @file GarbageBug.cpp
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -20,8 +21,8 @@ const int GarbageBugNumSpriteImages = 5;
 
 /**
  * Constructor
- * @param game The game we are in
+ * @param area The playing area we are in
  */
-GarbageBug::GarbageBug(Game* game) : Bug(game, GarbageBugSpriteImageName)
+GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName)
 {
 }

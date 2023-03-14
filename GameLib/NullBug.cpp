@@ -1,6 +1,7 @@
 /**
  * @file NullBug.cpp
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -18,8 +19,8 @@ const int NullBugNumSpriteImages = 6;
 
 /**
  * Constructor
- * @param game The game we are in
+ * @param area The playing area we are in
  */
-NullBug::NullBug(Game* game) : Bug(game, NullBugSpriteImageName)
+NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName)
 {
 }

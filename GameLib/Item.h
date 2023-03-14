@@ -12,6 +12,7 @@
 #include <wx/graphics.h>
 
 class Game;
+class PlayingArea;
 
 /**
  * Abstract base class for any item in our Game.
@@ -20,7 +21,7 @@ class Item
 {
 private:
 	///The game this item is contained in
-	Game *mGame;
+	PlayingArea *mArea;
 
 	/// The underlying item image
 	std::shared_ptr<wxImage> mItemImage;
@@ -33,7 +34,7 @@ private:
 	double  mY = 0;     ///< Y location for the center of the item
 
 protected:
-	Item(Game* game, const std::wstring &filename);
+	Item(PlayingArea *area, const std::wstring &filename);
 
 public:
 	/// Default constructor (disabled)
@@ -66,9 +67,9 @@ public:
 	 */
 	void SetLocation(double x, double y) { mX = x; mY = y; }
 
-	virtual bool HitTest(int x, int y);
+	virtual bool HitTest(double x, double y);
 
-	virtual bool DoubleClickTest(int x, int y);
+	virtual bool DoubleClickTest(double x, double y);
 
 	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 

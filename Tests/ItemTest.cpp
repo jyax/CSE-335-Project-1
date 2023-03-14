@@ -6,7 +6,7 @@
 #include <pch.h>
 #include "gtest/gtest.h"
 #include <Item.h>
-#include <Game.h>
+#include <PlayingArea.h>
 
 using namespace std;
 
@@ -18,19 +18,19 @@ const wstring GarbageBugImage = L"images/blue-maize-bug.png";
  */
 class ItemMock : public Item {
 public:
-	ItemMock(Game *game) : Item(game, GarbageBugImage) {}
+	ItemMock(PlayingArea *area) : Item(area, GarbageBugImage) {}
 };
 
 TEST(ItemTest, Construct)
 {
-	Game game;
-	ItemMock item(&game);
+	PlayingArea area;
+	ItemMock item(&area);
 }
 
 TEST(ItemTest, GetSetLocation)
 {
-	Game game;
-	ItemMock item(&game);
+	PlayingArea area;
+	ItemMock item(&area);
 
 	// Test initial values
 	ASSERT_NEAR(0, item.GetX(), 0.0001);
@@ -50,8 +50,8 @@ TEST(ItemTest, GetSetLocation)
 // Uncomment when bugs can be drawn in the game
 /*TEST(ItemTest, HitTest)
 {
-	Game game;
-	ItemMock item(&game);
+	PlayingArea area;
+	ItemMock item(&area);
 
 	item.SetLocation(305, 243);
 

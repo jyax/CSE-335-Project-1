@@ -1,7 +1,8 @@
 /**
  * @file Program.h
- *
  * @author Jacob Yax
+ * @author Nicole Kuang
+ *
  * Class defining the Program item
  */
 
@@ -23,7 +24,8 @@ public:
     /// Copy Constructor (disabled)
     Program(const Program &) = delete;
 
-	Program(Game* game);
+	Program(PlayingArea *area);
+
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 

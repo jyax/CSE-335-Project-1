@@ -1,8 +1,9 @@
 /**
  * @file Feature.h
- *
  * @author Jacob Yax
+ * @author Nicole Kuang
  *
+ * Feature class to represent the Feature "Bug" that is not supposed to be clicked on.
  */
 
 #ifndef PROJECT1_FEATURE_H
@@ -22,7 +23,7 @@ public:
     /// Copy Constructor (disabled)
     Feature(const Feature &) = delete;
 
-	Feature(Game* game);
+	Feature(PlayingArea *area);
 };
 
 

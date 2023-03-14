@@ -26,7 +26,7 @@ private:
 	bool mIsFatBug;
 
 protected:
-	Bug(Game *game, const std::wstring &filename);
+	Bug(PlayingArea *area, const std::wstring &filename);
 
 public:
 	/// Default constructor (disabled)
@@ -34,6 +34,8 @@ public:
 
 	/// Copy constructor (disabled)
 	Bug(const Bug &) = delete;
+
+	bool HitTest(double x, double y) override;
 
 	void Update(double elapsed) override;
 };

@@ -12,10 +12,10 @@ using namespace std;
 
 /**
  * Constructor
- * @param game The current Game
+ * @param area The current playing area
  * @param filename The name of the file to display for this item
  */
-Item::Item(Game *game, const std::wstring &filename) : mGame(game)
+Item::Item(PlayingArea *area, const std::wstring &filename) : mArea(area)
 {
 	mItemImage = make_shared<wxImage>(filename, wxBITMAP_TYPE_ANY);
 }
@@ -34,7 +34,7 @@ Item::~Item()
  * @param y Y position to test
  * @return true if hit.
  */
-bool Item::HitTest(int x, int y)
+bool Item::HitTest(double x, double y)
 {
 	double wid = mItemImage->GetWidth();
 	double hit = mItemImage->GetHeight();
@@ -64,7 +64,7 @@ bool Item::HitTest(int x, int y)
  * @param y Y position to test
  * @return true if double-clicked
  */
-bool Item::DoubleClickTest(int x, int y) // Implement only for fat bugs, return false otherwise
+bool Item::DoubleClickTest(double x, double y) // Implement only for fat bugs, return false otherwise
 {
 	return false;
 }

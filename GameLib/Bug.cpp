@@ -10,13 +10,15 @@
 /// Base Bug speed
 const int BugSpeed = 40;
 
+/// The range from the center of the bug to see if hit or not
+const int BugHitRange = 50;
 
 /**
  * Constructor
- * @param game The game we are in
+ * @param area The playing area we are in
  * @param filename Filename for the image we use
  */
-Bug::Bug(Game *game, const std::wstring &filename) : Item(game, filename)
+Bug::Bug(PlayingArea *area, const std::wstring &filename) : Item(area, filename)
 {
 	mSpeed = BugSpeed;
 }
@@ -31,4 +33,18 @@ Bug::Bug(Game *game, const std::wstring &filename) : Item(game, filename)
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
 	Item::Update(elapsed);
+}
+
+/**
+ * Hit test x,y to see if they are clicking on this bug.
+ * @param x X location in pixels
+ * @param y Y location in pixels
+ * @return true if clicked on bug
+ */
+bool Bug::HitTest(double x, double y)
+{
+	double dx = x - GetX();
+	double dy = y - GetY();
+
+	return sqrt(dx * dx + dy * dy) < BugHitRange;
 }

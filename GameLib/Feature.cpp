@@ -1,7 +1,7 @@
 /**
  * @file Feature.cpp
- *
  * @author Jacob Yax
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -19,8 +19,8 @@ const int FeatureNumSpriteImages = 7;
 
 /**
  * Constructor
- * @param game The game we are in
+ * @param area The playing area we are in
  */
-Feature::Feature(Game* game) : Bug(game, FeatureImageName)
+Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName)
 {
 }
