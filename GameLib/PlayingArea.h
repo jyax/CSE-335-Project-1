@@ -65,6 +65,7 @@ public:
 
 	std::shared_ptr<Item> DoubleClick(double virX, double virY);
 
+	void Accept(ItemVisitor* visitor);
 };
 
 

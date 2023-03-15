@@ -149,3 +149,15 @@ void PlayingArea::MoveToFront(std::shared_ptr<Item> item)
 		mItems.push_back(foundItem);
 	}
 }
+
+/**
+ * Accept a visitor for the collection
+ * @param visitor The visitor for the collection
+ */
+void PlayingArea::Accept(ItemVisitor *visitor)
+{
+	for (auto item : mItems)
+	{
+		item->Accept(visitor);
+	}
+}
