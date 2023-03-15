@@ -21,6 +21,6 @@ const int NullBugNumSpriteImages = 6;
  * Constructor
  * @param area The playing area we are in
  */
-NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName)
+NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName, NullBugNumSpriteImages)
 {
 }

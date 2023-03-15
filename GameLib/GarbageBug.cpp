@@ -16,13 +16,13 @@ const std::wstring GarbageBugSpriteImageName = L"images/blue-maize-bug.png";
 const std::wstring GarbageBugSplatImageName = L"images/blue-maize-splat.png";
 
 /// Number of sprite images
-const int GarbageBugNumSpriteImages = 5;
+const int GarbageBugNumSpriteImages = 6;
 
 
 /**
  * Constructor
  * @param area The playing area we are in
  */
-GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName)
+GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName, GarbageBugNumSpriteImages)
 {
 }

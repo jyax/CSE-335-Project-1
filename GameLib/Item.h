@@ -49,6 +49,24 @@ public:
 	virtual ~Item();
 
 	/**
+	 * The image of the item
+	 * @return the Item Image
+	 */
+	std::shared_ptr<wxImage> GetImage() {return mItemImage;}
+
+	/**
+	 * The bitmap of the item
+	 * @return the Item bitmap
+	 */
+	wxGraphicsBitmap GetBitmap() {return mItemBitmap;};
+
+	/**
+	 * Set the bitmap of the item
+	 * @param ItemBitmap Item bitmap
+	 */
+	void SetBitmap(wxGraphicsBitmap ItemBitmap) {mItemBitmap = ItemBitmap;}
+
+	/**
      * The X location of the item
      * @return X location in pixels
      */

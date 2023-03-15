@@ -25,8 +25,14 @@ private:
 	///Bool to tell if the bug is a FatBug or not
 	bool mIsFatBug;
 
+	///what frame of the image is the bug
+	double mIteration = 1;
+
+	///number of frames the bug has
+	double mFrames;
+
 protected:
-	Bug(PlayingArea *area, const std::wstring &filename);
+	Bug(PlayingArea *area, const std::wstring &filename, double frames);
 
 public:
 	/// Default constructor (disabled)
@@ -38,6 +44,9 @@ public:
 	bool HitTest(double x, double y) override;
 
 	void Update(double elapsed) override;
+
+	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

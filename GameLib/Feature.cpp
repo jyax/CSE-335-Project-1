@@ -21,6 +21,6 @@ const int FeatureNumSpriteImages = 7;
  * Constructor
  * @param area The playing area we are in
  */
-Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName)
+Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName, FeatureNumSpriteImages	)
 {
 }
