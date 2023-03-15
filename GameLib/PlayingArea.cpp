@@ -54,6 +54,15 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
 }
 
 /**
+ * Add a game item to the playing area
+ * @param item a pointer to an item
+ */
+void PlayingArea::Add(shared_ptr<Item> item)
+{
+	mItems.push_back(item);
+}
+
+/**
 * Set level files  to the playing area
 *
 */

@@ -50,6 +50,8 @@ public:
 
     void DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, const int width, const int height);
 
+	void Add(std::shared_ptr<Item> item);
+
     /**
      * Set level poiner
      */
