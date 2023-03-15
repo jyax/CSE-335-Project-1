@@ -10,6 +10,7 @@
 #define PROJECT1_GAMELIB_ITEM_H
 
 #include <wx/graphics.h>
+#include "ItemVisitor.h"
 
 class Game;
 class PlayingArea;
@@ -98,6 +99,12 @@ public:
 	virtual void Update(double elapsed) {}
 
     void XmlLoad(wxXmlNode *node);
+
+	/**
+     * Accept a visitor
+      * @param visitor The visitor we accept
+      */
+	virtual void Accept(ItemVisitor* visitor) = 0;
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

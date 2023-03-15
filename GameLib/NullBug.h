@@ -27,6 +27,11 @@ public:
 
 	NullBug(PlayingArea *area);
 
+	/**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+	void Accept(ItemVisitor* visitor) override {visitor->VisitNull(this);}
 };
 
 #endif //PROJECT1_GAMELIB_NULLBUG_H

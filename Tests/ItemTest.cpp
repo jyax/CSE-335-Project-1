@@ -19,6 +19,12 @@ const wstring GarbageBugImage = L"images/blue-maize-bug.png";
 class ItemMock : public Item {
 public:
 	ItemMock(PlayingArea *area) : Item(area, GarbageBugImage) {}
+
+	/**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+	virtual void Accept(ItemVisitor* visitor) override {}
 };
 
 TEST(ItemTest, Construct)

@@ -26,7 +26,11 @@ public:
 
 	GarbageBug(PlayingArea *area);
 
-
+	/**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+	void Accept(ItemVisitor* visitor) override {visitor->VisitGarbage(this);}
 };
 
 #endif //PROJECT1_GAMELIB_GARBAGEBUG_H

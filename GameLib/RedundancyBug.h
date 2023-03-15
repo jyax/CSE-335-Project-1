@@ -1,6 +1,7 @@
 /**
  * @file RedundancyBug.h
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  *
  * Class for the RedundancyBug inherited from Bug
  *
@@ -25,6 +26,11 @@ public:
 	/// Copy constructor (disabled)
 	RedundancyBug(const RedundancyBug &) = delete;
 
+	/**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+	void Accept(ItemVisitor* visitor) override {visitor->VisitRedundancy(this);}
 };
 
 #endif //PROJECT1_GAMELIB_REDUNDANCYBUG_H

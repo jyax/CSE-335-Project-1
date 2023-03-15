@@ -24,6 +24,12 @@ public:
     Feature(const Feature &) = delete;
 
 	Feature(PlayingArea *area);
+
+	/**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+	void Accept(ItemVisitor* visitor) override {visitor->VisitFeature(this);}
 };
 
 
