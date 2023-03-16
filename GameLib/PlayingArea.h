@@ -52,10 +52,11 @@ public:
 
 	void Add(std::shared_ptr<Item> item);
 
-    /**
-     * Set level poiner
-     */
-    void SetGame(Game *game){mGame = game;}
+	std::vector<std::shared_ptr<Item>> GetItemList() { return mItems; }
+	/**
+	 * Set level poiner
+	 */
+	void SetGame(Game *game) { mGame = game; }
 
     void SetLevelFile();
 
