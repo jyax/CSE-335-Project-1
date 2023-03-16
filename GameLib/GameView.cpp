@@ -14,17 +14,22 @@
 
 using namespace std;
 
-/// Frame duration in seconds
+/// Frame duration in milliseconds
 const double FrameDuration = 30.0;
 /**
  * Constructor
  * @param mainFrame Pointer to wxFrame object, the main frame for the application
  */
 void GameView::Initialize(wxFrame* mainFrame) {
+
+	mTimer.SetOwner(this);
+	mTimer.Start(FrameDuration);
+
     Create(mainFrame, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxFULL_REPAINT_ON_RESIZE);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
+	Bind(wxEVT_TIMER, &GameView::OnTimer, this);
 
 	// Bind the mouse events
 	Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
@@ -77,6 +82,11 @@ void GameView::OnLevel3 (wxCommandEvent &event)
 void GameView::OnPaint(wxPaintEvent& event)
 {
 
+	auto newTime = mStopWatch.Time();
+	auto elapsed = (double)(newTime - mTime) * 0.001;
+	mTime = newTime;
+	mGame.Update(elapsed);
+
     // Create a double-buffered display context
     wxAutoBufferedPaintDC dc(this);
 
@@ -93,6 +103,17 @@ void GameView::OnPaint(wxPaintEvent& event)
     wxRect rect = GetRect();
     mGame.OnDraw(gc, rect.GetWidth(), rect.GetHeight());
 
+
+
+}
+/**
+ * Refreshes the screen
+ * @param event
+ */
+void GameView::OnTimer(wxTimerEvent& event)
+{
+	//Currently commented out so you can exit the program
+	//Refresh();
 }
 /**
  * Add menus specific to the view
