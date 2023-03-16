@@ -6,16 +6,16 @@
 #include <wx/xml/xml.h>
 #include <gtest/gtest.h>
 #include <Level.h>
-#include <Game.h>
+#include <PlayingArea.h>
 
 class LevelTest : public testing::Test {
 protected:
     virtual void SetUp() {
         // Set up any resources needed for the tests
-        mGame = new Game();
-        mLevel = new Level(mGame);
+        mArea = new PlayingArea();
+        mLevel = new Level(mArea);
     }
-    Game* mGame;
+    PlayingArea* mArea;
     Level* mLevel;
 };
 // Tests the ReadLevel method

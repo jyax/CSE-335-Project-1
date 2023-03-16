@@ -53,3 +53,17 @@ TEST(PlayingAreaTest, Visitor)
 	ASSERT_EQ(0, visitor2.mNumGarbages);
 	ASSERT_EQ(0, visitor2.mNumNulls);
 }
+
+// Test to see if we are able to click in the playing area
+TEST(PlayingAreaTest, SingleClickTest)
+{
+	PlayingArea area;
+
+	ASSERT_EQ(area.SingleClick(100, 100), nullptr);
+
+	auto bug = std::make_shared<GarbageBug>(&area);
+	area.Add(bug);
+	bug->SetLocation(100, 100);
+
+	ASSERT_TRUE(area.SingleClick(100, 100) == bug);
+}
