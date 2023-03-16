@@ -70,6 +70,12 @@ public:
 
 	void Update(double elapsed);
     void SetLevel(int level);
+
+	/**
+	 * Route the visitor from Game to PlayingArea
+	 * @param visitor a visitor for the collection
+	 */
+	void Accept(ItemVisitor* visitor) {mPlayingArea.Accept(visitor);}
 };
 
 #include <wx/graphics.h>

@@ -21,7 +21,11 @@ SplatBug::SplatBug(std::shared_ptr<Item> item)
  */
 void SplatBug::VisitGarbage(GarbageBug *bug)
 {
-	ItemVisitor::VisitGarbage(bug);
+	// Check if the game item is a garbage bug - PROBLEM HERE!!!
+	//if (mItem.get() == bug)
+	//{
+		//mSquashed = bug;
+	//}
 }
 
 /**
@@ -49,4 +53,11 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
 void SplatBug::VisitFeature(Feature *feature)
 {
 	ItemVisitor::VisitFeature(feature);
+}
+
+void SplatBug::Squash()
+{
+	// Change image
+
+	// Increment score
 }

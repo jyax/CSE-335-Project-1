@@ -25,6 +25,8 @@ private:
 public:
 	SplatBug(std::shared_ptr<Item> item);
 
+	void Squash();
+
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;
 	void VisitRedundancy(RedundancyBug* bug) override;

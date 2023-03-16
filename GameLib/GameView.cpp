@@ -10,6 +10,7 @@
 #include "GameView.h"
 #include "Level.h"
 #include "ids.h"
+#include "SplatBug.h"
 
 using namespace std;
 
@@ -185,6 +186,9 @@ void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 		mGame.MoveToFront(item);
 
 		// Function to destroy the bug (regular bugs only)
+		SplatBug visitor(item);
+		mGame.Accept(&visitor);
+		visitor.Squash();
 
 		Refresh();
 	}
