@@ -17,18 +17,27 @@
 /**
  * Class that implements the child window our program draws in
  */
-class GameView : public wxWindow{
+class GameView : public wxWindow
+{
 private:
-    Game mGame; ///<  the Game
+	Game mGame; ///<  the Game
+
+	/// The timer that allows for animation
+	wxTimer mTimer;
+
+	/// Stopwatch used to measure elapsed time
+	wxStopWatch mStopWatch;
+
+	/// The last stopwatch time
+	long mTime = 0;
 
 	void OnLeftDown(wxMouseEvent &event);
 	void OnLeftUp(wxMouseEvent &event);
 	void OnMouseMove(wxMouseEvent &event);
 	void OnLeftDouble(wxMouseEvent &event);
 
-
 public:
-    void Initialize(wxFrame *mainFrame);
+	void Initialize(wxFrame *mainFrame);
 
     void OnPaint(wxPaintEvent &event);
 	void OnLevel0(wxCommandEvent &event);
@@ -45,6 +54,7 @@ public:
 
     void OnLevel3(wxCommandEvent &event);
 
+	void OnTimer(wxTimerEvent &event);
 };
 
 
