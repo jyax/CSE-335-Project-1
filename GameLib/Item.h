@@ -105,6 +105,12 @@ public:
       * @param visitor The visitor we accept
       */
 	virtual void Accept(ItemVisitor* visitor) = 0;
+
+	/**
+     * checks if item is program
+     * @return True is item is a program otherwise false
+     */
+	virtual bool IsProgram() {return FALSE;};
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

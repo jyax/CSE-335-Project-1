@@ -29,6 +29,13 @@ public:
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
 	void Accept(ItemVisitor* visitor) override {visitor->VisitProgram(this);}
+
+	/**
+    * checks if item is program
+    * @return True is item is a program otherwise false
+    */
+	bool IsProgram() override {return TRUE;};
+
 };
 
 
