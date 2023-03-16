@@ -24,19 +24,19 @@ private:
 	std::vector<std::shared_ptr<Item>> mItems;
 
     /// The Level class for level 0
-    std::shared_ptr<Level> mLevelZero = std::make_shared<Level>(mGame);
+    std::shared_ptr<Level> mLevelZero = std::make_shared<Level>(this);
 
     /// The Level class for level 1
-    std::shared_ptr<Level> mLevelOne = std::make_shared<Level>(mGame);
+    std::shared_ptr<Level> mLevelOne = std::make_shared<Level>(this);
 
     /// The Level class for level 2
-    std::shared_ptr<Level> mLevelTwo = std::make_shared<Level>(mGame);
+    std::shared_ptr<Level> mLevelTwo = std::make_shared<Level>(this);
 
     /// The Level class for level 3
-    std::shared_ptr<Level> mLevelThree = std::make_shared<Level>(mGame);
+    std::shared_ptr<Level> mLevelThree = std::make_shared<Level>(this);
 
     /// The current level
-    std::shared_ptr<Level> mCurrentLevel = std::make_shared<Level>(mGame);
+    std::shared_ptr<Level> mCurrentLevel = std::make_shared<Level>(this);
 
     ///Current level being played
     int mLevelNum;

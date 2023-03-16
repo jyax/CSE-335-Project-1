@@ -11,7 +11,7 @@
 #define PROJECT1_GAMELIB_LEVEL_H
 
 #include "Item.h"
-class Game;
+class PlayingArea;
 /**
  * Main class for level0, level1, and level2
  */
@@ -20,7 +20,7 @@ private:
 
 
 	/// The game this level is part of
-	Game *mGame;
+	PlayingArea *mPlayingArea;
 
 	/// The normal levels of the game
 	enum class LevelNum {Zero, One, Two};
@@ -53,7 +53,7 @@ public:
 	Level() = delete;
 
     ///Constructor for level
-    Level(Game* game);
+    Level(PlayingArea* playingArea);
 
     /// Copy constructor
     Level(const Level &);

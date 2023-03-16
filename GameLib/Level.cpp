@@ -12,6 +12,7 @@
 #include "GarbageBug.h"
 #include "Feature.h"
 #include "RedundancyBug.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -39,7 +40,7 @@ const static int LevelNameY = 250;
  * Constructor
  * @param game the game this is a part of
  */
-Level::Level(Game* game) : mGame(game)
+Level::Level(PlayingArea* playingArea) : mPlayingArea(playingArea)
 {
 }
 
@@ -51,7 +52,7 @@ Level::Level(const Level &original)
 {
     mNumOfProgramme = original.mNumOfProgramme;
     mNumOfBugs = original.mNumOfBugs;
-    mGame = original.mGame;
+    mPlayingArea = original.mPlayingArea;
 }
 
 /**
@@ -110,13 +111,12 @@ void Level::XmlBeginText(wxXmlNode *node)
 void Level::XmlFeature(wxXmlNode *node)
 {
        mNumofFeatures++;
-//        shared_ptr<Item> item;
-//        item = make_shared<Feature>(mGame);
-//        if(item != nullptr)
-//        {
-//            mItemList.push_back(item);
-//            item->XmlLoad(node);
-
+        shared_ptr<Item> item;
+        item = make_shared<Feature>(mPlayingArea);
+        if(item != nullptr) {
+            mPlayingArea->Add(item);
+            item->XmlLoad(node);
+        }
 }
 /**
  * To read and draw bugs
@@ -128,33 +128,33 @@ void Level::XmlBug(wxXmlNode *node)
     if (type.Cmp("nullbug") == 0 || type.Cmp("null") == 0)
     {
         mNumOfBugs++;
-//        shared_ptr<Item> item;
-//        item = make_shared<NullBug>(mGame);
-//        if(item != nullptr)
-//        {
-//            mItemList.push_back(item);
-//            item->XmlLoad(node);
-//        }
+        shared_ptr<Item> item;
+        item = make_shared<NullBug>(mPlayingArea);
+        if(item != nullptr)
+        {
+            mPlayingArea->Add(item);
+            item->XmlLoad(node);
+        }
     }
     else if (type.Cmp("garbage") == 0)
     {
         mNumOfBugs++;
-//        shared_ptr<Item> item;
-//        item = make_shared<GarbageBug>(mGame);
-//        if(item != nullptr)
-//        {
-//            mItemList.push_back(item);
-//            item->XmlLoad(node);
-//            }
+        shared_ptr<Item> item;
+        item = make_shared<GarbageBug>(mPlayingArea);
+        if(item != nullptr)
+        {
+            mPlayingArea->Add(item);
+            item->XmlLoad(node);
+            }
     }
     else if (type.Cmp("redundancy") == 0)
     {
         mNumOfBugs++;
 //        shared_ptr<Item> item;
-//        item = make_shared<RedundancyBug>(mGame);
+//        item = make_shared<RedundancyBug>(mPlayingArea);
 //        if(item != nullptr)
 //        {
-//            mItemList.push_back(item);
+//            mPlayingArea->Add(item);
 //            item->XmlLoad(node);
 //            }
     }
@@ -169,10 +169,10 @@ void Level::XmlProgram(wxXmlNode *node)
 {
     mNumOfProgramme ++;
 //    shared_ptr<Item> item;
-//    item = make_shared<Program>(mGame);
+//    item = make_shared<Program>(mPlayingArea);
 //    if(item != nullptr)
 //    {
-//        mItemList.push_back(item);
+//        mPlayingArea->Add(item);
 //        item->XmlLoad(node);
 //    }
 
