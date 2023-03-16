@@ -34,7 +34,7 @@ const wxColour LevelNameFontColor = wxColour(0, 200, 200);
 const static int LevelNameX = 625;
 
 /// Level name Y coord
-const static int LevelNameY = 250;
+const static int LevelNameY = 500;
 
 /**
  * Constructor
