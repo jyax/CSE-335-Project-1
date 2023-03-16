@@ -53,6 +53,7 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
 void SplatBug::VisitFeature(Feature *feature)
 {
 	ItemVisitor::VisitFeature(feature);
+	mIsFeature = true;
 }
 
 void SplatBug::Squash()
