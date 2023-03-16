@@ -37,7 +37,8 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
  */
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
-	Item::Update(elapsed);
+	//Currently commented out so you can exit the program
+	//SetLocation(GetX()+elapsed*mSpeed, GetY()+elapsed*mSpeed);
 }
 
 /**
