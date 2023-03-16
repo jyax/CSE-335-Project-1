@@ -9,14 +9,22 @@
 #define PROJECT1_GAMELIB_SPLATBUG_H
 
 #include "ItemVisitor.h"
+#include "Item.h"
 
 /**
  * Concrete visitor to squash bugs
  */
 class SplatBug : public ItemVisitor {
 private:
+	/// The game item clicked on
+	std::shared_ptr<Item> mItem;
+
+	/// The game item to be squashed
+	Item* mSquashed = nullptr;
 
 public:
+	SplatBug(std::shared_ptr<Item> item);
+
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;
 	void VisitRedundancy(RedundancyBug* bug) override;

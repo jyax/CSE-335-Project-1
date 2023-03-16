@@ -7,6 +7,15 @@
 #include "SplatBug.h"
 
 /**
+ * Constructor
+ * @param item the game item clicked on
+ */
+SplatBug::SplatBug(std::shared_ptr<Item> item)
+{
+	mItem = item;
+}
+
+/**
  * Visit a GarbageBug object
  * @param bug the garbage bug to visit
  */
