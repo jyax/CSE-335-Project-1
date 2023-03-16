@@ -12,6 +12,7 @@ class GarbageBug;
 class NullBug;
 class RedundancyBug;
 class Feature;
+class Program;
 
 /**
  * Game item visitor base class
@@ -47,6 +48,8 @@ public:
 	 * @param feature feature 'bug' to visit
 	 */
 	virtual void VisitFeature(Feature *feature) {}
+
+	virtual void VisitProgram(Program *program) {}
 
 protected:
 	/** Constructor */

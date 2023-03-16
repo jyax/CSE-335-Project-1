@@ -27,6 +27,8 @@ public:
 	Program(PlayingArea *area);
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
+	void Accept(ItemVisitor* visitor) override {visitor->VisitProgram(this);}
 };
 
 

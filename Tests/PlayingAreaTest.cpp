@@ -9,6 +9,7 @@
 #include <Feature.h>
 #include <GarbageBug.h>
 #include <NullBug.h>
+#include <Program.h>
 //#include <RedundancyBug.h>
 
 class TestVisitor : public ItemVisitor {
@@ -30,10 +31,12 @@ TEST(PlayingAreaTest, Visitor)
 	auto bug1 = std::make_shared<Feature>(&area);
 	auto bug2 = std::make_shared<GarbageBug>(&area);
 	auto bug3 = std::make_shared<NullBug>(&area);
+	auto prog = std::make_shared<Program>(&area);
 
 	area.Add(bug1);
 	area.Add(bug2);
 	area.Add(bug3);
+	area.Add(prog);
 
 	TestVisitor visitor;
 	area.Accept(&visitor);
