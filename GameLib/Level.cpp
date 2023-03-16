@@ -295,15 +295,15 @@ Level::~Level()
 
 void Level::DrawLevelName(wxGraphicsContext &graphics)
 {
-    graphics.SetFont(wxFont(LevelNameFontSize, wxFONTFAMILY_SWISS,
+    graphics.SetFont(wxFont(wxSize(0, LevelNameFontSize), wxFONTFAMILY_SWISS,
                              wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), LevelNameFontColor);
 
     double width, length;
-    graphics.GetTextExtent(mLevelName, &width, &length);
+    graphics.GetTextExtent(mType, &width, &length);
 
     while(mStopWatch.Time() != 2)
     {
-        graphics.DrawText(mLevelName, LevelNameX, LevelNameY);
+        graphics.DrawText(mType, LevelNameX - width/2, LevelNameY - length/2);
     }
     mStopWatch.Pause();
 }
