@@ -49,6 +49,10 @@ public:
 	 */
 	virtual void VisitFeature(Feature *feature) {}
 
+	/**
+	 * Visit a Program object
+	 * @param program program to visit
+	 */
 	virtual void VisitProgram(Program *program) {}
 
 protected:
