@@ -17,6 +17,12 @@ class Program : public Item {
 private:
     std::wstring mProgramName;
 
+    /// The item programme
+    std::shared_ptr<wxImage> mProgrammeImage;
+    /// The item bitmap
+    wxGraphicsBitmap mProgrammeBitmap;
+
+
 public:
     /// Default Constructor (disabled)
     Program() = delete;

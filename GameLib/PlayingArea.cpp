@@ -42,13 +42,20 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
 
     // Draw the bitmap onto the graphics context
     graphics->DrawBitmap(bitmap, 0, 0, width, height);
+    mCurrentLevel->DrawLevelName(graphics);
+    if(mLevelStart)
+    {
+        // Draw the game items
+        for (auto item : mItems)
+        {
+            if (item != nullptr)
+                item->Draw(graphics);
+        }
+        mCurrentLevel->DrawLevelName(graphics);
+    }
 
-	// Draw the game items
-	for (auto item : mItems)
-	{
-		if (item != nullptr)
-			item->Draw(graphics);
-	}
+
+
 
     graphics->PopState();
 }
@@ -76,9 +83,9 @@ void PlayingArea::Add(shared_ptr<Item> item)
 void PlayingArea::SetLevelFile()
 {
     mLevelZero->ReadLevel(Level0FileName);
-    mLevelOne->ReadLevel(Level1FileName);
-    mLevelTwo->ReadLevel(Level2FileName);
-    mLevelThree->ReadLevel(Level3FileName);
+//    mLevelOne->ReadLevel(Level1FileName);
+//    mLevelTwo->ReadLevel(Level2FileName);
+//    mLevelThree->ReadLevel(Level3FileName);
 }
 /**
  * Sets the level and passes the xmlfile to Level
@@ -90,21 +97,25 @@ void PlayingArea::SetLevel(int level)
 
     if (mLevelNum == 0)
     {
+        mLevelZero->ReadLevel(Level0FileName);
         mCurrentLevel = make_shared<Level>(*mLevelZero);
 
     }
     else if (mLevelNum == 1)
     {
+        mLevelOne->ReadLevel(Level1FileName);
         mCurrentLevel = make_shared<Level>(*mLevelOne);
 
     }
     else if (mLevelNum == 2)
     {
+        mLevelTwo->ReadLevel(Level2FileName);
         mCurrentLevel = make_shared<Level>(*mLevelTwo);
 
     }
     else if (mLevelNum == 3)
     {
+        mLevelThree->ReadLevel(Level3FileName);
         mCurrentLevel = make_shared<Level>(*mLevelThree);
 
     }
@@ -176,4 +187,41 @@ void PlayingArea::Accept(ItemVisitor *visitor)
 	{
 		item->Accept(visitor);
 	}
+}
+/**
+* sets the level text duration
+*/
+void PlayingArea::SetTextDuration(double duration)
+{
+    mCurrentLevel->SetTextDuration(duration);
+}
+/**
+ * It sets the mLevelStart if the level clicked
+ * @param value
+ */
+void PlayingArea::LevelStart(bool value)
+{
+    mLevelStart = value;
+}
+/**
+* Clears the Itemlist
+*/
+void PlayingArea::Clear()
+{
+    mItems.clear();
+}
+/**
+ * Updates the game
+ * @param elapsed
+ */
+void PlayingArea::Update(double elapsed)
+{
+
+    mCurrentLevel->Update(elapsed);
+
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
+
 }

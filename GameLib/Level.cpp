@@ -16,19 +16,15 @@
 
 using namespace std;
 
-//Working with the idea of a switch case, currently trying
-//to figure out where the commandevent function would be binded from
+///  The time the text appears on screen
+const double TextOnScreenDuration = 2.0;
 
-//Update - currently bound in GameView class for Level0 only
-//works on event as anticipated, trying to figure out what this class would
-//do with that information, or if that's the appropriate place for the function
-//For clarity: added Line 21, and Lines 24-26 to GameView
 
 /// Font size for the level name
-const int LevelNameFontSize = 50;
+const int LevelNameFontSize = 100;
 
 /// Level name Font Color
-const wxColour LevelNameFontColor = wxColour(0, 200, 200);
+const wxColour LevelNameFontColor = wxColour(27, 200, 255);
 
 /// Level name X coord
 const static int LevelNameX = 625;
@@ -53,6 +49,10 @@ Level::Level(const Level &original)
     mNumOfProgramme = original.mNumOfProgramme;
     mNumOfBugs = original.mNumOfBugs;
     mPlayingArea = original.mPlayingArea;
+    mIsStart = original.mIsStart;
+    mType = original.mType;
+    mNumofFeatures = original.mNumofFeatures;
+    mTextDuration = original.mTextDuration;
 }
 
 /**
@@ -161,6 +161,25 @@ void Level::XmlBug(wxXmlNode *node)
 
 
 }
+
+/**
+ * Update the text in time
+ *@param elaped  time to update
+ */
+void Level::Update(double elapsed)
+{
+    mTextDuration += elapsed;
+    if (mIsStart)
+    {
+        if (mTextDuration > TextOnScreenDuration)
+        {
+            mIsStart = false;
+            mTextDuration = 0;
+            mState = State::PLAYING;
+        }
+    }
+
+}
 /**
  * To read and draw Programme
  * @param node
@@ -168,13 +187,13 @@ void Level::XmlBug(wxXmlNode *node)
 void Level::XmlProgram(wxXmlNode *node)
 {
     mNumOfProgramme ++;
-//    shared_ptr<Item> item;
-//    item = make_shared<Program>(mPlayingArea);
-//    if(item != nullptr)
-//    {
-//        mPlayingArea->Add(item);
-//        item->XmlLoad(node);
-//    }
+    shared_ptr<Item> item;
+    item = make_shared<Program>(mPlayingArea);
+    if(item != nullptr)
+    {
+        mPlayingArea->Add(item);
+        item->XmlLoad(node);
+    }
 
 }
 /**
@@ -297,18 +316,22 @@ Level::~Level()
  * Draws the level name onscreen before level start
  * @param graphics the graphics context to draw on
  */
-void Level::DrawLevelName(wxGraphicsContext &graphics)
+void Level::DrawLevelName(std::shared_ptr<wxGraphicsContext> &graphics)
 {
-    graphics.SetFont(wxFont(wxSize(0, LevelNameFontSize), wxFONTFAMILY_SWISS,
-                             wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), LevelNameFontColor);
-
-    double width, length;
-    graphics.GetTextExtent(mType, &width, &length);
-
-    while(mStopWatch.Time() != 2)
+    if (mIsStart)
     {
-        graphics.DrawText(mType, LevelNameX - width/2, LevelNameY - length/2);
+        graphics->SetFont(wxFont(wxSize(0, LevelNameFontSize), wxFONTFAMILY_SWISS,
+                                wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), LevelNameFontColor);
+
+        double width, length;
+        graphics->GetTextExtent(wxString::Format(mType), &width, &length);
+        graphics->DrawText(wxString::Format(mType), LevelNameX - (width/2), LevelNameY - (length/2));
     }
-    mStopWatch.Pause();
+
+//    while(mStopWatch.Time() != 2)
+//    {
+//        graphics.DrawText(mType, LevelNameX - (width/2), LevelNameY - (length/2));
+//    }
+//    mStopWatch.Pause();
 }
 

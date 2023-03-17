@@ -41,6 +41,9 @@ private:
     ///Current level being played
     int mLevelNum;
 
+    /// for level start boolean
+    bool mLevelStart = false;
+
 
 public:
     /**
@@ -69,6 +72,16 @@ public:
 	std::shared_ptr<Item> DoubleClick(double virX, double virY);
 
 	void Accept(ItemVisitor* visitor);
+
+    void LevelStart(bool value);
+
+    bool GetLevelStart(){ return mLevelStart;}
+
+    void SetTextDuration(double duration);
+
+    void Clear();
+
+    void Update(double elapsed);
 };
 
 

@@ -15,7 +15,7 @@ const std::wstring ProgramImage = L"images/laptop.png";
 const int ProgramNameFontSize = 22;
 
 /// Program font color
-const wxColour ProgramFontColor = wxColour(0 ,0, 0);
+const wxColour ProgramFontColor = wxColour(*wxWHITE);
 
 
 
@@ -25,6 +25,7 @@ const wxColour ProgramFontColor = wxColour(0 ,0, 0);
  */
 Program::Program(PlayingArea *area) : Item(area, ProgramImage)
 {
+
 }
 
 /**
@@ -33,13 +34,25 @@ Program::Program(PlayingArea *area) : Item(area, ProgramImage)
  */
 void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-    this->Draw(graphics);
+
+    if(mProgrammeBitmap.IsNull())
+    {
+        mProgrammeBitmap = graphics->CreateBitmapFromImage(*mProgrammeImage);
+    }
+
+    // Step 2: Get the dimensions of the image
+    wxSize imageSize = mProgrammeImage->GetSize();
+
+    // Step 4: Draw the image at the calculated position
+    graphics->DrawBitmap(mProgrammeBitmap, GetX()-(imageSize.GetWidth() / 2), GetY()-(imageSize.GetHeight() / 2),
+                         imageSize.GetWidth(), imageSize.GetHeight());
+
     graphics->SetFont(wxFont(ProgramNameFontSize, wxFONTFAMILY_SWISS,
                              wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), ProgramFontColor);
 
     double width, length;
     graphics->GetTextExtent(mProgramName, &width, &length);
-    graphics->DrawText(mProgramName, this->GetX() / 2, this->GetY() / 2);
+    graphics->DrawText(mProgramName, GetX() -(width/2), GetY() -(length/ 2));
 
 }
 
@@ -51,5 +64,7 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 void Program::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
-    mProgramName = node->GetAttribute(L"name", L"test");
+    mProgrammeImage = std::make_shared<wxImage>();
+    mProgrammeImage->LoadFile(wxString(ProgramImage), wxBITMAP_TYPE_PNG);
+    mProgramName = node->GetAttribute("name");
 }

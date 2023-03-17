@@ -36,7 +36,15 @@ void GameView::Initialize(wxFrame* mainFrame) {
 	Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
 	Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
 	Bind(wxEVT_LEFT_DCLICK, &GameView::OnLeftDouble, this);
+    Bind(wxEVT_TIMER, &GameView::OnTimer, this);
 
+    mTimer.SetOwner(this);
+
+    mTimer.Start(FrameDuration);
+
+
+
+    mStopWatch.Start();
 }
 
 /**
@@ -82,11 +90,6 @@ void GameView::OnLevel3 (wxCommandEvent &event)
 void GameView::OnPaint(wxPaintEvent& event)
 {
 
-	auto newTime = mStopWatch.Time();
-	auto elapsed = (double)(newTime - mTime) * 0.001;
-	mTime = newTime;
-	mGame.Update(elapsed);
-
     // Create a double-buffered display context
     wxAutoBufferedPaintDC dc(this);
 
@@ -94,6 +97,13 @@ void GameView::OnPaint(wxPaintEvent& event)
     wxBrush background(*wxBLACK);
     dc.SetBackground(background);
     dc.Clear();
+
+    auto newTime = mStopWatch.Time();
+    auto elapsed = (double)(newTime - mTime) * 0.001;
+    mTime = newTime;
+
+    mGame.Update(elapsed);
+
 
     // Create a graphics context
     auto gc =
@@ -113,7 +123,7 @@ void GameView::OnPaint(wxPaintEvent& event)
 void GameView::OnTimer(wxTimerEvent& event)
 {
 	//Currently commented out so you can exit the program
-	//Refresh();
+	Refresh();
 }
 /**
  * Add menus specific to the view

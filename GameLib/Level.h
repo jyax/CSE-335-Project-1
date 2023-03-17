@@ -21,23 +21,25 @@ private:
 
 	/// The game this level is part of
 	PlayingArea *mPlayingArea;
-
-	/// The normal levels of the game
-	enum class LevelNum {Zero, One, Two};
-
-	/// The game level: Zero, One, Two
-	LevelNum mNum = LevelNum::Zero;
-
-    /// Measures elapsed time
-    wxStopWatch mStopWatch;
-    /// Logged Stop Watch time
-    long mTime = 0;
-
     int mNumOfProgramme = 0; ///< number of programmes in the level
     int mNumOfBugs = 0; ///< number of bugs in the level
     int mNumofFeatures = 0; ///< number of features in the level
 
     wxString mType;  ///< for the levelstart text
+
+    /// Duration that the text appears
+    double mTextDuration = 0;
+
+    ///Checker variable for start text.
+    bool mIsStart = true;
+
+    enum State{
+        STARTING,
+        PLAYING,
+        FINISHED
+    };
+
+    State mState = State::STARTING;
 
 public:
 
@@ -63,7 +65,7 @@ public:
 
 	void Load(int mNum);
 
-    void DrawLevelName(wxGraphicsContext &graphics);
+    void DrawLevelName(std::shared_ptr<wxGraphicsContext> &graphics);
 
     void ReadLevel(const std::wstring filename);
 
@@ -93,6 +95,21 @@ public:
 	 * @return the level start text
 	 */
     wxString GetMType(){return mType;}
+
+    void SetTextDuration(double duration)
+    {
+        mTextDuration = duration;
+        if( mTextDuration == 0.0){
+            mIsStart = true;
+        }
+
+    }
+
+    /**
+    * update function for text
+    * @param elapsed Elapsed time in seconds
+    */
+    void Update(double elapsed);
 
 
 };

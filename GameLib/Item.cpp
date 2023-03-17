@@ -75,17 +75,17 @@ bool Item::DoubleClickTest(double x, double y) // Implement only for fat bugs, r
  */
 void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-	// only initialize when drawing required
-	if(mItemBitmap.IsNull())
-	{
-		mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
-	}
-
-	double wid = mItemImage->GetWidth();
-	double hit = mItemImage->GetHeight();
-
-	// Draws from top left corner
-	graphics->DrawBitmap(mItemBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
+//	// only initialize when drawing required
+//	if(mItemBitmap.IsNull())
+//	{
+//		mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
+//	}
+//
+//	double wid = mItemImage->GetWidth();
+//	double hit = mItemImage->GetHeight();
+//
+//	// Draws from top left corner
+//	graphics->DrawBitmap(mItemBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
 }
 
 /**

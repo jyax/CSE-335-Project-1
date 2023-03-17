@@ -47,7 +47,7 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void XmlLoad(wxXmlNode *node);
+    void XmlLoad(wxXmlNode *node) override;
 
 };
 

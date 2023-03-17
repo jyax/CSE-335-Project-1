@@ -8,7 +8,7 @@
 #include <wx/graphics.h>
 #include "Game.h"
 #include <wx/graphics.h>
-#include "item.h"
+
 
 
 using namespace std;
@@ -113,11 +113,7 @@ void Game::MoveToFront(std::shared_ptr<Item> item)
  */
 void Game::Update(double elapsed)
 {
-
-    for (auto item : mPlayingArea.GetItemList())
-    {
-        item->Update(elapsed);
-    }
+    mPlayingArea.Update(elapsed);
 }
 /**
  * Sets the level and passes the xmlfile to Level
@@ -125,5 +121,14 @@ void Game::Update(double elapsed)
  */
 void Game::SetLevel(int level)
 {
+
+    if (mPlayingArea.GetLevelStart()) {
+        mPlayingArea.Clear();
+        mPlayingArea.LevelStart(false);
+    }
     mPlayingArea.SetLevel(level);
+    mPlayingArea.SetTextDuration(0.0);
+    mPlayingArea.LevelStart(true);
+
+
 }
