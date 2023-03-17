@@ -24,3 +24,12 @@ const int NullBugNumSpriteImages = 6;
 NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName, NullBugNumSpriteImages)
 {
 }
+
+/**
+* Load attributes for null bug
+*/
+void NullBug::XmlLoad(wxXmlNode *node)
+{
+    Bug::XmlLoad(node);
+
+}

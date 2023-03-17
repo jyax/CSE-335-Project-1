@@ -32,6 +32,7 @@ public:
      * @param visitor The visitor we accept
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitNull(this);}
+    void XmlLoad(wxXmlNode* node) override;
 };
 
 #endif //PROJECT1_GAMELIB_NULLBUG_H

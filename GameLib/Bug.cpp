@@ -94,9 +94,13 @@ void Bug::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
 
-    int speed;
+    int speed, start;
     node->GetAttribute(L"speed",L"0").ToInt(&speed);
+    node->GetAttribute(L"start",L"0").ToInt(&start);
+
     mSpeed = (int)speed;
+
+
 
 
 }

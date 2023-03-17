@@ -26,3 +26,13 @@ const int GarbageBugNumSpriteImages = 6;
 GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName, GarbageBugNumSpriteImages)
 {
 }
+
+/**
+* Load attributes for a Garbage Bug
+ *
+ * @param node The xml node we are loading attributes from
+*/
+void GarbageBug::XmlLoad(wxXmlNode *node)
+{
+    Bug::XmlLoad(node);
+}
