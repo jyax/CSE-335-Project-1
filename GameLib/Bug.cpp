@@ -2,6 +2,7 @@
  * @file Bug.cpp
  * @author Alexandra Bannon
  * @author Nicole Kuang
+ * @author Jacob Yax
  */
 
 #include "pch.h"

@@ -2,6 +2,7 @@
  * @file Bug.h
  * @author Alexandra Bannon
  * @author Nicole Kuang
+ * @author Jacob Yax
  *
  * Base class for the bugs in the game inherited from Item
  */
