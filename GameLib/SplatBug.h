@@ -22,9 +22,6 @@ private:
 	/// The game item to be squashed
 	Item* mSquashed = nullptr;
 
-	/// Check if this bug is a feature or not
-	bool mIsFeature = false;
-
 public:
 	SplatBug(std::shared_ptr<Item> item);
 
