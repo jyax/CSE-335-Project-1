@@ -76,6 +76,12 @@ public:
 	 * @param visitor a visitor for the collection
 	 */
 	void Accept(ItemVisitor* visitor) {mPlayingArea.Accept(visitor);}
+
+	/**
+	 * Getter for the scoreboard
+	 * @return a pointer to the scoreboard
+	 */
+	ScoreBoard* GetScoreboard() {return &mScoreBoard;}
 };
 
 #include <wx/graphics.h>
