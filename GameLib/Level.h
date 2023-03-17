@@ -70,9 +70,28 @@ public:
     /** get levelType for leveltext */
     wxString GetLevelType(){ return mType;}
 
+	/**
+	 * Getter for number of programs
+	 * @return number of programs
+	 */
     int GetNumOfProgram(){return mNumOfProgramme;}
+
+	/**
+	 * Getter for number of bugs
+	 * @return number of bugs
+	 */
     int GetNumOfBug(){return mNumOfBugs;}
+
+	/**
+	 * Getter for number of features
+	 * @return number of features
+	 */
     int GetNumOfFeature(){return mNumofFeatures;}
+
+	/**
+	 * Getter for level start text
+	 * @return the level start text
+	 */
     wxString GetMType(){return mType;}
 
 

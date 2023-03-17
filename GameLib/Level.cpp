@@ -293,6 +293,10 @@ Level::~Level()
 {
 }
 
+/**
+ * Draws the level name onscreen before level start
+ * @param graphics the graphics context to draw on
+ */
 void Level::DrawLevelName(wxGraphicsContext &graphics)
 {
     graphics.SetFont(wxFont(wxSize(0, LevelNameFontSize), wxFONTFAMILY_SWISS,
