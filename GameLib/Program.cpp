@@ -42,3 +42,14 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     graphics->DrawText(mProgramName, this->GetX() / 2, this->GetY() / 2);
 
 }
+
+/**
+* Load attributes for a Program
+ *
+ * @param node The xml node we are loading attributes from
+*/
+void Program::XmlLoad(wxXmlNode *node)
+{
+    Item::XmlLoad(node);
+    mProgramName = node->GetAttribute(L"name", L"test");
+}

@@ -15,7 +15,7 @@
  */
 class Program : public Item {
 private:
-    std::wstring mProgramName = L"Test";
+    std::wstring mProgramName;
 
 public:
     /// Default Constructor (disabled)
@@ -29,6 +29,8 @@ public:
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
 	void Accept(ItemVisitor* visitor) override {visitor->VisitProgram(this);}
+
+    void XmlLoad(wxXmlNode *node) override;
 
 	/**
     * checks if item is program

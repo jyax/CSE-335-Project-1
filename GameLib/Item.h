@@ -98,7 +98,7 @@ public:
      */
 	virtual void Update(double elapsed) {}
 
-    void XmlLoad(wxXmlNode *node);
+    virtual void XmlLoad(wxXmlNode *node);
 
 	/**
      * Accept a visitor

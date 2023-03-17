@@ -47,6 +47,8 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+    void XmlLoad(wxXmlNode *node);
+
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

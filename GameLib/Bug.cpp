@@ -84,3 +84,19 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	graphics->DrawBitmap(this->GetBitmap(), int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
 	graphics->PopState();
 }
+
+/**
+* Load attributes for a Bug
+ *
+ * @param node The xml node we are loading attributes from
+*/
+void Bug::XmlLoad(wxXmlNode *node)
+{
+    Item::XmlLoad(node);
+
+    int speed;
+    node->GetAttribute(L"speed",L"0").ToInt(&speed);
+    mSpeed = (int)speed;
+
+
+}
