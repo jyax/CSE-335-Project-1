@@ -25,7 +25,8 @@ const wxColour ProgramFontColor = wxColour(*wxWHITE);
  */
 Program::Program(PlayingArea *area) : Item(area, ProgramImage)
 {
-
+    mProgrammeImage = std::make_shared<wxImage>();
+    mProgrammeImage->LoadFile(wxString(ProgramImage), wxBITMAP_TYPE_PNG);
 }
 
 /**
@@ -64,7 +65,6 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 void Program::XmlLoad(wxXmlNode *node)
 {
     Item::XmlLoad(node);
-    mProgrammeImage = std::make_shared<wxImage>();
-    mProgrammeImage->LoadFile(wxString(ProgramImage), wxBITMAP_TYPE_PNG);
+
     mProgramName = node->GetAttribute("name");
 }
