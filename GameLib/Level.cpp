@@ -3,6 +3,7 @@
  * @author Jacob Meier
  * @author Nicole Kuang
  * @author Gaya Kanagaraj
+ * @author Jacob Yax
  */
 
 #include "pch.h"

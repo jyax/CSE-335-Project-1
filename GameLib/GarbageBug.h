@@ -2,6 +2,7 @@
  * @file GarbageBug.h
  * @author Alexandra Bannon
  * @author Nicole Kuang
+ * @author Jacob Yax
  *
  * Class for the GarbageBug inherited from Bug
  *

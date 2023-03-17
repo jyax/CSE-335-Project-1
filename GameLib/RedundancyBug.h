@@ -2,6 +2,7 @@
  * @file RedundancyBug.h
  * @author Alexandra Bannon
  * @author Nicole Kuang
+ * @author Jacob Yax
  *
  * Class for the RedundancyBug inherited from Bug
  *
@@ -31,7 +32,11 @@ public:
      * @param visitor The visitor we accept
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitRedundancy(this);}
+
+    bool HitTest(double x, double y) override;
+
     void XmlLoad(wxXmlNode* node) override;
+
 };
 
 #endif //PROJECT1_GAMELIB_REDUNDANCYBUG_H

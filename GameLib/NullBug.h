@@ -2,6 +2,7 @@
  * @file NullBug.h
  * @author Alexandra Bannon
  * @author Nicole Kuang
+ * @author Jacob Yax
  *
  * Class for the NullBug inherited from Bug
  *
