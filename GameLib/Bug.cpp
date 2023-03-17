@@ -25,8 +25,9 @@ const int BugHitRange = 50;
  */
 Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(area, filename)
 {
-	mSpeed = BugSpeed;
+	//mSpeed = BugSpeed;
 	mFrames = frames;
+	//mStopWatch.Start();
 }
 
 /**
@@ -39,7 +40,14 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
 	//Currently commented out so you can exit the program
-	//SetLocation(GetX()+elapsed*mSpeed, GetY()+elapsed*mSpeed);
+
+
+	SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
+
+	//mIteration does 'something' for animation. I had it incrementing with modulo to loop
+	//i.e. mIteration = (int(mIteration)+1) % 5;
+	//but that only sort of worked. I  also think the null bug frames/rectangles need to be adjusted
+	//as they might be too big - a weird clipping happens to them
 }
 
 /**
@@ -99,7 +107,8 @@ void Bug::XmlLoad(wxXmlNode *node)
     node->GetAttribute(L"speed",L"0").ToInt(&speed);
     node->GetAttribute(L"start",L"0").ToInt(&start);
 
-    mSpeed = (int)speed;
+	mSpeed = (int)speed;
+	mStart = (int)start;
 
 
 

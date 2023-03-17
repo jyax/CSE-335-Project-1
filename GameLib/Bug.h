@@ -31,6 +31,10 @@ private:
 
 	///number of frames the bug has
 	double mFrames;
+	///Start time of the bug
+	double mStart;
+
+	//wxStopWatch mStopWatch;
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
