@@ -17,10 +17,12 @@ public:
 	virtual void VisitFeature(Feature* feature) override {mNumFeatures++;}
 	virtual void VisitGarbage(GarbageBug* bug) override {mNumGarbages++;}
 	virtual void VisitNull(NullBug* bug) override {mNumNulls++;}
+	virtual void VisitProgram(Program* program) override {mNumPrograms++;}
 
 	int mNumFeatures = 0;
 	int mNumGarbages = 0;
 	int mNumNulls = 0;
+	int mNumPrograms = 0;
 };
 
 // Test to see if visitor goes to each bug
@@ -43,6 +45,7 @@ TEST(PlayingAreaTest, Visitor)
 	ASSERT_EQ(1, visitor.mNumFeatures);
 	ASSERT_EQ(1, visitor.mNumGarbages);
 	ASSERT_EQ(1, visitor.mNumNulls);
+	ASSERT_EQ(1, visitor.mNumPrograms);
 
 	// Empty playing area
 	PlayingArea area2;
@@ -52,6 +55,7 @@ TEST(PlayingAreaTest, Visitor)
 	ASSERT_EQ(0, visitor2.mNumFeatures);
 	ASSERT_EQ(0, visitor2.mNumGarbages);
 	ASSERT_EQ(0, visitor2.mNumNulls);
+	ASSERT_EQ(0, visitor2.mNumPrograms);
 }
 
 // Test to see if we are able to click in the playing area
@@ -65,5 +69,12 @@ TEST(PlayingAreaTest, SingleClickTest)
 	area.Add(bug);
 	bug->SetLocation(100, 100);
 
-	ASSERT_TRUE(area.SingleClick(100, 100) == bug);
+	// Directly on bug
+	ASSERT_EQ(area.SingleClick(100, 100), bug);
+
+	// In range
+	ASSERT_EQ(area.SingleClick(130, 120), bug);
+
+	// Out of range
+	ASSERT_EQ(area.SingleClick(150, 100), nullptr);
 }
