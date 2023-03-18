@@ -1,7 +1,9 @@
 /**
  * @file LevelTest.cpp
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  */
+
 #include "pch.h"
 #include <wx/xml/xml.h>
 #include <gtest/gtest.h>
@@ -18,8 +20,14 @@ protected:
     PlayingArea* mArea;
     Level* mLevel;
 };
+
 // Tests the ReadLevel method
-TEST_F(LevelTest, ReadLevelTest) {
+TEST_F(LevelTest, ReadLevelTest)
+{
+	// Test on an empty level
+	ASSERT_EQ(mLevel->GetNumOfBug(), 0);
+	ASSERT_EQ(mLevel->GetNumOfFeature(), 0);
+	ASSERT_EQ(mLevel->GetNumOfProgram(), 0);
 
     // Test loading a valid level
     mLevel->ReadLevel(L"data/level2.xml");

@@ -52,18 +52,3 @@ TEST(ItemTest, GetSetLocation)
 	ASSERT_NEAR(-72, item.GetX(), 0.0001);
 	ASSERT_NEAR(-107, item.GetY(), 0.0001);
 }
-
-// Uncomment when bugs can be drawn in the game
-/*TEST(ItemTest, HitTest)
-{
-	PlayingArea area;
-	ItemMock item(&area);
-
-	item.SetLocation(305, 243);
-
-	ASSERT_TRUE(item.HitTest(305, 243));
-
- 	ASSERT_FALSE(item.HitTest(400, 200));
-
- 	ASSERT_FALSE(item.HitTest(100, 240));
-}*/
