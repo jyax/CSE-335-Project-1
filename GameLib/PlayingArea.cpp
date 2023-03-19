@@ -9,6 +9,7 @@
 #include "pch.h"
 #include <wx/graphics.h>
 #include "PlayingArea.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -239,6 +240,10 @@ void PlayingArea::Squash(std::shared_ptr<Item> bug)
 			// Swap the image
 
 			// increment the score
+			mGame->GetScoreboard()->CalculateScore(true, false, false);
+
+			// if we hit a feature,
+			//mGame->GetScoreboard()->CalculateScore(false, true, false);
 		}
 	}
 }
