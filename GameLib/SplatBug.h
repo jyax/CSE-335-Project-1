@@ -26,6 +26,8 @@ private:
 
 	bool mIsProgram = false;
 
+	bool mIsFat = false;
+
 public:
 	//SplatBug(std::shared_ptr<Item> item);
 
@@ -34,6 +36,8 @@ public:
 	bool IsFeature() {return mIsFeature;}
 
 	bool IsProgram() {return mIsProgram;}
+
+	bool IsFat() {return mIsFat;}
 
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;

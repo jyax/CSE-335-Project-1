@@ -75,6 +75,12 @@ public:
 	 * @param hit bug's hit status
 	 */
 	void SetIsHit(bool hit) {mIsHit = hit;}
+
+	/**
+	 * Is the bug a fat bug?
+	 * @return true if yes, false otherwise
+	 */
+	bool GetIsFatBug() {return mIsFatBug;}
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

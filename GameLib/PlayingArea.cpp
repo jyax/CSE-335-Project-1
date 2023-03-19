@@ -283,5 +283,14 @@ void PlayingArea::Squash(std::shared_ptr<Item> bug) // NOT DONE!!!
  */
 void PlayingArea::FixCode(std::shared_ptr<Item> bug)
 {
+	for (auto item : mItems)
+	{
+		if (item == bug)
+		{
+			SplatBug visitor;
+			bug->Accept(&visitor);
 
+
+		}
+	}
 }
