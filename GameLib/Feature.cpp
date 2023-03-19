@@ -23,4 +23,5 @@ const int FeatureNumSpriteImages = 7;
  */
 Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName, FeatureNumSpriteImages	)
 {
+	mSplatImage = std::make_shared<wxImage>(FeatureSplatImageName, wxBITMAP_TYPE_ANY);
 }

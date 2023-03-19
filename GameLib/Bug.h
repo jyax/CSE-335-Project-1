@@ -39,6 +39,9 @@ private:
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
 
+	// The underlying splatted image
+	std::shared_ptr<wxImage> mSplatImage;
+
 public:
 	/// Default constructor (disabled)
 	Bug() = delete;
