@@ -9,6 +9,8 @@
 #include "pch.h"
 #include <wx/graphics.h>
 #include "PlayingArea.h"
+#include "Game.h"
+#include "SplatBug.h"
 
 using namespace std;
 
@@ -239,5 +241,38 @@ void PlayingArea::MoveItem(std::shared_ptr<Item> item)
 	{
 		mItems.erase(loc);
 		mItems.push_back(item);
+	}
+}
+
+
+/**
+ * Squashes the bug that is clicked on
+ * @param bug the bug to be squashed
+ */
+void PlayingArea::Squash(std::shared_ptr<Item> bug) // NOT DONE!!!
+{
+	for (auto item : mItems)
+	{
+		if (item == bug)
+		{
+			SplatBug visitor;
+			bug->Accept(&visitor); // only visit the hit item
+
+			// only squash if the item isn't a program
+			if (!visitor.IsProgram())
+			{
+				// Swap out image - NOT DONE!!!
+
+
+				if (visitor.IsFeature()) // May put code in VisitFeature() in the future
+				{
+					// if we hit a feature,
+					mGame->GetScoreboard()->CalculateScore(false, true, false);
+				}
+				else // hit a garbage/null/redundancy bug
+					mGame->GetScoreboard()->CalculateScore(true, false, false);
+			}
+
+		}
 	}
 }

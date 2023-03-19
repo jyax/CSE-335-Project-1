@@ -83,6 +83,8 @@ public:
 
     void Update(double elapsed);
 
+	void Squash(std::shared_ptr<Item> bug);
+
 	void MoveItem(std::shared_ptr<Item> item);
 };
 

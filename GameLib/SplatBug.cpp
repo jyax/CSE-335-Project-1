@@ -5,15 +5,19 @@
 
 #include "pch.h"
 #include "SplatBug.h"
+#include "Feature.h"
+#include "GarbageBug.h"
+#include "NullBug.h"
+#include "RedundancyBug.h"
 
 /**
  * Constructor
  * @param item the game item clicked on
  */
-SplatBug::SplatBug(std::shared_ptr<Item> item)
+/*SplatBug::SplatBug(std::shared_ptr<Item> item)
 {
 	mItem = item;
-}
+}*/
 
 /**
  * Visit a GarbageBug object
@@ -21,11 +25,7 @@ SplatBug::SplatBug(std::shared_ptr<Item> item)
  */
 void SplatBug::VisitGarbage(GarbageBug *bug)
 {
-	// Check if the game item is a garbage bug - PROBLEM HERE!!!
-	//if (mItem.get() == bug)
-	//{
-		//mSquashed = bug;
-	//}
+	bug->SetIsHit(true);
 }
 
 /**
@@ -34,7 +34,7 @@ void SplatBug::VisitGarbage(GarbageBug *bug)
  */
 void SplatBug::VisitNull(NullBug *bug)
 {
-	ItemVisitor::VisitNull(bug);
+	bug->SetIsHit(true);
 }
 
 /**
@@ -43,7 +43,7 @@ void SplatBug::VisitNull(NullBug *bug)
  */
 void SplatBug::VisitRedundancy(RedundancyBug *bug)
 {
-	ItemVisitor::VisitRedundancy(bug);
+	bug->SetIsHit(true);
 }
 
 /**
@@ -52,7 +52,17 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
  */
 void SplatBug::VisitFeature(Feature *feature)
 {
-	ItemVisitor::VisitFeature(feature);
+	mIsFeature = true;
+	feature->SetIsHit(true);
+}
+
+/**
+ * Visit a Program object
+ * @param program the program to visit
+ */
+void SplatBug::VisitProgram(Program *program)
+{
+	mIsProgram = true;
 }
 
 void SplatBug::Squash()

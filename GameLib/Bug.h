@@ -36,8 +36,17 @@ private:
 
 	//wxStopWatch mStopWatch;
 
+	/// Check if this bug was squashed
+	bool mIsHit = false;
+
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
+
+	/// The underlying splatted image
+	std::shared_ptr<wxImage> mSplatImage;
+
+	/// The bitmap to display for the splatted bug
+	wxGraphicsBitmap mSplatBitmap;
 
 public:
 	/// Default constructor (disabled)
@@ -54,6 +63,17 @@ public:
 
     void XmlLoad(wxXmlNode *node) override;
 
+	/**
+	 * Get the hit status of the bug
+	 * @return bug's hit status
+	 */
+	bool GetIsHit() {return mIsHit;}
+
+	/**
+	 * Set the hit status of the bug
+	 * @param hit bug's hit status
+	 */
+	void SetIsHit(bool hit) {mIsHit = hit;}
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

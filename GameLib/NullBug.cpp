@@ -24,6 +24,7 @@ const int NullBugNumSpriteImages = 6;
  */
 NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName, NullBugNumSpriteImages)
 {
+	mSplatImage = std::make_shared<wxImage>(NullBugSplatImageName, wxBITMAP_TYPE_ANY);
 }
 
 /**
