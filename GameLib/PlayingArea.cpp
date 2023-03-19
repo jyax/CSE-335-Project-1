@@ -232,22 +232,30 @@ void PlayingArea::Update(double elapsed)
  * Squashes the bug that is clicked on
  * @param bug the bug to be squashed
  */
-void PlayingArea::Squash(std::shared_ptr<Item> bug)
+void PlayingArea::Squash(std::shared_ptr<Item> bug) // NOT DONE!!!
 {
 	for (auto item : mItems)
 	{
 		if (item == bug)
 		{
 			SplatBug visitor;
-			bug->Accept(&visitor);
+			bug->Accept(&visitor); // only visit the hit item
 
-			if (visitor.IsFeature()) // May put code in VisitFeature() in the future
+			// only squash if the item isn't a program
+			if (!visitor.IsProgram())
 			{
-				// if we hit a feature,
-				mGame->GetScoreboard()->CalculateScore(false, true, false);
+				// Swap out image - NOT DONE!!!
+
+
+				if (visitor.IsFeature()) // May put code in VisitFeature() in the future
+				{
+					// if we hit a feature,
+					mGame->GetScoreboard()->CalculateScore(false, true, false);
+				}
+				else // hit a garbage/null/redundancy bug
+					mGame->GetScoreboard()->CalculateScore(true, false, false);
 			}
-			else // hit a garbage/null/redundancy bug
-				mGame->GetScoreboard()->CalculateScore(true, false, false);
+
 		}
 	}
 }

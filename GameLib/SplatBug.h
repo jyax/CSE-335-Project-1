@@ -24,6 +24,8 @@ private:
 
 	bool mIsFeature = false;
 
+	bool mIsProgram = false;
+
 public:
 	//SplatBug(std::shared_ptr<Item> item);
 
@@ -31,10 +33,13 @@ public:
 
 	bool IsFeature() {return mIsFeature;}
 
+	bool IsProgram() {return mIsProgram;}
+
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;
 	void VisitRedundancy(RedundancyBug* bug) override;
 	void VisitFeature(Feature* feature) override;
+	void VisitProgram(Program* program) override;
 };
 
 #endif //PROJECT1_GAMELIB_SPLATBUG_H

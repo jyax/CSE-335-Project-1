@@ -55,6 +55,15 @@ void SplatBug::VisitFeature(Feature *feature)
 	mIsFeature = true;
 }
 
+/**
+ * Visit a Program object
+ * @param program the program to visit
+ */
+void SplatBug::VisitProgram(Program *program)
+{
+	mIsProgram = true;
+}
+
 void SplatBug::Squash()
 {
 	// Change image
