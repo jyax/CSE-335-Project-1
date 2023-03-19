@@ -80,17 +80,26 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 	double wid = this->GetImage()->GetWidth();
 	double hit = this->GetImage()->GetHeight();
-	double shift = hit/mFrames * (mIteration-1);
+	double figureHit = hit/mFrames;
+	double shift = figureHit * (mIteration-1);
 
-	wxRect rect = wxRect(this->GetX() - wid/2, this->GetX() - hit/2 - shift, wid, hit/mFrames);
+	wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
 	graphics->PushState();  // Save the graphics state
-	graphics->Translate(0, shift);
+
+	graphics->Translate(GetX()/2, GetY());
+	graphics->Rotate(0.5);
+
+	graphics->Translate(0, hit/2 - figureHit/2 - shift);
 	graphics->Clip(rect);
 
+
 	// Draws from top left corner
-	graphics->DrawBitmap(this->GetBitmap(), int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
+	graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
 	graphics->PopState();
 }
+
+
+
 
 
 /**
