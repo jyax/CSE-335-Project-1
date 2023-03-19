@@ -20,6 +20,11 @@ Item::Item(PlayingArea *area, const std::wstring &filename) : mArea(area)
 	mItemImage = make_shared<wxImage>(filename, wxBITMAP_TYPE_ANY);
 }
 
+Item::Item(PlayingArea *area) : mArea(area)
+{
+
+}
+
 
 /**
  * Destructor

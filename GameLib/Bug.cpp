@@ -31,6 +31,15 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
 }
 
 /**
+ * Constructor for Redundancy Fly
+ *
+ * @param area The playing area this is in
+ */
+Bug::Bug(PlayingArea *area) : Item(area)
+{
+}
+
+/**
  * Handle updates in time of the bugs
  *
  * This is called before we draw and allows us to

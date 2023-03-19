@@ -41,6 +41,7 @@ private:
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
+    Bug(PlayingArea *area);
 
 	/// The underlying splatted image
 	std::shared_ptr<wxImage> mSplatImage;
