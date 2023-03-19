@@ -217,9 +217,10 @@ void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 		mGame.MoveToFront(item);
 
 		// Function to destroy the bug (regular bugs only)
-		SplatBug visitor(item);
-		mGame.Accept(&visitor);
-		visitor.Squash();
+		//SplatBug visitor(item);
+		//mGame.Accept(&visitor);
+		//visitor.Squash();
+		mGame.Squash(item);
 
 		Refresh();
 	}

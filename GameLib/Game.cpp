@@ -132,3 +132,12 @@ void Game::SetLevel(int level)
 
 
 }
+
+/**
+ * Send the bug over to PlayingArea to be squashed
+ * @param bug the bug to squash
+ */
+void Game::Squash(std::shared_ptr<Item> bug)
+{
+	mPlayingArea.Squash(bug);
+}

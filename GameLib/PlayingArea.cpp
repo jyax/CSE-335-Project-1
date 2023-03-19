@@ -225,3 +225,20 @@ void PlayingArea::Update(double elapsed)
     }
 
 }
+
+/**
+ * Squashes the bug that is clicked on
+ * @param bug the bug to be squashed
+ */
+void PlayingArea::Squash(std::shared_ptr<Item> bug)
+{
+	for (auto item : mItems)
+	{
+		if (item == bug)
+		{
+			// Swap the image
+
+			// increment the score
+		}
+	}
+}

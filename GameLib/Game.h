@@ -82,6 +82,8 @@ public:
 	 * @return a pointer to the scoreboard
 	 */
 	ScoreBoard* GetScoreboard() {return &mScoreBoard;}
+
+	void Squash(std::shared_ptr<Item> bug);
 };
 
 #include <wx/graphics.h>
