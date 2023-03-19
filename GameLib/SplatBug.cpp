@@ -26,6 +26,9 @@
 void SplatBug::VisitGarbage(GarbageBug *bug)
 {
 	bug->SetIsHit(true);
+
+	if (bug->GetIsFatBug())
+		mIsFat = true;
 }
 
 /**
@@ -35,6 +38,9 @@ void SplatBug::VisitGarbage(GarbageBug *bug)
 void SplatBug::VisitNull(NullBug *bug)
 {
 	bug->SetIsHit(true);
+
+	if (bug->GetIsFatBug())
+		mIsFat = true;
 }
 
 /**

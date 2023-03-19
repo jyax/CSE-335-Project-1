@@ -258,8 +258,8 @@ void PlayingArea::Squash(std::shared_ptr<Item> bug) // NOT DONE!!!
 			SplatBug visitor;
 			bug->Accept(&visitor); // only visit the hit item
 
-			// only squash if the item isn't a program
-			if (!visitor.IsProgram())
+			// only squash if the item isn't a program or is fat
+			if (!visitor.IsProgram() && !visitor.IsFat())
 			{
 				// Swap out image - NOT DONE!!!
 
@@ -290,7 +290,13 @@ void PlayingArea::FixCode(std::shared_ptr<Item> bug)
 			SplatBug visitor;
 			bug->Accept(&visitor);
 
-
+			if (visitor.IsFat())
+			{
+				// Open up dialog box
+				// Create own dialog box class?
+				// Need to work on squashing bug after fixing code.
+				wxMessageBox(L"Sample text", L"Bug Squash IDE");
+			}
 		}
 	}
 }
