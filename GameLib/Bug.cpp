@@ -70,37 +70,49 @@ bool Bug::HitTest(double x, double y)
  */
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-
-
-	// only initialize when drawing required
-	if(this->GetBitmap().IsNull())
+	if (GetIsHit()) // Draw the splat image
 	{
-		this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
+		if (mSplatBitmap.IsNull())
+			mSplatBitmap = graphics->CreateBitmapFromImage(*mSplatImage);
+
+		double wid = mSplatImage->GetWidth();
+		double hit = mSplatImage->GetHeight();
+
+		graphics->DrawBitmap(mSplatBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
+	} else
+	{
+		// only initialize when drawing required
+		if(this->GetBitmap().IsNull())
+		{
+			this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
+		}
+
+		double wid = this->GetImage()->GetWidth();
+		double hit = this->GetImage()->GetHeight();
+		double figureHit = hit/mFrames;
+		double shift = figureHit * (mIteration-1);
+
+		wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
+		graphics->PushState();  // Save the graphics state
+
+		graphics->Translate(GetX()/2, GetY());
+		graphics->Rotate(0.5);
+
+		if (mIsFatBug)
+		{
+			graphics->Scale(1.25, 1.25);
+		}
+
+		graphics->Translate(0, hit/2 - figureHit/2 - shift);
+		graphics->Clip(rect);
+
+
+		// Draws from top left corner
+		graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
+		graphics->PopState();
 	}
 
-	double wid = this->GetImage()->GetWidth();
-	double hit = this->GetImage()->GetHeight();
-	double figureHit = hit/mFrames;
-	double shift = figureHit * (mIteration-1);
 
-	wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
-	graphics->PushState();  // Save the graphics state
-
-	graphics->Translate(GetX()/2, GetY());
-	graphics->Rotate(0.5);
-
-	if (mIsFatBug)
-	{
-		graphics->Scale(1.25, 1.25);
-	}
-
-	graphics->Translate(0, hit/2 - figureHit/2 - shift);
-	graphics->Clip(rect);
-
-
-	// Draws from top left corner
-	graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
-	graphics->PopState();
 }
 
 
