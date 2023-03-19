@@ -89,6 +89,11 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 	graphics->Translate(GetX()/2, GetY());
 	graphics->Rotate(0.5);
 
+	if (mIsFatBug)
+	{
+		graphics->Scale(1.25, 1.25);
+	}
+
 	graphics->Translate(0, hit/2 - figureHit/2 - shift);
 	graphics->Clip(rect);
 
