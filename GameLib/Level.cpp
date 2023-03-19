@@ -151,13 +151,13 @@ void Level::XmlBug(wxXmlNode *node)
     else if (type.Cmp("redundancy") == 0)
     {
         mNumOfBugs++;
-//        shared_ptr<Item> item;
-//        item = make_shared<RedundancyBug>(mPlayingArea);
-//        if(item != nullptr)
-//        {
-//            mPlayingArea->Add(item);
-//            item->XmlLoad(node);
-//            }
+        shared_ptr<Item> item;
+        item = make_shared<RedundancyBug>(mPlayingArea);
+        if(item != nullptr)
+        {
+            mPlayingArea->Add(item);
+            item->XmlLoad(node);
+            }
     }
 
 
