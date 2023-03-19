@@ -7,20 +7,23 @@
 #include "pch.h"
 #include "RedundancyBug.h"
 
+
+using namespace std;
+
 /// The bug base image
-const std::wstring RedundancyFlyImageName = L"redundancy-fly-base.png";
+const std::wstring RedundancyFlyImageName = L"images/redundancy-fly-base.png";
 
 /// The bug top image
-const std::wstring RedundancyFlyTopImageName = L"redundancy-fly-top.png";
+const std::wstring RedundancyFlyTopImageName = L"images/redundancy-fly-top.png";
 
 /// The left wing image
-const std::wstring RedundancyFlyLeftWingImageName = L"redundancy-fly-lwing.png";
+const std::wstring RedundancyFlyLeftWingImageName = L"images/redundancy-fly-lwing.png";
 
 /// The right wing image
-const std::wstring RedundancyFlyRightWingImageName = L"redundancy-fly-rwing.png";
+const std::wstring RedundancyFlyRightWingImageName = L"images/redundancy-fly-rwing.png";
 
 /// The splat image
-const std::wstring RedundancyFlySplatImageName = L"redundancy-fly-splat.png";
+const std::wstring RedundancyFlySplatImageName = L"images/redundancy-fly-splat.png";
 
 /// Wing flapping period in seconds
 const double WingPeriod = 0.2;
@@ -44,6 +47,105 @@ const int FirstWingSetX = -36;
 /// of this is the Y position for the left wings.
 const int WingSetY = 5;
 
+/**
+ * Constructor
+ * @param area Area we are playing in
+ */
+RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area)
+ {
+    SetIsHit(false);
+    mSplatImage = std::make_shared<wxImage>(RedundancyFlySplatImageName, wxBITMAP_TYPE_ANY);
+
+    mRedundancyFlyBaseImage = make_unique<wxImage>(RedundancyFlyImageName, wxBITMAP_TYPE_ANY);
+
+    mRedundancyFlyLeftWingImage = make_unique<wxImage>(RedundancyFlyLeftWingImageName, wxBITMAP_TYPE_ANY);
+
+    mRedundancyFlyRightWingImage = make_unique<wxImage>(RedundancyFlyRightWingImageName, wxBITMAP_TYPE_ANY);
+
+    mRedundancyFlyTopImage = make_unique<wxImage>(RedundancyFlyTopImageName, wxBITMAP_TYPE_ANY);
+ }
+
+//RedundancyBug::RedundancyBug(const RedundancyBug &original)
+//{
+//    mHasMultiplied = original.mHasMultiplied;
+//    mSquashed = original.mSquashed;
+//    mRedundancyFlyLeftWingImage = original.mRedundancyFlyLeftWingImage;
+//    mRedundancyFlyRightWingImage = original.mRedundancyFlyRightWingImage;
+//    mRedundancyFlyTopImage = original.mRedundancyFlyTopImage;
+//    mRedundancyFlyBaseImage = original.mRedundancyFlyBaseImage
+//
+//}
+
+/**
+ * Draw function for Redundancy Bug
+ * @param graphics graphics context to draw on
+ */
+void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
+{
+
+    if(mRedundancyFlyBaseBitmap.IsNull())
+    {
+        mRedundancyFlyBaseBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyBaseImage);
+    }
+    if(mRedundancyFlyTopBitmap.IsNull())
+    {
+        mRedundancyFlyTopBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyTopImage);
+    }
+    if(mRedundancyFlyLeftWingBitmap.IsNull())
+    {
+        mRedundancyFlyLeftWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyLeftWingImage);
+    }
+    if(mRedundancyFlyRightWingBitmap.IsNull())
+    {
+        mRedundancyFlyRightWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyRightWingImage);
+    }
+
+    wxSize baseSize = mRedundancyFlyBaseImage->GetSize();
+
+    graphics->DrawBitmap(mRedundancyFlyBaseBitmap,
+                         GetX() - (baseSize.GetWidth() / 2),
+                         GetY() - (baseSize.GetHeight() / 2),
+                         baseSize.GetWidth(), baseSize.GetHeight());
+
+    wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
+    /// Add in wing portions here
+    for(int offSetValue = FirstWingSetX; offSetValue <= 0; offSetValue+=WingSetXOffset)
+    {
+        graphics->DrawBitmap(mRedundancyFlyLeftWingBitmap,
+                             GetX() - (wingSize.GetWidth() / 2) + offSetValue,
+                             GetY() - (wingSize.GetHeight() / 2) - WingSetY,
+                             wingSize.GetWidth(), wingSize.GetHeight());
+        graphics->DrawBitmap(mRedundancyFlyRightWingBitmap,
+                             GetX() - (wingSize.GetWidth() / 2) + offSetValue,
+                             GetY() - (wingSize.GetHeight() / 2) + WingSetY,
+                             wingSize.GetWidth(), wingSize.GetHeight());
+    }
+
+
+    wxSize topSize = mRedundancyFlyTopImage->GetSize();
+    graphics->DrawBitmap(mRedundancyFlyTopBitmap,
+                         GetX() - (topSize.GetWidth() / 2),
+                         GetY() - (topSize.GetHeight() / 2),
+                         topSize.GetWidth(), topSize.GetHeight());
+
+}
+
+/**
+ * Update function for wings
+ * @param elapsed
+ */
+void RedundancyBug::Update(double elapsed)
+{
+    Bug::Update(elapsed);
+}
+
+/**
+ * Multiply Function when Redundancy Fly is clicked
+ */
+void RedundancyBug::Multiply()
+{
+
+}
 
 /**
 * Load attributes for a Redundancy

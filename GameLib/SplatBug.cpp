@@ -43,7 +43,15 @@ void SplatBug::VisitNull(NullBug *bug)
  */
 void SplatBug::VisitRedundancy(RedundancyBug *bug)
 {
-	bug->SetIsHit(true);
+    if(bug->GetMultiplied())
+    {
+        bug->SetIsHit(true);
+    }
+    else
+    {
+        bug->SetMultiplied(true);
+        bug->Multiply();
+    }
 }
 
 /**

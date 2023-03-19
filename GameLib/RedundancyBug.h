@@ -19,13 +19,32 @@ class RedundancyBug  : public Bug {
 private:
 	/// Has the bug spawned multiples?
 	bool mHasMultiplied;
+    bool mSquashed;
+
+    /// Redundancy Fly Base Image and Bitmap
+    std::unique_ptr<wxImage> mRedundancyFlyBaseImage;
+    wxGraphicsBitmap mRedundancyFlyBaseBitmap;
+
+    ///Redundancy Fly Left Wing Image and Bitmap
+    std::unique_ptr<wxImage> mRedundancyFlyLeftWingImage;
+    wxGraphicsBitmap mRedundancyFlyLeftWingBitmap;
+
+    ///Redundancy Fly Right Wing Image and Bitmap
+    std::unique_ptr<wxImage> mRedundancyFlyRightWingImage;
+    wxGraphicsBitmap mRedundancyFlyRightWingBitmap;
+
+    /// Redundacy Fly Top Image and Bitmap
+    std::unique_ptr<wxImage> mRedundancyFlyTopImage;
+    wxGraphicsBitmap mRedundancyFlyTopBitmap;
 
 public:
 	/// Default constructor (disabled)
 	RedundancyBug() = delete;
 
-	/// Copy constructor (disabled)
-	RedundancyBug(const RedundancyBug &) = delete;
+	/// Copy constructor
+	RedundancyBug(const RedundancyBug &);
+    /// Constructor
+    RedundancyBug(PlayingArea *area);
 
 	/**
      * Accept a visitor
@@ -33,9 +52,15 @@ public:
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitRedundancy(this);}
 
-    bool HitTest(double x, double y) override;
-
     void XmlLoad(wxXmlNode* node) override;
+
+    void Update(double elapsed) override;
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+    bool GetMultiplied() {return mHasMultiplied;};
+    void SetMultiplied(bool mult) {mHasMultiplied = mult;}
+
+    void Multiply();
 
 };
 

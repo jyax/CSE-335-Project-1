@@ -84,7 +84,7 @@ void PlayingArea::Add(shared_ptr<Item> item)
 */
 void PlayingArea::SetLevelFile()
 {
-    mLevelZero->ReadLevel(Level0FileName);
+//    mLevelZero->ReadLevel(Level0FileName);
 //    mLevelOne->ReadLevel(Level1FileName);
 //    mLevelTwo->ReadLevel(Level2FileName);
 //    mLevelThree->ReadLevel(Level3FileName);
