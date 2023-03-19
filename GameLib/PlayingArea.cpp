@@ -237,11 +237,6 @@ void PlayingArea::Update(double elapsed)
 void PlayingArea::MoveItem(std::shared_ptr<Item> item)
 {
 	auto loc = find(begin(mItems), end(mItems), item);
-	if (loc != end(mItems))
-	{
-		mItems.erase(loc);
-		mItems.push_back(item);
-	}
 }
 
 

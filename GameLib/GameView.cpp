@@ -211,23 +211,23 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
  */
 void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	auto item = mGame.SingleClick(event.GetX(), event.GetY());
-	if (item != nullptr)
+	mGrabbedItem = mGame.SingleClick(event.GetX(), event.GetY());
+	if (mGrabbedItem != nullptr)
 	{
 		if(!mGame.getEnableDrag())  //normal fucntion
 		{
-			mGame.MoveToFront(item);
+			mGame.MoveToFront(mGrabbedItem);
 			// Function to destroy the bug (regular bugs only)
 			// SplatBug visitor(item);
 			//mGame.Accept(&visitor);
 			//visitor.Squash();
-			mGame.Squash(item);
+			mGame.Squash(mGrabbedItem);
 
 			Refresh();
 		}
 		else   //for level 3 enable dragging items
 		{
-			mGame.MoveItem(item);
+			mGame.MoveItem(mGrabbedItem);
 		}
 
 	}
@@ -248,7 +248,25 @@ void GameView::OnLeftUp(wxMouseEvent &event)
 */
 void GameView::OnMouseMove(wxMouseEvent &event)
 {
+	// check if there is a current item
+	if (mGrabbedItem != nullptr)
+	{
+		// If an item is being moved, we only continue to
+		// move it while the left button is down.
+		if (event.LeftIsDown())
+		{
+			mGrabbedItem->SetLocation(event.GetX(), event.GetY());
+		}
+		else
+		{
+			// When the left button is released, we release the
+			// item.
+			mGrabbedItem = nullptr;
+		}
 
+		// Force the screen to redraw
+		Refresh();
+	}
 }
 
 /**
@@ -257,10 +275,10 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  */
 void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	auto item = mGame.DoubleClick(event.GetX(), event.GetY());
-	if (item != nullptr)
+	mGrabbedItem = mGame.DoubleClick(event.GetX(), event.GetY());
+	if (mGrabbedItem != nullptr)
 	{
-		mGame.MoveToFront(item);
+		mGame.MoveToFront(mGrabbedItem);
 
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
 		mGame.FixCode(item);

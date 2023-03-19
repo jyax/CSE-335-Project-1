@@ -25,6 +25,9 @@ private:
 	/// The timer that allows for animation
 	wxTimer mTimer;
 
+	/// Any item we are currently dragging
+	std::shared_ptr<Item> mGrabbedItem;
+
 	/// Stopwatch used to measure elapsed time
 	wxStopWatch mStopWatch;
 
