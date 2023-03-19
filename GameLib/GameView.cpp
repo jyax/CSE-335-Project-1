@@ -263,7 +263,7 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 		mGame.MoveToFront(item);
 
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
-
+		mGame.FixCode(item);
 		Refresh();
 	}
 }

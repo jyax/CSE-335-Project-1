@@ -95,6 +95,8 @@ public:
 	void MoveItem(std::shared_ptr<Item> item);
 
 	void Squash(std::shared_ptr<Item> bug);
+
+	void FixCode(std::shared_ptr<Item> bug);
 };
 
 #include <wx/graphics.h>

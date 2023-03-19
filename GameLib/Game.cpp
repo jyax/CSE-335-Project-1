@@ -150,3 +150,12 @@ void Game::Squash(std::shared_ptr<Item> bug)
 {
 	mPlayingArea.Squash(bug);
 }
+
+/**
+ * Send the bug over to PlayingArea to be fixed
+ * @param bug the bug to fix
+ */
+void Game::FixCode(std::shared_ptr<Item> bug)
+{
+	mPlayingArea.FixCode(bug);
+}

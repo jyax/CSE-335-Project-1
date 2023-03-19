@@ -276,3 +276,12 @@ void PlayingArea::Squash(std::shared_ptr<Item> bug) // NOT DONE!!!
 		}
 	}
 }
+
+/**
+ * Bring up a dialog window to fix the fat bug code
+ * @param bug the bug to fix
+ */
+void PlayingArea::FixCode(std::shared_ptr<Item> bug)
+{
+
+}
