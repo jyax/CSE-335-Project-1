@@ -228,6 +228,23 @@ void PlayingArea::Update(double elapsed)
 
 }
 
+
+/**
+ * move an item around the screen when clicked
+ *
+ * @param item the item to be moved
+*/
+void PlayingArea::MoveItem(std::shared_ptr<Item> item)
+{
+	auto loc = find(begin(mItems), end(mItems), item);
+	if (loc != end(mItems))
+	{
+		mItems.erase(loc);
+		mItems.push_back(item);
+	}
+}
+
+
 /**
  * Squashes the bug that is clicked on
  * @param bug the bug to be squashed

@@ -49,6 +49,9 @@ private:
     ///Current level being played
     bool mLevel = false;
 
+	///Enable items to be dragged around the screen
+	bool mEnableDrag = false;
+
 public:
     Game();
 
@@ -72,6 +75,12 @@ public:
     void SetLevel(int level);
 
 	/**
+	 * Getter enable drag
+	 * @return boolean for if items can be dragged or not
+	 */
+	bool getEnableDrag() {return mEnableDrag; }
+
+	/**
 	 * Route the visitor from Game to PlayingArea
 	 * @param visitor a visitor for the collection
 	 */
@@ -82,6 +91,8 @@ public:
 	 * @return a pointer to the scoreboard
 	 */
 	ScoreBoard* GetScoreboard() {return &mScoreBoard;}
+
+	void MoveItem(std::shared_ptr<Item> item);
 
 	void Squash(std::shared_ptr<Item> bug);
 };
