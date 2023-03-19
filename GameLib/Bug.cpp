@@ -41,8 +41,9 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
 	//Currently commented out so you can exit the program
 
+	if (!GetIsHit())
+		SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
 
-	SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
 
 	//mIteration does 'something' for animation. I had it incrementing with modulo to loop
 	//i.e. mIteration = (int(mIteration)+1) % 5;
