@@ -5,6 +5,10 @@
 
 #include "pch.h"
 #include "SplatBug.h"
+#include "Feature.h"
+#include "GarbageBug.h"
+#include "NullBug.h"
+#include "RedundancyBug.h"
 
 /**
  * Constructor
@@ -21,11 +25,7 @@
  */
 void SplatBug::VisitGarbage(GarbageBug *bug)
 {
-	// Check if the game item is a garbage bug - PROBLEM HERE!!!
-	//if (mItem.get() == bug)
-	//{
-		//mSquashed = bug;
-	//}
+	bug->SetIsHit(true);
 }
 
 /**
@@ -34,7 +34,7 @@ void SplatBug::VisitGarbage(GarbageBug *bug)
  */
 void SplatBug::VisitNull(NullBug *bug)
 {
-	ItemVisitor::VisitNull(bug);
+	bug->SetIsHit(true);
 }
 
 /**
@@ -43,7 +43,7 @@ void SplatBug::VisitNull(NullBug *bug)
  */
 void SplatBug::VisitRedundancy(RedundancyBug *bug)
 {
-	ItemVisitor::VisitRedundancy(bug);
+	bug->SetIsHit(true);
 }
 
 /**
@@ -53,6 +53,7 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
 void SplatBug::VisitFeature(Feature *feature)
 {
 	mIsFeature = true;
+	feature->SetIsHit(true);
 }
 
 /**
