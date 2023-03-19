@@ -189,7 +189,7 @@ void GameView::AddShrinkOption(wxCommandEvent& event)
     Refresh();
 }
 /**
- * bind it to the function GaemView::AddShrikOption
+ * bind it to the function GameView::AddShrikOption
  *
  * @param mainFrame The MainFrame object that owns the menu
  * @param menu The Menu we are adding the option to

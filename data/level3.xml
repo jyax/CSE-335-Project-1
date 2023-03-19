@@ -15,6 +15,6 @@
     <bug type="feature" x="1300" y="1100" speed="100" start="8"/>
     <bug type="feature" x="-100" y="700" speed="80" start="12"/>
     <bug type="feature" x="1300" y="-100" speed="140" start="13"/>
-    <!-- <bug type="redundancy" x="660" y="-100" speed="110" start="14"/> -->
+    <bug type="redundancy" x="660" y="-100" speed="110" start="14"/>
   </program>
 </bug-squash>
