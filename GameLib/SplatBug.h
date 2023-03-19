@@ -17,15 +17,19 @@
 class SplatBug : public ItemVisitor {
 private:
 	/// The game item clicked on
-	std::shared_ptr<Item> mItem;
+	//std::shared_ptr<Item> mItem;
 
 	/// The game item to be squashed
-	Item* mSquashed = nullptr;
+	//Item* mSquashed = nullptr;
+
+	bool mIsFeature = false;
 
 public:
-	SplatBug(std::shared_ptr<Item> item);
+	//SplatBug(std::shared_ptr<Item> item);
 
 	void Squash();
+
+	bool IsFeature() {return mIsFeature;}
 
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;

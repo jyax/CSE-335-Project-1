@@ -10,6 +10,7 @@
 #include <wx/graphics.h>
 #include "PlayingArea.h"
 #include "Game.h"
+#include "SplatBug.h"
 
 using namespace std;
 
@@ -237,13 +238,16 @@ void PlayingArea::Squash(std::shared_ptr<Item> bug)
 	{
 		if (item == bug)
 		{
-			// Swap the image
+			SplatBug visitor;
+			bug->Accept(&visitor);
 
-			// increment the score
-			mGame->GetScoreboard()->CalculateScore(true, false, false);
-
-			// if we hit a feature,
-			//mGame->GetScoreboard()->CalculateScore(false, true, false);
+			if (visitor.IsFeature()) // May put code in VisitFeature() in the future
+			{
+				// if we hit a feature,
+				mGame->GetScoreboard()->CalculateScore(false, true, false);
+			}
+			else // hit a garbage/null/redundancy bug
+				mGame->GetScoreboard()->CalculateScore(true, false, false);
 		}
 	}
 }

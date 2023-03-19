@@ -10,10 +10,10 @@
  * Constructor
  * @param item the game item clicked on
  */
-SplatBug::SplatBug(std::shared_ptr<Item> item)
+/*SplatBug::SplatBug(std::shared_ptr<Item> item)
 {
 	mItem = item;
-}
+}*/
 
 /**
  * Visit a GarbageBug object
@@ -52,7 +52,7 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
  */
 void SplatBug::VisitFeature(Feature *feature)
 {
-	ItemVisitor::VisitFeature(feature);
+	mIsFeature = true;
 }
 
 void SplatBug::Squash()
