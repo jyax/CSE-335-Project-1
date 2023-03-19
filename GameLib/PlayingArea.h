@@ -82,6 +82,8 @@ public:
     void Clear();
 
     void Update(double elapsed);
+
+	void MoveItem(std::shared_ptr<Item> item);
 };
 
 

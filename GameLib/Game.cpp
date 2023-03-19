@@ -129,6 +129,15 @@ void Game::SetLevel(int level)
     mPlayingArea.SetLevel(level);
     mPlayingArea.SetTextDuration(0.0);
     mPlayingArea.LevelStart(true);
+}
 
 
+/**
+ * move an item around the screen when clicked
+ *
+ * @param item the item to be moved
+*/
+void Game::MoveItem(std::shared_ptr<Item> item)
+{
+	mPlayingArea.MoveItem(item);
 }

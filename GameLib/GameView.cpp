@@ -214,14 +214,22 @@ void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 	auto item = mGame.SingleClick(event.GetX(), event.GetY());
 	if (item != nullptr)
 	{
-		mGame.MoveToFront(item);
+		if(!mGame.getEnableDrag())  //normal fucntion
+		{
+			mGame.MoveToFront(item);
 
-		// Function to destroy the bug (regular bugs only)
-		SplatBug visitor(item);
-		mGame.Accept(&visitor);
-		visitor.Squash();
+			// Function to destroy the bug (regular bugs only)
+			SplatBug visitor(item);
+			mGame.Accept(&visitor);
+			visitor.Squash();
 
-		Refresh();
+			Refresh();
+		}
+		else   //for level 3 enable dragging items
+		{
+			mGame.MoveItem(item);
+		}
+
 	}
 }
 
