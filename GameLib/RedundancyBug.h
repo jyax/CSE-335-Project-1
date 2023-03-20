@@ -20,6 +20,9 @@ private:
 	/// Has the bug spawned multiples?
 	bool mHasMultiplied;
     bool mSquashed;
+    bool mChangeDirection;
+    double mCurrentWingPeriod = 0;
+    double mDirection = 1;
 
     /// Redundancy Fly Base Image and Bitmap
     std::unique_ptr<wxImage> mRedundancyFlyBaseImage;
@@ -61,6 +64,7 @@ public:
     void SetMultiplied(bool mult) {mHasMultiplied = mult;}
 
     void Multiply();
+    void Reverse();
 
 };
 

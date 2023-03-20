@@ -27,6 +27,10 @@ const std::wstring RedundancyFlySplatImageName = L"images/redundancy-fly-splat.p
 
 /// Wing flapping period in seconds
 const double WingPeriod = 0.2;
+/// FrameRate in seconds
+const double FrameRate = 0.03;
+///Frames for the wings
+const int Frames = WingPeriod / FrameRate;
 
 /// Starting rotation angle for wings in radians
 const double WingRotateStart = 0.0;
@@ -65,6 +69,9 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area)
     mRedundancyFlyTopImage = make_unique<wxImage>(RedundancyFlyTopImageName, wxBITMAP_TYPE_ANY);
  }
 
+ /**
+  * Copy Constructor for the multiplying of the redundancy fly
+  */
 //RedundancyBug::RedundancyBug(const RedundancyBug &original)
 //{
 //    mHasMultiplied = original.mHasMultiplied;
@@ -82,7 +89,7 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area)
  */
 void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
+    /// Handles if there currently isn't a set bitmap for all of the images
     if(mRedundancyFlyBaseBitmap.IsNull())
     {
         mRedundancyFlyBaseBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyBaseImage);
@@ -91,25 +98,22 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     {
         mRedundancyFlyTopBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyTopImage);
     }
-    if(mRedundancyFlyLeftWingBitmap.IsNull())
-    {
-        mRedundancyFlyLeftWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyLeftWingImage);
-    }
-    if(mRedundancyFlyRightWingBitmap.IsNull())
-    {
-        mRedundancyFlyRightWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyRightWingImage);
-    }
 
+    /// Drawing the base image (the body) of the fly
     wxSize baseSize = mRedundancyFlyBaseImage->GetSize();
-
     graphics->DrawBitmap(mRedundancyFlyBaseBitmap,
                          GetX() - (baseSize.GetWidth() / 2),
                          GetY() - (baseSize.GetHeight() / 2),
                          baseSize.GetWidth(), baseSize.GetHeight());
 
+    /// Time to draw the fly wings!
+    mRedundancyFlyLeftWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyLeftWingImage);
+    mRedundancyFlyRightWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyRightWingImage);
+
     wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
-    /// Add in wing portions here
-    for(int offSetValue = FirstWingSetX; offSetValue <= 0; offSetValue+=WingSetXOffset)
+    for(int offSetValue = FirstWingSetX;
+        offSetValue <= FirstWingSetX + WingSetXOffset * (NumberOfSetsOfWings - 1);
+        offSetValue+=WingSetXOffset)
     {
         graphics->DrawBitmap(mRedundancyFlyLeftWingBitmap,
                              GetX() - (wingSize.GetWidth() / 2) + offSetValue,
@@ -121,7 +125,7 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
                              wingSize.GetWidth(), wingSize.GetHeight());
     }
 
-
+    /// Draw Top image of the Fly
     wxSize topSize = mRedundancyFlyTopImage->GetSize();
     graphics->DrawBitmap(mRedundancyFlyTopBitmap,
                          GetX() - (topSize.GetWidth() / 2),
@@ -136,6 +140,18 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
  */
 void RedundancyBug::Update(double elapsed)
 {
+    /// If current elapsed time is greater than the last wing period,
+    /// we set it to a new wing period
+    if(elapsed > mCurrentWingPeriod)
+    {
+        mCurrentWingPeriod += elapsed;
+        Reverse();
+    }
+
+
+    wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
+    wxPoint wingRotationPoint = wxPoint(GetX() - wingSize.GetWidth() / 2,GetY() + wingSize.GetHeight());
+    mRedundancyFlyLeftWingImage->Rotate(mDirection * (WingRotateEnd / Frames), wingRotationPoint);
     Bug::Update(elapsed);
 }
 
@@ -145,6 +161,15 @@ void RedundancyBug::Update(double elapsed)
 void RedundancyBug::Multiply()
 {
 
+}
+
+/**
+ * Reverse wing direction?
+ */
+void RedundancyBug::Reverse()
+{
+    mChangeDirection = mChangeDirection ? false : true;
+    mDirection = mDirection * -1;
 }
 
 /**
