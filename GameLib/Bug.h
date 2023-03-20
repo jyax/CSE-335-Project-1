@@ -16,8 +16,11 @@
 /**
  * Base class for the bugs in the game
  */
-class Bug : public Item {
+class Bug : public Item
+{
 private:
+	///Parent
+	wxXmlNode mParent;
 	///Speed the bug is traveling
 	double mSpeed;
 
@@ -45,7 +48,7 @@ private:
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
-    Bug(PlayingArea *area);
+	Bug(PlayingArea *area);
 
 	/// The underlying splatted image
 	std::shared_ptr<wxImage> mSplatImage;
@@ -54,11 +57,11 @@ protected:
 	wxGraphicsBitmap mSplatBitmap;
 
 public:
-	/// Default constructor (disabled)
-	Bug() = delete;
+	/// Default constructor
+	Bug();
 
-	/// Copy constructor (disabled)
-	Bug(const Bug &) = delete;
+	/// Copy constructor
+	Bug(const Bug &);
 
 	bool HitTest(double x, double y) override;
 
@@ -66,7 +69,7 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void XmlLoad(wxXmlNode *node,std::shared_ptr<Program> program) override;
+	void XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program) override;
 
 	/**
 	 * Get the hit status of the bug

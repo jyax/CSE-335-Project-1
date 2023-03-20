@@ -160,13 +160,27 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
     Item::XmlLoad(node, program);
 
     int speed, start;
-    node->GetAttribute(L"speed",L"0").ToInt(&speed);
-    node->GetAttribute(L"start",L"0").ToInt(&start);
+	node->GetAttribute(L"speed", L"0").ToInt(&speed);
+	node->GetAttribute(L"start", L"0").ToInt(&start);
 
 	mSpeed = (int)speed;
 	mStart = (int)start;
-    mProgram = program;
+	mProgram = program;
 
+}
 
+/**
+ * Copy constructor
+ */
+Bug::Bug(const Bug &)
+{
+
+}
+
+/**
+ * Constructor
+ */
+Bug::Bug()
+{
 
 }
