@@ -99,9 +99,25 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
  */
 void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
-    long x, y;
-    node->GetAttribute(L"x", L"0").ToLong(&x);
-    node->GetAttribute(L"y", L"0").ToLong(&y);
-    mX = (int)x;
-    mY = (int)y;
+	long x, y;
+	node->GetAttribute(L"x", L"0").ToLong(&x);
+	node->GetAttribute(L"y", L"0").ToLong(&y);
+	mX = (int)x;
+	mY = (int)y;
+}
+
+/**
+ * Copy constructor
+ */
+Item::Item(const Item &)
+{
+
+}
+
+/**
+ * Constructor
+ */
+Item::Item()
+{
+
 }
