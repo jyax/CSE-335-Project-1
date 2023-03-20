@@ -70,6 +70,17 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 }
 
 /**
+ * Convert screen coordinates to virtual coordinates
+ * @param x x location in screen coordinates
+ * @param y y location in screen coordinates
+ */
+void Game::SetVirtual(int x, int y)
+{
+	mXVirtual = (x - mXOffset) / mScale;
+	mYVirtual = (y - mYOffset) / mScale;
+}
+
+/**
  * Test an x,y click location to see if clicked
  * on some item in the game.
  * @param x X location in screen coordinate pixels
@@ -79,9 +90,7 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int he
 std::shared_ptr<Item> Game::SingleClick(int x, int y)
 {
 	// Calculate virtual coordinates from screen coordinates
-	mXVirtual = (x - mXOffset) / mScale;
-	mYVirtual = (y - mYOffset) / mScale;
-
+	SetVirtual(x, y);
 	return mPlayingArea.SingleClick(mXVirtual, mYVirtual);
 }
 
@@ -94,9 +103,7 @@ std::shared_ptr<Item> Game::SingleClick(int x, int y)
 */
 std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 {
-	mXVirtual = (x - mXOffset) / mScale;
-	mYVirtual = (y - mYOffset) / mScale;
-
+	SetVirtual(x, y);
 	return mPlayingArea.DoubleClick(mXVirtual, mYVirtual);
 }
 
@@ -108,9 +115,7 @@ std::shared_ptr<Item> Game::DoubleClick(int x, int y)
  */
 void Game::SetLocation(std::shared_ptr<Item> item, int x, int y)
 {
-	mXVirtual = (x - mXOffset) / mScale;
-	mYVirtual = (y - mYOffset) / mScale;
-
+	SetVirtual(x, y);
 	item->SetLocation(mXVirtual, mYVirtual);
 }
 
