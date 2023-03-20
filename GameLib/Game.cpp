@@ -101,6 +101,20 @@ std::shared_ptr<Item> Game::DoubleClick(int x, int y)
 }
 
 /**
+ * Converts screen coords to virtual coords and sends over to Item::SetLocation()
+ * @param item the item to drag
+ * @param x x location in screen coordinates
+ * @param y y location in screen coordinates
+ */
+void Game::SetLocation(std::shared_ptr<Item> item, int x, int y)
+{
+	mXVirtual = (x - mXOffset) / mScale;
+	mYVirtual = (y - mYOffset) / mScale;
+
+	item->SetLocation(mXVirtual, mYVirtual);
+}
+
+/**
  * Moves an item in the game to the front of the screen (end of list) when clicked on
  * @param item pointer to item clicked on
  */
