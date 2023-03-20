@@ -16,6 +16,7 @@
 class Feature : public Bug{
 private:
 
+
 public:
     /// Default Constructor (disabled)
     Feature() = delete;
@@ -30,6 +31,7 @@ public:
      * @param visitor The visitor we accept
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitFeature(this);}
+    void XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program) override;
 };
 
 

@@ -42,12 +42,21 @@ private:
 
     State mState = State::STARTING;
 
-public:
+    /// program this bug belongs to
+    std::shared_ptr<Program> mProgram;
 
-    void XmlProgram(wxXmlNode *node);
+
+public:
+    /// testing purpose
+    std::shared_ptr<Program> GetProgram(){return mProgram;}
+
+    ///Testing purpose
+    wxXmlNode* mNode;
+
+    void XmlProgram(wxXmlNode *node,std::shared_ptr<Program> program);
     void XmlBug(wxXmlNode *node);
     void XmlFeature(wxXmlNode *node);
-    void XmlCode(wxXmlNode *node);
+
     void XmlBeginText(wxXmlNode *node);
 
 	/// Default constructor
@@ -113,6 +122,7 @@ public:
     void Update(double elapsed);
 
 
+    void XmlProgram(wxXmlNode *node);
 };
 
 #endif //PROJECT1_GAMELIB_LEVEL_H

@@ -32,7 +32,8 @@ public:
      * @param visitor The visitor we accept
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitGarbage(this);}
-    void XmlLoad(wxXmlNode* node) override;
+
+    void XmlLoad(wxXmlNode* node, std::shared_ptr<Program> program) override;
 };
 
 #endif //PROJECT1_GAMELIB_GARBAGEBUG_H

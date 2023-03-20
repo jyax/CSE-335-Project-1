@@ -34,7 +34,7 @@ GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName,
  *
  * @param node The xml node we are loading attributes from
 */
-void GarbageBug::XmlLoad(wxXmlNode *node)
+void GarbageBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
-    Bug::XmlLoad(node);
+    Bug::XmlLoad(node, program);
 }

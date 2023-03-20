@@ -2,6 +2,7 @@
  * @file Program.cpp
  * @author Jacob Yax
  * @author Nicole Kuang
+ * @author Gaya Kanagraj
  */
 
 #include "pch.h"
@@ -12,7 +13,7 @@
 const std::wstring ProgramImage = L"images/laptop.png";
 
 /// Program name font size
-const int ProgramNameFontSize = 22;
+const int ProgramNameFontSize = 16;
 
 /// Program font color
 const wxColour ProgramFontColor = wxColour(*wxWHITE);
@@ -62,9 +63,10 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
  *
  * @param node The xml node we are loading attributes from
 */
-void Program::XmlLoad(wxXmlNode *node)
+void Program::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
-    Item::XmlLoad(node);
+    Item::XmlLoad(node, program);
 
     mProgramName = node->GetAttribute("name");
+
 }

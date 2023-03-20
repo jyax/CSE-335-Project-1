@@ -97,7 +97,7 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
  * Load in Item coordinates
  * @param node the node to load
  */
-void Item::XmlLoad(wxXmlNode *node)
+void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
     long x, y;
     node->GetAttribute(L"x", L"0").ToLong(&x);

@@ -152,7 +152,7 @@ void RedundancyBug::Multiply()
  *
  * param node The xml node we are loading attributes from
 */
-void RedundancyBug::XmlLoad(wxXmlNode *node)
+void RedundancyBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
-    Bug::XmlLoad(node);
+    Bug::XmlLoad(node, program);
 }

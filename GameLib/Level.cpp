@@ -81,6 +81,7 @@ void Level::ReadLevel(const std::wstring filename)
     for(; child; child=child->GetNext())
     {
         XmlProgram(child);
+
         auto itemValue = child->GetChildren();
         // inner loop for the bug and feature, code
         for(; itemValue; itemValue=itemValue->GetNext())
@@ -112,11 +113,11 @@ void Level::XmlBeginText(wxXmlNode *node)
 void Level::XmlFeature(wxXmlNode *node)
 {
        mNumofFeatures++;
-        shared_ptr<Item> item;
-        item = make_shared<Feature>(mPlayingArea);
+        //shared_ptr<Item> item;
+         auto item = make_shared<Feature>(mPlayingArea);
         if(item != nullptr) {
             mPlayingArea->Add(item);
-            item->XmlLoad(node);
+            item->XmlLoad(node, mProgram);
         }
 }
 /**
@@ -129,37 +130,36 @@ void Level::XmlBug(wxXmlNode *node)
     if (type.Cmp("nullbug") == 0 || type.Cmp("null") == 0)
     {
         mNumOfBugs++;
-        shared_ptr<Item> item;
-        item = make_shared<NullBug>(mPlayingArea);
+        //shared_ptr<Item> item;
+        auto item = make_shared<NullBug>(mPlayingArea);
         if(item != nullptr)
         {
             mPlayingArea->Add(item);
-            item->XmlLoad(node);
+            item->XmlLoad(node, mProgram);
         }
     }
     else if (type.Cmp("garbage") == 0)
     {
         mNumOfBugs++;
-        shared_ptr<Item> item;
-        item = make_shared<GarbageBug>(mPlayingArea);
+        //shared_ptr<Item> item;
+         auto item = make_shared<GarbageBug>(mPlayingArea);
         if(item != nullptr)
         {
             mPlayingArea->Add(item);
-            item->XmlLoad(node);
+            item->XmlLoad(node, mProgram);
             }
     }
     else if (type.Cmp("redundancy") == 0)
     {
         mNumOfBugs++;
-        shared_ptr<Item> item;
-        item = make_shared<RedundancyBug>(mPlayingArea);
+        //hared_ptr<Item> item;
+        auto item = make_shared<RedundancyBug>(mPlayingArea);
         if(item != nullptr)
         {
             mPlayingArea->Add(item);
-            item->XmlLoad(node);
+            item->XmlLoad(node, mProgram);
             }
     }
-
 
 }
 
@@ -188,12 +188,11 @@ void Level::Update(double elapsed)
 void Level::XmlProgram(wxXmlNode *node)
 {
     mNumOfProgramme ++;
-    shared_ptr<Item> item;
-    item = make_shared<Program>(mPlayingArea);
-    if(item != nullptr)
+    mProgram = make_shared<Program>(mPlayingArea);
+    if(mProgram != nullptr)
     {
-        mPlayingArea->Add(item);
-        item->XmlLoad(node);
+        mPlayingArea->Add(mProgram);
+        mProgram->XmlLoad(node, mProgram);
     }
 
 }

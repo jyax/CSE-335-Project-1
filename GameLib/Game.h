@@ -8,6 +8,7 @@
 #ifndef PROJECT1_GAME_H
 #define PROJECT1_GAME_H
 
+#include <random>
 #include "PlayingArea.h"
 #include "ScoreBoard.h"
 #include "Item.h"
@@ -51,6 +52,9 @@ private:
 
 	///Enable items to be dragged around the screen
 	bool mEnableDrag = false;
+
+    /// Random number generator
+    std::mt19937 mRandom;
 
 public:
     Game();
@@ -97,6 +101,12 @@ public:
 	void Squash(std::shared_ptr<Item> bug);
 
 	void FixCode(std::shared_ptr<Item> bug);
+
+    /**
+    * Get the random number generator
+   * @return Pointer to the random number generator
+   */
+    std::mt19937 &GetRandom() {return mRandom;}
 };
 
 #include <wx/graphics.h>

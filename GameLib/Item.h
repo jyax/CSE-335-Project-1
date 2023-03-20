@@ -99,7 +99,7 @@ public:
      */
 	virtual void Update(double elapsed) {}
 
-    virtual void XmlLoad(wxXmlNode *node);
+    virtual void XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program);
 
 	/**
      * Accept a visitor

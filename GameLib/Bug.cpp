@@ -52,9 +52,33 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
 
 	if (!GetIsHit())
 		SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
+        //std::normal_distribution<double> normalDistribution(0, 0.1);
+//
+//    if(mPlayingArea != nullptr)
+//    {
+//        mRandom = normalDistribution(mPlayingArea->GetGame()->GetRandom());
+//        if(M_PI/4 >= mRandom || -M_PI/4 <= mRandom)
+//    {
+//        mRandomAngle += mRandom;
+//        //SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
+//        SetLocation(GetX() + elapsed * mSpeed * cos(mRandomAngle), GetY() + elapsed * mSpeed * sin(mRandomAngle));
+//    }
+//
+//    }
+
+//    if(M_PI/4 >= mRandom || -M_PI/4 <= mRandom)
+//    {
+//        mRandomAngle += mRandom;
+//        //SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
+//        SetLocation(GetX() + elapsed * mSpeed * cos(mRandomAngle), GetY() + elapsed * mSpeed * sin(mRandomAngle));
+//    }
+//    else if (DistanceTo(mProgram)<= 5)
+//    {
+//        SetLocation(0 , GetY());
+//    }
 
 
-	//mIteration does 'something' for animation. I had it incrementing with modulo to loop
+    //mIteration does 'something' for animation. I had it incrementing with modulo to loop
 	//i.e. mIteration = (int(mIteration)+1) % 5;
 	//but that only sort of worked. I  also think the null bug frames/rectangles need to be adjusted
 	//as they might be too big - a weird clipping happens to them
@@ -89,7 +113,8 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		double hit = mSplatImage->GetHeight();
 
 		graphics->DrawBitmap(mSplatBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
-	} else
+	}
+    else
 	{
 		// only initialize when drawing required
 		if(this->GetBitmap().IsNull())
@@ -125,18 +150,14 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 }
 
-
-
-
-
 /**
 * Load attributes for a Bug
  *
  * @param node The xml node we are loading attributes from
 */
-void Bug::XmlLoad(wxXmlNode *node)
+void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
-    Item::XmlLoad(node);
+    Item::XmlLoad(node, program);
 
     int speed, start;
     node->GetAttribute(L"speed",L"0").ToInt(&speed);
@@ -144,7 +165,7 @@ void Bug::XmlLoad(wxXmlNode *node)
 
 	mSpeed = (int)speed;
 	mStart = (int)start;
-
+    mProgram = program;
 
 
 

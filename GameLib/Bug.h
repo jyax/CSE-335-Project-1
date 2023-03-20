@@ -10,6 +10,7 @@
 #ifndef PROJECT1_GAMELIB_BUG_H
 #define PROJECT1_GAMELIB_BUG_H
 
+#include <random>
 #include "Item.h"
 
 /**
@@ -39,6 +40,9 @@ private:
 	/// Check if this bug was squashed
 	bool mIsHit = false;
 
+    /// Program for this bug
+    std::shared_ptr<Program> mProgram;
+
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
     Bug(PlayingArea *area);
@@ -62,7 +66,7 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void XmlLoad(wxXmlNode *node) override;
+    void XmlLoad(wxXmlNode *node,std::shared_ptr<Program> program) override;
 
 	/**
 	 * Get the hit status of the bug

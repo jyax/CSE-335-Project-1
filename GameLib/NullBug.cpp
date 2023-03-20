@@ -30,8 +30,8 @@ NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName, NullBugN
 /**
 * Load attributes for null bug
 */
-void NullBug::XmlLoad(wxXmlNode *node)
+void NullBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
-    Bug::XmlLoad(node);
+    Bug::XmlLoad(node, program);
 
 }

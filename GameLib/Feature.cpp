@@ -25,3 +25,12 @@ Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName, FeatureNumSpri
 {
 	mSplatImage = std::make_shared<wxImage>(FeatureSplatImageName, wxBITMAP_TYPE_ANY);
 }
+/**
+* Load attributes for a Feature
+ *
+ * param node The xml node we are loading attributes from
+*/
+void Feature::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+{
+    Bug::XmlLoad(node, program);
+}
