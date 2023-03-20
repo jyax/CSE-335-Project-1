@@ -13,6 +13,7 @@ class NullBug;
 class RedundancyBug;
 class Feature;
 class Program;
+class KillerBug;
 
 /**
  * Game item visitor base class
@@ -54,6 +55,12 @@ public:
 	 * @param program program to visit
 	 */
 	virtual void VisitProgram(Program *program) {}
+
+	/**
+	 * Visit a KillerBug object
+	 * @param bug Killer bug to visit
+	 */
+	virtual void VisitKiller(KillerBug *bug) {}
 
 protected:
 	/** Constructor */
