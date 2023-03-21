@@ -288,9 +288,12 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 		{
 			Stop();
 			mStopWatch.Pause();
+
+			// Open up dialog box containing fat bug code
 			wxMessageDialog dlg(this, L"Testing", L"Bug Squash IDE");
 			if (dlg.ShowModal() == wxID_OK)
 			{
+				visitor.CheckCode(); // Checks the edited code
 				mTimer.Start();
 				mStopWatch.Resume();
 			}

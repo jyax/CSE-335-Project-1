@@ -7,6 +7,7 @@
 #include "FixBug.h"
 #include "GarbageBug.h"
 #include "NullBug.h"
+#include "Game.h"
 
 /**
  * Visit a GarbageBug object
@@ -19,6 +20,8 @@ void FixBug::VisitGarbage(GarbageBug *bug)
 		if (!bug->GetIsHit())
 		{
 			mIsFat = true;
+			mBug = bug;
+			mCode = mBug->GetCode();
 		}
 	}
 }
@@ -34,6 +37,8 @@ void FixBug::VisitNull(NullBug *bug)
 		if (!bug->GetIsHit())
 		{
 			mIsFat = true;
+			mBug = bug;
+			mCode = mBug->GetCode();
 		}
 	}
 }
@@ -63,4 +68,18 @@ void FixBug::VisitFeature(Feature *feature)
 void FixBug::VisitProgram(Program *program)
 {
 
+}
+
+/**
+ * Checks the fat bug code to see if it is fixed.
+ *
+ * If so, splats the bug and increments score
+ */
+void FixBug::CheckCode()
+{
+	if (mBug->CheckCode())
+	{
+		mBug->SetIsHit(true);
+		mBug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+	}
 }
