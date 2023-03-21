@@ -146,6 +146,7 @@ void Game::SetLevel(int level)
     if (mPlayingArea.GetLevelStart()) {
         mPlayingArea.Clear();
         mPlayingArea.LevelStart(false);
+        mScoreBoard.ResetScoreBoard();
     }
     mPlayingArea.SetLevel(level);
     mPlayingArea.SetTextDuration(0.0);
