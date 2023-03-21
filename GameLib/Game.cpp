@@ -23,6 +23,7 @@ Game::Game()
 {
     mPlayingArea.SetGame(this);
     mPlayingArea.SetLevelFile();
+    SetLevel(1);
     random_device rd;
     mRandom.seed(rd());
 }
