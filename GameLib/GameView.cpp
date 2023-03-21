@@ -12,6 +12,7 @@
 #include "Level.h"
 #include "ids.h"
 #include "SplatBug.h"
+#include "FixBug.h"
 
 using namespace std;
 
@@ -280,7 +281,8 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 		mGame.MoveToFront(mGrabbedItem);
 
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
-		//mGame.FixCode(mGrabbedItem);
+		FixBug visitor;
+		mGrabbedItem->Accept(&visitor);
 		Refresh();
 	}
 }
