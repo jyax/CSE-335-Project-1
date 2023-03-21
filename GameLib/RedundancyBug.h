@@ -3,6 +3,7 @@
  * @author Alexandra Bannon
  * @author Nicole Kuang
  * @author Jacob Yax
+ * @author Gaya Kanagaraj
  *
  * Class for the RedundancyBug inherited from Bug
  *

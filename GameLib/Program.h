@@ -2,6 +2,7 @@
  * @file Program.h
  * @author Jacob Yax
  * @author Nicole Kuang
+ * @author Gaya Kanagaraj
  *
  * Class defining the Program item
  */

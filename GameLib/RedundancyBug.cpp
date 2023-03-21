@@ -2,6 +2,7 @@
  * @file RedundancyBug.cpp
  * @author Alexandra Bannon
  * @author Jacob Yax
+ * @author Gaya Kanagaraj
  */
 
 #include "pch.h"

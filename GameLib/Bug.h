@@ -3,6 +3,7 @@
  * @author Alexandra Bannon
  * @author Nicole Kuang
  * @author Jacob Yax
+ * @author Gaya Kanagaraj
  *
  * Base class for the bugs in the game inherited from Item
  */
@@ -35,6 +36,8 @@ private:
 	///Start time of the bug
 	double mStart;
 
+    ///Start move time
+    double mStartMove = 0.0;
 	//wxStopWatch mStopWatch;
 
 	/// Check if this bug was squashed
@@ -86,6 +89,8 @@ public:
 	 * @return true if yes, false otherwise
 	 */
 	bool GetIsFatBug() {return mIsFatBug;}
+
+    double GetAngle();
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

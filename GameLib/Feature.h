@@ -2,6 +2,7 @@
  * @file Feature.h
  * @author Jacob Yax
  * @author Nicole Kuang
+ * @author Gaya Kanagaraj
  *
  * Feature class to represent the Feature "Bug" that is not supposed to be clicked on.
  */

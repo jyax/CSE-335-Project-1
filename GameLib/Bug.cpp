@@ -3,11 +3,13 @@
  * @author Alexandra Bannon
  * @author Nicole Kuang
  * @author Jacob Yax
+ * @author Gaya Kanagaraj
  */
 
 #include "pch.h"
 #include "Bug.h"
 #include <wx/graphics.h>
+#include "Program.h"
 
 using namespace std;
 
@@ -48,40 +50,15 @@ Bug::Bug(PlayingArea *area) : Item(area)
  */
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
-	//Currently commented out so you can exit the program
 
 	if (!GetIsHit())
-		SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
-        //std::normal_distribution<double> normalDistribution(0, 0.1);
-//
-//    if(mPlayingArea != nullptr)
-//    {
-//        mRandom = normalDistribution(mPlayingArea->GetGame()->GetRandom());
-//        if(M_PI/4 >= mRandom || -M_PI/4 <= mRandom)
-//    {
-//        mRandomAngle += mRandom;
-//        //SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
-//        SetLocation(GetX() + elapsed * mSpeed * cos(mRandomAngle), GetY() + elapsed * mSpeed * sin(mRandomAngle));
-//    }
-//
-//    }
-
-//    if(M_PI/4 >= mRandom || -M_PI/4 <= mRandom)
-//    {
-//        mRandomAngle += mRandom;
-//        //SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
-//        SetLocation(GetX() + elapsed * mSpeed * cos(mRandomAngle), GetY() + elapsed * mSpeed * sin(mRandomAngle));
-//    }
-//    else if (DistanceTo(mProgram)<= 5)
-//    {
-//        SetLocation(0 , GetY());
-//    }
-
-
-    //mIteration does 'something' for animation. I had it incrementing with modulo to loop
-	//i.e. mIteration = (int(mIteration)+1) % 5;
-	//but that only sort of worked. I  also think the null bug frames/rectangles need to be adjusted
-	//as they might be too big - a weird clipping happens to them
+    {
+        mStartMove += elapsed;
+        if(mStartMove >= mStart)
+        {
+            SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
+        }
+    }
 }
 
 /**
@@ -130,8 +107,8 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
 		graphics->PushState();  // Save the graphics state
 
-		graphics->Translate(GetX()/2, GetY());
-		graphics->Rotate(0.5);
+		graphics->Translate(GetX(), GetY());
+		graphics->Rotate(GetAngle());
 
 		if (mIsFatBug)
 		{
@@ -181,5 +158,17 @@ Bug::Bug(const Bug &)
  */
 Bug::Bug()
 {
+
+}
+/**
+* angle between program and the bug
+* @return double angel
+*/
+double Bug::GetAngle()
+{
+    double angleX =  mProgram->GetX() - GetX();
+    double angleY = mProgram->GetY()- GetY();
+
+    return atan2(angleY, angleX);
 
 }

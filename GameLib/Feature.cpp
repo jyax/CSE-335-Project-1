@@ -2,6 +2,7 @@
  * @file Feature.cpp
  * @author Jacob Yax
  * @author Nicole Kuang
+ * @author Gaya Kanagraj
  */
 
 #include "pch.h"
