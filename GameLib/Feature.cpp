@@ -8,6 +8,7 @@
 #include "pch.h"
 #include "Feature.h"
 
+using  namespace std;
 /// The feature sprite image
 const std::wstring FeatureImageName = L"images/feature.png";
 
@@ -34,4 +35,23 @@ Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName, FeatureNumSpri
 void Feature::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
     Bug::XmlLoad(node, program);
+}
+/**
+ * Draw this bug
+ * @param graphics graphics context to draw on
+ */
+void Feature::Draw(shared_ptr<wxGraphicsContext> graphics)
+{
+    Bug::Draw(graphics);
+}
+/**
+ * Handle updates in time of the bugs
+ *
+ * This is called before we draw and allows us to
+ * move the bugs
+ * @param elapsed Time elapsed since the class call
+ */
+void Feature::Update(double elapsed) // Change image swatch images here!!!
+{
+    Bug::Update(elapsed);
 }

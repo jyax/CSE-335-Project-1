@@ -11,6 +11,8 @@
 #include "Game.h"
 #include "Bug.h"
 
+using namespace std;
+
 /// The bug sprite image
 const std::wstring GarbageBugSpriteImageName = L"images/blue-maize-bug.png";
 
@@ -48,4 +50,24 @@ void GarbageBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 			this->SetIsFatBug(true);
 		}
 	}
+}
+
+/**
+ * Draw this bug
+ * @param graphics graphics context to draw on
+ */
+void GarbageBug::Draw(shared_ptr<wxGraphicsContext> graphics)
+{
+    Bug::Draw(graphics);
+}
+/**
+ * Handle updates in time of the bugs
+ *
+ * This is called before we draw and allows us to
+ * move the bugs
+ * @param elapsed Time elapsed since the class call
+ */
+void GarbageBug::Update(double elapsed) // Change image swatch images here!!!
+{
+    Bug::Update(elapsed);
 }
