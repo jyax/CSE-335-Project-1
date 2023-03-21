@@ -23,10 +23,6 @@ void SplatBug::VisitGarbage(GarbageBug *bug)
 		bug->SetIsHit(true);
 		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
 	}
-
-
-	//if (bug->GetIsFatBug())
-	//	mIsFat = true;
 }
 
 /**
@@ -40,9 +36,6 @@ void SplatBug::VisitNull(NullBug *bug)
 		bug->SetIsHit(true);
 		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
 	}
-
-	//if (bug->GetIsFatBug())
-	//	mIsFat = true;
 }
 
 /**
