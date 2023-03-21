@@ -64,17 +64,6 @@ bool Item::HitTest(double x, double y)
 }
 
 /**
- * Test to see if we double-clicked this object with a mouse.
- * @param x X position to test
- * @param y Y position to test
- * @return true if double-clicked
- */
-bool Item::DoubleClickTest(double x, double y) // Implement only for fat bugs, return false otherwise
-{
-	return false;
-}
-
-/**
  * Draw this item
  * @param graphics graphics context to draw on
  */

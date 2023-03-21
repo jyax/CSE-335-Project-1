@@ -47,7 +47,13 @@ void GarbageBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 		auto name = child->GetName();
 		if (name == L"code")
 		{
+			// Set the fat bug regex matcher
 			this->SetIsFatBug(true);
+			SetPass(child->GetAttribute(L"pass", L"0").ToStdWstring());
+
+			// Set the fat bug's broken code
+			auto code = child->GetChildren();
+			SetCode(code->GetContent().ToStdWstring());
 		}
 	}
 }

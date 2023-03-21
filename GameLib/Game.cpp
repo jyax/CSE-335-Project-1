@@ -87,24 +87,11 @@ void Game::SetVirtual(int x, int y)
  * @param y Y location in screen coordinate pixels
  * @returns Pointer to item we clicked on or nullptr if none.
 */
-std::shared_ptr<Item> Game::SingleClick(int x, int y)
+std::shared_ptr<Item> Game::Click(int x, int y)
 {
 	// Calculate virtual coordinates from screen coordinates
 	SetVirtual(x, y);
-	return mPlayingArea.SingleClick(mXVirtual, mYVirtual);
-}
-
-/**
- * Test an x,y click location to see if double clicked
- * on some item in the game.
- * @param x X location in screen coordinate pixels
- * @param y Y location in screen coordinate pixels
- * @returns Pointer to item we double clicked on or nullptr if none.
-*/
-std::shared_ptr<Item> Game::DoubleClick(int x, int y)
-{
-	SetVirtual(x, y);
-	return mPlayingArea.DoubleClick(mXVirtual, mYVirtual);
+	return mPlayingArea.Click(mXVirtual, mYVirtual);
 }
 
 /**

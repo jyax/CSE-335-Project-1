@@ -12,6 +12,7 @@
 #include "Level.h"
 #include "ids.h"
 #include "SplatBug.h"
+#include "FixBug.h"
 
 using namespace std;
 
@@ -212,7 +213,7 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
  */
 void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	mGrabbedItem = mGame.SingleClick(event.GetX(), event.GetY());
+	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
 	if (mGrabbedItem != nullptr)
 	{
 		if(!mGame.getEnableDrag())  //normal fucntion
@@ -274,13 +275,26 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  */
 void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	mGrabbedItem = mGame.DoubleClick(event.GetX(), event.GetY());
+	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
 	if (mGrabbedItem != nullptr)
 	{
 		mGame.MoveToFront(mGrabbedItem);
 
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
-		//mGame.FixCode(mGrabbedItem);
+		FixBug visitor;
+		mGrabbedItem->Accept(&visitor);
+
+		if (visitor.GetIsFat())
+		{
+			Stop();
+			mStopWatch.Pause();
+			wxMessageDialog dlg(this, L"Testing", L"Bug Squash IDE");
+			if (dlg.ShowModal() == wxID_OK)
+			{
+				mTimer.Start();
+				mStopWatch.Resume();
+			}
+		}
 		Refresh();
 	}
 }

@@ -29,6 +29,12 @@ private:
 	///Bool to tell if the bug is a FatBug or not
 	bool mIsFatBug = false;
 
+	/// A regular expression to match fixed code
+	std::wstring mPass;
+
+	/// A fat bug's broken code
+	std::wstring mCode;
+
 	///what frame of the image is the bug
 	double mIteration = 1;
 
@@ -96,6 +102,18 @@ public:
 	 * @param fat bug's fat status
 	 */
 	void SetIsFatBug(bool fat) { mIsFatBug = fat; }
+
+	/**
+	 * Set the regex that matches the fixed code
+	 * @param pass the matching regular expression
+	 */
+	void SetPass(std::wstring pass) {mPass = pass;}
+
+	/**
+	 * Set the broken/fixed code for the fat bug
+	 * @param code the fat bug's code
+	 */
+	void SetCode(std::wstring code) {mCode = code;}
 
 	double GetAngle();
 

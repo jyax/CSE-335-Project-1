@@ -44,6 +44,10 @@ void NullBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 		if (name == L"code")
 		{
 			this->SetIsFatBug(true);
+			SetPass(child->GetAttribute(L"pass", L"0").ToStdWstring());
+
+			auto code = child->GetChildren();
+			SetCode(code->GetContent().ToStdWstring());
 		}
 	}
 }
