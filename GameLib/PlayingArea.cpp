@@ -130,31 +130,11 @@ void PlayingArea::SetLevel(int level)
  * @param virY Y location in virtual coordinate pixels
  * @returns Pointer to item we clicked on or nullptr if none.
 */
-std::shared_ptr<Item> PlayingArea::SingleClick(double virX, double virY)
+std::shared_ptr<Item> PlayingArea::Click(double virX, double virY)
 {
 	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
 	{
 		if ((*i)->HitTest(virX, virY))
-		{
-			return *i;
-		}
-	}
-
-	return nullptr;
-}
-
-/**
- * Test an x,y click location to see if double clicked
- * on some item in the game.
- * @param virX X location in virtual coordinate pixels
- * @param virY Y location in virtual coordinate pixels
- * @returns Pointer to item we double clicked on or nullptr if none.
-*/
-std::shared_ptr<Item> PlayingArea::DoubleClick(double virX, double virY)
-{
-	for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
-	{
-		if ((*i)->DoubleClickTest(virX, virY))
 		{
 			return *i;
 		}

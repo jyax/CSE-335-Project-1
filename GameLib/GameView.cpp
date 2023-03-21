@@ -213,7 +213,7 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
  */
 void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	mGrabbedItem = mGame.SingleClick(event.GetX(), event.GetY());
+	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
 	if (mGrabbedItem != nullptr)
 	{
 		if(!mGame.getEnableDrag())  //normal fucntion
@@ -275,7 +275,7 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  */
 void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 {
-	mGrabbedItem = mGame.DoubleClick(event.GetX(), event.GetY());
+	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
 	if (mGrabbedItem != nullptr)
 	{
 		mGame.MoveToFront(mGrabbedItem);

@@ -89,8 +89,6 @@ public:
 
 	virtual bool HitTest(double x, double y);
 
-	virtual bool DoubleClickTest(double x, double y);
-
 	virtual void Draw(std::shared_ptr<wxGraphicsContext> graphics);
 
 	/**
