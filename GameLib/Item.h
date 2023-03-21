@@ -31,19 +31,19 @@ private:
 	wxGraphicsBitmap mItemBitmap;
 
 	/// Item location in the game
-	double  mX = 0;     ///< X location for the center of the item
-	double  mY = 0;     ///< Y location for the center of the item
+	double mX = 0;     ///< X location for the center of the item
+	double mY = 0;     ///< Y location for the center of the item
 
 protected:
 	Item(PlayingArea *area, const std::wstring &filename);
-    Item(PlayingArea *area);
+	Item(PlayingArea *area);
 
 public:
-	/// Default constructor (disabled)
-	Item() = delete;
+	/// Default constructor
+	Item();
 
-	/// Copy constructor (disabled)
-	Item(const Item &) = delete;
+	/// Copy constructor
+	Item(const Item &);
 
 	/// Assignment operator (disabled)
 	void operator=(const Item &) = delete;

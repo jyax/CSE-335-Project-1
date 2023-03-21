@@ -69,9 +69,13 @@ public:
 
     void OnDraw(std::shared_ptr<wxGraphicsContext> graphics, int width, int height);
 
+	void SetVirtual(int x, int y);
+
 	std::shared_ptr<Item> SingleClick(int x, int y);
 
 	std::shared_ptr<Item> DoubleClick(int x, int y);
+
+	void SetLocation(std::shared_ptr<Item> item, int x, int y);
 
 	void MoveToFront(std::shared_ptr<Item> item);
 

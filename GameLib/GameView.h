@@ -58,6 +58,11 @@ public:
     void OnLevel3(wxCommandEvent &event);
 
 	void OnTimer(wxTimerEvent &event);
+
+	/**
+     * Stop the timer so the window can close
+     */
+	void Stop() {mTimer.Stop();}
 };
 
 

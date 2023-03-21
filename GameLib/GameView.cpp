@@ -255,7 +255,7 @@ void GameView::OnMouseMove(wxMouseEvent &event)
 		// move it while the left button is down.
 		if (event.LeftIsDown())
 		{
-			mGrabbedItem->SetLocation(event.GetX(), event.GetY());
+			mGame.SetLocation(mGrabbedItem, event.GetX(), event.GetY());
 		}
 		else
 		{
