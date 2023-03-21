@@ -25,8 +25,7 @@ const wxColour ProgramFontColor = wxColour(*wxWHITE);
  * @param game The game we are in
  */
 Program::Program(PlayingArea *area) : Item(area, ProgramImage)
-{
-}
+{}
 
 /**
  * Draw Program onto playing area
