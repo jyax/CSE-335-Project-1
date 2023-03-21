@@ -18,10 +18,13 @@
  */
 void SplatBug::VisitGarbage(GarbageBug *bug)
 {
-	if (!bug->GetIsHit())
+	if (!bug->GetIsFatBug())
 	{
-		bug->SetIsHit(true);
-		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+		if (!bug->GetIsHit())
+		{
+			bug->SetIsHit(true);
+			bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+		}
 	}
 }
 
@@ -31,10 +34,13 @@ void SplatBug::VisitGarbage(GarbageBug *bug)
  */
 void SplatBug::VisitNull(NullBug *bug)
 {
-	if (!bug->GetIsHit())
+	if (!bug->GetIsFatBug())
 	{
-		bug->SetIsHit(true);
-		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+		if (!bug->GetIsHit())
+		{
+			bug->SetIsHit(true);
+			bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+		}
 	}
 }
 

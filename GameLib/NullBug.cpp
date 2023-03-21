@@ -35,4 +35,13 @@ void NullBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
     Bug::XmlLoad(node, program);
 
+	auto child = node->GetChildren();
+	for (; child; child = child->GetNext())
+	{
+		auto name = child->GetName();
+		if (name == L"code")
+		{
+			this->SetIsFatBug(true);
+		}
+	}
 }
