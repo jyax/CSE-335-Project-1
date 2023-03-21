@@ -26,8 +26,6 @@ const wxColour ProgramFontColor = wxColour(*wxWHITE);
  */
 Program::Program(PlayingArea *area) : Item(area, ProgramImage)
 {
-    mProgrammeImage = std::make_shared<wxImage>();
-    mProgrammeImage->LoadFile(wxString(ProgramImage), wxBITMAP_TYPE_PNG);
 }
 
 /**
@@ -37,16 +35,16 @@ Program::Program(PlayingArea *area) : Item(area, ProgramImage)
 void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
 
-    if(mProgrammeBitmap.IsNull())
+    if(this->GetBitmap().IsNull())
     {
-        mProgrammeBitmap = graphics->CreateBitmapFromImage(*mProgrammeImage);
+        this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
     }
 
     // Step 2: Get the dimensions of the image
-    wxSize imageSize = mProgrammeImage->GetSize();
+    wxSize imageSize = this->GetImage()->GetSize();
 
     // Step 4: Draw the image at the calculated position
-    graphics->DrawBitmap(mProgrammeBitmap, GetX()-(imageSize.GetWidth() / 2), GetY()-(imageSize.GetHeight() / 2),
+    graphics->DrawBitmap(this->GetBitmap(), GetX()-(imageSize.GetWidth() / 2), GetY()-(imageSize.GetHeight() / 2),
                          imageSize.GetWidth(), imageSize.GetHeight());
 
     graphics->SetFont(wxFont(ProgramNameFontSize, wxFONTFAMILY_SWISS,
