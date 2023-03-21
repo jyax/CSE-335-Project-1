@@ -19,8 +19,8 @@
 class RedundancyBug  : public Bug {
 private:
 	/// Has the bug spawned multiples?
-	bool mHasMultiplied;
-    bool mSquashed;
+	bool mHasMultiplied = false;
+    bool mSquashed = false;
     bool mChangeDirection;
     double mCurrentWingPeriod = 0;
     double mDirection = 1;

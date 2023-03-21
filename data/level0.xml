@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bug-squash level="Level Zero">
   <program name="Bug Squash" x="625" y="500">
-    <bug type="garbage" x="-100" y="900" speed="60" start="23"/>
+    <bug type="redundancy" x="200" y="200" speed="60" start="0"/>
   </program>
 </bug-squash>

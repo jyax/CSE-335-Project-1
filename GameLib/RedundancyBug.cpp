@@ -7,6 +7,8 @@
 
 #include "pch.h"
 #include "RedundancyBug.h"
+#include "PlayingArea.h"
+#include <stdlib.h>
 
 
 using namespace std;
@@ -59,6 +61,7 @@ const int WingSetY = 5;
 RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area)
  {
     SetIsHit(false);
+     SetMultiplied(false);
     mSplatImage = std::make_shared<wxImage>(RedundancyFlySplatImageName, wxBITMAP_TYPE_ANY);
 
     mRedundancyFlyBaseImage = make_unique<wxImage>(RedundancyFlyImageName, wxBITMAP_TYPE_ANY);
@@ -73,16 +76,18 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area)
  /**
   * Copy Constructor for the multiplying of the redundancy fly
   */
-//RedundancyBug::RedundancyBug(const RedundancyBug &original)
-//{
+RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(*this)
+{
+    double x = rand() % 400 - 200;
+    double y = rand() % 400 - 200;
+    SetLocation(original.GetX() + x, original.GetY() + y);
 //    mHasMultiplied = original.mHasMultiplied;
 //    mSquashed = original.mSquashed;
-//    mRedundancyFlyLeftWingImage = original.mRedundancyFlyLeftWingImage;
-//    mRedundancyFlyRightWingImage = original.mRedundancyFlyRightWingImage;
-//    mRedundancyFlyTopImage = original.mRedundancyFlyTopImage;
-//    mRedundancyFlyBaseImage = original.mRedundancyFlyBaseImage
-//
-//}
+//    mRedundancyFlyLeftWingImage = make_unique<wxImage>(RedundancyFlyLeftWingImageName, wxBITMAP_TYPE_ANY);
+//    mRedundancyFlyRightWingImage = make_unique<wxImage>(RedundancyFlyRightWingImageName, wxBITMAP_TYPE_ANY);
+//    mRedundancyFlyTopImage = make_unique<wxImage>(RedundancyFlyTopImageName, wxBITMAP_TYPE_ANY);
+//    mRedundancyFlyBaseImage = make_unique<wxImage>(RedundancyFlyImageName, wxBITMAP_TYPE_ANY);
+}
 
 /**
  * Draw function for Redundancy Bug
@@ -100,39 +105,65 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
         mRedundancyFlyTopBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyTopImage);
     }
 
+    graphics->PushState();
+    graphics->Translate(GetX(), GetY());
+
     /// Drawing the base image (the body) of the fly
     wxSize baseSize = mRedundancyFlyBaseImage->GetSize();
     graphics->DrawBitmap(mRedundancyFlyBaseBitmap,
-                         GetX() - (baseSize.GetWidth() / 2),
-                         GetY() - (baseSize.GetHeight() / 2),
+                         -baseSize.GetWidth() / 2,
+                         -baseSize.GetHeight() / 2,
                          baseSize.GetWidth(), baseSize.GetHeight());
+    graphics->PopState();
+
 
     /// Time to draw the fly wings!
     mRedundancyFlyLeftWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyLeftWingImage);
     mRedundancyFlyRightWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyRightWingImage);
 
     wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
-    for(int offSetValue = FirstWingSetX;
-        offSetValue <= FirstWingSetX + WingSetXOffset * (NumberOfSetsOfWings - 1);
-        offSetValue+=WingSetXOffset)
+    double x = GetX() + FirstWingSetX;
+    double y = GetY();
+
+    double angle = (WingRotateEnd - WingRotateStart) / Frames;
+
+    for(int i = 0; i < NumberOfSetsOfWings; i++)
     {
+        graphics->PushState();
+        graphics->Translate(x, y);
+        graphics->Rotate(angle);
         graphics->DrawBitmap(mRedundancyFlyLeftWingBitmap,
-                             GetX() - (wingSize.GetWidth() / 2) + offSetValue,
-                             GetY() - (wingSize.GetHeight() / 2) - WingSetY,
+                             -(wingSize.GetWidth() / 2),
+                             -(wingSize.GetHeight() / 2) - WingSetY,
                              wingSize.GetWidth(), wingSize.GetHeight());
+        graphics->PopState();
+
+        graphics->PushState();
+        graphics->Translate(x, y);
+        graphics->Rotate(angle);
         graphics->DrawBitmap(mRedundancyFlyRightWingBitmap,
-                             GetX() - (wingSize.GetWidth() / 2) + offSetValue,
-                             GetY() - (wingSize.GetHeight() / 2) + WingSetY,
+                             -(wingSize.GetWidth() / 2),
+                             -(wingSize.GetHeight() / 2) + WingSetY,
                              wingSize.GetWidth(), wingSize.GetHeight());
+        graphics->PopState();
+        x += WingSetXOffset;
     }
 
+//    graphics->PushState();  // Save the graphics state
+//    graphics->Translate(150, 800);
+//    graphics->Rotate(mRotation);
+//    graphics->DrawBitmap(mHaroldBitmap, -haroldWid/2, -haroldHit/2, haroldWid, haroldHit);
+//    graphics->PopState();   // Restore the graphics state
+
+    graphics->PushState();
+    graphics->Translate(GetX(), GetY());
     /// Draw Top image of the Fly
     wxSize topSize = mRedundancyFlyTopImage->GetSize();
     graphics->DrawBitmap(mRedundancyFlyTopBitmap,
-                         GetX() - (topSize.GetWidth() / 2),
-                         GetY() - (topSize.GetHeight() / 2),
+                         -(topSize.GetWidth() / 2),
+                         -(topSize.GetHeight() / 2),
                          topSize.GetWidth(), topSize.GetHeight());
-
+    graphics->PopState();
 }
 
 /**
@@ -143,7 +174,7 @@ void RedundancyBug::Update(double elapsed)
 {
     /// If current elapsed time is greater than the last wing period,
     /// we set it to a new wing period
-    if(elapsed > mCurrentWingPeriod)
+    if(elapsed > mCurrentWingPeriod + WingPeriod)
     {
         mCurrentWingPeriod += elapsed;
         Reverse();
@@ -161,7 +192,15 @@ void RedundancyBug::Update(double elapsed)
  */
 void RedundancyBug::Multiply()
 {
-
+    int extraFlies = rand() % 3 + 3;
+    while(extraFlies > 0)
+    {
+        RedundancyBug(*this);
+        extraFlies--;
+    }
+    double x = rand() % 500 - 250;
+    double y = rand() % 200 - 250;
+    SetLocation(GetX() + x, GetY() + y);
 }
 
 /**

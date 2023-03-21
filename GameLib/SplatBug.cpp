@@ -58,6 +58,14 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
     {
         bug->SetMultiplied(true);
         bug->Multiply();
+        int extraFlies = rand() % 3 + 3;
+        while(extraFlies > 0)
+        {
+            RedundancyBug newBug = RedundancyBug(*bug);
+            // Problem here is conversion from RedundancyBug* to shared_ptr<Item>
+            //bug->GetArea()->Add(bug);
+            extraFlies--;
+        }
     }
 }
 
