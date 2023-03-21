@@ -4,12 +4,14 @@
  * @author Nicole Kuang
  * @author Jacob Yax
  * @author Gaya Kanagaraj
+ * @author Jacob Meier
  */
 
 #include "pch.h"
 #include "Bug.h"
 #include <wx/graphics.h>
 #include "Program.h"
+#include "PlayingArea.h"
 
 using namespace std;
 
@@ -55,9 +57,14 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
     {
         mStartMove += elapsed;
         if(mStartMove >= mStart)
-        {
-            SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
-        }
+		{
+			SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
+
+			if(abs(mProgram->GetX() - GetX()) < 5 && abs(mProgram->GetY() - GetY()) < 5)
+			{
+				this->~Bug();
+			}
+		}
     }
 }
 
@@ -104,6 +111,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		double figureHit = hit/mFrames;
 		double shift = figureHit * (mIteration-1);
 
+
 		wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
 		graphics->PushState();  // Save the graphics state
 
@@ -148,9 +156,12 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 /**
  * Copy constructor
  */
-Bug::Bug(const Bug &)
+Bug::Bug(const Bug &bug)
 {
-
+	mSpeed = bug.mSpeed;
+	//would mStart need to be different if this for redundancy bugs only?
+	//mStart = 0; ?
+	mFrames = bug.mFrames;
 }
 
 /**
@@ -166,9 +177,13 @@ Bug::Bug()
 */
 double Bug::GetAngle()
 {
-    double angleX =  mProgram->GetX() - GetX();
-    double angleY = mProgram->GetY()- GetY();
+	double angleX = mProgram->GetX() - GetX();
+	double angleY = mProgram->GetY() - GetY();
 
-    return atan2(angleY, angleX);
+	return atan2(angleY, angleX);
+
+}
+Bug::~Bug()
+{
 
 }

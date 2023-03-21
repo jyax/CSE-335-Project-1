@@ -13,6 +13,7 @@
 
 #include <random>
 #include "Item.h"
+#include "PlayingArea.h"
 
 /**
  * Base class for the bugs in the game
@@ -88,15 +89,17 @@ public:
 	 * Is the bug a fat bug?
 	 * @return true if yes, false otherwise
 	 */
-	bool GetIsFatBug() {return mIsFatBug;}
+	bool GetIsFatBug() { return mIsFatBug; }
 
 	/**
 	 * Set whether the bug is fat
 	 * @param fat bug's fat status
 	 */
-	void SetIsFatBug(bool fat) {mIsFatBug = fat;}
+	void SetIsFatBug(bool fat) { mIsFatBug = fat; }
 
-    double GetAngle();
+	double GetAngle();
+
+	~Bug();
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H
