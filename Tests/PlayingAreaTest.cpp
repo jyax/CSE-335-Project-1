@@ -63,18 +63,18 @@ TEST(PlayingAreaTest, SingleClickTest)
 {
 	PlayingArea area;
 
-	ASSERT_EQ(area.SingleClick(100, 100), nullptr);
+	ASSERT_EQ(area.Click(100, 100), nullptr);
 
 	auto bug = std::make_shared<GarbageBug>(&area);
 	area.Add(bug);
 	bug->SetLocation(100, 100);
 
 	// Directly on bug
-	ASSERT_EQ(area.SingleClick(100, 100), bug);
+	ASSERT_EQ(area.Click(100, 100), bug);
 
 	// In range
-	ASSERT_EQ(area.SingleClick(130, 120), bug);
+	ASSERT_EQ(area.Click(130, 120), bug);
 
 	// Out of range
-	ASSERT_EQ(area.SingleClick(150, 100), nullptr);
+	ASSERT_EQ(area.Click(150, 100), nullptr);
 }

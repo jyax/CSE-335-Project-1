@@ -10,6 +10,7 @@
 #include "pch.h"
 #include "Bug.h"
 #include <wx/graphics.h>
+#include <wx/regex.h>
 #include "Program.h"
 #include "PlayingArea.h"
 
@@ -186,4 +187,17 @@ double Bug::GetAngle()
 Bug::~Bug()
 {
 
+}
+
+/**
+ * Check if the fat bug code has been fixed using regex
+ * @return true if fixed, false otherwise
+ */
+bool Bug::CheckCode()
+{
+	wxRegEx phrase;
+	if (phrase.Compile(mPass))
+		return phrase.Matches(mCode);
+
+	return false;
 }

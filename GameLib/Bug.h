@@ -118,6 +118,8 @@ public:
 	double GetAngle();
 
 	~Bug();
+
+	bool CheckCode();
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H
