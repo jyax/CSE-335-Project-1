@@ -150,6 +150,7 @@ void Game::SetLevel(int level)
     }
     mPlayingArea.SetLevel(level);
     mPlayingArea.SetTextDuration(0.0);
+
     mPlayingArea.LevelStart(true);
 }
 
