@@ -26,7 +26,7 @@ private:
 	Item *mDestination;
 
 	///Bool to tell if the bug is a FatBug or not
-	bool mIsFatBug;
+	bool mIsFatBug = false;
 
 	///what frame of the image is the bug
 	double mIteration = 1;
@@ -89,6 +89,12 @@ public:
 	 * @return true if yes, false otherwise
 	 */
 	bool GetIsFatBug() {return mIsFatBug;}
+
+	/**
+	 * Set whether the bug is fat
+	 * @param fat bug's fat status
+	 */
+	void SetIsFatBug(bool fat) {mIsFatBug = fat;}
 
     double GetAngle();
 };

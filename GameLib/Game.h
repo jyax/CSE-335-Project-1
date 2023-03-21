@@ -102,10 +102,6 @@ public:
 
 	void MoveItem(std::shared_ptr<Item> item);
 
-	void Squash(std::shared_ptr<Item> bug);
-
-	void FixCode(std::shared_ptr<Item> bug);
-
     /**
     * Get the random number generator
    * @return Pointer to the random number generator

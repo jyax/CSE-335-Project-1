@@ -217,12 +217,10 @@ void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 		if(!mGame.getEnableDrag())  //normal fucntion
 		{
 			mGame.MoveToFront(mGrabbedItem);
-			// Function to destroy the bug (regular bugs only)
-			// SplatBug visitor(item);
-			//mGame.Accept(&visitor);
-			//visitor.Squash();
-			mGame.Squash(mGrabbedItem);
 
+			// Function to destroy the bug (regular bugs only)
+			SplatBug visitor;
+			mGrabbedItem->Accept(&visitor);
 			Refresh();
 		}
 		else   //for level 3 enable dragging items
@@ -281,7 +279,7 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 		mGame.MoveToFront(mGrabbedItem);
 
 		// Function to open a dialog box with code and destroy the bug (fat bugs only)
-		mGame.FixCode(mGrabbedItem);
+		//mGame.FixCode(mGrabbedItem);
 		Refresh();
 	}
 }

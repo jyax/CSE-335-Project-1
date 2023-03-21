@@ -16,29 +16,8 @@
  */
 class SplatBug : public ItemVisitor {
 private:
-	/// The game item clicked on
-	//std::shared_ptr<Item> mItem;
-
-	/// The game item to be squashed
-	//Item* mSquashed = nullptr;
-
-	bool mIsFeature = false;
-
-	bool mIsProgram = false;
-
-	bool mIsFat = false;
 
 public:
-	//SplatBug(std::shared_ptr<Item> item);
-
-	void Squash();
-
-	bool IsFeature() {return mIsFeature;}
-
-	bool IsProgram() {return mIsProgram;}
-
-	bool IsFat() {return mIsFat;}
-
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;
 	void VisitRedundancy(RedundancyBug* bug) override;

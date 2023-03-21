@@ -61,6 +61,12 @@ public:
 	 */
 	void SetGame(Game *game) { mGame = game; }
 
+	/**
+	 * Getter for the game
+	 * @return a pointer to the game the playing area is set in
+	 */
+	Game* GetGame() {return mGame;}
+
     void SetLevelFile();
 
     void SetLevel(int level);
@@ -83,11 +89,8 @@ public:
 
     void Update(double elapsed);
 
-	void Squash(std::shared_ptr<Item> bug);
-
 	void MoveItem(std::shared_ptr<Item> item);
 
-	void FixCode(std::shared_ptr<Item> bug);
 
 };
 

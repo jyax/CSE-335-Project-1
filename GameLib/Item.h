@@ -112,6 +112,12 @@ public:
      * @return True is item is a program otherwise false
      */
 	virtual bool IsProgram() {return FALSE;};
+
+	/**
+	 * Getter for the playing area
+	 * @return a pointer to the playing area the item is in
+	 */
+	PlayingArea* GetArea() {return mArea;}
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H
