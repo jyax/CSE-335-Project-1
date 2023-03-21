@@ -10,7 +10,7 @@
 #include <wx/graphics.h>
 #include "PlayingArea.h"
 #include "Game.h"
-#include "SplatBug.h"
+//#include "SplatBug.h"
 
 using namespace std;
 
@@ -237,61 +237,4 @@ void PlayingArea::Update(double elapsed)
 void PlayingArea::MoveItem(std::shared_ptr<Item> item)
 {
 	auto loc = find(begin(mItems), end(mItems), item);
-}
-
-
-/**
- * Squashes the bug that is clicked on
- * @param bug the bug to be squashed
- */
-void PlayingArea::Squash(std::shared_ptr<Item> bug) // NOT DONE!!!
-{
-	for (auto item : mItems)
-	{
-		if (item == bug)
-		{
-			SplatBug visitor;
-			bug->Accept(&visitor); // only visit the hit item
-
-			// only squash if the item isn't a program or is fat
-			if (!visitor.IsProgram() && !visitor.IsFat())
-			{
-				// Swap out image - NOT DONE!!!
-
-
-				if (visitor.IsFeature()) // May put code in VisitFeature() in the future
-				{
-					// if we hit a feature,
-					mGame->GetScoreboard()->CalculateScore(false, true, false);
-				}
-				else // hit a garbage/null/redundancy bug
-					mGame->GetScoreboard()->CalculateScore(true, false, false);
-			}
-
-		}
-	}
-}
-
-/**
- * Bring up a dialog window to fix the fat bug code
- * @param bug the bug to fix
- */
-void PlayingArea::FixCode(std::shared_ptr<Item> bug)
-{
-	for (auto item : mItems)
-	{
-		if (item == bug)
-		{
-			SplatBug visitor;
-			bug->Accept(&visitor);
-
-			if (visitor.IsFat())
-			{
-				// Open up dialog box
-				// Create own dialog box class?
-				// Need to work on squashing bug after fixing code.
-				wxMessageBox(L"Sample text", L"Bug Squash IDE");
-			}
-		}
-	}
 }

@@ -9,15 +9,8 @@
 #include "GarbageBug.h"
 #include "NullBug.h"
 #include "RedundancyBug.h"
-
-/**
- * Constructor
- * @param item the game item clicked on
- */
-/*SplatBug::SplatBug(std::shared_ptr<Item> item)
-{
-	mItem = item;
-}*/
+#include "PlayingArea.h"
+#include "Game.h"
 
 /**
  * Visit a GarbageBug object
@@ -25,10 +18,15 @@
  */
 void SplatBug::VisitGarbage(GarbageBug *bug)
 {
-	bug->SetIsHit(true);
+	if (!bug->GetIsHit())
+	{
+		bug->SetIsHit(true);
+		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+	}
 
-	if (bug->GetIsFatBug())
-		mIsFat = true;
+
+	//if (bug->GetIsFatBug())
+	//	mIsFat = true;
 }
 
 /**
@@ -37,10 +35,14 @@ void SplatBug::VisitGarbage(GarbageBug *bug)
  */
 void SplatBug::VisitNull(NullBug *bug)
 {
-	bug->SetIsHit(true);
+	if (!bug->GetIsHit())
+	{
+		bug->SetIsHit(true);
+		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
+	}
 
-	if (bug->GetIsFatBug())
-		mIsFat = true;
+	//if (bug->GetIsFatBug())
+	//	mIsFat = true;
 }
 
 /**
@@ -66,8 +68,11 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
  */
 void SplatBug::VisitFeature(Feature *feature)
 {
-	mIsFeature = true;
-	feature->SetIsHit(true);
+	if (!feature->GetIsHit())
+	{
+		feature->SetIsHit(true);
+		feature->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, true, false);
+	}
 }
 
 /**
@@ -76,12 +81,5 @@ void SplatBug::VisitFeature(Feature *feature)
  */
 void SplatBug::VisitProgram(Program *program)
 {
-	mIsProgram = true;
-}
 
-void SplatBug::Squash()
-{
-	// Change image
-
-	// Increment score
 }
