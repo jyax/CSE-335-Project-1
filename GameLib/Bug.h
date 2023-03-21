@@ -13,13 +13,17 @@
 #include <random>
 #include "Item.h"
 
+class PlayingArea;
 /**
  * Base class for the bugs in the game
  */
 class Bug : public Item {
 private:
+
+    /// playing AREA
+    PlayingArea *mPlayingArea;
 	///Speed the bug is traveling
-	double mSpeed;
+	double mSpeed =0.0;
 
 	///Destination of the bug
 	Item *mDestination;
@@ -31,11 +35,27 @@ private:
 	double mIteration = 1;
 
 	///number of frames the bug has
-	double mFrames;
+	double mFrames = 0.0;
 	///Start time of the bug
-	double mStart;
+	double mStart =0.0;
+
+    /// mStartMove of the bug
+    double mStartMove = 0.0;
 
 	//wxStopWatch mStopWatch;
+
+    //wxStopWatch mStopWatch;
+    /// Random number generator
+    double mRandom;
+    /// random angle value
+    double mRandomAngle = 0;
+
+    /// sprite duration
+    double mShowSprite = 3.0/ mSpeed;
+
+    /// for the current sprite value
+    double mCurrentSprite = 0.0;
+
 
 	/// Check if this bug was squashed
 	bool mIsHit = false;
@@ -85,6 +105,8 @@ public:
 	 * @return true if yes, false otherwise
 	 */
 	bool GetIsFatBug() {return mIsFatBug;}
+
+    double GetAngle();
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

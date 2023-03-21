@@ -6,8 +6,12 @@
  */
 
 #include "pch.h"
-#include "Bug.h"
 #include <wx/graphics.h>
+#include "Bug.h"
+#include "PlayingArea.h"
+#include "Game.h"
+#include "Program.h"
+
 
 using namespace std;
 
@@ -28,6 +32,7 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
 	//mSpeed = BugSpeed;
 	mFrames = frames;
 	//mStopWatch.Start();
+    mPlayingArea = area;
 }
 
 /**
@@ -48,40 +53,29 @@ Bug::Bug(PlayingArea *area) : Item(area)
  */
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
-	//Currently commented out so you can exit the program
+//    if (!GetIsHit())
+//        SetLocation(GetX() + elapsed * mSpeed * 0.1, GetY() + elapsed * mSpeed * 0.1);
+//        mStartMove += elapsed;
 
-	if (!GetIsHit())
-		SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
-        //std::normal_distribution<double> normalDistribution(0, 0.1);
-//
-//    if(mPlayingArea != nullptr)
-//    {
-//        mRandom = normalDistribution(mPlayingArea->GetGame()->GetRandom());
-//        if(M_PI/4 >= mRandom || -M_PI/4 <= mRandom)
-//    {
-//        mRandomAngle += mRandom;
-//        //SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
-//        SetLocation(GetX() + elapsed * mSpeed * cos(mRandomAngle), GetY() + elapsed * mSpeed * sin(mRandomAngle));
-//    }
-//
-//    }
+      std::normal_distribution<double> normalDistribution(0, 0.1);
+      if(mPlayingArea != nullptr and !GetIsHit())
+      {
+          mStartMove += elapsed;
+          mRandom = normalDistribution(mPlayingArea->GetGame()->GetRandom());
+          if (mStartMove >= mStart)
+          {
+              if((-M_PI/ 4 >= mRandom || M_PI<= mRandom))
+              {
+                  mRandomAngle += mRandom;
+              }
+              double newX = GetX() + (elapsed * mSpeed * cos(GetAngle()));
+              double newY = GetY() + (elapsed * mSpeed * sin(GetAngle()));
 
-//    if(M_PI/4 >= mRandom || -M_PI/4 <= mRandom)
-//    {
-//        mRandomAngle += mRandom;
-//        //SetLocation(GetX() + elapsed * mSpeed * .1, GetY() + elapsed * mSpeed * .1);
-//        SetLocation(GetX() + elapsed * mSpeed * cos(mRandomAngle), GetY() + elapsed * mSpeed * sin(mRandomAngle));
-//    }
-//    else if (DistanceTo(mProgram)<= 5)
-//    {
-//        SetLocation(0 , GetY());
-//    }
+              SetLocation(newX, newY);
 
+          }
+      }
 
-    //mIteration does 'something' for animation. I had it incrementing with modulo to loop
-	//i.e. mIteration = (int(mIteration)+1) % 5;
-	//but that only sort of worked. I  also think the null bug frames/rectangles need to be adjusted
-	//as they might be too big - a weird clipping happens to them
 }
 
 /**
@@ -97,58 +91,113 @@ bool Bug::HitTest(double x, double y)
 
 	return sqrt(dx * dx + dy * dy) < BugHitRange;
 }
-
 /**
  * Draw this item
  * @param graphics graphics context to draw on
  */
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-	if (GetIsHit()) // Draw the splat image
-	{
-		if (mSplatBitmap.IsNull())
-			mSplatBitmap = graphics->CreateBitmapFromImage(*mSplatImage);
+    if (GetIsHit()) // Draw the splat image
+    {
+        if (mSplatBitmap.IsNull())
+            mSplatBitmap = graphics->CreateBitmapFromImage(*mSplatImage);
 
-		double wid = mSplatImage->GetWidth();
-		double hit = mSplatImage->GetHeight();
+        double wid = mSplatImage->GetWidth();
+        double hit = mSplatImage->GetHeight();
 
-		graphics->DrawBitmap(mSplatBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
-	}
+        graphics->DrawBitmap(mSplatBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
+    }
     else
-	{
-		// only initialize when drawing required
-		if(this->GetBitmap().IsNull())
-		{
-			this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
-		}
+    {
+        // only initialize when drawing required
+        if(this->GetBitmap().IsNull())
+        {
+            this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
+        }
 
-		double wid = this->GetImage()->GetWidth();
-		double hit = this->GetImage()->GetHeight();
-		double figureHit = hit/mFrames;
-		double shift = figureHit * (mIteration-1);
-
-		wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
-		graphics->PushState();  // Save the graphics state
-
-		graphics->Translate(GetX()/2, GetY());
-		graphics->Rotate(0.5);
-
-		if (mIsFatBug)
-		{
-			graphics->Scale(1.25, 1.25);
-		}
-
-		graphics->Translate(0, hit/2 - figureHit/2 - shift);
-		graphics->Clip(rect);
+        double wid = this->GetImage()->GetWidth();
+        double hit = this->GetImage()->GetHeight();
+        double figureHit = hit/mFrames;
+        double shift = figureHit * (mIteration-1);
 
 
-		// Draws from top left corner
-		graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
-		graphics->PopState();
-	}
+        wxRect rect = wxRect( -wid/2,  (-hit/2)-shift, wid, figureHit);
+
+        graphics->PushState();  // Save the graphics state
+
+        graphics->Translate(GetX(), GetY());
+
+        graphics->Rotate(GetAngle());
+
+        if (mIsFatBug)
+        {
+            graphics->Scale(1.25, 1.25);
+        }
+
+        graphics->Translate(0, hit/2 - figureHit/2 - shift);
+        graphics->Clip(rect);
+
+
+        // Draws from top left corner
+        graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
+        graphics->PopState();
+    }
 
 
 }
+
+///**
+// * Draw this item
+// * @param graphics graphics context to draw on
+// */
+//void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
+//{
+//	if (GetIsHit()) // Draw the splat image
+//	{
+//		if (mSplatBitmap.IsNull())
+//			mSplatBitmap = graphics->CreateBitmapFromImage(*mSplatImage);
+//
+//		double wid = mSplatImage->GetWidth();
+//		double hit = mSplatImage->GetHeight();
+//
+//		graphics->DrawBitmap(mSplatBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
+//	}
+//    else
+//	{
+//		// only initialize when drawing required
+//		if(this->GetBitmap().IsNull())
+//		{
+//			this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
+//		}
+//
+//		double wid = this->GetImage()->GetWidth();
+//		double hit = this->GetImage()->GetHeight();
+//		double figureHit = hit/mFrames;
+//		double shift = figureHit * (mIteration-1);
+//
+//
+//		wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
+//		graphics->PushState();  // Save the graphics state
+//
+//		graphics->Translate(GetX()/2, GetY());
+//		graphics->Rotate(0.5);
+//
+//		if (mIsFatBug)
+//		{
+//			graphics->Scale(1.25, 1.25);
+//		}
+//
+//		//graphics->Translate(0, hit/2 - figureHit/2 - shift);
+//		graphics->Clip(rect);
+//
+//
+//		// Draws from top left corner
+//		graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
+//		graphics->PopState();
+//	}
+//
+//
+//}
 
 /**
 * Load attributes for a Bug
@@ -163,10 +212,19 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
     node->GetAttribute(L"speed",L"0").ToInt(&speed);
     node->GetAttribute(L"start",L"0").ToInt(&start);
 
-	mSpeed = (int)speed;
-	mStart = (int)start;
+	mSpeed = speed;
+	mStart = start;
     mProgram = program;
 
-
+}
+/**
+ * It calculates the angle between bug and program.
+ * @return double angle
+ */
+double Bug::GetAngle()
+{
+    double angleX =  mProgram->GetX() - GetX();
+    double angleY = mProgram->GetY()- GetY();
+    return atan2(angleY, angleX);
 
 }

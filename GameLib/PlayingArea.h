@@ -88,6 +88,8 @@ public:
 	void MoveItem(std::shared_ptr<Item> item);
 
 	void FixCode(std::shared_ptr<Item> bug);
+
+    Game *GetGame(){ return mGame;}
 };
 
 
