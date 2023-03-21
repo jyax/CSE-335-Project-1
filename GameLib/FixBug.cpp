@@ -5,6 +5,8 @@
 
 #include "pch.h"
 #include "FixBug.h"
+#include "GarbageBug.h"
+#include "NullBug.h"
 
 /**
  * Visit a GarbageBug object
@@ -12,7 +14,13 @@
  */
 void FixBug::VisitGarbage(GarbageBug *bug)
 {
-
+	if (bug->GetIsFatBug())
+	{
+		if (!bug->GetIsHit())
+		{
+			mIsFat = true;
+		}
+	}
 }
 
 /**
@@ -21,7 +29,13 @@ void FixBug::VisitGarbage(GarbageBug *bug)
  */
 void FixBug::VisitNull(NullBug *bug)
 {
-
+	if (bug->GetIsFatBug())
+	{
+		if (!bug->GetIsHit())
+		{
+			mIsFat = true;
+		}
+	}
 }
 
 /**
