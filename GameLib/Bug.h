@@ -54,11 +54,12 @@ protected:
 	wxGraphicsBitmap mSplatBitmap;
 
 public:
-	/// Default constructor (disabled)
-	Bug() = delete;
 
-	/// Copy constructor (disabled)
-	Bug(const Bug &) = delete;
+    /// Default constructor
+    Bug();
+
+    /// Copy constructor
+    Bug(const Bug &);
 
 	bool HitTest(double x, double y) override;
 

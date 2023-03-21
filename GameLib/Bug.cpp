@@ -166,7 +166,20 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 	mSpeed = (int)speed;
 	mStart = (int)start;
     mProgram = program;
+}
 
+/**
+ * Copy constructor
+ */
+Bug::Bug(const Bug &)
+{
 
+}
+
+/**
+ * Constructor
+ */
+Bug::Bug()
+{
 
 }

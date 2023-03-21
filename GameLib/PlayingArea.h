@@ -89,7 +89,6 @@ public:
 
 	void FixCode(std::shared_ptr<Item> bug);
 
-    Game *GetGame(){ return mGame;}
 };
 
 
