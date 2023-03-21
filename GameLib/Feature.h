@@ -33,6 +33,10 @@ public:
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitFeature(this);}
     void XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program) override;
+
+    void Update(double elapsed) override;
+
+    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
 
 

@@ -8,6 +8,8 @@
 #include "Game.h"
 #include "Bug.h"
 
+using namespace std;
+
 /// The bug sprite image
 const std::wstring KillerBugSpriteImageName = L"images/killer-bug.png";
 
@@ -32,4 +34,23 @@ KillerBug::KillerBug(PlayingArea *area) : Bug(area, KillerBugSpriteImageName, Ki
 void KillerBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 {
 	Bug::XmlLoad(node, program);
+}
+/**
+ * Draw this bug
+ * @param graphics graphics context to draw on
+ */
+void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
+{
+    Bug::Draw(graphics);
+}
+/**
+ * Handle updates in time of the bugs
+ *
+ * This is called before we draw and allows us to
+ * move the bugs
+ * @param elapsed Time elapsed since the class call
+ */
+void KillerBug::Update(double elapsed) // Change image swatch images here!!!
+{
+    Bug::Update(elapsed);
 }

@@ -9,6 +9,8 @@
 #include "pch.h"
 #include "NullBug.h"
 
+using namespace std;
+
 /// The bug sprite image
 const std::wstring NullBugSpriteImageName = L"images/scarlet-gray-bug.png";
 
@@ -48,4 +50,23 @@ void NullBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 			SetCode(code->GetContent().ToStdWstring());
 		}
 	}
+}
+/**
+ * Draw this bug
+ * @param graphics graphics context to draw on
+ */
+void NullBug::Draw(shared_ptr<wxGraphicsContext> graphics)
+{
+    Bug::Draw(graphics);
+}
+/**
+ * Handle updates in time of the bug
+ *
+ * This is called before we draw and allows us to
+ * move the bugs
+ * @param elapsed Time elapsed since the class call
+ */
+void NullBug::Update(double elapsed)
+{
+    Bug::Update(elapsed);
 }

@@ -14,6 +14,7 @@
 #include "Feature.h"
 #include "RedundancyBug.h"
 #include "Game.h"
+#include "KillerBug.h"
 
 using namespace std;
 
@@ -160,6 +161,17 @@ void Level::XmlBug(wxXmlNode *node)
             item->XmlLoad(node, mProgram);
             }
     }
+    else if (type.Cmp("assassin") == 0)
+    {
+        mNumOfBugs++;
+        //hared_ptr<Item> item;
+        auto item = make_shared<KillerBug>(mPlayingArea);
+        if(item != nullptr)
+        {
+            mPlayingArea->Add(item);
+            item->XmlLoad(node, mProgram);
+        }
+    }
 
 }
 
@@ -196,114 +208,6 @@ void Level::XmlProgram(wxXmlNode *node)
     }
 
 }
-/**
- * Loads in the xml file based on what level number it is
- */
-//void Level::Load(int mNum)
-//{
-//	switch(mNum)
-//	{
-//		case 0:
-//		{
-//			wxXmlDocument xmlDoc;
-//			if(!xmlDoc.Load("data/level0.xml"))
-//			{
-//				wxMessageBox(L"Unable to load Level file");
-//				return;
-//			}
-//
-//			// Get the XML document root node
-//			auto root = xmlDoc.GetRoot();
-//
-//			//
-//			// Traverse the children of the root
-//			// node of the XML document in memory!!!!
-//			//
-//			auto child = root->GetChildren();
-//			for( ; child; child=child->GetChildren())
-//			{
-//				//Load XML
-//				if (auto child2 = child->GetNext())
-//				{
-//					for( ; child2; child2 = child2->GetNext())
-//					{
-//						//Load XML
-//
-//					}
-//				}
-//			}
-//			break;
-//		}
-//
-//		case 1:
-//		{
-//			wxXmlDocument xmlDoc;
-//			if(!xmlDoc.Load("data/level1.xml"))
-//			{
-//				wxMessageBox(L"Unable to load Level file");
-//				return;
-//			}
-//
-//			// Get the XML document root node
-//			auto root = xmlDoc.GetRoot();
-//
-//			//
-//			// Traverse the children of the root
-//			// node of the XML document in memory!!!!
-//			//
-//			auto child = root->GetChildren();
-//			for( ; child; child=child->GetChildren())
-//			{
-//				//Load XML
-//				if (auto child2 = child->GetNext())
-//				{
-//					for( ; child2; child2 = child2->GetNext())
-//					{
-//						//Load XML
-//
-//					}
-//				}
-//
-//			}
-//			break;
-//		}
-//
-//
-//		case 2:
-//		{
-//			wxXmlDocument xmlDoc;
-//			if(!xmlDoc.Load("data/level2.xml"))
-//			{
-//				wxMessageBox(L"Unable to load Level file");
-//				return;
-//			}
-//
-//			// Get the XML document root node
-//			auto root = xmlDoc.GetRoot();
-//
-//			//
-//			// Traverse the children of the root
-//			// node of the XML document in memory!!!!
-//			//
-//			auto child = root->GetChildren();
-//			for( ; child; child=child->GetChildren())
-//			{
-//				//Load XML
-//				if (auto child2 = child->GetNext())
-//				{
-//					for( ; child2; child2 = child2->GetNext())
-//					{
-//						//Load XML
-//					}
-//				}
-//
-//			}
-//			break;
-//		}
-//	}
-//
-//    mStopWatch.Start();
-//}
 
 /**
  * Destructor
@@ -327,11 +231,5 @@ void Level::DrawLevelName(std::shared_ptr<wxGraphicsContext> &graphics)
         graphics->GetTextExtent(wxString::Format(mType), &width, &length);
         graphics->DrawText(wxString::Format(mType), LevelNameX - (width/2), LevelNameY - (length/2));
     }
-
-//    while(mStopWatch.Time() != 2)
-//    {
-//        graphics.DrawText(mType, LevelNameX - (width/2), LevelNameY - (length/2));
-//    }
-//    mStopWatch.Pause();
 }
 

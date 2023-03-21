@@ -172,6 +172,7 @@ void PlayingArea::Accept(ItemVisitor *visitor)
 }
 /**
 * sets the level text duration
+ * @param duration for the start text duration to start
 */
 void PlayingArea::SetTextDuration(double duration)
 {
