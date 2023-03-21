@@ -2,6 +2,7 @@
  * @file GameView.cpp
  * @author Gaya Kanagaraj
  * @author Nicole Kuang
+ * @author Jacob Meier
  */
 
 #include "pch.h"
