@@ -109,6 +109,12 @@ public:
 	 */
 	void SetPass(std::wstring pass) {mPass = pass;}
 
+	/**
+	 * Set the broken/fixed code for the fat bug
+	 * @param code the fat bug's code
+	 */
+	void SetCode(std::wstring code) {mCode = code;}
+
 	double GetAngle();
 
 	~Bug();
