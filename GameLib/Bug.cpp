@@ -41,7 +41,7 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
  *
  * @param area The playing area this is in
  */
-Bug::Bug(PlayingArea *area) : Item(area)
+Bug::Bug(PlayingArea *area, const std::wstring &filename) : Item(area, filename)
 {
 }
 
@@ -159,12 +159,17 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 /**
  * Copy constructor
  */
-Bug::Bug(const Bug &bug)
+Bug::Bug(const Bug &bug) : Item(bug)
 {
 	mSpeed = bug.mSpeed;
+    mDestination = bug.mDestination;
+    mStart = bug.mStart;
+    mStartMove = bug.mStartMove;
+    mIsHit = bug.mIsHit;
+    mSplatImage = bug.mSplatImage;
+    mSplatBitmap = bug.mSplatBitmap;
 	//would mStart need to be different if this for redundancy bugs only?
 	//mStart = 0; ?
-	mFrames = bug.mFrames;
 }
 
 /**

@@ -23,6 +23,7 @@ public:
 	void VisitRedundancy(RedundancyBug* bug) override;
 	void VisitFeature(Feature* feature) override;
 	void VisitProgram(Program* program) override;
+	void VisitKiller(KillerBug* bug) override;
 };
 
 #endif //PROJECT1_GAMELIB_SPLATBUG_H

@@ -2,6 +2,7 @@
  * @file Item.h
  * @author Jacob Meier
  * @author Nicole Kuang
+ * @author Gaya Kangarag
  * @author Alexandra Bannon
  *
  * Abstract base class for any item in our Game.
@@ -37,7 +38,6 @@ private:
 
 protected:
 	Item(PlayingArea *area, const std::wstring &filename);
-	Item(PlayingArea *area);
 
 public:
 	/// Default constructor
@@ -107,18 +107,19 @@ public:
 	virtual void Accept(ItemVisitor* visitor) = 0;
 
 	/**
-     * checks if item is program
-     * @return True is item is a program otherwise false
-     */
-	virtual bool IsProgram() {return FALSE;};
-
-	/**
 	 * Getter for the playing area
 	 * @return a pointer to the playing area the item is in
 	 */
 	PlayingArea* GetArea() {return mArea;}
 
      virtual double DistanceTo(std::shared_ptr<Item> item);
+
+    /**
+	 * Is the bug a fat bug?
+	 * @return true if yes, false otherwise
+	 */
+     virtual bool GetIsHit() { return false; }
+
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

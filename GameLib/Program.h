@@ -42,12 +42,6 @@ public:
 
     void XmlLoad(wxXmlNode *node,std::shared_ptr<Item> program) override;
 
-	/**
-    * checks if item is program
-    * @return True is item is a program otherwise false
-    */
-	bool IsProgram() override {return TRUE;};
-
     //bool ReachedProgram() override {  return false; }
     /**
     * Compute the distance from this to another item

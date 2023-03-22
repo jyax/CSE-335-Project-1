@@ -83,3 +83,12 @@ void FixBug::CheckCode()
 		mBug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
 	}
 }
+
+/**
+ * Visit a KillerBug object
+ * @param bug Killer bug to visit
+ */
+void FixBug::VisitKiller(KillerBug *bug)
+{
+
+}

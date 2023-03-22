@@ -1,6 +1,7 @@
 /**
  * @file ItemVisitor.h
  * @author Nicole Kuang
+ * @author Gaya Kanagaraj
  *
  * Game item visitor base class
  */
@@ -14,41 +15,47 @@ class RedundancyBug;
 class Feature;
 class Program;
 class KillerBug;
+class Bug;
 
 /**
  * Game item visitor base class
  */
-class ItemVisitor
-{
+class ItemVisitor{
 private:
+    /// bug counter
+    int mNumOfBugs = 0;
+
+    /// Spalttered bugs
+    int mSplatterBugs = 0;
 
 public:
 	/** Destructor */
 	virtual ~ItemVisitor() {}
 
+
 	/**
 	 * Visit a GarbageBug object
 	 * @param bug garbage bug to visit
 	 */
-	virtual void VisitGarbage(GarbageBug *bug) {}
+	virtual void VisitGarbage(GarbageBug *bug){mNumOfBugs++;}
 
 	/**
 	 * Visit a NullBug object
 	 * @param bug null bug to visit
 	 */
-	virtual void VisitNull(NullBug *bug) {}
+	virtual void VisitNull(NullBug *bug) {mNumOfBugs++;}
 
 	/**
 	 * Visit a RedundancyBug object
 	 * @param bug redundancy bug to visit
 	 */
-	virtual void VisitRedundancy(RedundancyBug *bug) {}
+	virtual void VisitRedundancy(RedundancyBug *bug) {mNumOfBugs++;}
 
 	/**
 	 * Visit a Feature object
 	 * @param feature feature 'bug' to visit
 	 */
-	virtual void VisitFeature(Feature *feature) {}
+	virtual void VisitFeature(Feature *feature) {mNumOfBugs++;}
 
 	/**
 	 * Visit a Program object
@@ -60,9 +67,17 @@ public:
 	 * Visit a KillerBug object
 	 * @param bug Killer bug to visit
 	 */
-	virtual void VisitKiller(KillerBug *bug) {}
+	virtual void VisitKiller(KillerBug *bug) {mNumOfBugs++;}
 
-protected:
+    /**
+     * Get the number of bugs in the playing area
+     * @return Number of bugs
+     */
+    int GetNumOfBugs() const { return mNumOfBugs; }
+
+
+//
+//protected:
 	/** Constructor */
 	ItemVisitor() {}
 };

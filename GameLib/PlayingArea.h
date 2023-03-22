@@ -41,10 +41,18 @@ private:
     ///Current level being played
     int mLevelNum;
 
+    /// level complete boolean
+    bool mLevelComplete = false;
+
     /// for level start boolean
     bool mLevelStart = false;
 
+    /// for the deleted items vector
     std::vector<Item*> mDeleteItems;
+
+    /// for keep track of level complete duration
+    double mCompleteDuration = 0.0;
+
 
 public:
     /**
@@ -96,6 +104,15 @@ public:
     void DeleteItem();
 
     void CheckItem(Item *item);
+    /**
+     * returns current level number
+     * @return int value
+     */
+    int GetLevelNumber(){return mLevelNum;}
+
+    bool LevelComplete();
+
+    void NextLevel();
 };
 
 

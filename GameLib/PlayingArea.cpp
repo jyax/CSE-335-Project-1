@@ -11,10 +11,13 @@
 #include "PlayingArea.h"
 #include "Game.h"
 #include "Program.h"
+#include "ItemVisitor.h"
 //#include "SplatBug.h"
 
 using namespace std;
 
+///  The time the text appears on screen
+const double TextOnScreenDuration = 2.0;
 /// File name for Level 0
 const std::wstring Level0FileName = L"data/level0.xml";
 
@@ -56,11 +59,16 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
         {
             if (item != nullptr)
                 item->Draw(graphics);
+
         }
         mCurrentLevel->DrawLevelName(graphics);
+
     }
+    if(mLevelComplete and mCompleteDuration < TextOnScreenDuration)
+    {
+        mCurrentLevel->DrawLevelFinish(graphics);
 
-
+    }
 
 
     graphics->PopState();
@@ -72,14 +80,7 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
  */
 void PlayingArea::Add(shared_ptr<Item> item)
 {
-	if (item->IsProgram())
-	{
-		mItems.insert(mItems.begin(), item);
-	}
-	else
-	{
-		mItems.push_back(item);
-	}
+	mItems.push_back(item);
 }
 
 /**
@@ -211,6 +212,17 @@ void PlayingArea::Update(double elapsed)
         item->Update(elapsed);
     }
 
+    if(LevelComplete())
+    {
+        mCompleteDuration += elapsed;
+    }
+    if( mLevelComplete && mCompleteDuration > TextOnScreenDuration )
+    {
+        NextLevel();
+        mCompleteDuration = 0.0;
+    }
+
+
 }
 
 
@@ -251,10 +263,7 @@ void PlayingArea::DeleteItem()
  */
 void PlayingArea::CheckItem(Item *itemDelete)
 {
-    for (auto item : mItems)
-    {
 
-    }
     auto i = mItems.begin();
     while( i != mItems.end())
    {
@@ -267,4 +276,57 @@ void PlayingArea::CheckItem(Item *itemDelete)
            ++i;
        }
    }
+}
+/**
+ * It check whether the level is complete or not
+ * using Bug Visitor
+ * @return true if completed else false
+ */
+bool PlayingArea::LevelComplete()
+{
+    ItemVisitor visitor;
+    this->Accept(&visitor);
+    int cnt = visitor.GetNumOfBugs();
+    if (cnt == 0)
+    {
+        mLevelComplete = true;
+        return true;
+    }
+    else if( cnt > 0)
+    {
+        int countSplat = 0;
+        for (auto item : mItems)
+        {
+            if(item->GetIsHit())
+            {
+                countSplat ++;
+            }
+        }
+        if ( cnt == countSplat)
+        {
+            mLevelComplete = true;
+            return true;
+        }
+    }
+    return false;
+}
+/**
+ * Sets the nextlevel if there is no levelclicked
+ */
+void PlayingArea::NextLevel()
+{
+    if( mLevelComplete)
+    {
+        if (mLevelNum < 3)
+        {
+            mLevelNum += 1;
+        }
+        else
+        {
+            mLevelNum = 0;
+        }
+        mGame->SetLevel(mLevelNum);
+        mLevelComplete = false;
+
+    }
 }

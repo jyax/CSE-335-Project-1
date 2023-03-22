@@ -21,12 +21,6 @@ Item::Item(PlayingArea *area, const std::wstring &filename) : mArea(area)
 	mItemImage = make_shared<wxImage>(filename, wxBITMAP_TYPE_ANY);
 }
 
-Item::Item(PlayingArea *area) : mArea(area)
-{
-
-}
-
-
 /**
  * Destructor
  */
@@ -82,9 +76,9 @@ void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 /**
  * Copy constructor
  */
-Item::Item(const Item &)
+Item::Item(const Item &original)
 {
-
+    mArea = original.mArea;
 }
 
 /**
