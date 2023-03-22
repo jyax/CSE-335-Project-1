@@ -4,7 +4,7 @@
     <bug type="garbage" x="-100" y="-100" speed="120" start="1"/>
     <bug type="null" x="600" y="1200" speed="140" start="2"/>
     <feature x="-100" y="810" speed="90" start="6"/>
-<!--    <bug type="assassin" x="400" y="-100" speed="110" start="8"/>-->
+    <bug type="assassin" x="400" y="-100" speed="110" start="8"/>
     <feature x="440" y="1100" speed="70" start="10"/>
     <feature x="150" y="280" speed="90" start="10"/>
   </program>

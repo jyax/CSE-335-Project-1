@@ -8,6 +8,7 @@
 #include "pch.h"
 #include <wx/graphics.h>
 #include "Program.h"
+#include "PlayingArea.h"
 
 /// Program image filename
 const std::wstring ProgramImage = L"images/laptop.png";
@@ -25,7 +26,9 @@ const wxColour ProgramFontColor = wxColour(*wxWHITE);
  * @param game The game we are in
  */
 Program::Program(PlayingArea *area) : Item(area, ProgramImage)
-{}
+{
+    mPlayingArea = area;
+}
 
 /**
  * Draw Program onto playing area
@@ -66,4 +69,13 @@ void Program::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 
     mProgramName = node->GetAttribute("name");
 
+}
+/**
+ * Handle updates for animation
+ * @param elapsed The time since the last update
+ */
+void Program::Update(double elapsed)
+{
+//    if (mPlayingArea != nullptr)
+//        mPlayingArea->RemoveItem(GetX(), GetY());
 }

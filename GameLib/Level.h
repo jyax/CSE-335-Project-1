@@ -122,6 +122,8 @@ public:
 
 
     void XmlProgram(wxXmlNode *node);
+
+    void DrawLevelFinish(std::shared_ptr<wxGraphicsContext> &graphics);
 };
 
 #endif //PROJECT1_GAMELIB_LEVEL_H

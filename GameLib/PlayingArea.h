@@ -44,6 +44,7 @@ private:
     /// for level start boolean
     bool mLevelStart = false;
 
+    std::vector<Item*> mDeleteItems;
 
 public:
     /**
@@ -90,6 +91,11 @@ public:
 	void MoveItem(std::shared_ptr<Item> item);
 
 
+    void RemoveItem(Item* bug);
+
+    void DeleteItem();
+
+    void CheckItem(Item *item);
 };
 
 

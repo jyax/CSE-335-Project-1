@@ -33,6 +33,7 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
 	//mSpeed = BugSpeed;
 	mFrames = frames;
 	//mStopWatch.Start();
+    mArea = area;
 }
 
 /**
@@ -61,10 +62,10 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
 		{
 			SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
 
-			if(abs(mProgram->GetX() - GetX()) < 5 && abs(mProgram->GetY() - GetY()) < 5)
-			{
-				this->~Bug();
-			}
+            if(DistanceTo(mProgram) < BugHitRange)
+            {
+                mArea->RemoveItem(this);
+            }
 		}
     }
 }

@@ -23,6 +23,8 @@ private:
 	///Speed the bug is traveling
 	double mSpeed;
 
+    PlayingArea *mArea;
+
 	///Destination of the bug
 	Item *mDestination;
 
@@ -126,6 +128,13 @@ public:
 	~Bug();
 
 	bool CheckCode();
+    /**
+    * Compute the distance from this to another item
+    * @param item Item we are computing the distantce to
+    * @return Distance in pixels
+    */
+    double DistanceTo(std::shared_ptr<Item> item) override{ return Item::DistanceTo(item);}
+
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

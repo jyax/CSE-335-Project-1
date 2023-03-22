@@ -123,6 +123,7 @@ void Game::MoveToFront(std::shared_ptr<Item> item)
 void Game::Update(double elapsed)
 {
     mPlayingArea.Update(elapsed);
+    mPlayingArea.DeleteItem();
 }
 /**
  * Sets the level and passes the xmlfile to Level

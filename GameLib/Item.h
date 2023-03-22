@@ -116,6 +116,8 @@ public:
 	 * @return a pointer to the playing area the item is in
 	 */
 	PlayingArea* GetArea() {return mArea;}
+
+     virtual double DistanceTo(std::shared_ptr<Item> item);
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

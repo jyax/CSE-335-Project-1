@@ -10,6 +10,7 @@
 #include <wx/graphics.h>
 #include "PlayingArea.h"
 #include "Game.h"
+#include "Program.h"
 //#include "SplatBug.h"
 
 using namespace std;
@@ -25,6 +26,9 @@ const std::wstring Level2FileName = L"data/level2.xml";
 
 /// File name for Level 3
 const std::wstring Level3FileName = L"data/level3.xml";
+
+/// The range from the center of the bug to see if hit or not
+const int BugHitRange = 50;
 
 /**
  * Draws the starting text
@@ -218,4 +222,49 @@ void PlayingArea::Update(double elapsed)
 void PlayingArea::MoveItem(std::shared_ptr<Item> item)
 {
 	auto loc = find(begin(mItems), end(mItems), item);
+}
+/**
+* Delete if the bug reaches to the program
+ * @param item to be deleted
+*/
+void PlayingArea::RemoveItem(Item* bug)
+{
+    mDeleteItems.push_back(bug);
+}
+/**
+ * call the CheckItem function for deleting the bug which
+ * reaches to the program
+ */
+void PlayingArea::DeleteItem()
+{
+    for (auto item : mDeleteItems)
+    {
+        CheckItem(item);
+
+    }
+    mDeleteItems.clear();
+}
+/**
+ * Deletes the bug which
+ * reaches to the program
+ * @param itemDelete  the bug pointer to delete
+ */
+void PlayingArea::CheckItem(Item *itemDelete)
+{
+    for (auto item : mItems)
+    {
+
+    }
+    auto i = mItems.begin();
+    while( i != mItems.end())
+   {
+       if( itemDelete == i->get() )
+       {
+            mItems.erase(i);
+            break;
+       }
+       else{
+           ++i;
+       }
+   }
 }

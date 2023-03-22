@@ -18,6 +18,9 @@ class Program : public Item {
 private:
     std::wstring mProgramName;
 
+    /// Playing are this program belongs to
+    PlayingArea *mPlayingArea;
+
     /// The item programme
     std::shared_ptr<wxImage> mProgrammeImage;
     /// The item bitmap
@@ -44,6 +47,15 @@ public:
     * @return True is item is a program otherwise false
     */
 	bool IsProgram() override {return TRUE;};
+
+    //bool ReachedProgram() override {  return false; }
+    /**
+    * Compute the distance from this to another item
+    * @param item Item we are computing the distantce to
+    * @return Distance in pixels
+    */
+    double DistanceTo(std::shared_ptr<Item> item) override{ return Item::DistanceTo(item);}
+    void Update(double elapsed) override;
 
 };
 

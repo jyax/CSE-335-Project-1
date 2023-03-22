@@ -191,6 +191,10 @@ void Level::Update(double elapsed)
             mState = State::PLAYING;
         }
     }
+    if (mState == State::PLAYING)
+    {
+
+    }
 
 }
 /**
@@ -233,3 +237,19 @@ void Level::DrawLevelName(std::shared_ptr<wxGraphicsContext> &graphics)
     }
 }
 
+/**
+ * Draws the level name onscreen when the level completes
+ * @param graphics the graphics context to draw on
+ */
+void Level::DrawLevelFinish(std::shared_ptr<wxGraphicsContext> &graphics)
+{
+    if (mIsStart)
+    {
+        graphics->SetFont(wxFont(wxSize(0, LevelNameFontSize), wxFONTFAMILY_SWISS,
+                                 wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), LevelNameFontColor);
+
+        double width, length;
+        graphics->GetTextExtent(wxString::Format("Level Completed"), &width, &length);
+        graphics->DrawText(wxString::Format(mType), LevelNameX - (width/2), LevelNameY - (length/2));
+    }
+}

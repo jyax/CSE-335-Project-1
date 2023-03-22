@@ -91,3 +91,14 @@ Item::Item()
 {
 
 }
+/**
+* Compute the distance from this to another item
+* @param item Item we are computing the distantce to
+* @return Distance in pixels
+*/
+double Item::DistanceTo(std::shared_ptr<Item> item)
+{
+    auto dx = item->GetX() - GetX();
+    auto dy = item->GetY() - GetY();
+    return sqrt(dx * dx + dy * dy);
+}
