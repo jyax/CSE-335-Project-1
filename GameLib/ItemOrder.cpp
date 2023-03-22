@@ -50,3 +50,12 @@ void ItemOrder::VisitProgram(Program *program)
 {
 	ItemVisitor::VisitProgram(program);
 }
+
+/**
+ * Visit a KillerBug object
+ * @param bug Killer bug to visit
+ */
+void ItemOrder::VisitKiller(KillerBug *bug)
+{
+	ItemVisitor::VisitKiller(bug);
+}

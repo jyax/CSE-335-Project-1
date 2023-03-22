@@ -90,3 +90,12 @@ void SplatBug::VisitProgram(Program *program)
 {
 
 }
+
+/**
+ * Visit a KillerBug object
+ * @param bug Killer bug to visit
+ */
+void SplatBug::VisitKiller(KillerBug *bug)
+{
+
+}
