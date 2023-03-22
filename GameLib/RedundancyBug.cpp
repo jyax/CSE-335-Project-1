@@ -215,9 +215,10 @@ void RedundancyBug::Reverse()
 /**
 * Load attributes for a Redundancy
  *
- * param node The xml node we are loading attributes from
+ * @param node The xml node we are loading attributes from
+ * @param item destination for the bug
 */
-void RedundancyBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void RedundancyBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
-    Bug::XmlLoad(node, program);
+    Bug::XmlLoad(node, item);
 }

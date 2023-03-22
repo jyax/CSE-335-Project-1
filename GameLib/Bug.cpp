@@ -141,10 +141,11 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 * Load attributes for a Bug
  *
  * @param node The xml node we are loading attributes from
+ * @param item destination for the bug
 */
-void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
-    Item::XmlLoad(node, program);
+    Item::XmlLoad(node, item);
 
     int speed, start;
     node->GetAttribute(L"speed",L"0").ToInt(&speed);
@@ -152,7 +153,7 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 
 	mSpeed = (int)speed;
 	mStart = (int)start;
-    mDestination = program;
+    mDestination = item;
 }
 
 /**

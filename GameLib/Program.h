@@ -40,7 +40,7 @@ public:
 
 	void Accept(ItemVisitor* visitor) override {visitor->VisitProgram(this);}
 
-    void XmlLoad(wxXmlNode *node,std::shared_ptr<Program> program) override;
+    void XmlLoad(wxXmlNode *node,std::shared_ptr<Item> program) override;
 
 	/**
     * checks if item is program

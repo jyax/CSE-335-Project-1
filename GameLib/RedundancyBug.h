@@ -56,7 +56,7 @@ public:
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitRedundancy(this);}
 
-    void XmlLoad(wxXmlNode* node, std::shared_ptr<Program> program) override;
+    void XmlLoad(wxXmlNode* node, std::shared_ptr<Item> item) override;
 
     void Update(double elapsed) override;
 

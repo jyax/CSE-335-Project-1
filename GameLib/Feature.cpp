@@ -30,11 +30,12 @@ Feature::Feature(PlayingArea *area) : Bug(area, FeatureImageName, FeatureNumSpri
 /**
 * Load attributes for a Feature
  *
- * param node The xml node we are loading attributes from
+ * @param node The xml node we are loading attributes from
+ * @param item destination for the bug
 */
-void Feature::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void Feature::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
-    Bug::XmlLoad(node, program);
+    Bug::XmlLoad(node, item);
 }
 /**
  * Draw this bug

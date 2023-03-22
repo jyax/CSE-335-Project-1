@@ -2,6 +2,7 @@
  * @file Item.cpp
  * @author Jacob Meier
  * @author Nicole Kuang
+ * @author Alexandra Bannon
  */
 
 #include "pch.h"
@@ -66,8 +67,9 @@ void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 /**
  * Load in Item coordinates
  * @param node the node to load
+ * @param item item (for bug) that will be its destination
  */
-void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
 	long x, y;
 	node->GetAttribute(L"x", L"0").ToLong(&x);
@@ -75,6 +77,7 @@ void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 	mX = (int)x;
 	mY = (int)y;
 }
+
 
 /**
  * Copy constructor

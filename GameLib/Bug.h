@@ -50,7 +50,7 @@ private:
 	/// Check if this bug was squashed
 	bool mIsHit = false;
 
-    /// Program for this bug
+    /// Destination for this bug
     std::shared_ptr<Item> mDestination;
 
 protected:
@@ -77,7 +77,7 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void XmlLoad(wxXmlNode *node,std::shared_ptr<Program> program) override;
+    void XmlLoad(wxXmlNode *node,std::shared_ptr<Item> item) override;
 
 	/**
 	 * Get the hit status of the bug

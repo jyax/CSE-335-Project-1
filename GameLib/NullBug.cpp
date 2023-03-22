@@ -32,10 +32,13 @@ NullBug::NullBug(PlayingArea *area) : Bug(area, NullBugSpriteImageName, NullBugN
 
 /**
 * Load attributes for null bug
+ *
+ * @param node The xml node we are loading attributes from
+ * @param item destination for the bug
 */
-void NullBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void NullBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
-    Bug::XmlLoad(node, program);
+    Bug::XmlLoad(node, item);
 
 	auto child = node->GetChildren();
 	for (; child; child = child->GetNext())

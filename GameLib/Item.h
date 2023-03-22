@@ -2,6 +2,7 @@
  * @file Item.h
  * @author Jacob Meier
  * @author Nicole Kuang
+ * @author Alexandra Bannon
  *
  * Abstract base class for any item in our Game.
  */
@@ -97,7 +98,7 @@ public:
      */
 	virtual void Update(double elapsed) {}
 
-    virtual void XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program);
+    virtual void XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item);
 
 	/**
      * Accept a visitor

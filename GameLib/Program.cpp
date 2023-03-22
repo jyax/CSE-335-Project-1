@@ -63,9 +63,9 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
  *
  * @param node The xml node we are loading attributes from
 */
-void Program::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void Program::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
-    Item::XmlLoad(node, program);
+    Item::XmlLoad(node, item);
 
     mProgramName = node->GetAttribute("name");
 

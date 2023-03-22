@@ -36,10 +36,11 @@ GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName,
 * Load attributes for a Garbage Bug
  *
  * @param node The xml node we are loading attributes from
+ * @param item destination for the bug
 */
-void GarbageBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
+void GarbageBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
-    Bug::XmlLoad(node, program);
+    Bug::XmlLoad(node, item);
 
 	auto child = node->GetChildren();
 	for (; child; child = child->GetNext())
