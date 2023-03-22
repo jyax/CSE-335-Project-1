@@ -1,6 +1,7 @@
 /**
  * @file ItemVisitor.h
  * @author Nicole Kuang
+ * @author Gaya Kanagaraj
  *
  * Game item visitor base class
  */
@@ -24,6 +25,9 @@ private:
     /// bug counter
     int mNumOfBugs = 0;
 
+    /// Spalttered bugs
+    int mSplatterBugs = 0;
+
 public:
 	/** Destructor */
 	virtual ~ItemVisitor() {}
@@ -33,7 +37,7 @@ public:
 	 * Visit a GarbageBug object
 	 * @param bug garbage bug to visit
 	 */
-	virtual void VisitGarbage(GarbageBug *bug) {mNumOfBugs++;}
+	virtual void VisitGarbage(GarbageBug *bug){mNumOfBugs++;}
 
 	/**
 	 * Visit a NullBug object
@@ -66,8 +70,8 @@ public:
 	virtual void VisitKiller(KillerBug *bug) {mNumOfBugs++;}
 
     /**
-     * Get the number of buildings
-     * @return Number of buildings
+     * Get the number of bugs in the playing area
+     * @return Number of bugs
      */
     int GetNumOfBugs() const { return mNumOfBugs; }
 

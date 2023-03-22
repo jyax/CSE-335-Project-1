@@ -2,6 +2,7 @@
  * @file Item.h
  * @author Jacob Meier
  * @author Nicole Kuang
+ * @author Gaya Kangarag
  *
  * Abstract base class for any item in our Game.
  */
@@ -111,6 +112,13 @@ public:
 	PlayingArea* GetArea() {return mArea;}
 
      virtual double DistanceTo(std::shared_ptr<Item> item);
+
+    /**
+	 * Is the bug a fat bug?
+	 * @return true if yes, false otherwise
+	 */
+     virtual bool GetIsHit() { return false; }
+
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

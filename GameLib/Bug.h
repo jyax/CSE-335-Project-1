@@ -85,7 +85,7 @@ public:
 	 * Get the hit status of the bug
 	 * @return bug's hit status
 	 */
-	bool GetIsHit() {return mIsHit;}
+	bool GetIsHit() override {return mIsHit;}
 
 	/**
 	 * Set the hit status of the bug
@@ -97,7 +97,7 @@ public:
 	 * Is the bug a fat bug?
 	 * @return true if yes, false otherwise
 	 */
-	bool GetIsFatBug() { return mIsFatBug; }
+	bool GetIsFatBug(){ return mIsFatBug; }
 
 	/**
 	 * Set whether the bug is fat
@@ -131,7 +131,7 @@ public:
      * Accept a visitor
      * @param visitor The visitor we accept
      */
-    void Accept(ItemVisitor* visitor){}
+    void Accept(ItemVisitor* visitor) override{}
 
 
     bool CheckCode();

@@ -263,10 +263,7 @@ void PlayingArea::DeleteItem()
  */
 void PlayingArea::CheckItem(Item *itemDelete)
 {
-    for (auto item : mItems)
-    {
 
-    }
     auto i = mItems.begin();
     while( i != mItems.end())
    {
@@ -294,6 +291,22 @@ bool PlayingArea::LevelComplete()
     {
         mLevelComplete = true;
         return true;
+    }
+    else if( cnt > 0)
+    {
+        int countSplat = 0;
+        for (auto item : mItems)
+        {
+            if(item->GetIsHit())
+            {
+                countSplat ++;
+            }
+        }
+        if ( cnt == countSplat)
+        {
+            mLevelComplete = true;
+            return true;
+        }
     }
     return false;
 }
