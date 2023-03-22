@@ -23,10 +23,8 @@ private:
 	///Speed the bug is traveling
 	double mSpeed;
 
+	///playing area the bug is in 
     PlayingArea *mArea;
-
-	///Destination of the bug
-	Item *mDestination;
 
 	///Bool to tell if the bug is a FatBug or not
 	bool mIsFatBug = false;
@@ -53,7 +51,7 @@ private:
 	bool mIsHit = false;
 
     /// Program for this bug
-    std::shared_ptr<Program> mProgram;
+    std::shared_ptr<Item> mDestination;
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);

@@ -62,7 +62,7 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
 		{
 			SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
 
-            if(DistanceTo(mProgram) < BugHitRange)
+            if(DistanceTo(mDestination) < BugHitRange)
             {
                 mArea->RemoveItem(this);
             }
@@ -152,7 +152,7 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Program> program)
 
 	mSpeed = (int)speed;
 	mStart = (int)start;
-    mProgram = program;
+    mDestination = program;
 }
 
 /**
@@ -179,8 +179,8 @@ Bug::Bug()
 */
 double Bug::GetAngle()
 {
-	double angleX = mProgram->GetX() - GetX();
-	double angleY = mProgram->GetY() - GetY();
+	double angleX = mDestination->GetX() - GetX();
+	double angleY = mDestination->GetY() - GetY();
 
 	return atan2(angleY, angleX);
 
