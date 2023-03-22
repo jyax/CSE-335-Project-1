@@ -14,6 +14,8 @@
 #include <random>
 #include "Item.h"
 #include "PlayingArea.h"
+//#include "BugVisitor.h"
+#include "ItemVisitor.h"
 
 /**
  * Base class for the bugs in the game
@@ -55,7 +57,7 @@ private:
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
-    Bug(PlayingArea *area);
+    Bug(PlayingArea *area, const std::wstring &filename);
 
 	/// The underlying splatted image
 	std::shared_ptr<wxImage> mSplatImage;
@@ -125,7 +127,14 @@ public:
 
 	~Bug();
 
-	bool CheckCode();
+    /**
+     * Accept a visitor
+     * @param visitor The visitor we accept
+     */
+    void Accept(ItemVisitor* visitor){}
+
+
+    bool CheckCode();
     /**
     * Compute the distance from this to another item
     * @param item Item we are computing the distantce to

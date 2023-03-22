@@ -36,7 +36,6 @@ private:
 
 protected:
 	Item(PlayingArea *area, const std::wstring &filename);
-	Item(PlayingArea *area);
 
 public:
 	/// Default constructor

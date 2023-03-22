@@ -11,6 +11,7 @@
 #include "PlayingArea.h"
 #include "Game.h"
 #include "Program.h"
+#include "ItemVisitor.h"
 //#include "SplatBug.h"
 
 using namespace std;
@@ -56,11 +57,15 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
         {
             if (item != nullptr)
                 item->Draw(graphics);
+
         }
         mCurrentLevel->DrawLevelName(graphics);
+
     }
-
-
+    if(mLevelComplete)
+    {
+        mCurrentLevel->DrawLevelFinish(graphics);
+    }
 
 
     graphics->PopState();
@@ -203,7 +208,7 @@ void PlayingArea::Update(double elapsed)
     {
         item->Update(elapsed);
     }
-
+    LevelComplete();
 }
 
 
@@ -260,4 +265,18 @@ void PlayingArea::CheckItem(Item *itemDelete)
            ++i;
        }
    }
+}
+/**
+ * It check whether the level is complete or not
+ * using Bug Visitor
+ */
+void PlayingArea::LevelComplete()
+{
+    ItemVisitor visitor;
+    this->Accept(&visitor);
+    int cnt = visitor.GetNumOfBugs();
+    if (cnt == 0)
+    {
+        mLevelComplete = true;
+    }
 }

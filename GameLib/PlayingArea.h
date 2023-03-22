@@ -41,6 +41,9 @@ private:
     ///Current level being played
     int mLevelNum;
 
+    /// level complete boolean
+    bool mLevelComplete = false;
+
     /// for level start boolean
     bool mLevelStart = false;
 
@@ -96,6 +99,13 @@ public:
     void DeleteItem();
 
     void CheckItem(Item *item);
+    /**
+     * returns current level number
+     * @return int value
+     */
+    int GetLevelNumber(){return mLevelNum;}
+
+    void LevelComplete();
 };
 
 

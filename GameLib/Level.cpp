@@ -243,13 +243,13 @@ void Level::DrawLevelName(std::shared_ptr<wxGraphicsContext> &graphics)
  */
 void Level::DrawLevelFinish(std::shared_ptr<wxGraphicsContext> &graphics)
 {
-    if (mIsStart)
+    if (!mIsStart)
     {
         graphics->SetFont(wxFont(wxSize(0, LevelNameFontSize), wxFONTFAMILY_SWISS,
                                  wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD), LevelNameFontColor);
 
         double width, length;
         graphics->GetTextExtent(wxString::Format("Level Completed"), &width, &length);
-        graphics->DrawText(wxString::Format(mType), LevelNameX - (width/2), LevelNameY - (length/2));
+        graphics->DrawText(wxString::Format("Level Completed"), LevelNameX - (width/2), LevelNameY - (length/2));
     }
 }
