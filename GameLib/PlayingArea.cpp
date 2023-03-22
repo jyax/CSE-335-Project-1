@@ -72,14 +72,7 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
  */
 void PlayingArea::Add(shared_ptr<Item> item)
 {
-	if (item->IsProgram())
-	{
-		mItems.insert(mItems.begin(), item);
-	}
-	else
-	{
-		mItems.push_back(item);
-	}
+	mItems.push_back(item);
 }
 
 /**
