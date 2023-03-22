@@ -98,6 +98,17 @@ void Level::ReadLevel(const std::wstring filename)
             }
         }
     }
+
+	// Copy temp list contents over to mItems, then empty those lists
+	for (const auto & mTempProgram : mTempPrograms)
+		mPlayingArea->Add(mTempProgram);
+
+	mTempPrograms.clear();
+
+	for (const auto & mTempBug : mTempBugs)
+		mPlayingArea->Add(mTempBug);
+
+	mTempBugs.clear();
 }
 /**
  * to draw begine text message
@@ -117,7 +128,7 @@ void Level::XmlFeature(wxXmlNode *node)
         //shared_ptr<Item> item;
          auto item = make_shared<Feature>(mPlayingArea);
         if(item != nullptr) {
-            mPlayingArea->Add(item);
+			mTempBugs.push_back(item);
             item->XmlLoad(node, mProgram);
         }
 }
@@ -135,7 +146,7 @@ void Level::XmlBug(wxXmlNode *node)
         auto item = make_shared<NullBug>(mPlayingArea);
         if(item != nullptr)
         {
-            mPlayingArea->Add(item);
+			mTempBugs.push_back(item);
             item->XmlLoad(node, mProgram);
         }
     }
@@ -146,7 +157,7 @@ void Level::XmlBug(wxXmlNode *node)
          auto item = make_shared<GarbageBug>(mPlayingArea);
         if(item != nullptr)
         {
-            mPlayingArea->Add(item);
+			mTempBugs.push_back(item);
             item->XmlLoad(node, mProgram);
             }
     }
@@ -157,7 +168,7 @@ void Level::XmlBug(wxXmlNode *node)
         auto item = make_shared<RedundancyBug>(mPlayingArea);
         if(item != nullptr)
         {
-            mPlayingArea->Add(item);
+			mTempBugs.push_back(item);
             item->XmlLoad(node, mProgram);
             }
     }
@@ -168,7 +179,7 @@ void Level::XmlBug(wxXmlNode *node)
         auto item = make_shared<KillerBug>(mPlayingArea);
         if(item != nullptr)
         {
-            mPlayingArea->Add(item);
+			mTempBugs.push_back(item);
             item->XmlLoad(node, mProgram);
         }
     }
@@ -211,7 +222,7 @@ void Level::XmlProgram(wxXmlNode *node)
     mProgram = make_shared<Program>(mPlayingArea);
     if(mProgram != nullptr)
     {
-        mPlayingArea->Add(mProgram);
+		mTempPrograms.push_back(mProgram);
         mProgram->XmlLoad(node, mProgram);
     }
 

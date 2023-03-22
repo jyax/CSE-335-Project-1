@@ -36,7 +36,6 @@ private:
 
 protected:
 	Item(PlayingArea *area, const std::wstring &filename);
-	Item(PlayingArea *area);
 
 public:
 	/// Default constructor
@@ -104,12 +103,6 @@ public:
       * @param visitor The visitor we accept
       */
 	virtual void Accept(ItemVisitor* visitor) = 0;
-
-	/**
-     * checks if item is program
-     * @return True is item is a program otherwise false
-     */
-	virtual bool IsProgram() {return FALSE;};
 
 	/**
 	 * Getter for the playing area

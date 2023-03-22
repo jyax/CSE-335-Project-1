@@ -44,6 +44,11 @@ private:
     /// program this bug belongs to
     std::shared_ptr<Program> mProgram;
 
+	/// Temporary list for programs when loading
+	std::vector<std::shared_ptr<Item>> mTempPrograms;
+
+	/// Temporary list for bugs when loading
+	std::vector<std::shared_ptr<Item>> mTempBugs;
 
 public:
     /// testing purpose
