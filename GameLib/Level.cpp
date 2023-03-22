@@ -182,7 +182,7 @@ void Level::XmlBug(wxXmlNode *node)
 void Level::Update(double elapsed)
 {
     mTextDuration += elapsed;
-    if (mIsStart)
+    if (mIsStart and mState == State::STARTING)
     {
         if (mTextDuration > TextOnScreenDuration)
         {
@@ -191,9 +191,13 @@ void Level::Update(double elapsed)
             mState = State::PLAYING;
         }
     }
-    if (mState == State::PLAYING)
+    else
     {
-
+        if(mTextDuration > TextOnScreenDuration and mState == State::PLAYING)
+        {
+            mTextDuration = 0;
+            mState = State::FINISHED;
+        }
     }
 
 }

@@ -47,7 +47,12 @@ private:
     /// for level start boolean
     bool mLevelStart = false;
 
+    /// for the deleted items vector
     std::vector<Item*> mDeleteItems;
+
+    /// for keep track of level complete duration
+    double mCompleteDuration = 0.0;
+
 
 public:
     /**
@@ -105,7 +110,9 @@ public:
      */
     int GetLevelNumber(){return mLevelNum;}
 
-    void LevelComplete();
+    bool LevelComplete();
+
+    void NextLevel();
 };
 
 

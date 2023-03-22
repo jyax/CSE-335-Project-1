@@ -16,6 +16,8 @@
 
 using namespace std;
 
+///  The time the text appears on screen
+const double TextOnScreenDuration = 2.0;
 /// File name for Level 0
 const std::wstring Level0FileName = L"data/level0.xml";
 
@@ -62,9 +64,10 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
         mCurrentLevel->DrawLevelName(graphics);
 
     }
-    if(mLevelComplete)
+    if(mLevelComplete and mCompleteDuration < TextOnScreenDuration)
     {
         mCurrentLevel->DrawLevelFinish(graphics);
+
     }
 
 
@@ -215,7 +218,18 @@ void PlayingArea::Update(double elapsed)
     {
         item->Update(elapsed);
     }
-    LevelComplete();
+
+    if(LevelComplete())
+    {
+        mCompleteDuration += elapsed;
+    }
+    if( mLevelComplete && mCompleteDuration > TextOnScreenDuration )
+    {
+        NextLevel();
+        mCompleteDuration = 0.0;
+    }
+
+
 }
 
 
@@ -276,8 +290,9 @@ void PlayingArea::CheckItem(Item *itemDelete)
 /**
  * It check whether the level is complete or not
  * using Bug Visitor
+ * @return true if completed else false
  */
-void PlayingArea::LevelComplete()
+bool PlayingArea::LevelComplete()
 {
     ItemVisitor visitor;
     this->Accept(&visitor);
@@ -285,5 +300,27 @@ void PlayingArea::LevelComplete()
     if (cnt == 0)
     {
         mLevelComplete = true;
+        return true;
+    }
+    return false;
+}
+/**
+ * Sets the nextlevel if there is no levelclicked
+ */
+void PlayingArea::NextLevel()
+{
+    if( mLevelComplete)
+    {
+        if (mLevelNum < 3)
+        {
+            mLevelNum += 1;
+        }
+        else
+        {
+            mLevelNum = 0;
+        }
+        mGame->SetLevel(mLevelNum);
+        mLevelComplete = false;
+
     }
 }
