@@ -292,8 +292,18 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 			Stop();
 			mStopWatch.Pause();
 
+			//wxDialog dlg(this, -1, L"Bug Squash IDE");
+			//auto sizer = new wxBoxSizer(wxVERTICAL);
+			//wxTextCtrl text;
+			//text.Create(&dlg, -1, visitor.GetCode());
+			//auto button = new wxButton(&dlg, wxID_OK, L"OK");
+			//sizer->Add(text);
+			//sizer->Add(button);
+			//SetSizer(sizer);
 			// Open up dialog box containing fat bug code
 			wxMessageDialog dlg(this, L"Testing", L"Bug Squash IDE");
+
+			//dlg.AddMainButtonId(wxID_OK);
 			if (dlg.ShowModal() == wxID_OK)
 			{
 				visitor.CheckCode(); // Checks the edited code
