@@ -18,6 +18,7 @@ class Game;
  */
 class PlayingArea {
 private:
+	/// The game this playing area is in
     Game* mGame;
 
 	/// The list of pointers to items in the game (bugs, programs)
@@ -64,9 +65,9 @@ public:
 
 	void Add(std::shared_ptr<Item> item);
 
-	std::vector<std::shared_ptr<Item>> GetItemList() { return mItems; }
 	/**
-	 * Set level poiner
+	 * Set game pointer
+	 * @param game the game the playing area is in
 	 */
 	void SetGame(Game *game) { mGame = game; }
 
@@ -88,7 +89,11 @@ public:
 
     void LevelStart(bool value);
 
-    bool GetLevelStart(){ return mLevelStart;}
+	/**
+	 * Getter for whether the level has started or not
+	 * @return true if a level has started, false otherwise
+	 */
+    bool GetLevelStart() {return mLevelStart;}
 
     void SetTextDuration(double duration);
 

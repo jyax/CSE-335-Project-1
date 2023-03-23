@@ -16,6 +16,7 @@
  */
 class Program : public Item {
 private:
+	/// The program's name, to be displayed
     std::wstring mProgramName;
 
     /// Playing are this program belongs to
@@ -23,6 +24,7 @@ private:
 
     /// The item programme
     std::shared_ptr<wxImage> mProgrammeImage;
+
     /// The item bitmap
     wxGraphicsBitmap mProgrammeBitmap;
 
@@ -38,6 +40,10 @@ public:
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+	/**
+	 * Accept a visitor
+	 * @param visitor the visitor to accept
+	 */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitProgram(this);}
 
     void XmlLoad(wxXmlNode *node,std::shared_ptr<Item> program) override;

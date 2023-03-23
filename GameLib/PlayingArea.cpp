@@ -94,6 +94,7 @@ void PlayingArea::SetLevelFile()
 //    mLevelTwo->ReadLevel(Level2FileName);
 //    mLevelThree->ReadLevel(Level3FileName);
 }
+
 /**
  * Sets the level and passes the xmlfile to Level
  * @param level
@@ -175,6 +176,7 @@ void PlayingArea::Accept(ItemVisitor *visitor)
 		item->Accept(visitor);
 	}
 }
+
 /**
 * sets the level text duration
  * @param duration for the start text duration to start
@@ -183,6 +185,7 @@ void PlayingArea::SetTextDuration(double duration)
 {
     mCurrentLevel->SetTextDuration(duration);
 }
+
 /**
  * It sets the mLevelStart if the level clicked
  * @param value
@@ -191,6 +194,7 @@ void PlayingArea::LevelStart(bool value)
 {
     mLevelStart = value;
 }
+
 /**
 * Clears the Itemlist
 */
@@ -198,6 +202,7 @@ void PlayingArea::Clear()
 {
     mItems.clear();
 }
+
 /**
  * Updates the game
  * @param elapsed
@@ -235,14 +240,16 @@ void PlayingArea::MoveItem(std::shared_ptr<Item> item)
 {
 	auto loc = find(begin(mItems), end(mItems), item);
 }
+
 /**
-* Delete if the bug reaches to the program
- * @param item to be deleted
-*/
+ * Delete if the bug reaches to the program
+ * @param bug the bug to be deleted
+ */
 void PlayingArea::RemoveItem(Item* bug)
 {
     mDeleteItems.push_back(bug);
 }
+
 /**
  * call the CheckItem function for deleting the bug which
  * reaches to the program
@@ -256,6 +263,7 @@ void PlayingArea::DeleteItem()
     }
     mDeleteItems.clear();
 }
+
 /**
  * Deletes the bug which
  * reaches to the program
@@ -277,6 +285,7 @@ void PlayingArea::CheckItem(Item *itemDelete)
        }
    }
 }
+
 /**
  * It check whether the level is complete or not
  * using Bug Visitor
@@ -310,6 +319,7 @@ bool PlayingArea::LevelComplete()
     }
     return false;
 }
+
 /**
  * Sets the nextlevel if there is no levelclicked
  */

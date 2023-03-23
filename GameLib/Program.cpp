@@ -23,7 +23,7 @@ const wxColour ProgramFontColor = wxColour(*wxWHITE);
 
 /**
  * Constructor
- * @param game The game we are in
+ * @param area The playing area we are in
  */
 Program::Program(PlayingArea *area) : Item(area, ProgramImage)
 {
@@ -59,10 +59,10 @@ void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 }
 
 /**
-* Load attributes for a Program
- *
+ * Load attributes for a Program
  * @param node The xml node we are loading attributes from
-*/
+ * @param item the destination
+ */
 void Program::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
     Item::XmlLoad(node, item);

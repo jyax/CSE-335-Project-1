@@ -75,6 +75,7 @@ void Item::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 
 /**
  * Copy constructor
+ * @param original an Item reference to copy attributes from
  */
 Item::Item(const Item &original)
 {

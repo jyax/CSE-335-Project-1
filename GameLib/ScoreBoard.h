@@ -3,6 +3,7 @@
  * @author Gaya Kanagaraj
  * Class defines the score baord
  */
+
 #ifndef PROJECT1_SCOREBOARD_H
 #define PROJECT1_SCOREBOARD_H
 
@@ -11,9 +12,9 @@
  */
 class ScoreBoard {
 private:
-    int mFixed = 0; ///< for fixed score
-    int mMissed = 0; ///< for missed features
-    int mOops = 0; /// for clicked feature
+    int mFixed = 0; ///< for fixed bugs
+    int mMissed = 0; ///< for missed bugs
+    int mOops = 0; ///< for clicked features
 
 public:
     /** default construct that constructs the scoreboard */

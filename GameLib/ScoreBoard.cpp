@@ -33,10 +33,11 @@ const int ScoreLabelY = 100;
 ScoreBoard::ScoreBoard(){}
 
 /**
-* Add score to the scoreboard
- *  score score to add
- *  true if it is new level else faise
-*/
+ * Add score to the scoreboard
+ * @param fixed true if a bug was fixed
+ * @param oops true if a feature was 'fixed'
+ * @param missed true if a bug got to the program
+ */
 void ScoreBoard::CalculateScore(bool fixed, bool oops, bool missed)
 {
     if(oops)
@@ -52,6 +53,7 @@ void ScoreBoard::CalculateScore(bool fixed, bool oops, bool missed)
         mFixed += 1;
     }
 }
+
 /**
 * Getcurrent score returns the current score
 * @return int current score
@@ -60,6 +62,7 @@ int ScoreBoard::GetOopsScore()
 {
     return mOops;
 }
+
 /**
 * GetTotalScore returns the total score
 * @return int fixed score
@@ -68,6 +71,7 @@ int ScoreBoard::GetFixedScore()
 {
     return mFixed;
 }
+
 /**
 * GetTotalScore returns the total score
 * @return int missed score
@@ -76,8 +80,9 @@ int ScoreBoard::GetMissedScore()
 {
     return mMissed;
 }
+
 /**
- * draw scorebaord using the score label and score font size and color sonstants
+ * draw scoreboard using the score label and score font size and color constants
  * @param graphics
  */
 void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
@@ -113,6 +118,7 @@ void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
 
     graphics->PopState();
 }
+
 /**
 * Resets the score board
 */
