@@ -64,7 +64,7 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
         mCurrentLevel->DrawLevelName(graphics);
 
     }
-    if(mLevelComplete and mCompleteDuration < TextOnScreenDuration)
+    if(mLevelComplete && mCompleteDuration < TextOnScreenDuration)
     {
         mCurrentLevel->DrawLevelFinish(graphics);
 
