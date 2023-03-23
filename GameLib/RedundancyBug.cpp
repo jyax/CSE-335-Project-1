@@ -127,48 +127,49 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
                              -baseSize.GetHeight() / 2,
                              baseSize.GetWidth(), baseSize.GetHeight());
         graphics->PopState();
-
-
         /// Time to draw the fly wings!
         mRedundancyFlyLeftWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyLeftWingImage);
         mRedundancyFlyRightWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyRightWingImage);
 
         wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
         double x = GetX() + FirstWingSetX;
-        double y = GetY();
-
-        double angle = (WingRotateEnd - WingRotateStart) / Frames;
-
-        for (int i = 0; i < NumberOfSetsOfWings; i++) {
+        double y = GetY() + WingSetY;
+        for (int i = 0; i < NumberOfSetsOfWings; i++)
+        {
             graphics->PushState();
             graphics->Translate(x, y);
-            graphics->Rotate(GetAngle() + angle);
+            graphics->Rotate(mDirection * mCurrentAngle);
             graphics->DrawBitmap(mRedundancyFlyLeftWingBitmap,
                                  -(wingSize.GetWidth() / 2),
-                                 -(wingSize.GetHeight() / 2) - WingSetY,
-                                 wingSize.GetWidth(), wingSize.GetHeight());
-            graphics->PopState();
-
-            graphics->PushState();
-            graphics->Translate(x, y);
-            graphics->Rotate(GetAngle() + angle);
-            graphics->DrawBitmap(mRedundancyFlyRightWingBitmap,
-                                 -(wingSize.GetWidth() / 2),
-                                 -(wingSize.GetHeight() / 2) + WingSetY,
+                                 -(wingSize.GetHeight() / 2),
                                  wingSize.GetWidth(), wingSize.GetHeight());
             graphics->PopState();
             x += WingSetXOffset;
         }
 
+        x = GetX() + FirstWingSetX;
+        y = GetY() - WingSetY;
+        for (int i = 0; i < NumberOfSetsOfWings; i++) {
+            graphics->PushState();
+            graphics->Translate(x, y);
+            graphics->Rotate(-mDirection * mCurrentAngle);
+            graphics->DrawBitmap(mRedundancyFlyRightWingBitmap,
+                                 -(wingSize.GetWidth() / 2),
+                                 -(wingSize.GetHeight() / 2),
+                                 wingSize.GetWidth(), wingSize.GetHeight());
+            graphics->PopState();
+
+            x += WingSetXOffset;
+        }
+        graphics->PushState();
+        graphics->Translate(GetX(),GetY());
+        graphics->Rotate(GetAngle());
         //    graphics->PushState();  // Save the graphics state
         //    graphics->Translate(150, 800);
         //    graphics->Rotate(mRotation);
         //    graphics->DrawBitmap(mHaroldBitmap, -haroldWid/2, -haroldHit/2, haroldWid, haroldHit);
         //    graphics->PopState();   // Restore the graphics state
 
-        graphics->PushState();
-        graphics->Translate(GetX(), GetY());
-        graphics->Rotate(GetAngle());
         /// Draw Top image of the Fly
         wxSize topSize = mRedundancyFlyTopImage->GetSize();
         graphics->DrawBitmap(mRedundancyFlyTopBitmap,
@@ -188,21 +189,37 @@ void RedundancyBug::Update(double elapsed)
     Bug::Update(elapsed);
     /// If current elapsed time is greater than the last wing period,
     /// we set it to a new wing period
-    if(elapsed > mCurrentWingPeriod + WingPeriod)
+    if(elapsed > (mCurrentWingPeriod + WingPeriod))
     {
         mCurrentWingPeriod += elapsed;
         Reverse();
     }
-    double angle = (WingRotateEnd - WingRotateStart) / Frames;
-    if(mCurrentRotation <= WingRotateEnd)
+    double angle = (WingRotateEnd - WingRotateStart) / (Frames);
+
+    if(mCurrentAngle > GetAngle() + WingRotateEnd)
     {
-        mCurrentRotation += angle;
+        mChangeDirection = true;
     }
-    else if((mCurrentRotation >= 0) && (mChangeDirection))
+    else if(mCurrentAngle < GetAngle() + WingRotateStart)
     {
-        mCurrentRotation -= angle;
+        mChangeDirection = false;
     }
-    wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
+
+    if(mChangeDirection)
+    {
+        mCurrentAngle -= angle;
+    } else
+    {
+        mCurrentAngle += angle;
+    }
+//    if((mCurrentAngle < GetAngle() + WingRotateEnd))
+//    {
+//        mCurrentAngle += angle;
+//    }
+//    else if((mCurrentAngle > GetAngle() + WingRotateEnd))
+//    {
+//        mCurrentAngle -= angle;
+//    }
 }
 
 /**
@@ -227,7 +244,6 @@ void RedundancyBug::Multiply()
  */
 void RedundancyBug::Reverse()
 {
-    mChangeDirection = mChangeDirection ? false : true;
     mDirection = mDirection * -1;
 }
 

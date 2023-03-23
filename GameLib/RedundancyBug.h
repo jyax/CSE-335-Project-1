@@ -23,7 +23,7 @@ private:
     bool mSquashed = false;
     bool mChangeDirection;
     double mCurrentWingPeriod = 0;
-    double mCurrentRotation = 0;
+    double mCurrentAngle = 0;
     double mDirection = 1;
 
     /// Redundancy Fly Base Image and Bitmap
