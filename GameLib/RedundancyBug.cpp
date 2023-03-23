@@ -87,7 +87,6 @@ RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(original)
     double y = pow(pow(num, 2) - pow(x, 2), 0.5);
     SetLocation(original.GetX() + x, original.GetY() + y);
     mHasMultiplied = original.mHasMultiplied;
-//    mSquashed = original.mSquashed;
     mRedundancyFlyLeftWingImage = make_unique<wxImage>(RedundancyFlyLeftWingImageName, wxBITMAP_TYPE_ANY);
     mRedundancyFlyRightWingImage = make_unique<wxImage>(RedundancyFlyRightWingImageName, wxBITMAP_TYPE_ANY);
     mRedundancyFlyTopImage = make_unique<wxImage>(RedundancyFlyTopImageName, wxBITMAP_TYPE_ANY);
@@ -170,8 +169,7 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
             x += WingSetXOffset;
         }
-        //graphics->Translate(GetX(),GetY());
-        //graphics->Rotate(GetAngle());
+
         /// Draw Top image of the Fly
         wxSize topSize = mRedundancyFlyTopImage->GetSize();
         graphics->DrawBitmap(mRedundancyFlyTopBitmap,
@@ -216,14 +214,6 @@ void RedundancyBug::Update(double elapsed)
     {
         mCurrentAngle += angle;
     }
-//    if((mCurrentAngle < GetAngle() + WingRotateEnd))
-//    {
-//        mCurrentAngle += angle;
-//    }
-//    else if((mCurrentAngle > GetAngle() + WingRotateEnd))
-//    {
-//        mCurrentAngle -= angle;
-//    }
 }
 
 /**
@@ -231,6 +221,7 @@ void RedundancyBug::Update(double elapsed)
  */
 void RedundancyBug::Multiply()
 {
+    /// Creates Copies of the Redundancy Fly and adds it to the playing area
     int extraFlies = rand() % 3 + 3;
     while(extraFlies > 1)
     {
@@ -238,6 +229,8 @@ void RedundancyBug::Multiply()
         GetArea()->Add(bug);
         extraFlies--;
     }
+
+    /// RNG based on normal distribution for the placement for multiplying!
     std::default_random_engine gen;
     std::normal_distribution<double> d(200.0, 30.0);
     int num = d(gen);
