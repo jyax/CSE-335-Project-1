@@ -5,6 +5,10 @@
 
 #include "pch.h"
 #include "DeleteBug.h"
+#include "GarbageBug.h"
+#include "NullBug.h"
+#include "RedundancyBug.h"
+#include "Game.h"
 
 /**
  * Visit a GarbageBug object
@@ -12,7 +16,7 @@
  */
 void DeleteBug::VisitGarbage(GarbageBug *bug)
 {
-
+	bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
 }
 
 /**
@@ -21,7 +25,7 @@ void DeleteBug::VisitGarbage(GarbageBug *bug)
  */
 void DeleteBug::VisitNull(NullBug *bug)
 {
-
+	bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
 }
 
 /**
@@ -30,7 +34,7 @@ void DeleteBug::VisitNull(NullBug *bug)
  */
 void DeleteBug::VisitRedundancy(RedundancyBug *bug)
 {
-
+	bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
 }
 
 /**

@@ -13,6 +13,7 @@
 #include <wx/regex.h>
 #include "Program.h"
 #include "PlayingArea.h"
+#include "DeleteBug.h"
 
 using namespace std;
 
@@ -65,6 +66,10 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
             if(DistanceTo(mDestination) < BugHitRange)
             {
                 mArea->RemoveItem(this);
+
+				// Increments score only for bad bugs
+				DeleteBug visitor;
+				Accept(&visitor);
             }
 		}
     }
