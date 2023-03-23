@@ -115,7 +115,7 @@ public:
 	 * Get the broken/fixed code for the fat bug
 	 * @return the fat bug's code
 	 */
-	std::wstring GetCode() {return mCode;}
+	std::wstring GetCode() override {return mCode;}
 
 	/**
 	 * Set the broken/fixed code for the fat bug

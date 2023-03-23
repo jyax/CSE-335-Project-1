@@ -14,6 +14,8 @@
 #include <wx/graphics.h>
 #include "ItemVisitor.h"
 
+using namespace std;
+
 class Game;
 class PlayingArea;
 
@@ -119,6 +121,12 @@ public:
 	 * @return true if yes, false otherwise
 	 */
      virtual bool GetIsHit() { return false; }
+
+	/**
+	* Get the broken/fixed code for the fat bug
+	* @return the fat bug's code or an empty wstring
+	*/
+	virtual std::wstring GetCode() {return L"";}
 
 };
 
