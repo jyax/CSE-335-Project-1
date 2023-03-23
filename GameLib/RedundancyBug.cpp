@@ -80,8 +80,11 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area, RedundancyFlySplatIm
   */
 RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(original)
 {
-    double x = rand() % 400 - 200;
-    double y = rand() % 400 - 200;
+    std::default_random_engine gen;
+    std::normal_distribution<double> d(200.0, 30.0);
+    int num = d(gen);
+    double x = rand() % num - num;
+    double y = pow(pow(num, 2) - pow(x, 2), 0.5);
     SetLocation(original.GetX() + x, original.GetY() + y);
     mHasMultiplied = original.mHasMultiplied;
 //    mSquashed = original.mSquashed;
@@ -105,7 +108,11 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
         double width = mSplatImage->GetWidth();
         double height = mSplatImage->GetHeight();
-        graphics->DrawBitmap(mSplatBitmap, int(GetX() - width / 2), int(GetY() - height / 2), width, height);
+        graphics->PushState();
+        graphics->Translate(GetX(), GetY());
+        graphics->Rotate(GetAngle());
+        graphics->DrawBitmap(mSplatBitmap, int(-width / 2), int(-height / 2), width, height);
+        graphics->PopState();
     }
     else {
         /// Handles if there currently isn't a set bitmap for all of the images
@@ -126,18 +133,19 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
                              -baseSize.GetWidth() / 2,
                              -baseSize.GetHeight() / 2,
                              baseSize.GetWidth(), baseSize.GetHeight());
-        graphics->PopState();
+
         /// Time to draw the fly wings!
         mRedundancyFlyLeftWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyLeftWingImage);
         mRedundancyFlyRightWingBitmap = graphics->CreateBitmapFromImage(*mRedundancyFlyRightWingImage);
 
         wxSize wingSize = mRedundancyFlyLeftWingImage->GetSize();
-        double x = GetX() + FirstWingSetX;
-        double y = GetY() + WingSetY;
+        double x = FirstWingSetX;
+        double y = WingSetY;
+        graphics->Translate(0,y);
         for (int i = 0; i < NumberOfSetsOfWings; i++)
         {
             graphics->PushState();
-            graphics->Translate(x, y);
+            graphics->Translate(x, 0);
             graphics->Rotate(mDirection * mCurrentAngle);
             graphics->DrawBitmap(mRedundancyFlyLeftWingBitmap,
                                  -(wingSize.GetWidth() / 2),
@@ -147,11 +155,12 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
             x += WingSetXOffset;
         }
 
-        x = GetX() + FirstWingSetX;
-        y = GetY() - WingSetY;
+        x = FirstWingSetX;
+        y = -WingSetY;
+        graphics->Translate(0, y);
         for (int i = 0; i < NumberOfSetsOfWings; i++) {
             graphics->PushState();
-            graphics->Translate(x, y);
+            graphics->Translate(x, 0);
             graphics->Rotate(-mDirection * mCurrentAngle);
             graphics->DrawBitmap(mRedundancyFlyRightWingBitmap,
                                  -(wingSize.GetWidth() / 2),
@@ -161,15 +170,8 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
             x += WingSetXOffset;
         }
-        graphics->PushState();
-        graphics->Translate(GetX(),GetY());
-        graphics->Rotate(GetAngle());
-        //    graphics->PushState();  // Save the graphics state
-        //    graphics->Translate(150, 800);
-        //    graphics->Rotate(mRotation);
-        //    graphics->DrawBitmap(mHaroldBitmap, -haroldWid/2, -haroldHit/2, haroldWid, haroldHit);
-        //    graphics->PopState();   // Restore the graphics state
-
+        //graphics->Translate(GetX(),GetY());
+        //graphics->Rotate(GetAngle());
         /// Draw Top image of the Fly
         wxSize topSize = mRedundancyFlyTopImage->GetSize();
         graphics->DrawBitmap(mRedundancyFlyTopBitmap,
@@ -194,7 +196,9 @@ void RedundancyBug::Update(double elapsed)
         mCurrentWingPeriod += elapsed;
         Reverse();
     }
-    double angle = (WingRotateEnd - WingRotateStart) / (Frames);
+    double animation_smoothness = 1.5;
+    double angle = (WingRotateEnd - WingRotateStart) / (Frames * animation_smoothness);
+
 
     if(mCurrentAngle > GetAngle() + WingRotateEnd)
     {
@@ -234,8 +238,12 @@ void RedundancyBug::Multiply()
         GetArea()->Add(bug);
         extraFlies--;
     }
-    double x = rand() % 500 - 250;
-    double y = rand() % 200 - 250;
+    std::default_random_engine gen;
+    std::normal_distribution<double> d(200.0, 30.0);
+    int num = d(gen);
+    double x = rand() % num - num;
+    double y = pow(pow(num, 2) - pow(x, 2), 0.5);
+    if(x < 0) { y = y * - 1; }
     SetLocation(GetX() + x, GetY() + y);
 }
 

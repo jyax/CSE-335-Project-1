@@ -102,8 +102,11 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 		double wid = mSplatImage->GetWidth();
 		double hit = mSplatImage->GetHeight();
-
-		graphics->DrawBitmap(mSplatBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
+        graphics->PushState();
+        graphics->Translate(GetX(), GetY());
+        graphics->Rotate(GetAngle());
+		graphics->DrawBitmap(mSplatBitmap, int(-wid / 2), int(-hit / 2), wid, hit);
+        graphics->PopState();
 	}
     else
 	{
