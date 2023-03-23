@@ -177,8 +177,6 @@ Bug::Bug(const Bug &bug) : Item(bug)
     mIsHit = bug.mIsHit;
     mSplatImage = bug.mSplatImage;
     mSplatBitmap = bug.mSplatBitmap;
-	//would mStart need to be different if this for redundancy bugs only?
-	//mStart = 0; ?
 }
 
 /**
@@ -188,9 +186,10 @@ Bug::Bug()
 {
 
 }
+
 /**
 * angle between program and the bug
-* @return double angel
+* @return double that is the bug's angle
 */
 double Bug::GetAngle()
 {

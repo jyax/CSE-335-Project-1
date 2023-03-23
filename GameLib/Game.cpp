@@ -22,7 +22,6 @@ const double ShrinkScale = 0.75;
 Game::Game()
 {
     mPlayingArea.SetGame(this);
-    mPlayingArea.SetLevelFile();
     SetLevel(1);
     random_device rd;
     mRandom.seed(rd());

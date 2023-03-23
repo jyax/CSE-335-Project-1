@@ -70,7 +70,6 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
 
     }
 
-
     graphics->PopState();
 }
 
@@ -81,18 +80,6 @@ void PlayingArea::DrawPlayingArea(std::shared_ptr<wxGraphicsContext> graphics, c
 void PlayingArea::Add(shared_ptr<Item> item)
 {
 	mItems.push_back(item);
-}
-
-/**
-* Set level files  to the playing area
-*
-*/
-void PlayingArea::SetLevelFile()
-{
-//    mLevelZero->ReadLevel(Level0FileName);
-//    mLevelOne->ReadLevel(Level1FileName);
-//    mLevelTwo->ReadLevel(Level2FileName);
-//    mLevelThree->ReadLevel(Level3FileName);
 }
 
 /**
@@ -188,7 +175,7 @@ void PlayingArea::SetTextDuration(double duration)
 
 /**
  * It sets the mLevelStart if the level clicked
- * @param value
+ * @param value that is a bool stating true to start the level, else false
  */
 void PlayingArea::LevelStart(bool value)
 {
@@ -205,7 +192,7 @@ void PlayingArea::Clear()
 
 /**
  * Updates the game
- * @param elapsed
+ * @param elapsed which is the current time elapsed for the level
  */
 void PlayingArea::Update(double elapsed)
 {

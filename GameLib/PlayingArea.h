@@ -77,8 +77,6 @@ public:
 	 */
 	Game* GetGame() {return mGame;}
 
-    void SetLevelFile();
-
     void SetLevel(int level);
 
 	void MoveToFront(std::shared_ptr<Item> item);

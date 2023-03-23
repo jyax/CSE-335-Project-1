@@ -172,7 +172,7 @@ void Level::XmlBug(wxXmlNode *node)
             item->XmlLoad(node, mProgram);
             }
     }
-    else if (type.Cmp("assassin") == 0)
+    else if (type.Cmp("killer") == 0)
     {
         mNumOfBugs++;
         //hared_ptr<Item> item;
