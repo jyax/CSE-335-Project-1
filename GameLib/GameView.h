@@ -13,6 +13,7 @@
 
 
 #include "Game.h"
+#include "PlayingArea.h"
 
 /**
  * Class that implements the child window our program draws in
@@ -21,6 +22,8 @@ class GameView : public wxWindow
 {
 private:
 	Game mGame; ///<  the Game
+
+	PlayingArea *mArea;
 
 	/// The timer that allows for animation
 	wxTimer mTimer;

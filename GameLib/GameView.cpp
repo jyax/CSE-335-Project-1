@@ -13,6 +13,7 @@
 #include "ids.h"
 #include "SplatBug.h"
 #include "FixBug.h"
+#include "PlayingArea.h"
 
 using namespace std;
 
@@ -214,6 +215,7 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
 void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 {
 	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
+
 	if (mGrabbedItem != nullptr)
 	{
 		if(!mGame.getEnableDrag())  //normal fucntion
@@ -248,12 +250,13 @@ void GameView::OnLeftUp(wxMouseEvent &event)
 */
 void GameView::OnMouseMove(wxMouseEvent &event)
 {
+
 	// check if there is a current item
-	if (mGrabbedItem != nullptr)
+	if(mGrabbedItem != nullptr && mGrabbedItem->GetIsHit() != true)
 	{
 		// If an item is being moved, we only continue to
 		// move it while the left button is down.
-		if (event.LeftIsDown())
+		if(event.LeftIsDown())
 		{
 			mGame.SetLocation(mGrabbedItem, event.GetX(), event.GetY());
 		}
