@@ -29,7 +29,7 @@ const int GarbageBugNumSpriteImages = 6;
  */
 GarbageBug::GarbageBug(PlayingArea *area) : Bug(area, GarbageBugSpriteImageName, GarbageBugNumSpriteImages)
 {
-	mSplatImage = std::make_shared<wxImage>(GarbageBugSplatImageName, wxBITMAP_TYPE_ANY);
+	SetSplatImage(std::make_shared<wxImage>(GarbageBugSplatImageName, wxBITMAP_TYPE_ANY));
 }
 
 /**
