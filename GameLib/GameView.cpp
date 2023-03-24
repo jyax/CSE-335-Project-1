@@ -294,8 +294,8 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 			Stop();
 			mStopWatch.Pause();
 
-			//CodeDialog dlg = CodeDialog(this, visitor.GetCode());
-			wxDialog dlg(this, -1, L"Bug Squash IDE");
+			CodeDialog dlg = CodeDialog(this, visitor.GetCode());
+			//wxDialog dlg(this, -1, L"Bug Squash IDE");
 
 			if (dlg.ShowModal() == wxID_OK)
 			{

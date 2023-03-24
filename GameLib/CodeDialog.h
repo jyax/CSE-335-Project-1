@@ -26,7 +26,7 @@ public:
 	CodeDialog(const CodeDialog &);
 
 	/// delete
-	~CodeDialog();
+	//~CodeDialog();
 };
 
 #endif //PROJECT1_GAMELIB_CODEDIALOG_H
