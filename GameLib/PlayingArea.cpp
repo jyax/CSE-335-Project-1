@@ -129,7 +129,10 @@ std::shared_ptr<Item> PlayingArea::Click(double virX, double virY)
 	{
 		if ((*i)->HitTest(virX, virY))
 		{
-			return *i;
+            if(!(*i)->GetIsHit())
+            {
+                return *i;
+            }
 		}
 	}
 
@@ -147,8 +150,11 @@ void PlayingArea::MoveToFront(std::shared_ptr<Item> item)
 	{
 		// Create another of the found item, remove the original, then push the new one back
 		std::shared_ptr<Item> foundItem = *loc;
-		mItems.erase(loc);
-		mItems.push_back(foundItem);
+        if(!foundItem->GetIsHit())
+        {
+            mItems.erase(loc);
+            mItems.push_back(foundItem);
+        }
 	}
 }
 
