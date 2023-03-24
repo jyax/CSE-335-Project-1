@@ -38,10 +38,10 @@ private:
 	std::wstring mCode;
 
 	///what frame of the image is the bug
-	double mIteration = 1;
+	int mIteration = 0;
 
 	///number of frames the bug has
-	double mFrames;
+	int mFrames;
 	///Start time of the bug
 	double mStart;
 
