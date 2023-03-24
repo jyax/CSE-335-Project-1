@@ -53,13 +53,15 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
  */
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
-
+//	int test = *(mArea->GetLevelNumber());
 	if (!GetIsHit())
     {
         mStartMove += elapsed;
         if(mStartMove >= mStart)
 		{
+			mIteration = (mIteration + 1) % mFrames;
 			SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
+
 
             if(DistanceTo(mDestination) < BugHitRange)
             {
@@ -70,6 +72,7 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
 				Accept(&visitor);
             }
 		}
+
     }
 }
 
@@ -113,31 +116,25 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		{
 			this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
 		}
-
-		double wid = this->GetImage()->GetWidth();
-		double hit = this->GetImage()->GetHeight();
-		double figureHit = hit/mFrames;
-		double shift = figureHit * (mIteration-1);
-
-
-		wxRect rect = wxRect( - wid/2,  - hit/2 - shift, wid, figureHit);
-		graphics->PushState();  // Save the graphics state
-
-		graphics->Translate(GetX(), GetY());
-		graphics->Rotate(GetAngle());
-
-		if (mIsFatBug)
+		graphics->PushState();
+		if(mIsFatBug)//this->GetIsFatBug())
 		{
 			graphics->Scale(1.25, 1.25);
 		}
 
-		graphics->Translate(0, hit/2 - figureHit/2 - shift);
-		graphics->Clip(rect);
+		double wid = this->GetImage()->GetWidth();
+		double hit = this->GetImage()->GetHeight();
+		double figureHit = hit / mFrames;
 
+		graphics->Translate(GetX(), GetY());
+		graphics->Rotate(GetAngle());
+
+		graphics->Clip(-wid / 2, -figureHit / 2, wid, figureHit);
 
 		// Draws from top left corner
-		graphics->DrawBitmap(this->GetBitmap(), int(- wid / 2), int(- hit / 2), wid, hit);
+		graphics->DrawBitmap(this->GetBitmap(), int(-wid / 2), -(mIteration * figureHit) - (figureHit / 2), wid, hit);
 		graphics->PopState();
+
 	}
 
 
