@@ -14,8 +14,6 @@
 #include <wx/graphics.h>
 #include "ItemVisitor.h"
 
-using namespace std;
-
 class Game;
 class PlayingArea;
 
