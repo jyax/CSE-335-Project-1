@@ -18,9 +18,9 @@ class PlayingArea;
  */
 class Level {
 private:
-
 	/// The game this level is part of
-	PlayingArea *mPlayingArea;
+	PlayingArea *mPlayingArea = nullptr;
+
     int mNumOfProgramme = 0; ///< number of programmes in the level
     int mNumOfBugs = 0; ///< number of bugs in the level
     int mNumofFeatures = 0; ///< number of features in the level

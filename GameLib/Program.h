@@ -20,7 +20,7 @@ private:
     std::wstring mProgramName;
 
     /// Playing are this program belongs to
-    PlayingArea *mPlayingArea;
+    PlayingArea *mPlayingArea = nullptr;
 
     /// The item programme
     std::shared_ptr<wxImage> mProgrammeImage;
@@ -48,15 +48,14 @@ public:
 
     void XmlLoad(wxXmlNode *node,std::shared_ptr<Item> program) override;
 
-    //bool ReachedProgram() override {  return false; }
     /**
     * Compute the distance from this to another item
     * @param item Item we are computing the distantce to
     * @return Distance in pixels
     */
-    double DistanceTo(std::shared_ptr<Item> item) override{ return Item::DistanceTo(item);}
-    void Update(double elapsed) override;
+    double DistanceTo(std::shared_ptr<Item> item) override{return Item::DistanceTo(item);}
 
+    void Update(double elapsed) override;
 };
 
 

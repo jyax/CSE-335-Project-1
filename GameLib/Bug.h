@@ -26,7 +26,7 @@ private:
 	double mSpeed;
 
 	///playing area the bug is in 
-    PlayingArea *mArea;
+    PlayingArea *mArea = nullptr;
 
 	///Bool to tell if the bug is a FatBug or not
 	bool mIsFatBug = false;

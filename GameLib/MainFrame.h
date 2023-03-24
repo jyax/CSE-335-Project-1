@@ -22,7 +22,7 @@ private:
     void OnAbout(wxCommandEvent &event);
 	void OnClose(wxCloseEvent& event);
 
-    GameView *mGameView; ///< GameView class object
+    GameView *mGameView = nullptr; ///< GameView class object
 
 public:
     void Initialize();

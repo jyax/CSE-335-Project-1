@@ -24,7 +24,7 @@ class Item
 {
 private:
 	///The game this item is contained in
-	PlayingArea *mArea;
+	PlayingArea *mArea = nullptr;
 
 	/// The underlying item image
 	std::shared_ptr<wxImage> mItemImage;
