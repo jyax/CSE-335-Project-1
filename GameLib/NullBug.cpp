@@ -18,7 +18,7 @@ const std::wstring NullBugSpriteImageName = L"images/scarlet-gray-bug.png";
 const std::wstring NullBugSplatImageName = L"images/scarlet-gray-splat.png";
 
 /// Number of sprite images
-const int NullBugNumSpriteImages = 6;
+const int NullBugNumSpriteImages = 7;
 
 
 /**
