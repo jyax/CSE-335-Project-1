@@ -19,13 +19,16 @@ const int ProgramNameFontSize = 16;
 /// Program font color
 const wxColour ProgramFontColor = wxColour(*wxWHITE);
 
+/// frame size
+const double Frame = 1;
+
 
 
 /**
  * Constructor
  * @param area The playing area we are in
  */
-Program::Program(PlayingArea *area) : Item(area, ProgramImage)
+Program::Program(PlayingArea *area) : Item(area, ProgramImage, Frame)
 {
     mPlayingArea = area;
 }

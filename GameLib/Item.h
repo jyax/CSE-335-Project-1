@@ -39,7 +39,7 @@ private:
 	double mY = 0;     ///< Y location for the center of the item
 
 protected:
-	Item(PlayingArea *area, const std::wstring &filename);
+	Item(PlayingArea *area, const std::wstring &filename, double frame);
 
 public:
 	/// Default constructor

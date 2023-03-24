@@ -29,22 +29,20 @@ const int BugHitRange = 50;
  * @param filename Filename for the image we use
  * @param frames number of frames the bug has
  */
-Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(area, filename)
+Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(area, filename, frames)
 {
-	//mSpeed = BugSpeed;
 	mFrames = frames;
-	//mStopWatch.Start();
     mArea = area;
 }
 
-/**
- * Constructor for Redundancy Fly
- * @param area The playing area this is in
- * @param filename the filename for the image
- */
-Bug::Bug(PlayingArea *area, const std::wstring &filename) : Item(area, filename)
-{
-}
+///**
+// * Constructor for Redundancy Fly
+// * @param area The playing area this is in
+// * @param filename the filename for the image
+// */
+//Bug::Bug(PlayingArea *area, const std::wstring &filename) : Item(area, filename)
+//{
+//}
 
 /**
  * Handle updates in time of the bugs
@@ -168,7 +166,7 @@ void Bug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
  * Copy constructor
  * @param bug the bug to copy attributes from
  */
-Bug::Bug(const Bug &bug) : Item(bug)
+Bug::Bug(const Bug &bug) : Item(bug),mFrames(bug.mFrames),mArea(bug.mArea)
 {
 	mSpeed = bug.mSpeed;
     mDestination = bug.mDestination;
@@ -179,13 +177,13 @@ Bug::Bug(const Bug &bug) : Item(bug)
     mSplatBitmap = bug.mSplatBitmap;
 }
 
-/**
- * Constructor
- */
-Bug::Bug()
-{
-
-}
+///**
+// * Constructor
+// */
+//Bug::Bug()
+//{
+//
+//}
 
 /**
 * angle between program and the bug

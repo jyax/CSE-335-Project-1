@@ -15,8 +15,9 @@ using namespace std;
  * Constructor
  * @param area The current playing area
  * @param filename The name of the file to display for this item
+ * @param frame the number of images in the image file
  */
-Item::Item(PlayingArea *area, const std::wstring &filename) : mArea(area)
+Item::Item(PlayingArea *area, const std::wstring &filename, double frame) : mArea(area)
 {
 	mItemImage = make_shared<wxImage>(filename, wxBITMAP_TYPE_ANY);
 }

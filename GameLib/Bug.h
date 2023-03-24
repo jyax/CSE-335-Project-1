@@ -68,7 +68,7 @@ protected:
 public:
 
     /// Default constructor
-    Bug();
+    Bug() = delete;
 
     /// Copy constructor
     Bug(const Bug &);
