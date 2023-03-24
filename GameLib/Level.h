@@ -33,12 +33,14 @@ private:
     ///Checker variable for start text.
     bool mIsStart = true;
 
+	/// The level states
     enum State{
         STARTING,
         PLAYING,
         FINISHED
     };
 
+	/// The current state of the level
     State mState = State::STARTING;
 
     /// program this bug belongs to
@@ -51,13 +53,6 @@ private:
 	std::vector<std::shared_ptr<Item>> mTempBugs;
 
 public:
-    /// testing purpose
-    std::shared_ptr<Program> GetProgram(){return mProgram;}
-
-    ///Testing purpose
-    wxXmlNode* mNode;
-
-    void XmlProgram(wxXmlNode *node,std::shared_ptr<Program> program);
     void XmlBug(wxXmlNode *node);
     void XmlFeature(wxXmlNode *node);
 
@@ -77,54 +72,37 @@ public:
 
 	virtual ~Level();
 
-	void Load(int mNum);
-
     void DrawLevelName(std::shared_ptr<wxGraphicsContext> &graphics);
 
     void ReadLevel(const std::wstring filename);
-
-    /** get levelType for leveltext */
-    wxString GetLevelType(){ return mType;}
 
 	/**
 	 * Getter for number of programs
 	 * @return number of programs
 	 */
-    int GetNumOfProgram(){return mNumOfProgramme;}
+    int GetNumOfProgram() {return mNumOfProgramme;}
 
 	/**
 	 * Getter for number of bugs
 	 * @return number of bugs
 	 */
-    int GetNumOfBug(){return mNumOfBugs;}
+    int GetNumOfBug() {return mNumOfBugs;}
 
 	/**
 	 * Getter for number of features
 	 * @return number of features
 	 */
-    int GetNumOfFeature(){return mNumofFeatures;}
+    int GetNumOfFeature() {return mNumofFeatures;}
 
 	/**
 	 * Getter for level start text
 	 * @return the level start text
 	 */
-    wxString GetMType(){return mType;}
+    wxString GetMType() {return mType;}
 
-    void SetTextDuration(double duration)
-    {
-        mTextDuration = duration;
-        if( mTextDuration == 0.0){
-            mIsStart = true;
-        }
+    void SetTextDuration(double duration);
 
-    }
-
-    /**
-    * update function for text
-    * @param elapsed Elapsed time in seconds
-    */
     void Update(double elapsed);
-
 
     void XmlProgram(wxXmlNode *node);
 

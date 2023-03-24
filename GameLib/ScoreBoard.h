@@ -32,7 +32,6 @@ public:
     int GetMissedScore();
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics);
-    void Clear();
 
     void ResetScoreBoard();
 };
