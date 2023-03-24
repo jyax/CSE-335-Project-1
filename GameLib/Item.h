@@ -14,8 +14,6 @@
 #include <wx/graphics.h>
 #include "ItemVisitor.h"
 
-using namespace std;
-
 class Game;
 class PlayingArea;
 
@@ -26,7 +24,7 @@ class Item
 {
 private:
 	///The game this item is contained in
-	PlayingArea *mArea;
+	PlayingArea *mArea = nullptr;
 
 	/// The underlying item image
 	std::shared_ptr<wxImage> mItemImage;

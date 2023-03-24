@@ -68,7 +68,8 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area, RedundancyFlySplatIm
  {
     SetIsHit(false);
     SetMultiplied(false);
-    mSplatImage = std::make_shared<wxImage>(RedundancyFlySplatImageName, wxBITMAP_TYPE_ANY);
+
+    SetSplatImage(std::make_shared<wxImage>(RedundancyFlySplatImageName, wxBITMAP_TYPE_ANY));
 
     mRedundancyFlyBaseImage = make_unique<wxImage>(RedundancyFlyImageName, wxBITMAP_TYPE_ANY);
 
@@ -95,7 +96,7 @@ RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(original)
     mRedundancyFlyRightWingImage = make_unique<wxImage>(RedundancyFlyRightWingImageName, wxBITMAP_TYPE_ANY);
     mRedundancyFlyTopImage = make_unique<wxImage>(RedundancyFlyTopImageName, wxBITMAP_TYPE_ANY);
     mRedundancyFlyBaseImage = make_unique<wxImage>(RedundancyFlyImageName, wxBITMAP_TYPE_ANY);
-    mSplatImage = std::make_shared<wxImage>(RedundancyFlySplatImageName, wxBITMAP_TYPE_ANY);
+    SetSplatImage(std::make_shared<wxImage>(RedundancyFlySplatImageName, wxBITMAP_TYPE_ANY));
 }
 
 /**
@@ -107,14 +108,14 @@ void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 
     if(GetIsHit())
     {
-        if(mSplatBitmap.IsNull()) { mSplatBitmap = graphics->CreateBitmapFromImage(*mSplatImage); }
+        if(GetSplatBitmap().IsNull()) { SetSplatBitmap(graphics->CreateBitmapFromImage(*GetSplatImage())); }
 
-        double width = mSplatImage->GetWidth();
-        double height = mSplatImage->GetHeight();
+        double width = GetSplatImage()->GetWidth();
+        double height = GetSplatImage()->GetHeight();
         graphics->PushState();
         graphics->Translate(GetX(), GetY());
         graphics->Rotate(GetAngle());
-        graphics->DrawBitmap(mSplatBitmap, int(-width / 2), int(-height / 2), width, height);
+        graphics->DrawBitmap(GetSplatBitmap(), int(-width / 2), int(-height / 2), width, height);
         graphics->PopState();
     }
     else {

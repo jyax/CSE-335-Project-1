@@ -2,8 +2,10 @@
  * @file ScoreBoard.cpp
  * @author Gaya Kanagaraj
  */
+
+#include <pch.h>
 #include "gtest/gtest.h"
-#include "ScoreBoard.h"
+#include <ScoreBoard.h>
 
 // Define the unit test case for the ScoreBoard class
 class ScoreBoardTest : public ::testing::Test {

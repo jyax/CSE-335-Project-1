@@ -26,7 +26,7 @@ private:
 	double mSpeed;
 
 	///playing area the bug is in 
-    PlayingArea *mArea;
+    PlayingArea *mArea = nullptr;
 
 	///Bool to tell if the bug is a FatBug or not
 	bool mIsFatBug = false;
@@ -55,15 +55,15 @@ private:
     /// Destination for this bug
     std::shared_ptr<Item> mDestination;
 
-protected:
-	Bug(PlayingArea *area, const std::wstring &filename, double frames);
-    Bug(PlayingArea *area, const std::wstring &filename);
-
 	/// The underlying splatted image
 	std::shared_ptr<wxImage> mSplatImage;
 
 	/// The bitmap to display for the splatted bug
 	wxGraphicsBitmap mSplatBitmap;
+
+protected:
+	Bug(PlayingArea *area, const std::wstring &filename, double frames);
+    Bug(PlayingArea *area, const std::wstring &filename);
 
 public:
 
@@ -142,6 +142,29 @@ public:
     */
     double DistanceTo(std::shared_ptr<Item> item) override{ return Item::DistanceTo(item);}
 
+	/**
+	 * Set the bug's splat image
+	 * @param image the bug's splat image
+	 */
+	void SetSplatImage(std::shared_ptr<wxImage> image) {mSplatImage = image;}
+
+	/**
+	 * Get the bug's splat image
+	 * @return the bug's splat image
+	 */
+	std::shared_ptr<wxImage> GetSplatImage() {return mSplatImage;}
+
+	/**
+	 * Get the bug's splat bitmap
+	 * @return the bug's splat bitmap
+	 */
+	wxGraphicsBitmap GetSplatBitmap() {return mSplatBitmap;}
+
+	/**
+	 * Set the bug's splat bitmap
+	 * @param bitmap the bug's splat bitmap
+	 */
+	void SetSplatBitmap(wxGraphicsBitmap bitmap) {mSplatBitmap = bitmap;}
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

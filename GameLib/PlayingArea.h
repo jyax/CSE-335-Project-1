@@ -19,7 +19,7 @@ class Game;
 class PlayingArea {
 private:
 	/// The game this playing area is in
-    Game* mGame;
+    Game* mGame = nullptr;
 
 	/// The list of pointers to items in the game (bugs, programs)
 	std::vector<std::shared_ptr<Item>> mItems;

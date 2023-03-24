@@ -23,8 +23,6 @@ class GameView : public wxWindow
 private:
 	Game mGame; ///<  the Game
 
-	PlayingArea *mArea;
-
 	/// The timer that allows for animation
 	wxTimer mTimer;
 

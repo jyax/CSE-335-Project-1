@@ -36,9 +36,9 @@ const static int LevelNameY = 500;
 
 /**
  * Constructor
- * @param game the game this is a part of
+ * @param area the playing area this level is part of
  */
-Level::Level(PlayingArea* playingArea) : mPlayingArea(playingArea)
+Level::Level(PlayingArea* area) : mPlayingArea(area)
 {
 }
 
@@ -187,8 +187,20 @@ void Level::XmlBug(wxXmlNode *node)
 }
 
 /**
+ * Sets the time the text is visible onscreen
+ * @param duration the duration that the text is present
+ */
+void Level::SetTextDuration(double duration)
+{
+	mTextDuration = duration;
+	if( mTextDuration == 0.0){
+		mIsStart = true;
+	}
+}
+
+/**
  * Update the text in time
- *@param elaped  time to update
+ *@param elapsed  time elapsed since last update
  */
 void Level::Update(double elapsed)
 {
