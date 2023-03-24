@@ -81,17 +81,26 @@ void Level::ReadLevel(const std::wstring filename)
     XmlBeginText(parent);
     for(; child; child=child->GetNext())
     {
-        XmlProgram(child);
+		auto test = child->GetName().ToStdWstring();
+		if(test == L"program")
+		{
+			XmlProgram(child);
+		}
 
-        auto itemValue = child->GetChildren();
-        // inner loop for the bug and feature, code
-        for(; itemValue; itemValue=itemValue->GetNext())
-        {
-            auto name = itemValue->GetName();
-            if(name == L"bug")
-            {
-                XmlBug(itemValue);
-            }
+		if(test == L"feature")
+		{
+			XmlFeature(child);
+		}
+
+		auto itemValue = child->GetChildren();
+		// inner loop for the bug and feature, code
+		for(; itemValue; itemValue = itemValue->GetNext())
+		{
+			auto name = itemValue->GetName();
+			if(name == L"bug")
+			{
+				XmlBug(itemValue);
+			}
             else if(name == L"feature")
             {
                 XmlFeature(itemValue);
@@ -124,13 +133,14 @@ void Level::XmlBeginText(wxXmlNode *node)
  */
 void Level::XmlFeature(wxXmlNode *node)
 {
-       mNumofFeatures++;
-        //shared_ptr<Item> item;
-         auto item = make_shared<Feature>(mPlayingArea);
-        if(item != nullptr) {
-			mTempBugs.push_back(item);
-            item->XmlLoad(node, mProgram);
-        }
+	mNumofFeatures++;
+	//shared_ptr<Item> item;
+	mFeature = make_shared<Feature>(mPlayingArea);
+	if(mFeature != nullptr)
+	{
+		mTempBugs.push_back(mFeature);
+		mFeature->XmlLoad(node, mProgram);
+	}
 }
 /**
  * To read and draw bugs
@@ -162,27 +172,27 @@ void Level::XmlBug(wxXmlNode *node)
             }
     }
     else if (type.Cmp("redundancy") == 0)
-    {
-        mNumOfBugs++;
-        //hared_ptr<Item> item;
-        auto item = make_shared<RedundancyBug>(mPlayingArea);
-        if(item != nullptr)
-        {
+	{
+		mNumOfBugs++;
+		//hared_ptr<Item> item;
+		auto item = make_shared<RedundancyBug>(mPlayingArea);
+		if(item != nullptr)
+		{
 			mTempBugs.push_back(item);
-            item->XmlLoad(node, mProgram);
-            }
-    }
-    else if (type.Cmp("killer") == 0)
-    {
-        mNumOfBugs++;
-        //hared_ptr<Item> item;
-        auto item = make_shared<KillerBug>(mPlayingArea);
-        if(item != nullptr)
-        {
+			item->XmlLoad(node, mProgram);
+		}
+	}
+	else if(type.Cmp("assassin") == 0)
+	{
+		mNumOfBugs++;
+		//hared_ptr<Item> item;
+		auto item = make_shared<KillerBug>(mPlayingArea);
+		if(item != nullptr)
+		{
 			mTempBugs.push_back(item);
-            item->XmlLoad(node, mProgram);
-        }
-    }
+			item->XmlLoad(node, mFeature);
+		}
+	}
 
 }
 
