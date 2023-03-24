@@ -56,11 +56,15 @@ const int FirstWingSetX = -36;
 /// of this is the Y position for the left wings.
 const int WingSetY = 5;
 
+/// frams for the splatter redundancy
+const int Frame = 1;
+
+
 /**
  * Constructor
  * @param area Area we are playing in
  */
-RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area, RedundancyFlySplatImageName)
+RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area, RedundancyFlySplatImageName, Frame)
  {
     SetIsHit(false);
     SetMultiplied(false);
