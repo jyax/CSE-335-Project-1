@@ -53,6 +53,7 @@ void SplatBug::VisitRedundancy(RedundancyBug *bug)
     if(bug->GetMultiplied())
     {
         bug->SetIsHit(true);
+		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(true, false, false);
     }
     else
     {
