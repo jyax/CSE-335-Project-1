@@ -13,7 +13,7 @@
 
 class GameView;
 
-/*
+/**
  * Class for the main frame of the game
  */
 class MainFrame : public wxFrame{

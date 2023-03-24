@@ -18,13 +18,13 @@ void MainFrame::Initialize()
            wxDefaultPosition, wxSize( 930, 800 ));
 
     // Sizer for child windows
-     auto sizer = new wxBoxSizer( wxVERTICAL );
+	auto sizer = new wxBoxSizer( wxVERTICAL );
 
-     //Create view class object here
-     mGameView = new GameView();
-     mGameView ->Initialize(this);
+    //Create view class object here
+    mGameView = new GameView();
+    mGameView ->Initialize(this);
 
-     //Add to the sizer
+    //Add to the sizer
     sizer->Add(mGameView , 1, wxEXPAND | wxALL );
 
     // Set sizer for game
