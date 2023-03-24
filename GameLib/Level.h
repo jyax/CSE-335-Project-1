@@ -16,35 +16,39 @@ class PlayingArea;
 /**
  * Main class for level0, level1, and level2
  */
-class Level {
+class Level
+{
 private:
 	/// The game this level is part of
 	PlayingArea *mPlayingArea = nullptr;
 
-    int mNumOfProgramme = 0; ///< number of programmes in the level
-    int mNumOfBugs = 0; ///< number of bugs in the level
-    int mNumofFeatures = 0; ///< number of features in the level
+	int mNumOfProgramme = 0; ///< number of programmes in the level
+	int mNumOfBugs = 0; ///< number of bugs in the level
+	int mNumofFeatures = 0; ///< number of features in the level
 
-    wxString mType;  ///< for the levelstart text
+	wxString mType;  ///< for the level start text
 
-    /// Duration that the text appears
-    double mTextDuration = 0;
+	/// Duration that the text appears
+	double mTextDuration = 0;
 
-    ///Checker variable for start text.
-    bool mIsStart = true;
+	///Checker variable for start text.
+	bool mIsStart = true;
 
 	/// The level states
-    enum State{
-        STARTING,
-        PLAYING,
-        FINISHED
-    };
+	enum State
+	{
+		STARTING,
+		PLAYING,
+		FINISHED
+	};
 
 	/// The current state of the level
-    State mState = State::STARTING;
+	State mState = State::STARTING;
 
-    /// program this bug belongs to
-    std::shared_ptr<Program> mProgram;
+	/// program this bug belongs to
+	std::shared_ptr<Program> mProgram;
+
+	std::shared_ptr<Feature> mFeature;
 
 	/// Temporary list for programs when loading
 	std::vector<std::shared_ptr<Item>> mTempPrograms;
@@ -53,8 +57,8 @@ private:
 	std::vector<std::shared_ptr<Item>> mTempBugs;
 
 public:
-    void XmlBug(wxXmlNode *node);
-    void XmlFeature(wxXmlNode *node);
+	void XmlBug(wxXmlNode *node);
+	void XmlFeature(wxXmlNode *node);
 
     void XmlBeginText(wxXmlNode *node);
 
