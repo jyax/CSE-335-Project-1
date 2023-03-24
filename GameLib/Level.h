@@ -48,6 +48,7 @@ private:
 	/// program this bug belongs to
 	std::shared_ptr<Program> mProgram;
 
+	/// The feature this bug belongs to
 	std::shared_ptr<Feature> mFeature;
 
 	/// Temporary list for programs when loading

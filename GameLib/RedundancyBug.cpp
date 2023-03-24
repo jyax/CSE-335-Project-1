@@ -82,6 +82,7 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area, RedundancyFlySplatIm
 
  /**
   * Copy Constructor for the multiplying of the redundancy fly
+  * @param original The redundancy fly to make multiples of
   */
 RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(original)
 {

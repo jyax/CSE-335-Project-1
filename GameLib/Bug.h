@@ -63,7 +63,6 @@ private:
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
-    Bug(PlayingArea *area, const std::wstring &filename);
 
 public:
 

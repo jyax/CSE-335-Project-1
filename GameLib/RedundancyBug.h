@@ -20,25 +20,36 @@ class RedundancyBug  : public Bug {
 private:
 	/// Has the bug spawned multiples?
 	bool mHasMultiplied = false;
-    bool mChangeDirection;
-    double mCurrentWingPeriod = 0;
-    double mCurrentAngle = 0;
-    double mDirection = 1;
 
-    /// Redundancy Fly Base Image and Bitmap
+	/// Has the redundancy fly's wings changed direction?
+    bool mChangeDirection;
+
+    double mCurrentWingPeriod = 0;  ///< the time the wings have spent flapping in seconds
+    double mCurrentAngle = 0;  ///< The current angle of the wings in radians
+    double mDirection = 1;  ///< The direction of the wings: 1 for forwards, -1 for backwards
+
+    /// Redundancy Fly Base Image
     std::unique_ptr<wxImage> mRedundancyFlyBaseImage;
+
+	/// Redundancy Fly Base Bitmap
     wxGraphicsBitmap mRedundancyFlyBaseBitmap;
 
-    ///Redundancy Fly Left Wing Image and Bitmap
+    /// Redundancy Fly Left Wing Image
     std::unique_ptr<wxImage> mRedundancyFlyLeftWingImage;
+
+	/// Redundancy Fly Left Wing Bitmap
     wxGraphicsBitmap mRedundancyFlyLeftWingBitmap;
 
-    ///Redundancy Fly Right Wing Image and Bitmap
+    /// Redundancy Fly Right Wing Image
     std::unique_ptr<wxImage> mRedundancyFlyRightWingImage;
+
+	/// Redundancy Fly Right Wing Bitmap
     wxGraphicsBitmap mRedundancyFlyRightWingBitmap;
 
-    /// Redundacy Fly Top Image and Bitmap
+    /// Redundancy Fly Top Image
     std::unique_ptr<wxImage> mRedundancyFlyTopImage;
+
+	/// Redundancy Fly Top Bitmap
     wxGraphicsBitmap mRedundancyFlyTopBitmap;
 
 public:
@@ -47,6 +58,7 @@ public:
 
 	/// Copy constructor
 	RedundancyBug(const RedundancyBug &);
+
     /// Constructor
     RedundancyBug(PlayingArea *area);
 
@@ -61,12 +73,21 @@ public:
     void Update(double elapsed) override;
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
-    bool GetMultiplied() {return mHasMultiplied;};
+
+	/**
+	 * Get whether the bug has multiplied or not
+	 * @return true if yes, false otherwise
+	 */
+    bool GetMultiplied() {return mHasMultiplied;}
+
+	/**
+	 * Set whether the bug has multiplied or not
+	 * @param mult whether or not the but has multiplied
+	 */
     void SetMultiplied(bool mult) {mHasMultiplied = mult;}
 
     void Multiply();
     void Reverse();
-
 };
 
 #endif //PROJECT1_GAMELIB_REDUNDANCYBUG_H
