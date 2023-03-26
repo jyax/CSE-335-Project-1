@@ -13,11 +13,11 @@
 #include <wx/graphics.h>
 #include "GameView.h"
 
-class CodeDialog : public wxDialog {
+class CodeDialog : public wxTextEntryDialog	 {
 private:
 
 public:
-	CodeDialog(GameView *window, wxString code);
+	CodeDialog(wxWindow *window, wxString code);
 
 	/// Default constructor
 	CodeDialog();
