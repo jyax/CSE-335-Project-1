@@ -14,7 +14,7 @@
 #include "Item.h"
 class PlayingArea;
 /**
- * Main class for level0, level1, and level2
+ * Main level class
  */
 class Level
 {

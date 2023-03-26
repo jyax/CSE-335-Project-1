@@ -101,12 +101,12 @@ public:
 
 	void MoveItem(std::shared_ptr<Item> item);
 
-
     void RemoveItem(Item* bug);
 
     void DeleteItem();
 
     void CheckItem(Item *item);
+
     /**
      * returns current level number
      * @return int value

@@ -49,7 +49,6 @@ void FixBug::VisitNull(NullBug *bug)
  */
 void FixBug::VisitRedundancy(RedundancyBug *bug)
 {
-
 }
 
 /**
@@ -58,7 +57,6 @@ void FixBug::VisitRedundancy(RedundancyBug *bug)
  */
 void FixBug::VisitFeature(Feature *feature)
 {
-
 }
 
 /**
@@ -67,7 +65,6 @@ void FixBug::VisitFeature(Feature *feature)
  */
 void FixBug::VisitProgram(Program *program)
 {
-
 }
 
 /**
@@ -92,5 +89,4 @@ void FixBug::CheckCode(std::wstring code)
  */
 void FixBug::VisitKiller(KillerBug *bug)
 {
-
 }

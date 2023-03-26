@@ -21,7 +21,8 @@
 class GameView : public wxWindow
 {
 private:
-	Game mGame; ///<  the Game
+	/// the Game
+	Game mGame;
 
 	/// The timer that allows for animation
 	wxTimer mTimer;

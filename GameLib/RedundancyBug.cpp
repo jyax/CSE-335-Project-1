@@ -11,7 +11,6 @@
 #include "PlayingArea.h"
 #include <stdlib.h>
 
-
 using namespace std;
 
 /// The bug base image
@@ -31,15 +30,15 @@ const std::wstring RedundancyFlySplatImageName = L"images/redundancy-fly-splat.p
 
 /// Wing flapping period in seconds
 const double WingPeriod = 0.2;
+
 /// FrameRate in seconds
 const double FrameRate = 0.03;
+
 ///Frames for the wings
 const int Frames = WingPeriod / FrameRate;
 
 /// Starting rotation angle for wings in radians
 const double WingRotateStart = 0.0;
-
-
 
 /// End rotation angle for wings in radians
 const double WingRotateEnd = 1.5;
@@ -118,7 +117,6 @@ RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(original)
  */
 void RedundancyBug::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
     if(GetIsHit())
     {
         if(GetSplatBitmap().IsNull()) { SetSplatBitmap(graphics->CreateBitmapFromImage(*GetSplatImage())); }
@@ -259,7 +257,7 @@ void RedundancyBug::Multiply()
 }
 
 /**
- * Reverse wing direction?
+ * Reverse wing direction
  */
 void RedundancyBug::Reverse()
 {

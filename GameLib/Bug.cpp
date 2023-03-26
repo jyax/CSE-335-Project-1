@@ -38,14 +38,6 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
     mArea = area;
 }
 
-///**
-// * Constructor for Redundancy Fly
-// * @param area The playing area this is in
-// * @param filename the filename for the image
-// */
-//Bug::Bug(PlayingArea *area, const std::wstring &filename) : Item(area, filename)
-//{
-//}
 
 /**
  * Handle updates in time of the bugs
@@ -178,13 +170,6 @@ Bug::Bug(const Bug &bug) : Item(bug),mFrames(bug.mFrames),mArea(bug.mArea)
     mSplatBitmap = bug.mSplatBitmap;
 }
 
-///**
-// * Constructor
-// */
-//Bug::Bug()
-//{
-//
-//}
 
 /**
 * angle between program and the bug

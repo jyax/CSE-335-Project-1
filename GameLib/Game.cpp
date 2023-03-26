@@ -7,9 +7,6 @@
 #include "pch.h"
 #include <wx/graphics.h>
 #include "Game.h"
-#include <wx/graphics.h>
-
-
 
 using namespace std;
 
@@ -130,7 +127,6 @@ void Game::Update(double elapsed)
  */
 void Game::SetLevel(int level)
 {
-
     if (mPlayingArea.GetLevelStart()) {
         mPlayingArea.Clear();
         mPlayingArea.LevelStart(false);

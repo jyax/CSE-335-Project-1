@@ -75,9 +75,6 @@ public:
      */
     int GetNumOfBugs() const { return mNumOfBugs; }
 
-
-//
-//protected:
 	/** Constructor */
 	ItemVisitor() {}
 };

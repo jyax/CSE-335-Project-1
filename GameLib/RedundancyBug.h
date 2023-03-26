@@ -18,10 +18,10 @@
  */
 class RedundancyBug  : public Bug {
 private:
-	/// Has the bug spawned multiples?
+	/// Has the bug spawned multiples
 	bool mHasMultiplied = false;
 
-	/// Has the redundancy fly's wings changed direction?
+	/// Has the redundancy fly's wings changed direction
     bool mChangeDirection;
 
     double mCurrentWingPeriod = 0;  ///< the time the wings have spent flapping in seconds
@@ -87,6 +87,7 @@ public:
     void SetMultiplied(bool mult) {mHasMultiplied = mult;}
 
     void Multiply();
+
     void Reverse();
 };
 

@@ -10,11 +10,9 @@
 #include <wx/dcbuffer.h>
 #include <wx/graphics.h>
 #include "GameView.h"
-#include "Level.h"
 #include "ids.h"
 #include "SplatBug.h"
 #include "FixBug.h"
-#include "PlayingArea.h"
 #include "CodeDialog.h"
 
 using namespace std;
@@ -27,6 +25,7 @@ const int SecondLevel = 2;
 
 /// The third level's number of the game
 const int ThirdLevel = 3;
+
 /**
  * Constructor
  * @param mainFrame Pointer to wxFrame object, the main frame for the application
@@ -100,7 +99,6 @@ void GameView::OnLevel3 (wxCommandEvent &event)
  */
 void GameView::OnPaint(wxPaintEvent& event)
 {
-
     // Create a double-buffered display context
     wxAutoBufferedPaintDC dc(this);
 
@@ -123,10 +121,8 @@ void GameView::OnPaint(wxPaintEvent& event)
     // Tell the game class to draw
     wxRect rect = GetRect();
     mGame.OnDraw(gc, rect.GetWidth(), rect.GetHeight());
-
-
-
 }
+
 /**
  * Refreshes the screen
  * @param event
@@ -136,6 +132,7 @@ void GameView::OnTimer(wxTimerEvent& event)
 	//Currently commented out so you can exit the program
 	Refresh();
 }
+
 /**
  * Add menus specific to the view
  * @param mainFrame The main frame that owns the menu bar
@@ -161,6 +158,7 @@ void GameView::AddMenus(wxFrame* mainFrame, wxMenuBar *menuBar, wxMenu* fileMenu
     // append the menus to the menubar
     menuBar->Append(levelMenu, L"&Level");
 }
+
 /**
  * Append an option to a menu and bind it to the function GameView::OnAddLevelMenuOption
  *
@@ -190,6 +188,7 @@ void GameView::AddLevelMenuOption(wxFrame *mainFrame, wxMenu *menu, int id,
             break;
     }
 }
+
 /**
 * virtual pixels sets to true
 *@param event
@@ -199,6 +198,7 @@ void GameView::AddShrinkOption(wxCommandEvent& event)
     mGame.SetShrinked();
     Refresh();
 }
+
 /**
  * bind it to the function GameView::AddShrikOption
  *
@@ -249,7 +249,6 @@ void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
 */
 void GameView::OnLeftUp(wxMouseEvent &event)
 {
-
 }
 
 /**
@@ -258,7 +257,6 @@ void GameView::OnLeftUp(wxMouseEvent &event)
 */
 void GameView::OnMouseMove(wxMouseEvent &event)
 {
-
 	// check if there is a current item
 	if(mGrabbedItem != nullptr && mGrabbedItem->GetIsHit() != true)
 	{

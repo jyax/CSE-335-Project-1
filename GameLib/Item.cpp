@@ -46,17 +46,6 @@ bool Item::HitTest(double x, double y)
  */
 void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-//	// only initialize when drawing required
-//	if(mItemBitmap.IsNull())
-//	{
-//		mItemBitmap = graphics->CreateBitmapFromImage(*mItemImage);
-//	}
-//
-//	double wid = mItemImage->GetWidth();
-//	double hit = mItemImage->GetHeight();
-//
-//	// Draws from top left corner
-//	graphics->DrawBitmap(mItemBitmap, int(GetX() - wid / 2), int(GetY() - hit / 2), wid, hit);
 }
 
 /**
@@ -88,11 +77,11 @@ Item::Item(const Item &original)
  */
 Item::Item()
 {
-
 }
+
 /**
 * Compute the distance from this to another item
-* @param item Item we are computing the distantce to
+* @param item Item we are computing the distance to
 * @return Distance in pixels
 */
 double Item::DistanceTo(std::shared_ptr<Item> item)

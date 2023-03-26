@@ -34,6 +34,7 @@ public:
      * @param visitor The visitor we accept
      */
 	void Accept(ItemVisitor* visitor) override {visitor->VisitNull(this);}
+
     void XmlLoad(wxXmlNode* node, std::shared_ptr<Item> item) override;
 
     void Update(double elapsed) override;

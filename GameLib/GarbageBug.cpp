@@ -67,6 +67,7 @@ void GarbageBug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
     Bug::Draw(graphics);
 }
+
 /**
  * Handle updates in time of the bugs
  *

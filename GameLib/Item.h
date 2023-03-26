@@ -102,8 +102,8 @@ public:
 
 	/**
      * Accept a visitor
-      * @param visitor The visitor we accept
-      */
+     * @param visitor The visitor we accept
+     */
 	virtual void Accept(ItemVisitor* visitor) = 0;
 
 	/**
@@ -125,7 +125,6 @@ public:
 	* @return the fat bug's code or an empty wstring
 	*/
 	virtual std::wstring GetCode() {return L"";}
-
 };
 
 #endif //PROJECT1_GAMELIB_ITEM_H

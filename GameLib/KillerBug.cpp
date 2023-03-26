@@ -23,7 +23,6 @@ const int KillerBugNumSpriteImages = 6;
  */
 KillerBug::KillerBug(PlayingArea *area) : Bug(area, KillerBugSpriteImageName, KillerBugNumSpriteImages)
 {
-
 }
 
 /**
@@ -44,6 +43,7 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
     Bug::Draw(graphics);
 }
+
 /**
  * Handle updates in time of the bugs
  *

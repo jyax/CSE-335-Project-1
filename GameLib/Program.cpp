@@ -22,8 +22,6 @@ const wxColour ProgramFontColor = wxColour(*wxWHITE);
 /// frame size
 const double Frame = 1;
 
-
-
 /**
  * Constructor
  * @param area The playing area we are in
@@ -39,7 +37,6 @@ Program::Program(PlayingArea *area) : Item(area, ProgramImage, Frame)
  */
 void Program::Draw(std::shared_ptr<wxGraphicsContext> graphics)
 {
-
     if(this->GetBitmap().IsNull())
     {
         this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
@@ -73,12 +70,11 @@ void Program::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
     mProgramName = node->GetAttribute("name");
 
 }
+
 /**
  * Handle updates for animation
  * @param elapsed The time since the last update
  */
 void Program::Update(double elapsed)
 {
-//    if (mPlayingArea != nullptr)
-//        mPlayingArea->RemoveItem(GetX(), GetY());
 }

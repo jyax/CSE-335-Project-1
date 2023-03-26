@@ -81,7 +81,6 @@ void SplatBug::VisitFeature(Feature *feature)
  */
 void SplatBug::VisitProgram(Program *program)
 {
-
 }
 
 /**
@@ -90,5 +89,4 @@ void SplatBug::VisitProgram(Program *program)
  */
 void SplatBug::VisitKiller(KillerBug *bug)
 {
-
 }
