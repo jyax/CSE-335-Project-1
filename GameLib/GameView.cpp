@@ -21,6 +21,12 @@ using namespace std;
 
 /// Frame duration in milliseconds
 const double FrameDuration = 30.0;
+
+/// The second level's number of the game
+const int SecondLevel = 2;
+
+/// The third level's number of the game
+const int ThirdLevel = 3;
 /**
  * Constructor
  * @param mainFrame Pointer to wxFrame object, the main frame for the application
@@ -77,7 +83,7 @@ void GameView::OnLevel1 (wxCommandEvent &event)
  */
 void GameView::OnLevel2 (wxCommandEvent &event)
 {
-    mGame.SetLevel(2);
+    mGame.SetLevel(SecondLevel);
 }
 /**
  * Plays Level 3 of the game
@@ -85,7 +91,7 @@ void GameView::OnLevel2 (wxCommandEvent &event)
  */
 void GameView::OnLevel3 (wxCommandEvent &event)
 {
-    mGame.SetLevel(3);
+    mGame.SetLevel(ThirdLevel);
 }
 
 /**

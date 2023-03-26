@@ -33,6 +33,12 @@ const std::wstring Level3FileName = L"data/level3.xml";
 /// The range from the center of the bug to see if hit or not
 const int BugHitRange = 50;
 
+/// The second level's number of the game
+const int SecondLevel = 2;
+
+/// The third level's number of the game
+const int ThirdLevel = 3;
+
 /**
  * Draws the starting text
  * @param graphics the graphics context
@@ -102,13 +108,13 @@ void PlayingArea::SetLevel(int level)
         mCurrentLevel = make_shared<Level>(*mLevelOne);
 
     }
-    else if (mLevelNum == 2)
+    else if (mLevelNum == SecondLevel)
     {
         mLevelTwo->ReadLevel(Level2FileName);
         mCurrentLevel = make_shared<Level>(*mLevelTwo);
 
     }
-    else if (mLevelNum == 3)
+    else if (mLevelNum == ThirdLevel)
     {
         mLevelThree->ReadLevel(Level3FileName);
         mCurrentLevel = make_shared<Level>(*mLevelThree);
@@ -321,7 +327,7 @@ void PlayingArea::NextLevel()
 {
     if( mLevelComplete)
     {
-        if (mLevelNum < 3)
+        if (mLevelNum < ThirdLevel)
         {
             mLevelNum += 1;
         }
