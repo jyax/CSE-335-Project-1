@@ -23,6 +23,7 @@ const int BugSpeed = 40;
 /// The range from the center of the bug to see if hit or not
 const int BugHitRange = 50;
 
+
 /**
  * Constructor
  * @param area The playing area we are in
@@ -53,6 +54,7 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
  */
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
+
 //	int test = *(mArea->GetLevelNumber());
 	if (!GetIsHit())
     {
@@ -62,10 +64,9 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
 			mIteration = (mIteration + 1) % mFrames;
 			SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
 
-
             if(DistanceTo(mDestination) < BugHitRange)
             {
-                mArea->RemoveItem(this);
+				mArea->RemoveItem(this);
 
 				// Increments score only for bad bugs
 				DeleteBug visitor;
@@ -84,6 +85,7 @@ void Bug::Update(double elapsed) // Change image swatch images here!!!
  */
 bool Bug::HitTest(double x, double y)
 {
+
 	double dx = x - GetX();
 	double dy = y - GetY();
 
@@ -117,10 +119,6 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 			this->SetBitmap(graphics->CreateBitmapFromImage(*this->GetImage()));
 		}
 		graphics->PushState();
-		if(mIsFatBug)//this->GetIsFatBug())
-		{
-			graphics->Scale(1.25, 1.25);
-		}
 
 		double wid = this->GetImage()->GetWidth();
 		double hit = this->GetImage()->GetHeight();
@@ -128,7 +126,11 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 
 		graphics->Translate(GetX(), GetY());
 		graphics->Rotate(GetAngle());
+		if(mIsFatBug)//this->GetIsFatBug())
+		{
+			graphics->Scale(1.25, 1.25);
 
+		}
 		graphics->Clip(-wid / 2, -figureHit / 2, wid, figureHit);
 
 		// Draws from top left corner
