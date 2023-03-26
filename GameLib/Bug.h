@@ -62,6 +62,8 @@ private:
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
+    /// The range from the center of the bug to see if hit or not
+    const int BugHitRange = 50;
 
 public:
 
@@ -163,6 +165,7 @@ public:
 	 * @param bitmap the bug's splat bitmap
 	 */
 	void SetSplatBitmap(wxGraphicsBitmap bitmap) {mSplatBitmap = bitmap;}
+
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

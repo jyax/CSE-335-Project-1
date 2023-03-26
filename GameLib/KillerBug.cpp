@@ -27,6 +27,7 @@ const int KillerBugNumSpriteImages = 6;
 KillerBug::KillerBug(PlayingArea *area) : Bug(area, KillerBugSpriteImageName, KillerBugNumSpriteImages)
 {
 	SetSplatImage(std::make_shared<wxImage>(KillerBugSplatImageName, wxBITMAP_TYPE_ANY));
+    mArea = area;
 }
 
 /**
@@ -38,6 +39,7 @@ KillerBug::KillerBug(PlayingArea *area) : Bug(area, KillerBugSpriteImageName, Ki
 void KillerBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 {
 	Bug::XmlLoad(node, item);
+    mDestination = item;
 }
 /**
  * Draw this bug
@@ -58,4 +60,12 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
 void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 {
     Bug::Update(elapsed);
+    if(mDestination != nullptr and mArea != nullptr)
+    {
+        if(this->DistanceTo(mDestination) <= BugHitRange)
+        {
+            mArea->RemoveItem(this);
+        }
+    }
+
 }

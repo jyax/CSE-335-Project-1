@@ -15,7 +15,11 @@
  */
 class KillerBug  : public Bug {
 private:
+    ///playing area the bug is in
+    PlayingArea *mArea = nullptr;
 
+    /// Destination for this bug
+    std::shared_ptr<Item> mDestination;
 public:
 	/// Default constructor (disabled)
 	KillerBug() = delete;
