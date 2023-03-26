@@ -13,6 +13,9 @@ using namespace std;
 /// The bug sprite image
 const std::wstring KillerBugSpriteImageName = L"images/killer-bug.png";
 
+/// The splat image
+const std::wstring KillerBugSplatImageName = L"images/killer-bug-splat.png";
+
 /// Number of sprite images
 const int KillerBugNumSpriteImages = 6;
 
@@ -23,6 +26,7 @@ const int KillerBugNumSpriteImages = 6;
  */
 KillerBug::KillerBug(PlayingArea *area) : Bug(area, KillerBugSpriteImageName, KillerBugNumSpriteImages)
 {
+	SetSplatImage(std::make_shared<wxImage>(KillerBugSplatImageName, wxBITMAP_TYPE_ANY));
 }
 
 /**
