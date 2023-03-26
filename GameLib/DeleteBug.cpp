@@ -8,6 +8,7 @@
 #include "GarbageBug.h"
 #include "NullBug.h"
 #include "RedundancyBug.h"
+#include "KillerBug.h"
 #include "Game.h"
 
 /**
@@ -61,5 +62,5 @@ void DeleteBug::VisitProgram(Program *program)
  */
 void DeleteBug::VisitKiller(KillerBug *bug)
 {
-
+	bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
 }
