@@ -26,7 +26,7 @@
   <feature x="640" y="800" speed="70" start="10">
     <bug type="assassin" x="100" y="-100" speed="110" start="8"/>
   </feature>
-  <bug type="garbage" x="-100" y="900" speed="60" start="3">
+  <bug type="garbage" x="-100" y="900" speed="60" start="3"/>
   <code pass="int.*mSpeed.*=.*[0-9]*.*;"><![CDATA[/**
  * Base class for the bugs in the game
  */
@@ -38,8 +38,8 @@ private:
 public:
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 };
-]]></code>
-  <program name="Launch Sequencer" x="740" y="590">
+]]></code><program name="Launch Sequencer" x="740" y="590">
+
 
   </program>
 </bug-squash>
