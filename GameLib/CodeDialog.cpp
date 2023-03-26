@@ -1,6 +1,7 @@
 /**
  * @file CodeDialog.cpp
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -14,11 +15,6 @@
 CodeDialog::CodeDialog(wxWindow *window, wxString code) : wxDialog	(window, -1, L"Bug Squash IDE")
 {
 	auto sizer = new wxBoxSizer(wxVERTICAL);
-	//wxSizer* sizer =  CreateTextSizer(code, wxVERTICAL);
-
-	//wxTextCtrl text;
-	//text.Create(this, -1, code);
-	//auto button = new wxButton(this, wxID_OK, L"OK");
 
 	mText = new wxTextCtrl( this, wxID_ANY, code, wxDefaultPosition, wxSize(400, 300), wxTE_MULTILINE );
 	sizer->Add( mText, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -32,8 +28,6 @@ CodeDialog::CodeDialog(wxWindow *window, wxString code) : wxDialog	(window, -1, 
 	sizer->Fit( this );
 
 	this->Centre( wxBOTH );
-	//sizer->Add(text);
-	//sizer->Add(button);
 }
 
 /**

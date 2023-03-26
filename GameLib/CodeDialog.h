@@ -1,8 +1,9 @@
 /**
  * @file CodeDialog.h
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  *
- *
+ * Dialog box for the fat bag when double-clicked
  */
 
 #ifndef PROJECT1_GAMELIB_CODEDIALOG_H
@@ -14,6 +15,9 @@
 #include <wx/dialog.h>
 #include "GameView.h"
 
+/**
+ * Dialog box for the fat bug when double-clicked
+ */
 class CodeDialog : public wxDialog {
 private:
 	/// The text control used to contain fat bug code
