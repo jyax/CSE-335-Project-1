@@ -11,10 +11,13 @@
 
 #include <wx/dcbuffer.h>
 #include <wx/graphics.h>
+#include <wx/dialog.h>
 #include "GameView.h"
 
-class CodeDialog : public wxTextEntryDialog	 {
+class CodeDialog : public wxDialog {
 private:
+	/// The text control used to contain fat bug code
+	wxTextCtrl* mText = nullptr;
 
 public:
 	CodeDialog(wxWindow *window, wxString code);
@@ -26,7 +29,9 @@ public:
 	CodeDialog(const CodeDialog &);
 
 	/// delete
-	//~CodeDialog();
+	~CodeDialog();
+
+	std::wstring GetEditedCode();
 };
 
 #endif //PROJECT1_GAMELIB_CODEDIALOG_H

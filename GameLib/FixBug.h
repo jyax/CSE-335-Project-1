@@ -38,7 +38,7 @@ public:
 	 */
 	std::wstring GetCode() {return mCode;}
 
-	void CheckCode();
+	void CheckCode(std::wstring code);
 
 	void VisitGarbage(GarbageBug* bug) override;
 	void VisitNull(NullBug* bug) override;

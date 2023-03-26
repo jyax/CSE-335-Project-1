@@ -305,7 +305,8 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 
 			if (dlg.ShowModal() == wxID_OK)
 			{
-				visitor.CheckCode(); // Checks the edited code
+				auto code = dlg.GetEditedCode(); // Get the code from the textctrl
+				visitor.CheckCode(code); // Checks the edited code
 				mTimer.Start();
 				mStopWatch.Resume();
 

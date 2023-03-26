@@ -74,9 +74,11 @@ void FixBug::VisitProgram(Program *program)
  * Checks the fat bug code to see if it is fixed.
  *
  * If so, splats the bug and increments score
+ * @param code The edited code to be checked
  */
-void FixBug::CheckCode()
+void FixBug::CheckCode(std::wstring code)
 {
+	mBug->SetCode(code);
 	if (mBug->CheckCode())
 	{
 		mBug->SetIsHit(true);
