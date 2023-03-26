@@ -310,7 +310,6 @@ bool PlayingArea::LevelComplete()
                 countSplat ++;
             }
         }
-        cout << cnt<<countSplat<<endl;
         if ( cnt == countSplat)
         {
             mLevelComplete = true;
