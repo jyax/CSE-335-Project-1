@@ -21,7 +21,6 @@ using namespace std;
 ///  The time the text appears on screen
 const double TextOnScreenDuration = 2.0;
 
-
 /// Font size for the level name
 const int LevelNameFontSize = 100;
 
@@ -60,7 +59,7 @@ Level::Level(const Level &original)
 /**
  * Read the level in the filename and passes the values
  * to the necessary functions
- * @param filename
+ * @param filename filename containing the level information
  */
 void Level::ReadLevel(const std::wstring filename)
 {
@@ -121,7 +120,7 @@ void Level::ReadLevel(const std::wstring filename)
 }
 /**
  * to draw begine text message
- * @param node
+ * @param node node containing level info
  */
 void Level::XmlBeginText(wxXmlNode *node)
 {
@@ -129,7 +128,7 @@ void Level::XmlBeginText(wxXmlNode *node)
 }
 /**
  * To read and draw Features
- * @param node
+ * @param node node containing level info
  */
 void Level::XmlFeature(wxXmlNode *node)
 {
@@ -144,7 +143,7 @@ void Level::XmlFeature(wxXmlNode *node)
 }
 /**
  * To read and draw bugs
- * @param node
+ * @param node node containing level info
  */
 void Level::XmlBug(wxXmlNode *node)
 {
@@ -236,7 +235,7 @@ void Level::Update(double elapsed)
 }
 /**
  * To read and draw Programme
- * @param node
+ * @param node node containing level info
  */
 void Level::XmlProgram(wxXmlNode *node)
 {

@@ -90,7 +90,7 @@ void PlayingArea::Add(shared_ptr<Item> item)
 
 /**
  * Sets the level and passes the xmlfile to Level
- * @param level
+ * @param level int of level number
  */
 void PlayingArea::SetLevel(int level)
 {
@@ -208,7 +208,6 @@ void PlayingArea::Clear()
  */
 void PlayingArea::Update(double elapsed)
 {
-
     mCurrentLevel->Update(elapsed);
 
     for (auto item : mItems)
@@ -225,8 +224,6 @@ void PlayingArea::Update(double elapsed)
         NextLevel();
         mCompleteDuration = 0.0;
     }
-
-
 }
 
 
@@ -336,6 +333,5 @@ void PlayingArea::NextLevel()
         }
         mGame->SetLevel(mLevelNum);
         mLevelComplete = false;
-
     }
 }

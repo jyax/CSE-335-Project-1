@@ -14,7 +14,6 @@
 #include <random>
 #include "Item.h"
 #include "PlayingArea.h"
-//#include "BugVisitor.h"
 #include "ItemVisitor.h"
 
 /**
@@ -42,12 +41,12 @@ private:
 
 	///number of frames the bug has
 	int mFrames;
+
 	///Start time of the bug
 	double mStart;
 
     ///Start move time
     double mStartMove = 0.0;
-	//wxStopWatch mStopWatch;
 
 	/// Check if this bug was squashed
 	bool mIsHit = false;

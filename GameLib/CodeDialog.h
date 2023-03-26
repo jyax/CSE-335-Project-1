@@ -13,6 +13,9 @@
 #include <wx/graphics.h>
 #include "GameView.h"
 
+/**
+ * Dialog pop up box for code
+ */
 class CodeDialog : public wxTextEntryDialog	 {
 private:
 
@@ -24,9 +27,6 @@ public:
 
 	/// Copy constructor
 	CodeDialog(const CodeDialog &);
-
-	/// delete
-	//~CodeDialog();
 };
 
 #endif //PROJECT1_GAMELIB_CODEDIALOG_H

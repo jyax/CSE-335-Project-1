@@ -21,9 +21,10 @@ private:
     /// PlayingArea object
     PlayingArea mPlayingArea;
 
-	ScoreBoard mScoreBoard; ///< scoreboard object
+	/// scoreboard object
+	ScoreBoard mScoreBoard;
 
-    /// Game area in virtual pixels
+    /// Game area width in virtual pixels
     const static int Width = 1250;
 
     /// Game area height in virtual pixels
@@ -78,6 +79,7 @@ public:
 	void MoveToFront(std::shared_ptr<Item> item);
 
 	void Update(double elapsed);
+
     void SetLevel(int level);
 
 	/**
@@ -102,8 +104,8 @@ public:
 
     /**
     * Get the random number generator
-   * @return Pointer to the random number generator
-   */
+    * @return Pointer to the random number generator
+    */
     std::mt19937 &GetRandom() {return mRandom;}
 };
 
