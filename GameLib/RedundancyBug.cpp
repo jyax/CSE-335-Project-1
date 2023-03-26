@@ -3,6 +3,7 @@
  * @author Alexandra Bannon
  * @author Jacob Yax
  * @author Gaya Kanagaraj
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -56,9 +57,20 @@ const int FirstWingSetX = -36;
 /// of this is the Y position for the left wings.
 const int WingSetY = 5;
 
-/// frams for the splatter redundancy
+/// frames for the splatter redundancy
 const int Frame = 1;
 
+/// The average spawn distance of multiplied flies after the first one is hit
+const double MeanSpawnDistance = 200.0;
+
+/// The standard deviation of the average spawn distance
+const double StandardDevDistance = 30.0;
+
+/// Multiplier to ensure animation is smooth
+const double AnimationSmoothness = 1.5;
+
+/// Minimum number of flies spawned
+const int SpawnFactor = 3;
 
 /**
  * Constructor
@@ -87,7 +99,7 @@ RedundancyBug::RedundancyBug(PlayingArea *area) : Bug(area, RedundancyFlySplatIm
 RedundancyBug::RedundancyBug(const RedundancyBug &original) : Bug(original)
 {
     std::default_random_engine gen;
-    std::normal_distribution<double> d(200.0, 30.0);
+    std::normal_distribution<double> d(MeanSpawnDistance, StandardDevDistance);
     int num = d(gen);
     double x = rand() % num - num;
     double y = pow(pow(num, 2) - pow(x, 2), 0.5);
@@ -200,8 +212,8 @@ void RedundancyBug::Update(double elapsed)
         mCurrentWingPeriod += elapsed;
         Reverse();
     }
-    double animation_smoothness = 1.5;
-    double angle = (WingRotateEnd - WingRotateStart) / (Frames * animation_smoothness);
+
+    double angle = (WingRotateEnd - WingRotateStart) / (Frames * AnimationSmoothness);
 
 
     if(mCurrentAngle > GetAngle() + WingRotateEnd)
@@ -228,7 +240,7 @@ void RedundancyBug::Update(double elapsed)
 void RedundancyBug::Multiply()
 {
     /// Creates Copies of the Redundancy Fly and adds it to the playing area
-    int extraFlies = rand() % 3 + 3;
+    int extraFlies = rand() % SpawnFactor + SpawnFactor;
     while(extraFlies > 1)
     {
         auto bug = make_shared<RedundancyBug>(*this);
@@ -238,7 +250,7 @@ void RedundancyBug::Multiply()
 
     /// RNG based on normal distribution for the placement for multiplying!
     std::default_random_engine gen;
-    std::normal_distribution<double> d(200.0, 30.0);
+    std::normal_distribution<double> d(MeanSpawnDistance, StandardDevDistance);
     int num = d(gen);
     double x = rand() % num - num;
     double y = pow(pow(num, 2) - pow(x, 2), 0.5);

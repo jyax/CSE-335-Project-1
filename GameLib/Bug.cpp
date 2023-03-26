@@ -23,6 +23,8 @@ const int BugSpeed = 40;
 /// The range from the center of the bug to see if hit or not
 const int BugHitRange = 50;
 
+/// The scale difference in size between normal bugs and fat bugs
+const double FatBugScale = 1.25;
 
 /**
  * Constructor
@@ -128,7 +130,7 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		graphics->Rotate(GetAngle());
 		if(mIsFatBug)//this->GetIsFatBug())
 		{
-			graphics->Scale(1.25, 1.25);
+			graphics->Scale(FatBugScale, FatBugScale);
 
 		}
 		graphics->Clip(-wid / 2, -figureHit / 2, wid, figureHit);
