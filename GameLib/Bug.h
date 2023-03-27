@@ -46,14 +46,14 @@ private:
 	///Start time of the bug
 	double mStart = 0.0;
 
-    ///Start move time
-    double mStartMove = 0.0;
+	///Start move time
+	double mStartMove = 0.0;
 
 	/// Check if this bug was squashed
 	bool mIsHit = false;
 
-    /// Destination for this bug
-    std::shared_ptr<Item> mDestination;
+	/// Destination for this bug
+	std::shared_ptr<Item> mDestination;
 
 	/// The underlying splatted image
 	std::shared_ptr<wxImage> mSplatImage;
@@ -61,19 +61,23 @@ private:
 	/// The bitmap to display for the splatted bug
 	wxGraphicsBitmap mSplatBitmap;
 
+	/// Random number generator
+	std::mt19937 mRandom;
+
+	bool test = false;
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
 
-    /// The range from the center of the bug to see if hit or not
-    const int BugHitRange = 50;
+	/// The range from the center of the bug to see if hit or not
+	const int BugHitRange = 50;
 
 public:
 
-    /// Default constructor
-    Bug() = delete;
+	/// Default constructor
+	Bug() = delete;
 
-    /// Copy constructor
-    Bug(const Bug &);
+	/// Copy constructor
+	Bug(const Bug &);
 
 	bool HitTest(double x, double y) override;
 
@@ -81,7 +85,7 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-    void XmlLoad(wxXmlNode *node,std::shared_ptr<Item> item) override;
+	void XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item) override;
 
 	/**
 	 * Get the hit status of the bug
@@ -160,14 +164,19 @@ public:
 	 * Get the bug's splat bitmap
 	 * @return the bug's splat bitmap
 	 */
-	wxGraphicsBitmap GetSplatBitmap() {return mSplatBitmap;}
+	wxGraphicsBitmap GetSplatBitmap() { return mSplatBitmap; }
 
 	/**
 	 * Set the bug's splat bitmap
 	 * @param bitmap the bug's splat bitmap
 	 */
-	void SetSplatBitmap(wxGraphicsBitmap bitmap) {mSplatBitmap = bitmap;}
+	void SetSplatBitmap(wxGraphicsBitmap bitmap) { mSplatBitmap = bitmap; }
 
+	/**
+	* Get the random number generator
+	* @return Pointer to the random number generator
+	*/
+	std::mt19937 &GetRandom() { return mRandom; }
 };
 
 #endif //PROJECT1_GAMELIB_BUG_H

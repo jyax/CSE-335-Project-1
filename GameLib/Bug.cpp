@@ -43,13 +43,13 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
 void Bug::Update(double elapsed) // Change image swatch images here!!!
 {
 
-//	int test = *(mArea->GetLevelNumber());
 	if (!GetIsHit())
     {
         mStartMove += elapsed;
         if(mStartMove >= mStart)
 		{
 			mIteration = (mIteration + 1) % mFrames;
+
 			SetLocation(GetX() + (elapsed * mSpeed * cos(GetAngle())), GetY() + (elapsed * mSpeed * sin(GetAngle())));
 
             if(DistanceTo(mDestination) < BugHitRange)
@@ -86,18 +86,21 @@ bool Bug::HitTest(double x, double y)
  */
 void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-	if (GetIsHit()) // Draw the splat image
+	random_device rd;
+	mRandom.seed(rd());
+	int random = mRandom();
+	if(GetIsHit()) // Draw the splat image
 	{
-		if (mSplatBitmap.IsNull())
+		if(mSplatBitmap.IsNull())
 			mSplatBitmap = graphics->CreateBitmapFromImage(*mSplatImage);
 
 		double wid = mSplatImage->GetWidth();
 		double hit = mSplatImage->GetHeight();
-        graphics->PushState();
-        graphics->Translate(GetX(), GetY());
-        graphics->Rotate(GetAngle());
+		graphics->PushState();
+		graphics->Translate(GetX(), GetY());
+		graphics->Rotate(GetAngle());
 		graphics->DrawBitmap(mSplatBitmap, int(-wid / 2), int(-hit / 2), wid, hit);
-        graphics->PopState();
+		graphics->PopState();
 	}
     else
 	{
@@ -113,7 +116,23 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		double figureHit = hit / mFrames;
 
 		graphics->Translate(GetX(), GetY());
-		graphics->Rotate(GetAngle());
+		if(random > 100000000)
+		{
+			if(!test)
+			{
+				graphics->Rotate(GetAngle() + .15);
+			}
+
+			else
+			{
+				graphics->Rotate(GetAngle() - .15);
+			}
+		}
+		else
+		{
+			test = !test;
+			graphics->Rotate(GetAngle());
+		}
 		if(mIsFatBug)//this->GetIsFatBug())
 		{
 			graphics->Scale(FatBugScale, FatBugScale);
