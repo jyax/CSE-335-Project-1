@@ -9,7 +9,6 @@
 #include "GarbageBug.h"
 #include "NullBug.h"
 #include "RedundancyBug.h"
-#include "PlayingArea.h"
 #include "Game.h"
 
 /**

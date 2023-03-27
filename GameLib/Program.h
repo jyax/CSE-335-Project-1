@@ -22,12 +22,6 @@ private:
     /// Playing are this program belongs to
     PlayingArea *mPlayingArea = nullptr;
 
-    /// The item programme
-    std::shared_ptr<wxImage> mProgrammeImage;
-
-    /// The item bitmap
-    wxGraphicsBitmap mProgrammeBitmap;
-
 
 public:
     /// Default Constructor (disabled)

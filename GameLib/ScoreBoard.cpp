@@ -29,6 +29,12 @@ const int ScoreY = 20;
 /// Score label Y location
 const int ScoreLabelY = 100;
 
+///X score board size
+const int xScore = 1200;
+///yscore board size
+const int yScore = 450;
+
+
 /** default construct that constructs the scoreboard */
 ScoreBoard::ScoreBoard(){}
 
@@ -98,10 +104,10 @@ void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     graphics->DrawText(wxString::Format(wxT("%d"), mFixed), LeftScoreX - (wid/2), ScoreY);
 
     graphics->GetTextExtent(wxString::Format(wxT("%d"), mMissed), &wid, &len);
-    graphics->DrawText(wxString::Format(wxT("%d"), mMissed), LeftScoreX + 450 - (wid/2), ScoreY);
+    graphics->DrawText(wxString::Format(wxT("%d"), mMissed), LeftScoreX + yScore - (wid/2), ScoreY);
 
     graphics->GetTextExtent(wxString::Format(wxT("%d"), mOops), &wid, &len);
-    graphics->DrawText(wxString::Format(wxT("%d"), mOops), 1200-LeftScoreX-(wid/2), ScoreY);
+    graphics->DrawText(wxString::Format(wxT("%d"), mOops), xScore-LeftScoreX-(wid/2), ScoreY);
 
     wxFont font2(wxSize(0,LabelSize),wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
     graphics->SetFont(font2, FontColor);
@@ -111,10 +117,10 @@ void ScoreBoard::Draw(std::shared_ptr<wxGraphicsContext> graphics) {
     graphics->DrawText(wxString::Format(L"Fixed"), LeftScoreX - (wid/2), ScoreLabelY);
 
     graphics->GetTextExtent(wxString::Format(L"Missed"), &wid, &len);
-    graphics->DrawText(wxString::Format(L"Missed"), LeftScoreX + 450 - (wid/2), ScoreLabelY);
+    graphics->DrawText(wxString::Format(L"Missed"), LeftScoreX + yScore - (wid/2), ScoreLabelY);
 
     graphics->GetTextExtent(wxString::Format(L"Oops"), &wid, &len);
-    graphics->DrawText(wxString::Format(L"Oops"), 1200 - LeftScoreX - (wid/2), ScoreLabelY);
+    graphics->DrawText(wxString::Format(L"Oops"), xScore - LeftScoreX - (wid/2), ScoreLabelY);
 
     graphics->PopState();
 }
