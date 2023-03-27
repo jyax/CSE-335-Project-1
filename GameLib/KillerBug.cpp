@@ -57,10 +57,10 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
  * move the bugs
  * @param elapsed Time elapsed since the class call
  */
-void KillerBug::Update(double elapsed) // Change image swatch images here!!!
+void KillerBug::Update(double elapsed)
 {
     Bug::Update(elapsed);
-    if(mDestination != nullptr and mArea != nullptr)
+    if(mDestination != nullptr && mArea != nullptr)
     {
         if(this->DistanceTo(mDestination) <= BugHitRange)
         {

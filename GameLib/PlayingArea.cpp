@@ -33,6 +33,12 @@ const std::wstring Level3FileName = L"data/level3.xml";
 /// The range from the center of the bug to see if hit or not
 const int BugHitRange = 50;
 
+/// The zeroth level's number of the game
+const int LevelZero = 0;
+
+/// The first level's number of the game
+const int FirstLevel = 1;
+
 /// The second level's number of the game
 const int SecondLevel = 2;
 
@@ -96,13 +102,13 @@ void PlayingArea::SetLevel(int level)
 {
     mLevelNum = level;
 
-    if (mLevelNum == 0)
+    if (mLevelNum == LevelZero)
     {
         mLevelZero->ReadLevel(Level0FileName);
         mCurrentLevel = make_shared<Level>(*mLevelZero);
 
     }
-    else if (mLevelNum == 1)
+    else if (mLevelNum == FirstLevel)
     {
         mLevelOne->ReadLevel(Level1FileName);
         mCurrentLevel = make_shared<Level>(*mLevelOne);
@@ -329,7 +335,7 @@ void PlayingArea::NextLevel()
         }
         else
         {
-            mLevelNum = 0;
+            mLevelNum = LevelZero;
         }
         mGame->SetLevel(mLevelNum);
         mLevelComplete = false;

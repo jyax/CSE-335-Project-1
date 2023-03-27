@@ -20,9 +20,10 @@ using namespace std;
 /// Frame duration in milliseconds
 const double FrameDuration = 30.0;
 
-/// The second level's number of the game
+/// The zeroth level's number of the game
 const int LevelZero = 0;
-/// The second level's number of the game
+
+/// The first level's number of the game
 const int FirstLevel = 1;
 
 /// The second level's number of the game
@@ -224,7 +225,7 @@ void GameView::OnAddShrinkOption(wxFrame *mainFrame, wxMenu *menu, int id,
  * Handle the left mouse button down event
  * @param event left button down event
  */
-void GameView::OnLeftDown(wxMouseEvent &event) // NOT FINISHED!!!
+void GameView::OnLeftDown(wxMouseEvent &event)
 {
 	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
 
@@ -286,7 +287,7 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  * Handle the double click event
  * @param event left double click event
  */
-void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
+void GameView::OnLeftDouble(wxMouseEvent &event)
 {
 	mGrabbedItem = mGame.Click(event.GetX(), event.GetY());
 	if (mGrabbedItem != nullptr)
@@ -303,7 +304,6 @@ void GameView::OnLeftDouble(wxMouseEvent &event) // NOT FINISHED!!!
 			mStopWatch.Pause();
 
 			CodeDialog dlg = CodeDialog(this, visitor.GetCode());
-			//wxDialog dlg(this, -1, L"Bug Squash IDE");
 
 			if (dlg.ShowModal() == wxID_OK)
 			{
