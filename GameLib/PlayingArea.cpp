@@ -241,9 +241,9 @@ void PlayingArea::MoveItem(std::shared_ptr<Item> item)
  * Delete if the bug reaches to the program
  * @param bug the bug to be deleted
  */
-void PlayingArea::RemoveItem(Item* bug)
+void PlayingArea::RemoveDestination(std::shared_ptr<Item> item)
 {
-    mDeleteItems.push_back(bug);
+	mDeleteItems.push_back(&*item);
 }
 
 /**
@@ -307,6 +307,7 @@ bool PlayingArea::LevelComplete()
                 countSplat ++;
             }
         }
+
         if ( cnt == countSplat)
         {
             mLevelComplete = true;
@@ -322,16 +323,20 @@ bool PlayingArea::LevelComplete()
 void PlayingArea::NextLevel()
 {
     if( mLevelComplete)
-    {
-        if (mLevelNum < ThirdLevel)
-        {
-            mLevelNum += 1;
-        }
-        else
-        {
-            mLevelNum = 0;
-        }
-        mGame->SetLevel(mLevelNum);
-        mLevelComplete = false;
-    }
+	{
+		if(mLevelNum < ThirdLevel)
+		{
+			mLevelNum += 1;
+		}
+		else
+		{
+			mLevelNum = 0;
+		}
+		mGame->SetLevel(mLevelNum);
+		mLevelComplete = false;
+	}
+}
+void PlayingArea::RemoveItem(Item *bug)
+{
+	mDeleteItems.push_back(bug);
 }

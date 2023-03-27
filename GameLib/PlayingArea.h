@@ -91,31 +91,31 @@ public:
 	 * Getter for whether the level has started or not
 	 * @return true if a level has started, false otherwise
 	 */
-    bool GetLevelStart() {return mLevelStart;}
+	bool GetLevelStart() { return mLevelStart; }
 
-    void SetTextDuration(double duration);
+	void SetTextDuration(double duration);
 
-    void Clear();
+	void Clear();
 
-    void Update(double elapsed);
+	void Update(double elapsed);
 
 	void MoveItem(std::shared_ptr<Item> item);
 
-    void RemoveItem(Item* bug);
+	void RemoveDestination(std::shared_ptr<Item> item);
+	void RemoveItem(Item *bug);
+	void DeleteItem();
 
-    void DeleteItem();
+	void CheckItem(Item *item);
 
-    void CheckItem(Item *item);
+	/**
+	 * returns current level number
+	 * @return int value
+	 */
+	int GetLevelNumber() { return mLevelNum; }
 
-    /**
-     * returns current level number
-     * @return int value
-     */
-    int GetLevelNumber(){return mLevelNum;}
+	bool LevelComplete();
 
-    bool LevelComplete();
-
-    void NextLevel();
+	void NextLevel();
 };
 
 
