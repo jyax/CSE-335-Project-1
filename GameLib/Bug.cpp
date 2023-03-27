@@ -8,9 +8,9 @@
  */
 
 #include "pch.h"
-#include "Bug.h"
 #include <wx/graphics.h>
 #include <wx/regex.h>
+#include "Bug.h"
 #include "Program.h"
 #include "PlayingArea.h"
 #include "DeleteBug.h"

@@ -1,7 +1,7 @@
 /**
  * @file ScoreBoard.h
  * @author Gaya Kanagaraj
- * Class defines the score baord
+ * Class defines the score board
  */
 
 #ifndef PROJECT1_SCOREBOARD_H

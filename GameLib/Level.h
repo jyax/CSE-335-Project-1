@@ -16,8 +16,7 @@ class PlayingArea;
 /**
  * Main level class
  */
-class Level
-{
+class Level {
 private:
 	/// The game this level is part of
 	PlayingArea *mPlayingArea = nullptr;

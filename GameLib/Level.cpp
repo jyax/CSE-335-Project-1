@@ -73,7 +73,6 @@ void Level::ReadLevel(const std::wstring filename)
     }
     // get root of the xml doc - level value
     auto parent = xmlDoc.GetRoot();
-    //XmlBeginText(parent);
 
     // Loop through child tags - outer loop for program
     auto child = parent->GetChildren();
@@ -133,7 +132,6 @@ void Level::XmlBeginText(wxXmlNode *node)
 void Level::XmlFeature(wxXmlNode *node)
 {
 	mNumofFeatures++;
-	//shared_ptr<Item> item;
 	mFeature = make_shared<Feature>(mPlayingArea);
 	if(mFeature != nullptr)
 	{
@@ -151,7 +149,6 @@ void Level::XmlBug(wxXmlNode *node)
     if (type.Cmp("nullbug") == 0 || type.Cmp("null") == 0)
     {
         mNumOfBugs++;
-        //shared_ptr<Item> item;
         auto item = make_shared<NullBug>(mPlayingArea);
         if(item != nullptr)
         {
@@ -162,7 +159,6 @@ void Level::XmlBug(wxXmlNode *node)
     else if (type.Cmp("garbage") == 0)
     {
         mNumOfBugs++;
-        //shared_ptr<Item> item;
          auto item = make_shared<GarbageBug>(mPlayingArea);
         if(item != nullptr)
         {
@@ -173,7 +169,6 @@ void Level::XmlBug(wxXmlNode *node)
     else if (type.Cmp("redundancy") == 0)
 	{
 		mNumOfBugs++;
-		//hared_ptr<Item> item;
 		auto item = make_shared<RedundancyBug>(mPlayingArea);
 		if(item != nullptr)
 		{
@@ -184,7 +179,6 @@ void Level::XmlBug(wxXmlNode *node)
 	else if(type.Cmp("assassin") == 0)
 	{
 		mNumOfBugs++;
-		//hared_ptr<Item> item;
 		auto item = make_shared<KillerBug>(mPlayingArea);
 		if(item != nullptr)
 		{
