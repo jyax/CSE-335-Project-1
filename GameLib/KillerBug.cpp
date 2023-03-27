@@ -7,7 +7,6 @@
 #include "KillerBug.h"
 #include "Game.h"
 #include "Bug.h"
-#include <fstream>
 
 using namespace std;
 
@@ -20,7 +19,6 @@ const std::wstring KillerBugSplatImageName = L"images/killer-bug-splat.png";
 /// Number of sprite images
 const int KillerBugNumSpriteImages = 6;
 
-ofstream myfile;
 
 /**
  * Constructor
@@ -30,7 +28,7 @@ KillerBug::KillerBug(PlayingArea *area) : Bug(area, KillerBugSpriteImageName, Ki
 {
 	SetSplatImage(std::make_shared<wxImage>(KillerBugSplatImageName, wxBITMAP_TYPE_ANY));
 	mArea = area;
-	myfile.open("example.txt");
+
 }
 
 /**
@@ -62,7 +60,6 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
  */
 void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 {
-	myfile << this->DistanceTo(mDestination) << endl;
 	if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
 	{
 		this->SetIsHit(true);
