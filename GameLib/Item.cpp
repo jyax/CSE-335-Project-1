@@ -3,6 +3,8 @@
  * @author Jacob Meier
  * @author Nicole Kuang
  * @author Alexandra Bannon
+ * @author Gaya Kanagaraj
+ * Items (program and bugs) for Game
  */
 
 #include "pch.h"
@@ -25,9 +27,7 @@ Item::Item(PlayingArea *area, const std::wstring &filename, double frame) : mAre
 /**
  * Destructor
  */
-Item::~Item()
-{
-}
+Item::~Item(){}
 
 /**
  * Test to see if we hit this object with a mouse.
@@ -44,9 +44,7 @@ bool Item::HitTest(double x, double y)
  * Draw this item
  * @param graphics graphics context to draw on
  */
-void Item::Draw(shared_ptr<wxGraphicsContext> graphics)
-{
-}
+void Item::Draw(shared_ptr<wxGraphicsContext> graphics){}
 
 /**
  * Load in Item coordinates
@@ -75,9 +73,7 @@ Item::Item(const Item &original)
 /**
  * Constructor
  */
-Item::Item()
-{
-}
+Item::Item(){}
 
 /**
 * Compute the distance from this to another item

@@ -17,12 +17,13 @@
 #include "ItemVisitor.h"
 
 /**
- * Base class for the bugs in the game
+ * Base class for the bugs in the PlayingArea
+ * Derived from Item base
  */
 class Bug : public Item {
 private:
 	///Speed the bug is traveling
-	double mSpeed;
+	double mSpeed = 0.0;
 
 	///playing area the bug is in 
     PlayingArea *mArea = nullptr;
@@ -40,10 +41,10 @@ private:
 	int mIteration = 0;
 
 	///number of frames the bug has
-	int mFrames;
+	int mFrames = 0;
 
 	///Start time of the bug
-	double mStart;
+	double mStart = 0.0;
 
     ///Start move time
     double mStartMove = 0.0;
@@ -62,6 +63,7 @@ private:
 
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
+
     /// The range from the center of the bug to see if hit or not
     const int BugHitRange = 50;
 

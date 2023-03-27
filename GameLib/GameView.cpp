@@ -21,6 +21,11 @@ using namespace std;
 const double FrameDuration = 30.0;
 
 /// The second level's number of the game
+const int LevelZero = 0;
+/// The second level's number of the game
+const int FirstLevel = 1;
+
+/// The second level's number of the game
 const int SecondLevel = 2;
 
 /// The third level's number of the game
@@ -63,7 +68,7 @@ void GameView::Initialize(wxFrame* mainFrame) {
  */
 void GameView::OnLevel0 (wxCommandEvent &event)
 {
-    mGame.SetLevel(0);
+    mGame.SetLevel(LevelZero);
 
 }
 
@@ -73,7 +78,7 @@ void GameView::OnLevel0 (wxCommandEvent &event)
  */
 void GameView::OnLevel1 (wxCommandEvent &event)
 {
-    mGame.SetLevel(1);
+    mGame.SetLevel(FirstLevel);
 }
 
 /**
@@ -129,7 +134,6 @@ void GameView::OnPaint(wxPaintEvent& event)
  */
 void GameView::OnTimer(wxTimerEvent& event)
 {
-	//Currently commented out so you can exit the program
 	Refresh();
 }
 

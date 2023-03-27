@@ -17,12 +17,6 @@
 
 using namespace std;
 
-/// Base Bug speed
-const int BugSpeed = 40;
-
-/// The range from the center of the bug to see if hit or not
-const int BugHitRange = 50;
-
 /// The scale difference in size between normal bugs and fat bugs
 const double FatBugScale = 1.25;
 
@@ -183,10 +177,10 @@ double Bug::GetAngle()
 	return atan2(angleY, angleX);
 
 }
-Bug::~Bug()
-{
-
-}
+/**
+ * Destructor
+ */
+Bug::~Bug(){}
 
 /**
  * Check if the fat bug code has been fixed using regex
