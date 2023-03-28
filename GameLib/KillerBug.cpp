@@ -7,6 +7,7 @@
 #include "KillerBug.h"
 #include "Game.h"
 #include "Bug.h"
+#include "SplatBug.h"
 
 using namespace std;
 
@@ -60,13 +61,26 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
  */
 void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 {
+
 	if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
 	{
-		this->SetIsHit(true);
+		SplatBug visitor;
+		Accept(&visitor);
 		mArea->RemoveDestination(mDestination);
+
 	}
 
-	if(!this->GetIsHit())
+	else
+	{
 		Bug::Update(elapsed);
+	}
+	//if(!this->GetIsHit())
+	//	Bug::Update(elapsed);
+
+	/** else
+	{
+		this->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
+	}
+	*/
 
 }
