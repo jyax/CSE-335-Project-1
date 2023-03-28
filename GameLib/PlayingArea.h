@@ -40,7 +40,7 @@ private:
     std::shared_ptr<Level> mCurrentLevel = std::make_shared<Level>(this);
 
     ///Current level being played
-    int mLevelNum;
+    int mLevelNum = 0;
 
     /// level complete boolean
     bool mLevelComplete = false;

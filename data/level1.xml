@@ -5,7 +5,7 @@
     <bug type="garbage" x="1350" y="100" speed="150" start="3"/>
 
     <bug type="null" x="-100" y="500" speed="150" start="5"/>
-<!--    <bug type="redundancy" x="1000" y="-100" speed="120" start="8"/>-->
+    <bug type="redundancy" x="1000" y="-100" speed="120" start="8"/>
     <feature x="600" y="1100" speed="120" start="10"/>
 
     <bug type="garbage" x="-100" y="900" speed="60" start="10">

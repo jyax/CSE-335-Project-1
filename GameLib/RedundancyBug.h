@@ -22,7 +22,7 @@ private:
 	bool mHasMultiplied = false;
 
 	/// Has the redundancy fly's wings changed direction
-    bool mChangeDirection;
+    bool mChangeDirection = false;
 
     double mCurrentWingPeriod = 0;  ///< the time the wings have spent flapping in seconds
     double mCurrentAngle = 0;  ///< The current angle of the wings in radians

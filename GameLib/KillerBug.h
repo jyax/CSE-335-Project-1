@@ -1,8 +1,6 @@
 /**
  * @file KillerBug.h
  * @author Alexandra Bannon
- *
- *
  */
 
 #ifndef PROJECT1_GAMELIB_KILLERBUG_H
