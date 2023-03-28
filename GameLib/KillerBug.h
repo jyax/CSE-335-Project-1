@@ -40,6 +40,7 @@ public:
     void Update(double elapsed) override;
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+
 };
 
 #endif //PROJECT1_GAMELIB_KILLERBUG_H
