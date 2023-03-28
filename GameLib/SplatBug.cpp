@@ -1,6 +1,7 @@
 /**
  * @file SplatBug.cpp
  * @author Nicole Kuang
+ * @author Jacob Meier
  */
 
 #include "pch.h"
@@ -10,6 +11,7 @@
 #include "NullBug.h"
 #include "RedundancyBug.h"
 #include "PlayingArea.h"
+#include "KillerBug.h"
 #include "Game.h"
 
 /**
@@ -89,4 +91,9 @@ void SplatBug::VisitProgram(Program *program)
  */
 void SplatBug::VisitKiller(KillerBug *bug)
 {
+	if(!bug->GetIsHit())
+	{
+		bug->SetIsHit(true);
+		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
+	}
 }
