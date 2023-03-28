@@ -340,3 +340,27 @@ void PlayingArea::RemoveItem(Item *bug)
 {
 	mDeleteItems.push_back(bug);
 }
+
+/**
+ * Checks if an destination items is still in mItems
+ *
+ * @param Item pointer to the destination
+ * @return The pointer if the item is in the list, nullptr otherwise
+ */
+Item * PlayingArea::FindDestination(Item * destination)
+{
+
+	auto i = mItems.begin();
+	while( i != mItems.end())
+	{
+		if( destination == i->get() )
+		{
+			return i->get();
+			break;
+		}
+		else{
+			++i;
+		}
+	}
+	return nullptr;
+}

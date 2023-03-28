@@ -116,6 +116,8 @@ public:
 	bool LevelComplete();
 
 	void NextLevel();
+
+	Item * FindDestination(Item * destination);
 };
 
 

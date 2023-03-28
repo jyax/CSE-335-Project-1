@@ -78,21 +78,33 @@ void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 	{
 		Bug::Update(elapsed);
 	}*/
-	if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
+	if (mArea->FindDestination(mDestination.get()) == nullptr)
 	{
-		this->SetIsHit(true);
-		if(!AlreadyCalled)
-		{
-			CalculateScore(this);
-		}
-		mArea->RemoveDestination(mDestination);
-
+		mDestination = nullptr;
 	}
 
+	if (mDestination != nullptr)
+	{
+		if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
+		{
+			this->SetIsHit(true);
+			if(!AlreadyCalled)
+			{
+				CalculateScore(this);
+			}
+			mArea->RemoveDestination(mDestination);
+			mDestination = nullptr;
+		}
+		else
+		{
+			Bug::Update(elapsed);
+		}
+	}
 	else
 	{
-		Bug::Update(elapsed);
+		this->SetIsHit(true);
 	}
+
 	//if(!this->GetIsHit())
 	//	Bug::Update(elapsed);
 
