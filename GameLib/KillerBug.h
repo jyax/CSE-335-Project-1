@@ -11,13 +11,16 @@
 /**
  * Class for the KillerBug
  */
-class KillerBug  : public Bug {
+class KillerBug : public Bug
+{
 private:
-    ///playing area the bug is in
-    PlayingArea *mArea = nullptr;
+	///playing area the bug is in
+	PlayingArea *mArea = nullptr;
 
-    /// Destination for this bug
-    std::shared_ptr<Item> mDestination;
+	/// Destination for this bug
+	std::shared_ptr<Item> mDestination;
+
+	bool AlreadyCalled = false;
 public:
 	/// Default constructor (disabled)
 	KillerBug() = delete;
@@ -39,6 +42,7 @@ public:
 
     void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+	void CalculateScore(KillerBug *item);
 };
 
 #endif //PROJECT1_GAMELIB_KILLERBUG_H

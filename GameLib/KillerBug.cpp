@@ -49,9 +49,13 @@ void KillerBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
  */
 void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
-    Bug::Draw(graphics);
+	Bug::Draw(graphics);
 }
-
+void KillerBug::CalculateScore(KillerBug *item)
+{
+	this->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
+	AlreadyCalled = true;
+}
 /**
  * Handle updates in time of the bugs
  *
@@ -62,10 +66,25 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
 void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 {
 
-	if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
+	/**if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
 	{
 		SplatBug visitor;
 		Accept(&visitor);
+		mArea->RemoveDestination(mDestination);
+
+	}
+
+	else
+	{
+		Bug::Update(elapsed);
+	}*/
+	if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
+	{
+		this->SetIsHit(true);
+		if(!AlreadyCalled)
+		{
+			CalculateScore(this);
+		}
 		mArea->RemoveDestination(mDestination);
 
 	}
@@ -77,10 +96,10 @@ void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 	//if(!this->GetIsHit())
 	//	Bug::Update(elapsed);
 
-	/** else
-	{
-		this->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
-	}
-	*/
+	//else
+	//{
+	//	this->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
+	//}
+
 
 }

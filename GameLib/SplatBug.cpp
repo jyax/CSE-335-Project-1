@@ -91,9 +91,9 @@ void SplatBug::VisitProgram(Program *program)
  */
 void SplatBug::VisitKiller(KillerBug *bug)
 {
-	if(!bug->GetIsHit())
-	{
-		bug->SetIsHit(true);
-		bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
-	}
+	//if(!bug->GetIsHit())
+	//{
+	//	bug->SetIsHit(true);
+	//	bug->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
+	//}
 }
