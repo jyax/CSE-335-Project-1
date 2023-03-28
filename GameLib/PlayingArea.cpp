@@ -349,7 +349,6 @@ void PlayingArea::RemoveItem(Item *bug)
  */
 Item * PlayingArea::FindDestination(Item * destination)
 {
-
 	auto i = mItems.begin();
 	while( i != mItems.end())
 	{
