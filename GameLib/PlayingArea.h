@@ -102,7 +102,12 @@ public:
 	void MoveItem(std::shared_ptr<Item> item);
 
 	void RemoveDestination(std::shared_ptr<Item> item);
+	/**
+	 * Removes an item of type bug from mItems
+	 * @param bug Bug to be removed from mItems
+	 */
 	void RemoveItem(Item *bug);
+
 	void DeleteItem();
 
 	void CheckItem(Item *item);

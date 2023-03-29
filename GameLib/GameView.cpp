@@ -231,7 +231,7 @@ void GameView::OnLeftDown(wxMouseEvent &event)
 
 	if (mGrabbedItem != nullptr)
 	{
-		if(!mGame.getEnableDrag())  //normal fucntion
+		if(!mGame.getEnableDrag())  //normal function
 		{
 			mGame.MoveToFront(mGrabbedItem);
 
@@ -263,7 +263,7 @@ void GameView::OnLeftUp(wxMouseEvent &event)
 void GameView::OnMouseMove(wxMouseEvent &event)
 {
 	// check if there is a current item
-	if(mGrabbedItem != nullptr && mGrabbedItem->GetIsHit() != true)
+	if(mGrabbedItem != nullptr && !mGrabbedItem->GetIsHit())
 	{
 		// If an item is being moved, we only continue to
 		// move it while the left button is down.

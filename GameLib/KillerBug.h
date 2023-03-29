@@ -34,14 +34,18 @@ public:
      * Accept a visitor
      * @param visitor The visitor we accept
      */
-	void Accept(ItemVisitor* visitor) override {visitor->VisitKiller(this);}
+	void Accept(ItemVisitor *visitor) override { visitor->VisitKiller(this); }
 
-	void XmlLoad(wxXmlNode* node, std::shared_ptr<Item> item) override;
+	void XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item) override;
 
-    void Update(double elapsed) override;
+	void Update(double elapsed) override;
 
-    void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
+	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
+	/**
+	 * Updates score board for Killerbug attacks
+	 * @param item Killerbug being passed in
+	 */
 	void CalculateScore(KillerBug *item);
 };
 

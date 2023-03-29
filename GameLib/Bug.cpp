@@ -40,13 +40,13 @@ Bug::Bug(PlayingArea *area, const std::wstring &filename, double frames) : Item(
  * move the bugs
  * @param elapsed Time elapsed since the class call
  */
-void Bug::Update(double elapsed) // Change image swatch images here!!!
+void Bug::Update(double elapsed)
 {
 
-	if (!GetIsHit())
-    {
-        mStartMove += elapsed;
-        if(mStartMove >= mStart)
+	if(!GetIsHit())
+	{
+		mStartMove += elapsed;
+		if(mStartMove >= mStart)
 		{
 			mIteration = (mIteration + 1) % mFrames;
 

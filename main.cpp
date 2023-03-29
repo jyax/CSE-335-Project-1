@@ -8,4 +8,9 @@
 #include "pch.h"
 #include "GameApp.h"
 
+/**
+ * Runs/displays application
+ *
+ * @param GameApp App to be displayed/run
+ */
 wxIMPLEMENT_APP(GameApp);

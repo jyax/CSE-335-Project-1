@@ -66,18 +66,6 @@ void KillerBug::CalculateScore(KillerBug *item)
 void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 {
 
-	/**if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
-	{
-		SplatBug visitor;
-		Accept(&visitor);
-		mArea->RemoveDestination(mDestination);
-
-	}
-
-	else
-	{
-		Bug::Update(elapsed);
-	}*/
 	if (mArea->FindDestination(mDestination.get()) == nullptr)
 	{
 		mDestination = nullptr;
@@ -104,14 +92,6 @@ void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 	{
 		this->SetIsHit(true);
 	}
-
-	//if(!this->GetIsHit())
-	//	Bug::Update(elapsed);
-
-	//else
-	//{
-	//	this->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
-	//}
 
 
 }

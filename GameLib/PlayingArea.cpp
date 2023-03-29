@@ -238,8 +238,8 @@ void PlayingArea::MoveItem(std::shared_ptr<Item> item)
 }
 
 /**
- * Delete if the bug reaches to the program
- * @param bug the bug to be deleted
+ * Delete if the killerbug reaches the feature
+ * @param item the bug to be deleted
  */
 void PlayingArea::RemoveDestination(std::shared_ptr<Item> item)
 {
@@ -344,20 +344,21 @@ void PlayingArea::RemoveItem(Item *bug)
 /**
  * Checks if an destination items is still in mItems
  *
- * @param Item pointer to the destination
+ * @param destination pointer to the destination
  * @return The pointer if the item is in the list, nullptr otherwise
  */
-Item * PlayingArea::FindDestination(Item * destination)
+Item *PlayingArea::FindDestination(Item *destination)
 {
 	auto i = mItems.begin();
-	while( i != mItems.end())
+	while(i != mItems.end())
 	{
-		if( destination == i->get() )
+		if(destination == i->get())
 		{
 			return i->get();
 			break;
 		}
-		else{
+		else
+		{
 			++i;
 		}
 	}
