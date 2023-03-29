@@ -5,8 +5,8 @@
     <bug type="null" x="600" y="1200" speed="140" start="2"/>
     <feature x="440" y="1100" speed="70" start="10"/>
     <feature x="1850" y="280" speed="90" start="10"/>
-    <bug type="garbage" x="-100" y="900" speed="60" start="3">
-      <code pass="if.*\(.*mGrabbedItem.*!=.*nullptr.*\).*\n.*{.*\n.*mGame.MoveToFront(mGrabbedItem);.*\n.*"><![CDATA[
+    <bug type="null" x="-100" y="900" speed="60" start="3">
+      <code pass="if.*\(.*mGrabbedItem.*!=.*nullptr.*\).*\n.*{.*\n.*mGame.MoveToFront\(mGrabbedItem\);.*\n.*"><![CDATA[
 
 	mGame.MoveToFront(mGrabbedItem);
 	Refresh();
@@ -29,7 +29,7 @@
 
   <program name="Launch Sequencer" x="740" y="590">
     <bug type="garbage" x="-100" y="900" speed="60" start="3">
-      <code pass="int.*mSpeed.*=.*[0-9]*.*;"><![CDATA[/**
+      <code pass="double.*mSpeed.*=.*[0-9]*.*;"><![CDATA[/**
  * Base class for the bugs in the game
  */
 class Bug : public Item {
