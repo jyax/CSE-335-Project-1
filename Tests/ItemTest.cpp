@@ -2,7 +2,7 @@
  * @file ItemTest.cpp
  * @author Nicole Kuang
  */
-/**
+
 #include <pch.h>
 #include "gtest/gtest.h"
 #include <Item.h>
@@ -13,17 +13,13 @@ using namespace std;
 /// Bug filename
 const wstring GarbageBugImage = L"images/blue-maize-bug.png";
 
-/**
- * Class for testing items, since Item is abstract
+/// Number of frames for the bug image
+const int FrameNum = 7;
 
+// Class for testing items, since Item is abstract
 class ItemMock : public Item {
 public:
-	ItemMock(PlayingArea *area) : Item(area, GarbageBugImage) {}
-
-	/**
-     * Accept a visitor
-     * @param visitor The visitor we accept
-
+	ItemMock(PlayingArea *area) : Item(area, GarbageBugImage, FrameNum) {}
 	virtual void Accept(ItemVisitor* visitor) override {}
 };
 
@@ -52,4 +48,3 @@ TEST(ItemTest, GetSetLocation)
 	ASSERT_NEAR(-72, item.GetX(), 0.0001);
 	ASSERT_NEAR(-107, item.GetY(), 0.0001);
 }
-*/
