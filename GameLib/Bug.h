@@ -64,12 +64,11 @@ private:
 	/// Random number generator
 	std::mt19937 mRandom;
 
-	bool test = false;
+	/// Movement randomizer
+	bool mMovement = false;
+
 protected:
 	Bug(PlayingArea *area, const std::wstring &filename, double frames);
-
-	/// The range from the center of the bug to see if hit or not
-	const int BugHitRange = 50;
 
 public:
 

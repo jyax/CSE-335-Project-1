@@ -17,8 +17,17 @@
 
 using namespace std;
 
+/// The range from the center of the bug to see if hit or not
+const int BugHitRange = 50;
+
 /// The scale difference in size between normal bugs and fat bugs
 const double FatBugScale = 1.25;
+
+/// The number that determines whether to randomize bug movement or not
+const int DoRandomize = 100000000;
+
+/// The bug movement angle scale up/down
+const double MovementScale = 0.15;
 
 /**
  * Constructor
@@ -116,21 +125,21 @@ void Bug::Draw(shared_ptr<wxGraphicsContext> graphics)
 		double figureHit = hit / mFrames;
 
 		graphics->Translate(GetX(), GetY());
-		if(random > 100000000)
+		if(random > DoRandomize)
 		{
-			if(!test)
+			if(!mMovement)
 			{
-				graphics->Rotate(GetAngle() + .15);
+				graphics->Rotate(GetAngle() + MovementScale);
 			}
 
 			else
 			{
-				graphics->Rotate(GetAngle() - .15);
+				graphics->Rotate(GetAngle() - MovementScale);
 			}
 		}
 		else
 		{
-			test = !test;
+			mMovement = !mMovement;
 			graphics->Rotate(GetAngle());
 		}
 		if(mIsFatBug)//this->GetIsFatBug())

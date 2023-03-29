@@ -18,6 +18,9 @@ const std::wstring KillerBugSpriteImageName = L"images/killer-bug.png";
 /// The splat image
 const std::wstring KillerBugSplatImageName = L"images/killer-bug-splat.png";
 
+/// The range from the center of the bug to see if hit or not
+const int BugHitRange = 50;
+
 /// Number of sprite images
 const int KillerBugNumSpriteImages = 6;
 

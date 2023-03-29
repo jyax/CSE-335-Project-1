@@ -2,6 +2,8 @@
  * @file KillerBug.h
  * @author Alexandra Bannon
  * @author Nicole Kuang
+ *
+ * Class for the KillerBug
  */
 
 #ifndef PROJECT1_GAMELIB_KILLERBUG_H
@@ -11,6 +13,9 @@
 
 /**
  * Class for the KillerBug
+ *
+ * This bug hunts features and requires the player
+ * to drag them away
  */
 class KillerBug : public Bug
 {
