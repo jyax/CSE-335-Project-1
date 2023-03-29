@@ -1,6 +1,7 @@
 /**
  * @file KillerBug.h
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  */
 
 #ifndef PROJECT1_GAMELIB_KILLERBUG_H
@@ -20,7 +21,9 @@ private:
 	/// Destination for this bug
 	std::shared_ptr<Item> mDestination;
 
+	/// Has the killer bug's score already been accounted for?
 	bool AlreadyCalled = false;
+
 public:
 	/// Default constructor (disabled)
 	KillerBug() = delete;
@@ -42,10 +45,6 @@ public:
 
 	void Draw(std::shared_ptr<wxGraphicsContext> graphics) override;
 
-	/**
-	 * Updates score board for Killerbug attacks
-	 * @param item Killerbug being passed in
-	 */
 	void CalculateScore(KillerBug *item);
 };
 

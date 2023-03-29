@@ -1,6 +1,7 @@
 /**
  * @file KillerBug.cpp
  * @author Alexandra Bannon
+ * @author Nicole Kuang
  */
 
 #include "pch.h"
@@ -20,6 +21,8 @@ const std::wstring KillerBugSplatImageName = L"images/killer-bug-splat.png";
 /// Number of sprite images
 const int KillerBugNumSpriteImages = 6;
 
+/// The killer bug's added range
+const int KillerBugRange = 10;
 
 /**
  * Constructor
@@ -43,6 +46,7 @@ void KillerBug::XmlLoad(wxXmlNode *node, std::shared_ptr<Item> item)
 	Bug::XmlLoad(node, item);
     mDestination = item;
 }
+
 /**
  * Draw this bug
  * @param graphics graphics context to draw on
@@ -51,11 +55,17 @@ void KillerBug::Draw(shared_ptr<wxGraphicsContext> graphics)
 {
 	Bug::Draw(graphics);
 }
+
+/**
+ * Updates score board for Killerbug attacks
+ * @param item Killerbug being passed in
+ */
 void KillerBug::CalculateScore(KillerBug *item)
 {
 	this->GetArea()->GetGame()->GetScoreboard()->CalculateScore(false, false, true);
 	AlreadyCalled = true;
 }
+
 /**
  * Handle updates in time of the bugs
  *
@@ -63,7 +73,7 @@ void KillerBug::CalculateScore(KillerBug *item)
  * move the bugs
  * @param elapsed Time elapsed since the class call
  */
-void KillerBug::Update(double elapsed) // Change image swatch images here!!!
+void KillerBug::Update(double elapsed)
 {
 
 	if (mArea->FindDestination(mDestination.get()) == nullptr)
@@ -73,7 +83,7 @@ void KillerBug::Update(double elapsed) // Change image swatch images here!!!
 
 	if (mDestination != nullptr)
 	{
-		if(this->DistanceTo(mDestination) <= (BugHitRange + 10))
+		if(this->DistanceTo(mDestination) <= (BugHitRange + KillerBugRange))
 		{
 			this->SetIsHit(true);
 			if(!AlreadyCalled)
